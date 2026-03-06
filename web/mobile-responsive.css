@@ -287,6 +287,120 @@
         gap: 20px !important;
     }
 
+    .courses-unified-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+
+    .course-card-v2 {
+        width: 100% !important;
+    }
+
+    .course-card-inner {
+        padding: 28px 18px !important;
+    }
+
+    .course-title-v2 {
+        font-size: 20px !important;
+    }
+
+    .course-desc-v2 {
+        font-size: 14px !important;
+    }
+
+    .course-image-v2 {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .course-icon-v2 {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 22px !important;
+    }
+
+    .course-badge-v2 {
+        font-size: 11px !important;
+        padding: 6px 12px !important;
+    }
+
+    .course-tts-btn {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 14px !important;
+    }
+
+    .reference-wing-badge {
+        top: 52px !important;
+        font-size: 10px !important;
+        padding: 4px 10px !important;
+    }
+
+    .course-explore-btn {
+        font-size: 13px !important;
+        padding: 9px 18px !important;
+    }
+
+    .benefits-panel-inner {
+        padding: 16px !important;
+    }
+
+    .benefits-panel-inner li {
+        font-size: 13px !important;
+    }
+
+    /* Healing Service Mobile */
+    .healing-service-block {
+        padding: 24px 16px !important;
+    }
+
+    .healing-service-content {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .healing-image-side {
+        flex: unset !important;
+        width: 180px !important;
+        margin: 0 auto !important;
+    }
+
+    .healing-title {
+        font-size: 22px !important;
+        text-align: center !important;
+    }
+
+    .healing-desc {
+        font-size: 14px !important;
+    }
+
+    .healing-features {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    .healing-feature-item {
+        font-size: 13px !important;
+        padding: 8px 12px !important;
+    }
+
+    .connection-block-v2 {
+        padding: 20px 15px !important;
+    }
+
+    .connection-title-v2 {
+        font-size: 20px !important;
+    }
+
+    .connection-row {
+        flex-direction: column !important;
+        gap: 4px !important;
+    }
+
+    .connection-label {
+        flex: unset !important;
+    }
+
     .class-card,
     .benefit-card,
     .contact-card {

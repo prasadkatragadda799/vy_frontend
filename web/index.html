@@ -15,9 +15,9 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="vibhuti-styles.css?v=25" />
-  <link rel="stylesheet" href="mobile-responsive.css?v=25" />
-  <link rel="stylesheet" href="mobile-ultra-transparent.css?v=25" />
+  <link rel="stylesheet" href="vibhuti-styles.css?v=29" />
+  <link rel="stylesheet" href="mobile-responsive.css?v=29" />
+  <link rel="stylesheet" href="mobile-ultra-transparent.css?v=29" />
   <style>
     /* === VIDEO SPLASH SCREEN === */
     #splash-screen {
@@ -364,6 +364,12 @@
       Your browser does not support the video tag.
     </video>
 
+    <!-- Subtle helper to let user know they can click for sound -->
+    <div id="unmute-hint"
+      style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-family: sans-serif; font-size: 14px; letter-spacing: 1px; z-index: 1000; pointer-events: none; transition: opacity 0.5s ease;">
+      Tap anywhere for sound 🔊
+    </div>
+
     <!-- Cinematic Overlay Effects (ON TOP OF VIDEO) -->
     <div class="splash-bg-logo"></div>
     <div class="splash-bg-element splash-bg-om">ॐ</div>
@@ -387,14 +393,28 @@
       const video = document.getElementById("splash-video");
       const splashScreen = document.getElementById("splash-screen");
       const mainContent = document.getElementById("main-content");
+      const unmuteHint = document.getElementById("unmute-hint");
       let isRevealed = false;
       let videoStarted = false;
       let startTime = Date.now();
       const minDuration = 7000; // Force exactly 7 seconds minimum
 
+      // Browser Autoplay Policy Trick:
+      // Autoplay the video muted, then unmute on first user click.
+      const unmuteVideo = () => {
+        video.muted = false;
+        if (unmuteHint) unmuteHint.style.opacity = "0";
+        document.removeEventListener("click", unmuteVideo);
+        document.removeEventListener("touchstart", unmuteVideo);
+      };
+
+      document.addEventListener("click", unmuteVideo);
+      document.addEventListener("touchstart", unmuteVideo);
+
       const executeReveal = () => {
         if (isRevealed) return;
         isRevealed = true;
+
         splashScreen.classList.add("fade-out");
 
         // Allow scrolling again
@@ -413,7 +433,6 @@
         const remaining = minDuration - elapsed;
 
         if (remaining > 0) {
-          // If video errors or ends too early, force it to wait the full 7 seconds
           setTimeout(executeReveal, remaining);
         } else {
           executeReveal();
@@ -428,15 +447,13 @@
         }
       });
 
-      // Event listeners
       video.addEventListener("ended", () => attemptReveal("ended"));
       video.addEventListener("error", () => attemptReveal("error"));
 
-      // Generous fallback (12 seconds) in case of silent browser blocks or buffering loops
-      // We use 12s so that a 7s video + network buffering time doesn't get chopped prematurely.
+      // Generous fallback (12 seconds)
       setTimeout(() => attemptReveal("timeout"), 12000);
 
-      // Force play
+      // Force play safely (muted)
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
@@ -452,7 +469,7 @@
     <header class="header" id="main-header">
       <div class="logo-section">
         <div class="logo-icon">
-          <img src="logo.jpg" alt="Vibhuti Yoga Logo" class="logo-image" />
+          <img src="new-logo-perfect-circle.png" alt="Vibhuti Yoga Logo" class="logo-image" />
         </div>
         <span class="logo-text">Vibhuti Yoga</span>
       </div>
@@ -483,19 +500,27 @@
                     flex-wrap: wrap;
                   ">
                 <div class="hero-large-logo">
-                  <img src="logo.jpg" alt="Vibhuti Yoga Big Logo" style="
+                  <img src="new-logo-perfect-circle.png" alt="Vibhuti Yoga Big Logo" style="
                         width: 250px;
                         height: 250px;
                         border-radius: 50%;
+                        object-fit: cover;
                         box-shadow: 0 0 40px rgba(255, 216, 155, 0.4);
                         border: 2px solid rgba(255, 255, 255, 0.2);
                       " />
                 </div>
                 <div class="hero-text-content" style="flex: 1; text-align: left">
-                  <h1 class="hero-title">
-                    Awaken Your Inner
-                    <span class="gradient-text">Divine Light</span>
+                  <h1 class="hero-title"
+                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 2.6rem; line-height: 1.3; margin-bottom: 8px; font-weight: 800; color: var(--golden-primary); text-shadow: 0 2px 12px rgba(0,0,0,0.7), 0 0 8px rgba(255,216,155,0.5);">
+                    VIBHUTI YOGA IS A PLATFORM OF
+                    <br><span
+                      style="color: var(--golden-primary); font-family: var(--font-heading); font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 15px rgba(255,216,155,0.8); font-size: 3rem;">SANATANA
+                      VIDYA</span>
                   </h1>
+                  <p class="hero-subtitle"
+                    style="font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 1.25rem; color: #ffffff; letter-spacing: 2px; margin-bottom: 35px; font-weight: 500; text-shadow: 0 4px 10px rgba(0,0,0,0.9), 0 0 10px rgba(255,255,255,0.3);">
+                    Your Dreams Become Reality With The Power of Vibhuti Yoga
+                  </p>
                   <div class="hero-description custom-meaning">
                     <h3 class="meaning-title">🕉️ Understanding the Name</h3>
 
@@ -590,260 +615,330 @@
             <section id="classes" class="section-full">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
-                Our Courses
+                <span id="heading-our-courses">Our Courses</span>
                 <span class="accent">✦</span>
               </h2>
-              <div class="classes-grid">
-                <!-- INTUITION POWER -->
-                <div class="class-card" data-class="Intuition Power">
-                  <div class="class-badge beginner">3 Levels</div>
-                  <div class="class-icon"><i class="fas fa-eye"></i></div>
-                  <h3 class="class-title">Intuition Power</h3>
-                  <p class="class-desc">
-                    Unlock your inner wisdom and develop heightened intuitive
-                    abilities through progressive levels.
-                  </p>
-                  <div class="class-levels" style="
-                        margin-bottom: 15px;
-                        font-size: 14px;
-                        color: rgba(255, 255, 255, 0.8);
-                      ">
-                    <span style="display: block; margin: 4px 0">🌱 1st Level - Foundation</span>
-                    <span style="display: block; margin: 4px 0">🌿 2nd Level - Intermediate</span>
-                    <span style="display: block; margin: 4px 0">🌳 3rd Level - Advanced</span>
+
+
+              <!-- UNIFIED COURSES GRID -->
+              <div class="courses-unified-grid">
+
+                <!-- ═══════════════ COURSE: INTUITION POWER ═══════════════ -->
+                <div class="course-card-v2" data-course="Intuition Power" id="course-intuition">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-levels" id="badge-intuition">3 Levels</div>
+                    <button class="course-tts-btn" onclick="speakCourse('intuition')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2"><img src="assets/intuition_power.png" alt="Intuition Power"></div>
+                    <h3 class="course-title-v2" id="title-intuition">Intuition Power (3 Levels)</h3>
+                    <p class="course-desc-v2" id="desc-intuition">Unlock your inner wisdom and develop heightened
+                      intuitive abilities through progressive levels.</p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="intuition">🌱 1st Level - Foundation</span>
+                      <span data-level-item="intuition">🌿 2nd Level - Intermediate</span>
+                      <span data-level-item="intuition">🌳 3rd Level - Advanced</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('intuition')">
+                      <span id="explore-btn-intuition">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <button class="register-class-btn" data-register-text
+                      onclick="registerForCourse('Intuition Power')">
+                      <i class="fas fa-user-plus"></i> Register
+                    </button>
                   </div>
-                  <button class="register-class-btn" onclick="registerForCourse('Intuition Power')">
-                    <i class="fas fa-user-plus"></i> Register
-                  </button>
                 </div>
 
-                <!-- MIND POWER -->
-                <div class="class-card" data-class="Mind Power">
-                  <div class="class-badge intermediate">3 Levels</div>
-                  <div class="class-icon"><i class="fas fa-brain"></i></div>
-                  <h3 class="class-title">Mind Power</h3>
-                  <p class="class-desc">
-                    Master the power of your mind through focused techniques
-                    that enhance mental clarity and strength.
-                  </p>
-                  <div class="class-levels" style="
-                        margin-bottom: 15px;
-                        font-size: 14px;
-                        color: rgba(255, 255, 255, 0.8);
-                      ">
-                    <span style="display: block; margin: 4px 0">🌱 1st Level - Foundation</span>
-                    <span style="display: block; margin: 4px 0">🌿 2nd Level - Intermediate</span>
-                    <span style="display: block; margin: 4px 0">🌳 3rd Level - Advanced</span>
+                <!-- ═══════════════ COURSE: MIND POWER ═══════════════ -->
+                <div class="course-card-v2" data-course="Mind Power" id="course-mind">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-intermediate" id="badge-mind">3 Levels</div>
+                    <button class="course-tts-btn" onclick="speakCourse('mind')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2"><img src="assets/mind_power.png" alt="Mind Power"></div>
+                    <h3 class="course-title-v2" id="title-mind">Mind Power (3 Levels)</h3>
+                    <p class="course-desc-v2" id="desc-mind">Master the power of your mind through focused techniques
+                      that enhance mental clarity and strength.</p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="mind">🌱 1st Level - Foundation</span>
+                      <span data-level-item="mind">🌿 2nd Level - Intermediate</span>
+                      <span data-level-item="mind">🌳 3rd Level - Advanced</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('mind')">
+                      <span id="explore-btn-mind">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <button class="register-class-btn" data-register-text onclick="registerForCourse('Mind Power')">
+                      <i class="fas fa-user-plus"></i> Register
+                    </button>
                   </div>
-                  <button class="register-class-btn" onclick="registerForCourse('Mind Power')">
-                    <i class="fas fa-user-plus"></i> Register
-                  </button>
                 </div>
 
-                <!-- HOLISTIC HEALING ENERGY POWER -->
-                <div class="class-card" data-class="Holistic Healing Energy Power">
-                  <div class="class-badge advanced">3 Modules</div>
-                  <div class="class-icon"><i class="fas fa-spa"></i></div>
-                  <h3 class="class-title">Holistic Healing Energy Power</h3>
-                  <p class="class-desc">
-                    Learn sacred healing techniques to channel universal
-                    energy for physical and spiritual wellness.
-                  </p>
-                  <div class="class-levels" style="
-                        margin-bottom: 15px;
-                        font-size: 14px;
-                        color: rgba(255, 255, 255, 0.8);
-                      ">
-                    <span style="display: block; margin: 4px 0">✨ 1st Module - Basics</span>
-                    <span style="display: block; margin: 4px 0">💫 2nd Module - Practitioner</span>
-                    <span style="display: block; margin: 4px 0">⭐ 3rd Module - Master</span>
+                <!-- ═══════════════ COURSE: HOLISTIC HEALING ENERGY POWER ═══════════════ -->
+                <div class="course-card-v2" data-course="Holistic Healing Energy Power" id="course-holistic">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-advanced" id="badge-holistic">3 Modules</div>
+                    <button class="course-tts-btn" onclick="speakCourse('holistic')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2"><img src="assets/holistic_healing.png" alt="Holistic Healing"></div>
+                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing (3 Levels)</h3>
+                    <p class="course-desc-v2" id="desc-holistic">Learn sacred healing techniques to channel universal
+                      energy for physical and spiritual wellness.<br><br><strong>Note: The holistic healing class will
+                        be in Prana Yoga Ashramam.</strong></p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="holistic">✨ 1st Module - Basics</span>
+                      <span data-level-item="holistic">💫 2nd Module - Practitioner</span>
+                      <span data-level-item="holistic">⭐ 3rd Module - Master</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('holistic')">
+                      <span id="explore-btn-holistic">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <button class="register-class-btn" data-register-text
+                      onclick="registerForCourse('Holistic Healing')">
+                      <i class="fas fa-user-plus"></i> Register
+                    </button>
                   </div>
-                  <button class="register-class-btn" onclick="
-                        registerForCourse('Holistic Healing Energy Power')
-                      ">
-                    <i class="fas fa-user-plus"></i> Register
-                  </button>
+                </div>
+
+              </div>
+
+              <!-- ═══════════════ FREE TECHNIQUES SECTION ═══════════════ -->
+              <h2 class="section-heading" style="margin-top: 60px;">
+                <span class="accent">✦</span>
+                <span id="heading-free-tech">Free Techniques with a Minimal Registration</span>
+                <span class="accent">✦</span>
+              </h2>
+              <p class="techniques-subtitle" id="subtitle-free-tech">These powerful techniques are included
+                <strong>FREE</strong> when you
+                register for any of our courses above
+              </p>
+
+              <div class="courses-unified-grid techniques-grid">
+
+                <!-- ═══════════════ COURSE: AKUL SCIENCE ═══════════════ -->
+                <div class="course-card-v2 technique-card" data-course="Akul Science" id="course-akul">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-special" id="badge-akul">New</div>
+                    <button class="course-tts-btn" onclick="speakCourse('akul')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="akul_science.png" alt="Akul Science">
+                    </div>
+                    <h3 class="course-title-v2" id="title-akul">Akul Science</h3>
+                    <p class="course-desc-v2" id="desc-akul">Explore the ancient science of Akul — the formless, supreme
+                      consciousness beyond creation. A profound journey into the science of the unmanifest.</p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="akul">🕉️ Theory & Philosophy</span>
+                      <span data-level-item="akul">🧘 Practical Meditation</span>
+                      <span data-level-item="akul">✨ Advanced Realization</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('akul')">
+                      <span id="explore-btn-akul">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <button class="register-class-btn" data-register-text onclick="registerForCourse('Akul Science')">
+                      <i class="fas fa-user-plus"></i> Register
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ═══════════════ TECHNIQUE: DOWSING ═══════════════ -->
+                <div class="course-card-v2 technique-card" data-course="Dowsing Technique" id="course-dowsing">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-free" id="badge-dowsing">🎁 FREE</div>
+                    <button class="course-tts-btn" onclick="speakCourse('dowsing')" title="Listen to technique details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="dowsing_technique.png" alt="Dowsing Technique">
+                    </div>
+                    <h3 class="course-title-v2" id="title-dowsing">Dowsing Technique</h3>
+                    <p class="course-desc-v2" id="desc-dowsing">Learn the ancient art of dowsing — detecting subtle
+                      energy fields, water sources, and hidden vibrations using pendulums and divining tools guided by
+                      spiritual intuition. </p>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('dowsing')">
+                      <span id="explore-btn-dowsing">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <div class="free-tag-note" data-free-note>
+                      <i class="fas fa-gift"></i> Included free with any course registration
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ═══════════════ TECHNIQUE: AGNI ═══════════════ -->
+                <div class="course-card-v2 technique-card" data-course="Agni Technique" id="course-agni">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-free" id="badge-agni">🎁 FREE</div>
+                    <button class="course-tts-btn" onclick="speakCourse('agni')" title="Listen to technique details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="agni_technique.png" alt="Agni Technique">
+                    </div>
+                    <h3 class="course-title-v2" id="title-agni">Agni Technique</h3>
+                    <p class="course-desc-v2" id="desc-agni">Master the sacred Vedic fire technique — harness the
+                      transformative power of Agni for purification, energy activation, and spiritual awakening through
+                      ancient fire rituals. </p>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('agni')">
+                      <span id="explore-btn-agni">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <div class="free-tag-note" data-free-note>
+                      <i class="fas fa-gift"></i> Included free with any course registration
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- ═══════════════ REFERENCE COURSES (PARTNER WINGS) ═══════════════ -->
+              <h2 class="section-heading" style="margin-top: 60px;">
+                <span class="accent">✦</span>
+                <span id="heading-vidyas">Advanced Divine Sciences (Vidyas)</span>
+                <span class="accent">✦</span>
+              </h2>
+              <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred
+                sciences.
+                <strong>We'll guide you to the right master.</strong>
+              </p>
+
+              <div class="courses-unified-grid reference-grid">
+
+                <!-- ═══════════════ REFERENCE: DHANUR VIDYA ═══════════════ -->
+                <div class="course-card-v2 reference-card" data-course="Dhanur Vidya" id="course-dhanur">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-reference" id="badge-dhanur">🏹 Partner</div>
+                    <div class="reference-wing-badge" data-ref-badge>
+                      <i class="fas fa-feather-alt"></i> Referred Course
+                    </div>
+                    <button class="course-tts-btn" onclick="speakCourse('dhanur')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="dhanur_logo.png" alt="Dhanur Vidya">
+                    </div>
+                    <h3 class="course-title-v2" id="title-dhanur">Dhanur Vidya (धनुर्विद्या)</h3>
+                    <p class="course-desc-v2" id="desc-dhanur">The ancient Vedic science of archery & martial arts — one
+                      of the 64 Kalas. Encompasses bow, arrows, divine weapons, mental discipline & warrior ethics.</p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="dhanur">🏹 Astra Vidya — Divine Weapons</span>
+                      <span data-level-item="dhanur">⚔️ Shastra Vidya — Combat Skills</span>
+                      <span data-level-item="dhanur">🧠 Dharana — Mental Discipline</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('dhanur')">
+                      <span id="explore-btn-dhanur">✨ Tap to Explore Benefits</span>
+                    </button>
+
+                    <button class="register-class-btn reference-btn" data-register-text data-reference
+                      onclick="registerForCourse('Dhanur Vidya')">
+                      <i class="fas fa-paper-plane"></i> Enquire & Get Referred
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ═══════════════ REFERENCE: SRI VIDYA ═══════════════ -->
+                <div class="course-card-v2 reference-card" data-course="Sri Vidya" id="course-sri">
+                  <div class="course-card-inner">
+                    <div class="course-badge-v2 badge-reference" id="badge-sri">🔱 Partner</div>
+                    <div class="reference-wing-badge" data-ref-badge>
+                      <i class="fas fa-feather-alt"></i> Referred Course
+                    </div>
+                    <button class="course-tts-btn" onclick="speakCourse('sri')" title="Listen to course details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="sri_chakra_logo.png" alt="Sri Vidya">
+                    </div>
+                    <h3 class="course-title-v2" id="title-sri">Sri Vidya (श्रीविद्या)</h3>
+                    <p class="course-desc-v2" id="desc-sri">The supreme Tantric-Vedic tradition of worshipping Devi. A
+                      profound path focusing deeply on Sri Durga Sapta Sadi and Varahi Sadhana.</p>
+                    <div class="course-levels-v2">
+                      <span data-level-item="sri">🌺 Sri Durga Sapta Sadi</span>
+                      <span data-level-item="sri">🔱 Varahi Sadhana</span>
+                      <span data-level-item="sri">🌙 Sri Chakra Worship</span>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('sri')">
+                      <span id="explore-btn-sri">✨ Tap to Explore Benefits</span>
+                    </button>
+
+                    <button class="register-class-btn reference-btn" data-register-text data-reference
+                      onclick="registerForCourse('Sri Vidya')">
+                      <i class="fas fa-paper-plane"></i> Enquire & Get Referred
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <!-- ═══════════════ HEALING SERVICE ═══════════════ -->
+              <h2 class="section-heading" style="margin-top: 60px;">
+                <span class="accent">✦</span>
+                <span id="heading-healing">Divine Healing Services</span>
+                <span class="accent">✦</span>
+              </h2>
+
+              <div class="healing-service-block" id="course-healing">
+                <div class="healing-service-content">
+                  <div class="healing-image-side">
+                    <img src="healing_service.png" alt="Aura & Energy Healing">
+                    <div class="healing-glow-ring"></div>
+                  </div>
+                  <div class="healing-info-side">
+                    <h3 class="healing-title" id="healing-title-text">🙏 Aura Cleansing & Energy Healing</h3>
+                    <p class="healing-desc" id="healing-desc-text">Experience divine healing through the power of
+                      ancient Sanatana practices.
+                      Our expert healers cleanse negative aura, remove malefic energy attachments, balance disturbed
+                      chakras, and restore your natural divine light.</p>
+                    <div class="healing-features">
+                      <div class="healing-feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-healing-feature>Negative Energy Removal</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-sun"></i>
+                        <span data-healing-feature>Aura Cleansing & Purification</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <span data-healing-feature>Chakra Balancing & Alignment</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-magic"></i>
+                        <span data-healing-feature>Spiritual Protection Shield</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <span data-healing-feature>Karmic Debt Cleansing</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-heart"></i>
+                        <span data-healing-feature>Emotional & Mental Healing</span>
+                      </div>
+                    </div>
+                    <button class="course-explore-btn glow-pulse" onclick="showBenefitsModal('healing')"
+                      style="margin-top: 15px;">
+                      <span id="explore-btn-healing">✨ Tap to Explore Full Benefits</span>
+                    </button>
+
+                    <div class="healing-cta-row">
+                      <button class="register-class-btn large-btn"
+                        onclick="registerForCourse('Healing - Aura Cleansing')">
+                        <i class="fas fa-hands"></i> <span id="healing-book-btn-text">Book a Healing Session</span>
+                      </button>
+                    </div>
+                    <div class="healing-payment-info">
+                      <div class="healing-price-tag">
+                        <i class="fas fa-info-circle"></i>
+                        <span id="healing-price-note">Healing sessions are personalized. Contact us for consultation &
+                          pricing details.</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <!-- EXPERTISE SELECTOR DIVS -->
-              <h2 class="section-heading" style="margin-top: 80px;">
-                <span class="accent">✦</span>
-                Advanced Divine Sciences (Vidyas)
-                <span class="accent">✦</span>
-              </h2>
-              <div class="vidya-expertise-container">
-                <div class="vidya-tabs">
-                  <button class="vidya-tab-btn active" onclick="switchVidyaTab('dhanur')">🏹 Dhanur Vidya</button>
-                  <button class="vidya-tab-btn" onclick="switchVidyaTab('sri')">🔱 Sri Vidya</button>
-                  <button class="vidya-tab-btn" onclick="switchVidyaTab('connection')">🌺 The Connection</button>
-                </div>
-
-                <div class="vidya-content-area">
-                  <!-- Dhanur Vidya Content -->
-                  <div id="vidya-dhanur" class="vidya-tab-content active">
-                    <div class="vidya-header">
-                      <div class="vidya-logo dhanur-logo"
-                        style="background: url('dhanur_logo.png') center/cover no-repeat; opacity: 1;">
-                      </div>
-                      <div class="vidya-title">
-                        <h3>Dhanur Vidya (धनुर्विद्या)</h3>
-                        <p>Dhanur = Bow | Vidya = Knowledge/Science</p>
-                      </div>
-                    </div>
-                    <p class="vidya-intro">Dhanur Vidya is the ancient Vedic science of archery and martial arts — one
-                      of the 64 Kalas (arts) mentioned in classical Indian tradition.</p>
-
-                    <div class="vidya-grid-blocks">
-                      <div class="vidya-block">
-                        <h4>Scope & Significance</h4>
-                        <ul>
-                          <li><span class="bullet">✦</span> One of the Upavedas — traditionally attached to the
-                            Yajurveda</li>
-                          <li><span class="bullet">✦</span> Far more than physical archery — encompasses:
-                            <ul class="vidya-sublist">
-                              <li>- Use of bow (dhanush), arrows (bana), sword, mace</li>
-                              <li>- Astra Vidya — science of missiles/divine weapons</li>
-                              <li>- Shastra Vidya — science of handheld weapons</li>
-                              <li>- Mental discipline, focus (dharana), and warrior ethics (kshaatra dharma)</li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="vidya-block">
-                        <h4>Sacred Dimension</h4>
-                        <ul>
-                          <li><span class="bullet">✦</span> Lord Shiva is the Adi-Guru of Dhanur Vidya</li>
-                          <li><span class="bullet">✦</span> Parashurama, Drona, Kripa were great acharyas</li>
-                          <li><span class="bullet">✦</span> Arjuna is considered the greatest Dhanurdhari</li>
-                          <li><span class="bullet">✦</span> The Bhagavad Gita is spoken on a battlefield — the Kshetra
-                            of Dhanur Vidya</li>
-                        </ul>
-                      </div>
-                      <div class="vidya-block">
-                        <h4>Classical Texts & Inner Meaning</h4>
-                        <ul>
-                          <li><span class="bullet">✦</span> <strong>Texts:</strong> Dhanur Veda, Agni Purana,
-                            Nitiprakasika</li>
-                          <li><span class="bullet">✦</span> <strong>Inner Meaning:</strong> Must conquer the self before
-                            conquering the enemy.<br><br>
-                            <span style="color:var(--golden-primary);">The bow</span> = the mind<br>
-                            <span style="color:var(--golden-primary);">The arrow</span> = focused intention<br>
-                            <span style="color:var(--golden-primary);">The target</span> = liberation (moksha)
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="vidya-action">
-                      <button class="register-class-btn large-btn" onclick="registerForCourse('Dhanur Vidya')">
-                        <i class="fas fa-user-plus"></i> Register for Dhanur Vidya
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Sri Vidya Content -->
-                  <div id="vidya-sri" class="vidya-tab-content" style="display:none;">
-                    <div class="vidya-header">
-                      <div class="vidya-logo sri-logo"
-                        style="background: url('sri_chakra_logo.png') center/cover no-repeat; opacity: 1;">
-                      </div>
-                      <div class="vidya-title">
-                        <h3>Sri Vidya (श्रीविद्या)</h3>
-                        <p>Sri = Divine Mother, Consciousness, Abundance | Vidya = sacred wisdom</p>
-                      </div>
-                    </div>
-                    <p class="vidya-intro">Sri Vidya is the supreme Tantric-Vedic tradition of worshipping Devi (Shakti)
-                      as the ultimate reality — Para Brahman in feminine form.</p>
-
-                    <div class="vidya-grid-blocks">
-                      <div class="vidya-block">
-                        <h4>The Essence & Paths</h4>
-                        <ul>
-                          <li><span class="bullet">✦</span> The pinnacle of Shakta upasana (worship of the Divine
-                            Mother)</li>
-                          <li><span class="bullet">✦</span> Worships Lalita Tripura Sundari:
-                            <ul class="vidya-sublist">
-                              <li>- Tripura — transcending the three states (waking, dream, deep sleep)</li>
-                              <li>- Sundari — supreme beauty, bliss of pure consciousness</li>
-                            </ul>
-                          </li>
-                          <li><span class="bullet">✦</span> <strong>Paths:</strong> Samayachara (Internal/Vedic) &
-                            Kaula/Mishra achara (Tantric ritual)</li>
-                        </ul>
-                      </div>
-                      <div class="vidya-block">
-                        <h4>Core Components</h4>
-                        <table class="vidya-table">
-                          <tr>
-                            <td>Sri Chakra / Yantra</td>
-                            <td>Geometric mandala of the universe — body of Devi</td>
-                          </tr>
-                          <tr>
-                            <td>Panchadashi / Shodashi</td>
-                            <td>15 or 16-syllable supreme mantra of Lalita</td>
-                          </tr>
-                          <tr>
-                            <td>Navavarana Puja</td>
-                            <td>Nine-layered ritual worship of Sri Chakra</td>
-                          </tr>
-                          <tr>
-                            <td>Kundalini Yoga</td>
-                            <td>Awakening of Shakti through the sushumna</td>
-                          </tr>
-                          <tr>
-                            <td>Guru Parampara</td>
-                            <td>Strictly transmitted through an initiating Guru</td>
-                          </tr>
-                        </table>
-                      </div>
-                      <div class="vidya-block">
-                        <h4>The Three Cities (Tripura)</h4>
-                        <ul>
-                          <li><span class="bullet">✦</span> <span style="color:var(--golden-primary);">🔥 Fire
-                              (Agni)</span> — in the waking state</li>
-                          <li><span class="bullet">✦</span> <span style="color:var(--golden-primary);">🌙 Sun
-                              (Surya)</span> — in the dream state</li>
-                          <li><span class="bullet">✦</span> <span style="color:var(--golden-primary);">☀️ Moon
-                              (Chandra)</span> — in deep sleep</li>
-                          <li><span class="bullet">✦</span> <em>Ultimately she is Turiya — the fourth, the witness
-                              beyond all states.</em></li>
-                        </ul>
-                        <p class="vidya-footer-note">Texts: Lalita Sahasranama, Soundarya Lahari, Tripura Rahasya,
-                          Parasurama Kalpasutra</p>
-                      </div>
-                    </div>
-
-                    <div class="vidya-action">
-                      <button class="register-class-btn large-btn" onclick="registerForCourse('Sri Vidya')">
-                        <i class="fas fa-user-plus"></i> Register for Sri Vidya
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Connection Content -->
-                  <div id="vidya-connection" class="vidya-tab-content" style="display:none; text-align:center;">
-                    <h3 class="connection-title">🌺 Connection to Vibhuti Yoga & Sanatana Vidya</h3>
-                    <table class="vidya-table connection-table">
-                      <tr>
-                        <th>Vidya</th>
-                        <th>Dimension</th>
-                      </tr>
-                      <tr>
-                        <td><strong>Dhanur Vidya</strong></td>
-                        <td>Kshaatra — the outer warrior path, disciplined action</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Sri Vidya</strong></td>
-                        <td>Brahma — the inner path of consciousness and devotion</td>
-                      </tr>
-                    </table>
-                    <p class="vidya-intro connection-summary">Together they represent the complete human being — the
-                      warrior with a refined inner life, and the devotee with a disciplined will — the very spirit of
-                      Sanatana Dharma.</p>
-                  </div>
-                </div>
-              </div>
             </section>
 
             <section id="benefits" class="section-full">
@@ -1183,7 +1278,8 @@
                             color: #7f8c8d;
                             margin-bottom: 5px;
                           ">Aadhaar Number *</label>
-                      <input type="text" id="donor-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="
+                      <input type="text" id="donor-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number"
+                        maxlength="12" pattern="\d{12}" style="
                             width: 100%;
                             padding: 10px;
                             border: 1px solid #dfe6e9;
@@ -1450,7 +1546,8 @@
                             color: #7f8c8d;
                             margin-bottom: 5px;
                           ">Aadhaar Number *</label>
-                      <input type="text" id="reg-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="
+                      <input type="text" id="reg-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number"
+                        maxlength="12" pattern="\d{12}" style="
                             width: 100%;
                             padding: 12px;
                             border: 1px solid #dfe6e9;
@@ -1715,9 +1812,12 @@
 
         <footer class="footer">
           <div class="social-links">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/share/1ECzi4wmCC/" target="_blank" class="social-icon"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/vibhuti7thsence?igsh=cXI4OWY4bDg5cHo1" target="_blank"
+              class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@vibhuti7thsence?si=rogHVJEZBf3TXu0V" target="_blank" class="social-icon"><i
+                class="fab fa-youtube"></i></a>
             <a href="https://wa.me/917842434643" target="_blank" class="social-icon" style="background: #25d366"><i
                 class="fab fa-whatsapp"></i></a>
           </div>
@@ -1993,6 +2093,35 @@
     document.addEventListener("DOMContentLoaded", loadClasses);
   </script>
   <script src="vibhuti-script.js?v=10"></script>
+
+  <!-- BENEFITS MODAL DIALOG -->
+  <div id="benefits-modal" class="custom-modal">
+    <div class="modal-overlay" onclick="closeBenefitsModal()"></div>
+    <div class="modal-content glass-card-v2">
+      <button class="close-modal-btn" onclick="closeBenefitsModal()"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-image-container">
+          <img id="modal-course-image" src="" alt="Course Image">
+        </div>
+        <h3 id="modal-course-title">Course Title</h3>
+        <button class="modal-tts-btn" onclick="speakModalDetails()" title="Listen to all details">
+          <i class="fas fa-volume-up"></i> Listen
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-course-desc" class="modal-desc">Brief course matter goes here.</p>
+        <div class="modal-benefits-list">
+          <h4><i class="fas fa-gem"></i> Key Benefits</h4>
+          <ul id="modal-benefits-ul">
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-action-btn pulse-glow" onclick="closeBenefitsModal()">Got it</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
