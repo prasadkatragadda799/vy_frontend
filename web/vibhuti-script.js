@@ -707,7 +707,10 @@ function speakCourse(courseId) {
   }
 
   const keyBenefitsLabel = currentLang === 'te' ? 'ముఖ్య ప్రయోజనాలు' : 'Key benefits';
-  const text = `${langData.title}. ${langData.desc} ${keyBenefitsLabel}: ${langData.benefits}`;
+  const benefitsText = Array.isArray(langData.benefitsList)
+    ? langData.benefitsList.join('. ')
+    : (langData.benefits || '');
+  const text = `${langData.title}. ${langData.desc} ${keyBenefitsLabel}: ${benefitsText}`;
   const utterance = new SpeechSynthesisUtterance(text);
 
   if (currentLang === 'te') {
