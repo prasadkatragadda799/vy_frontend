@@ -1,127 +1,80 @@
-// VIBHUTI YOGA - ENHANCED NAVIGATION WITH FIXED HEADER & SCROLL SPY
+// VIBHUTI YOGA - TAB-BASED NAVIGATION (Show/Hide Sections)
+// Only the active section is visible. Scrolling stays within that section.
+// Switching sections is done ONLY by clicking the nav links.
 
-let scrollSpyHandler = null;
-let currentScrollTarget = null;
-
-function getScrollContainer() {
-  return window.innerWidth <= 768
-    ? window
-    : document.getElementById("scroll-container");
-}
-
-function getScrollTop() {
-  const container = getScrollContainer();
-  return container === window ? window.pageYOffset : container.scrollTop;
-}
+let currentActiveSection = "home"; // Track which section is currently shown
 
 function getHeaderHeight() {
   const header = document.getElementById("main-header");
   return header ? header.offsetHeight : 120;
 }
 
+// ── Show a specific section, hide all others ─────────────────────────────────
 function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (!section) return;
-
-  const headerOffset = getHeaderHeight() + 20;
-
-  if (window.innerWidth <= 768) {
-    // Mobile smooth scroll
-    const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-  } else {
-    // Desktop smooth scroll
-    const scrollContainer = document.getElementById("scroll-container");
-    if (scrollContainer) {
-      const sectionTop = section.offsetTop - headerOffset;
-      scrollContainer.scrollTo({
-        top: sectionTop,
-        behavior: "smooth",
-      });
-    }
-  }
+  showSection(sectionId);
 }
 
-function updateActiveNav() {
-  const sections = document.querySelectorAll(".section-full");
-  const navLinks = document.querySelectorAll(".nav-link");
-  const headerHeight = getHeaderHeight();
-  const scrollPos = getScrollTop() + headerHeight + 50;
+function showSection(sectionId) {
+  const allSections = document.querySelectorAll(".section-full");
+  const targetSection = document.getElementById(sectionId);
+  if (!targetSection) return;
 
-  let current = "";
-
-  sections.forEach((section) => {
-    let sectionTop;
-    if (window.innerWidth <= 768) {
-      sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
-    } else {
-      sectionTop = section.offsetTop;
-    }
-    const sectionHeight = section.offsetHeight;
-
-    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
+  // Hide ALL sections
+  allSections.forEach((section) => {
+    section.style.display = "none";
   });
 
-  // If no section is detected, default to first section if at top
-  if (!current && scrollPos < 300) {
-    current = "home";
-  }
+  // Show ONLY the target section
+  targetSection.style.display = "";
 
-  navLinks.forEach((link) => {
+  // Update nav highlight
+  document.querySelectorAll(".nav-link").forEach((link) => {
     const linkSection =
       link.getAttribute("data-section") ||
       link.getAttribute("href")?.replace("#", "");
     link.classList.remove("active");
-    if (linkSection === current) {
+    if (linkSection === sectionId) {
+      link.classList.add("active");
+    }
+  });
+
+  // Scroll to the top of the content area
+  if (window.innerWidth <= 768) {
+    // Mobile: scroll window to top (below header)
+    window.scrollTo({ top: 0, behavior: "instant" });
+  } else {
+    // Desktop: scroll internal container to top
+    const scrollContainer = document.getElementById("scroll-container");
+    if (scrollContainer) {
+      scrollContainer.scrollTop = 0;
+    }
+  }
+
+  currentActiveSection = sectionId;
+}
+
+// ── Initialize: hide all sections except home ────────────────────────────────
+function initTabNavigation() {
+  const allSections = document.querySelectorAll(".section-full");
+
+  // Hide all sections except home
+  allSections.forEach((section) => {
+    if (section.id !== "home") {
+      section.style.display = "none";
+    }
+  });
+
+  // Set home as active in nav
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    const linkSection =
+      link.getAttribute("data-section") ||
+      link.getAttribute("href")?.replace("#", "");
+    link.classList.remove("active");
+    if (linkSection === "home") {
       link.classList.add("active");
     }
   });
 }
-
-function initScrollSpy() {
-  // Remove previous listener if exists
-  if (scrollSpyHandler && currentScrollTarget) {
-    currentScrollTarget.removeEventListener("scroll", scrollSpyHandler);
-  }
-
-  const scrollTarget = getScrollContainer();
-  if (!scrollTarget) return;
-
-  currentScrollTarget = scrollTarget;
-  scrollSpyHandler = () => {
-    requestAnimationFrame(updateActiveNav);
-  };
-
-  scrollTarget.addEventListener("scroll", scrollSpyHandler, { passive: true });
-
-  // Initial update
-  updateActiveNav();
-}
-
-// Debounce function for resize
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Re-initialize on resize (handles mobile <-> desktop transition)
-const handleResize = debounce(() => {
-  initScrollSpy();
-}, 250);
 
 function copyUPI() {
   const upiId = "srivsn@icici";
@@ -155,7 +108,8 @@ function showCopyNotification() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initScrollSpy();
+  // Initialize tab-based navigation
+  initTabNavigation();
 
   // Navigation link click handlers
   document.querySelectorAll(".nav-link").forEach((link) => {
@@ -163,13 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const href = link.getAttribute("href");
       if (href) {
-        scrollToSection(href.substring(1));
+        showSection(href.substring(1));
       }
     });
   });
-
-  // Handle resize for responsive scroll spy
-  window.addEventListener("resize", handleResize);
 
   // Add toast CSS
   const style = document.createElement("style");
@@ -186,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.scrollToSection = scrollToSection;
+window.showSection = showSection;
 window.copyUPI = copyUPI;
 
 // ============================================================================
