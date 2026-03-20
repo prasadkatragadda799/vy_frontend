@@ -269,15 +269,17 @@ const courseData = {
   intuition: {
     en: {
       title: 'Intuition Power (3 Levels)',
-      desc: 'Unlock your inner wisdom and develop heightened intuitive abilities through progressive levels.',
-      benefits: 'Develop 6th sense and heightened perception. Enhanced decision-making through inner guidance. Deeper connection with subconscious mind. Improved emotional intelligence and empathy. Ability to sense energy fields and vibrations. Strengthened third eye activation.',
+      desc: 'Develops innate intuitive abilities — the hidden sensory power beyond the five senses, empowering children aged 4–16 with enhanced perception and foresight.',
+      benefits: 'Enhanced focus and IQ. Boosted creativity. Stress-free goal setting. Increased confidence. Meditation and mindfulness. Improved decision-making skills. Enhanced emotional intelligence. Support for slow learners and hyperactive children.',
       benefitsList: [
-        'Develop 6th sense & heightened perception',
+        'Enhanced focus & IQ',
+        'Develops 6th sense & hidden sensory perception',
+        'Boosted creativity & imaginative thinking',
         'Enhanced decision-making through inner guidance',
-        'Deeper connection with subconscious mind',
         'Improved emotional intelligence & empathy',
-        'Ability to sense energy fields & vibrations',
-        'Strengthened third eye activation'
+        'Support for slow learners & hyperactive children',
+        'Personalized attention and guidance',
+        'Foundation for holistic child development'
       ],
       levels: ['🌱 1st Level - Foundation', '🌿 2nd Level - Intermediate', '🌳 3rd Level - Advanced'],
       badge: '3 Levels'
@@ -301,15 +303,17 @@ const courseData = {
   mind: {
     en: {
       title: 'Mind Power (3 Levels)',
-      desc: 'Master the power of your mind through focused techniques that enhance mental clarity and strength.',
-      benefits: 'Laser-sharp focus and concentration. Enhanced memory retention and recall. Control over thoughts and emotions. Manifest desires through mental power. Stress elimination and mental peace. Telepathic communication abilities.',
+      desc: 'Improves focus, concentration, and cognitive abilities through NLP techniques, stress-free goal setting, and boosted creativity for children.',
+      benefits: 'Laser-sharp focus and concentration. Enhanced memory retention and recall. NLP techniques for overcoming negative patterns. Stress-free goal setting. Boosted creativity. Increased confidence. Meditation and mindfulness skills. Improved decision-making.',
       benefitsList: [
         'Laser-sharp focus & concentration',
         'Enhanced memory retention & recall',
-        'Control over thoughts & emotions',
-        'Manifest desires through mental power',
-        'Stress elimination & mental peace',
-        'Telepathic communication abilities'
+        'NLP techniques for overcoming negative patterns',
+        'Stress-free goal setting & planning',
+        'Boosted creativity & problem-solving',
+        'Increased confidence & self-assurance',
+        'Meditation & mindfulness skills',
+        'Improved decision-making abilities'
       ],
       levels: ['🌱 1st Level - Foundation', '🌿 2nd Level - Intermediate', '🌳 3rd Level - Advanced'],
       badge: '3 Levels'
@@ -333,15 +337,17 @@ const courseData = {
   holistic: {
     en: {
       title: 'Holistic Healing (3 Levels)',
-      desc: 'Learn sacred healing techniques to channel universal energy for physical and spiritual wellness.',
-      benefits: 'Heal yourself and others through energy channeling. Remove energy blockages from the body. Balance chakras and restore energy flow. Reduce physical pain and chronic ailments. Boost immunity and vitality naturally. Become a certified energy healing practitioner.',
+      desc: 'Promotes emotional balance, physical well-being, and a positive mindset. Supports slow learners and hyperactive children with personalized guidance.',
+      benefits: 'Emotional balance and well-being. Physical health and vitality. Positive mindset cultivation. Support for slow learners and hyperactive children. Addiction prevention and overall wellness. Personalized attention and holistic development. Better social skills and relationships. Enhanced emotional intelligence.',
       benefitsList: [
-        'Heal yourself & others through energy channeling',
-        'Remove energy blockages from the body',
-        'Balance chakras & restore energy flow',
-        'Reduce physical pain & chronic ailments',
-        'Boost immunity & vitality naturally',
-        'Become a certified energy healing practitioner'
+        'Emotional balance & physical well-being',
+        'Positive mindset & inner peace cultivation',
+        'Support for slow learners & hyperactive children',
+        'Overall well-being & addiction prevention',
+        'Personalized attention & holistic guidance',
+        'Better social skills & relationships',
+        'Enhanced emotional intelligence',
+        'Holistic approach to child development'
       ],
       levels: ['✨ 1st Module - Basics', '💫 2nd Module - Practitioner', '⭐ 3rd Module - Master'],
       badge: '3 Modules'
