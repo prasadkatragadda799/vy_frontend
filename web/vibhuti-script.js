@@ -221,17 +221,19 @@ const courseData = {
   intuition: {
     en: {
       title: 'Intuition Power (3 Levels)',
-      desc: 'Develops innate intuitive abilities — the hidden sensory power beyond the five senses, empowering children aged 4–16 with enhanced perception and foresight.',
-      benefits: 'Enhanced focus and IQ. Boosted creativity. Stress-free goal setting. Increased confidence. Meditation and mindfulness. Improved decision-making skills. Enhanced emotional intelligence. Support for slow learners and hyperactive children.',
+      desc: 'A special programme designed for children aged 6 to 16 (and seniors) to unlock latent potential and boost self-confidence. Training refines the senses, sharpens intellect, enhances concentration and memory, and awakens the \'Third Eye\' — the 6th sense — enabling extraordinary perception even while blindfolded. This is a Rishi-inspired programme with proven successes.',
+      benefits: 'Enhanced focus and IQ. Boosted creativity. Stress-free goal setting. Increased confidence. Meditation and mindfulness. Improved decision-making skills. Enhanced emotional intelligence. Support for slow learners and hyperactive children. Divine Vision awakened. All facets of academic intelligence sharpened. Latent potential and hidden talents revealed.',
       benefitsList: [
-        'Enhanced focus & IQ',
-        'Develops 6th sense & hidden sensory perception',
-        'Boosted creativity & imaginative thinking',
-        'Enhanced decision-making through inner guidance',
-        'Improved emotional intelligence & empathy',
-        'Support for slow learners & hyperactive children',
-        'Personalized attention and guidance',
-        'Foundation for holistic child development'
+        'Enhanced focus & IQ — senses become sharper',
+        'Children become more active; laziness & stubbornness diminish',
+        'Interest, concentration & memory skills significantly enhanced',
+        'Inner peace cultivated — mind purified, clarity of perspective',
+        'Third Eye awakened — identify colours, objects & read while blindfolded',
+        'All facets of academic intelligence sharpened',
+        'Latent potential & hidden talents brought to light',
+        'Divine Vision awakened within the children',
+        'Common parental concerns (lack of focus) significantly alleviated',
+        'Renewed sense of energy, joy & positive inspiration'
       ],
       levels: ['🌱 1st Level - Foundation', '🌿 2nd Level - Intermediate', '🌳 3rd Level - Advanced'],
       badge: '3 Levels'
@@ -354,16 +356,18 @@ const courseData = {
   },
   dowsing: {
     en: {
-      title: 'Dowsing Technique',
-      desc: 'Learn the ancient art of dowsing — detecting subtle energy fields, water sources, and hidden vibrations using pendulums and divining tools guided by spiritual intuition.',
-      benefits: 'Detect and measure subtle energy fields. Find water sources, minerals and lost objects. Diagnose energy imbalances in spaces. Enhance intuitive sensing abilities. Use pendulum for decision-making guidance. Connect with Earth magnetic grid lines.',
+      title: 'Dowsing — The Divine Art',
+      desc: 'Dowsing is a divine art mentioned in the Koorma Purana. It is a multi-dimensional practice that explores the negative and positive vibrations of objects and space in the environment, linked with Cosmic Intelligence. Using tools like pendulums, L-rods, or Y-shaped twigs, dowsers detect hidden energy fields and answer questions by tapping into the subconscious mind.',
+      benefits: 'Detect and measure subtle energy fields. Vastu/Feng Shui negative energy zone detection. Map dowsing and information dowsing. Aura checking and energetic imbalance detection. Field dowsing for locating water, minerals, and objects. Radiesthesia — sensitivity to radiations from materials.',
       benefitsList: [
-        'Detect & measure subtle energy fields',
-        'Find water sources, minerals & lost objects',
-        'Diagnose energy imbalances in spaces',
-        'Enhance intuitive sensing abilities',
-        'Use pendulum for decision-making guidance',
-        'Connect with Earth\'s magnetic grid lines'
+        'Detect & measure subtle energy fields linked to Cosmic Intelligence',
+        'Vastu/Feng Shui — detect negative energy zones & blocked pathways',
+        'Field Dowsing — walk the terrain to locate water, minerals & objects',
+        'Map Dowsing — locate items at a distance using maps',
+        'Information Dowsing — gain spiritual insight on various subjects',
+        'Aura checking & energetic imbalance detection',
+        'Divination — get guidance on life questions through pendulum',
+        'Radiesthesia — sensitivity to radiations emitted from materials'
       ],
       levels: [],
       badge: '🎁 FREE'
@@ -413,6 +417,76 @@ const courseData = {
         'వ్యక్తీకరణ శక్తి కోసం అగ్ని మూలకం ఉపయోగం'
       ],
       levels: [],
+      badge: '🎁 ఉచితం'
+    }
+  },
+  vaasthu: {
+    en: {
+      title: 'Vaasthu Vidya — Vedic Science of Space',
+      desc: 'Vaasthu Vidya is an ancient Vedic science pioneered by Vishwakarma and Mayudu. Every house and structure is surrounded by planetary vibrations and Cosmic Energy. Where there are negative vibrations, they must be converted into positive vibrations to ensure a smooth life. With simple remedies, the energy dimensions can be corrected without heavy expense.',
+      benefits: 'Identify negative vibrations in homes and business spaces. Convert negative energy dimensions to positive. Simple remedies without costly rebuilding. Align structures with planetary vibrations and Cosmic Energy. Ensure smooth life through energy correction. Ancient Vedic science of Vishwakarma and Mayudu.',
+      benefitsList: [
+        'Identify negative vibrations in homes & business spaces',
+        'Convert negative energy to positive through simple remedies',
+        'No demolition or costly rebuilding needed',
+        'Align structures with planetary vibrations & Cosmic Energy',
+        'Ensure smooth & prosperous life through energy correction',
+        'Ancient Vedic science pioneered by Vishwakarma & Mayudu',
+        'Part of the Occult Sciences tradition',
+        'Personalised Vaasthu consultation & correction'
+      ],
+      levels: [],
+      badge: '🎁 FREE'
+    },
+    te: {
+      title: 'వాస్తు విద్య — వేద ప్రదేశ విజ్ఞానం',
+      desc: 'వాస్తు విద్య విశ్వకర్మ మరియు మయుడు ద్వారా ప్రారంభించబడిన ప్రాచీన వేద విజ్ఞానం. ప్రతి ఇల్లు మరియు నిర్మాణం గ్రహ కంపనాలు మరియు విశ్వ శక్తితో చుట్టబడి ఉంటుంది. ప్రతికూల కంపనాలను సానుకూల కంపనాలుగా మార్చడం ద్వారా సజావుగా జీవనం సాగించవచ్చు.',
+      benefitsList: [
+        'ఇళ్లు & వ్యాపార ప్రదేశాలలో ప్రతికూల కంపనాల గుర్తింపు',
+        'సాధారణ ఉపాయాల ద్వారా ప్రతికూల శక్తిని సానుకూలంగా మార్చడం',
+        'కూల్చివేత లేదా ఖరీదైన పునర్నిర్మాణం అవసరం లేదు',
+        'గ్రహ కంపనాలు & విశ్వ శక్తితో నిర్మాణాల సమలేఖనం',
+        'శక్తి దిద్దుబాటు ద్వారా సజావు & సంపన్న జీవనం',
+        'విశ్వకర్మ & మయుడు ప్రారంభించిన ప్రాచీన వేద విజ్ఞానం'
+      ],
+      levels: [],
+      badge: '🎁 ఉచితం'
+    }
+  },
+  eklavya: {
+    en: {
+      title: 'Eklavya Vidye — 100% Memory Power',
+      desc: '100% Mind Power Eklavya Vidye — memorise entire textbook contents in just a few days! Easily remember essential topics forever, replicate thousands of pages in minutes, score high marks in exams, and get a chance to become a world talent.',
+      benefits: 'Memorise entire text contents in a few days. Easy to remember essential text topics forever. Replicate thousands of pages in minutes. Score good marks in exams. Relieve confusion, forgetfulness, fatigue, depression, and stress. Gain health and happiness. Remember more in less time. Allow time for all-round growth.',
+      benefitsList: [
+        'Memorise entire textbook contents in just a few days',
+        'Easily remember essential topics forever',
+        'Replicate thousands of pages in minutes',
+        'Score high marks in exams with confidence',
+        'Chance to become a world talent',
+        'Relieve confusion, forgetfulness, fatigue & depression',
+        'Gain health, happiness & stress-free learning',
+        'Skills to remember more in less time',
+        'Allow time for all-round growth & development'
+      ],
+      levels: ['📚 Minimum 1 week per course', '🎯 Limited seats per batch'],
+      badge: '🎁 FREE'
+    },
+    te: {
+      title: 'ఏక్లవ్య విద్యే — 100% జ్ఞాపకశక్తి',
+      desc: '100% మైండ్ పవర్ ఏక్లవ్య విద్యే — కొన్ని రోజులలోనే మొత్తం పాఠ్యపుస్తక విషయాలను గుర్తుంచుకోండి! ముఖ్యమైన అంశాలను శాశ్వతంగా గుర్తుంచుకోండి, నిమిషాలలో వేల పేజీలను పునరుత్పత్తి చేయండి.',
+      benefitsList: [
+        'కొన్ని రోజులలోనే మొత్తం పాఠ్యపుస్తక విషయాలను గుర్తుంచుకోండి',
+        'ముఖ్యమైన అంశాలను శాశ్వతంగా గుర్తుంచుకోండి',
+        'నిమిషాలలో వేల పేజీలను పునరుత్పత్తి చేయండి',
+        'పరీక్షలలో మంచి మార్కులు సాధించండి',
+        'ప్రపంచ ప్రతిభావంతులు అయ్యే అవకాశం',
+        'గందరగోళం, మరపు, అలసట & ఒత్తిడిని తొలగించండి',
+        'ఆరోగ్యం, ఆనందం & ఒత్తిడి-రహిత అభ్యాసం',
+        'తక్కువ సమయంలో ఎక్కువ గుర్తుంచుకునే నైపుణ్యాలు',
+        'సర్వతోముఖ అభివృద్ధి కోసం సమయం'
+      ],
+      levels: ['📚 ప్రతి కోర్సుకు కనీసం 1 వారం', '🎯 ప్రతి బ్యాచ్‌కు పరిమిత సీట్లు'],
       badge: '🎁 ఉచితం'
     }
   },
@@ -516,7 +590,7 @@ const courseData = {
 const uiTranslations = {
   en: {
     ourCourses: 'Our Courses',
-    freeTechniques: 'Free Techniques',
+    freeTechniques: 'Free Techniques & Divine Sciences',
     freeTechSubtitle: 'These powerful techniques are included <strong>FREE</strong> when you register for any of our courses above',
     advancedVidyas: 'Advanced Divine Sciences (Vidyas)',
     vidyaSubtitle: 'We partner with expert Gurus for these advanced sacred sciences. <strong>We\'ll guide you to the right master.</strong>',
@@ -551,7 +625,7 @@ const uiTranslations = {
   },
   te: {
     ourCourses: 'మా కోర్సులు',
-    freeTechniques: 'ఉచిత టెక్నిక్‌లు',
+    freeTechniques: 'ఉచిత టెక్నిక్‌లు & దివ్య విజ్ఞానాలు',
     freeTechSubtitle: 'ఈ శక్తివంతమైన టెక్నిక్‌లు మీరు పైన ఉన్న ఏదైనా కోర్సుకు నమోదు చేసుకున్నప్పుడు <strong>ఉచితంగా</strong> చేర్చబడతాయి',
     advancedVidyas: 'ఆధునాతన దివ్య విజ్ఞానాలు (విద్యలు)',
     vidyaSubtitle: 'ఈ ఆధునాతన పవిత్ర విజ్ఞానాల కోసం మేము నిపుణ గురువులతో భాగస్వామ్యం కలిగి ఉన్నాము. <strong>మేము మిమ్మల్ని సరైన గురువు వద్దకు మార్గదర్శకత్వం చేస్తాము.</strong>',
