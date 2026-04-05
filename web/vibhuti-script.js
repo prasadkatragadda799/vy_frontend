@@ -145,31 +145,39 @@ window.copyUPI = copyUPI;
 // ============================================================================
 let currentModalCourseId = null;
 
-function showBenefitsModal(courseId) {
+function showCourseStory(courseId) {
   const course = courseData[courseId] ? (courseData[courseId][currentLang] || courseData[courseId]['en']) : null;
   if (!course) return;
 
   currentModalCourseId = courseId;
-  document.getElementById('modal-course-title').textContent = course.title;
-  document.getElementById('modal-course-desc').textContent = course.desc;
+  document.getElementById('story-course-title').textContent = course.title;
+  document.getElementById('story-course-desc').textContent = course.desc;
 
-  // Try to find image and set it up
+  // Try to find main image and set it up
   const cardImg = document.querySelector(`#course-${courseId} img`);
-  const modalImg = document.getElementById('modal-course-image');
+  const storyImg = document.getElementById('story-course-image');
 
-  if (modalImg) {
-    const parentContainer = modalImg.closest('.modal-image-container');
-    if (cardImg) {
-      modalImg.src = cardImg.src;
-      if (parentContainer) parentContainer.style.display = 'block';
-      else modalImg.style.display = 'block';
-    } else {
-      if (parentContainer) parentContainer.style.display = 'none';
-      else modalImg.style.display = 'none';
-    }
+  if (storyImg && cardImg) {
+    storyImg.src = cardImg.src;
   }
 
-  const ul = document.getElementById('modal-benefits-ul');
+  // Load extra storytelling image if available
+  const extraImgElement = document.getElementById('story-extra-image');
+  const gallerySection = document.getElementById('story-gallery-section');
+  
+  // Create a mapping or logic for extra images
+  const extraImgSrc = `assets/${courseId}_detail_1.png`;
+  
+  // We can pre-check if image exists by trying to load it or just assigning it and using onerror
+  extraImgElement.src = extraImgSrc;
+  extraImgElement.onload = function() {
+      gallerySection.style.display = 'block';
+  };
+  extraImgElement.onerror = function() {
+      gallerySection.style.display = 'none';
+  };
+
+  const ul = document.getElementById('story-benefits-ul');
   ul.innerHTML = '';
 
   if (course.benefitsList) {
@@ -180,11 +188,14 @@ function showBenefitsModal(courseId) {
     });
   }
 
-  document.getElementById('benefits-modal').classList.add('active');
+  const page = document.getElementById('course-story-page');
+  page.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
-function closeBenefitsModal() {
-  document.getElementById('benefits-modal').classList.remove('active');
+function closeCourseStory() {
+  document.getElementById('course-story-page').classList.remove('active');
+  document.body.style.overflow = 'auto'; // Restore scrolling
   window.speechSynthesis.cancel();
 }
 
@@ -221,34 +232,39 @@ const courseData = {
   intuition: {
     en: {
       title: 'Intuition Power (3 Levels)',
-      desc: 'A special programme designed for children aged 6 to 16 (and seniors) to unlock latent potential and boost self-confidence. Training refines the senses, sharpens intellect, enhances concentration and memory, and awakens the \'Third Eye\' — the 6th sense — enabling extraordinary perception even while blindfolded. This is a Rishi-inspired programme with proven successes.',
+      desc: 'Wonders of the 6th & 7th Sense — A special camp designed for children aged 6 to 16 (as well as seniors) is being conducted by trainers from Vibhuti Yoga. This training programme is specifically designed to unlock the latent potential within children and to boost their self-confidence. The training refines and sensitises the children\'s senses, sharpens their intellect, and awakens the \'Third Eye\' — the 6th sense — enabling extraordinary perception even while blindfolded. This is a Rishi-inspired programme with proven successes.',
       benefits: 'Enhanced focus and IQ. Boosted creativity. Stress-free goal setting. Increased confidence. Meditation and mindfulness. Improved decision-making skills. Enhanced emotional intelligence. Support for slow learners and hyperactive children. Divine Vision awakened. All facets of academic intelligence sharpened. Latent potential and hidden talents revealed.',
       benefitsList: [
-        'Enhanced focus & IQ — senses become sharper',
-        'Children become more active; laziness & stubbornness diminish',
-        'Interest, concentration & memory skills significantly enhanced',
-        'Inner peace cultivated — mind purified, clarity of perspective',
-        'Third Eye awakened — identify colours, objects & read while blindfolded',
-        'All facets of academic intelligence sharpened',
-        'Latent potential & hidden talents brought to light',
-        'Divine Vision awakened within the children',
-        'Common parental concerns (lack of focus) significantly alleviated',
-        'Renewed sense of energy, joy & positive inspiration'
+        'Unlocks latent potential within children & boosts self-confidence',
+        'Refines and sensitises the children\'s senses — intellect becomes sharper',
+        'Children become more active; laziness, stubbornness & rudeness diminish',
+        'Interest, concentration & memory skills are significantly enhanced',
+        'Fosters a unique sense of inner peace — purifies the mind & brings clarity',
+        'Third Eye awakened — identify colours, objects & clothing while blindfolded',
+        'Children can run, read, play games, write, colour, draw & skate blindfolded',
+        'A Divine Vision is awakened within the children',
+        'All facets of academic intelligence are sharpened',
+        'Your child\'s latent potential & hidden talents will come to light',
+        'Children gain a renewed sense of energy and joy',
+        'Common parental concerns (lack of focus/concentration) significantly alleviated',
+        'Rishi-inspired training programme with proven successes — a must at a young age'
       ],
       levels: ['🌱 1st Level - Foundation', '🌿 2nd Level - Intermediate', '🌳 3rd Level - Advanced'],
       badge: '3 Levels'
     },
     te: {
       title: 'అంతర్ దృష్టి శక్తి (3 స్థాయిలు)',
-      desc: 'మీ అంతర్గత జ్ఞానాన్ని వెలికితీసి, క్రమానుగత స్థాయిల ద్వారా ఉన్నత అంతర్ దృష్టి సామర్థ్యాలను అభివృద్ధి చేసుకోండి.',
-      benefits: 'ఆరవ ఇంద్రియం మరియు ఉన్నత అవగాహన అభివృద్ధి. అంతర్గత మార్గదర్శకత్వం ద్వారా మెరుగైన నిర్ణయాధికారం. ఉపచేతన మనస్సుతో లోతైన అనుసంధానం. మెరుగైన భావోద్వేగ తెలివి మరియు సానుభూతి. శక్తి క్షేత్రాలు మరియు కంపనాలను గుర్తించే సామర్ధ్యం. మూడవ కన్ను (ఆజ్ఞా చక్రం) క్రియాశీలత.',
+      desc: '6వ & 7వ ఇంద్రియాల అద్భుతాలు — 6 నుండి 16 సంవత్సరాల వయసు పిల్లలకు (మరియు పెద్దలకు) ప్రత్యేకంగా రూపొందించబడిన శిబిరం. ఈ శిక్షణ కార్యక్రమం పిల్లల్లోని సుప్త సామర్థ్యాలను వెలికితీసి, వారి ఆత్మవిశ్వాసాన్ని పెంచడానికి రూపొందించబడింది.',
+      benefits: 'ఆరవ ఇంద్రియం మరియు ఉన్నత అవగాహన అభివృద్ధి. అంతర్గత మార్గదర్శకత్వం ద్వారా మెరుగైన నిర్ణయాధికారం.',
       benefitsList: [
-        'ఆరవ ఇంద్రియం & ఉన్నత అవగాహన అభివృద్ధి',
-        'అంతర్గత మార్గదర్శకత్వం ద్వారా మెరుగైన నిర్ణయాధికారం',
-        'ఉపచేతన మనస్సుతో లోతైన అనుసంధానం',
-        'మెరుగైన భావోద్వేగ తెలివి & సానుభూతి',
-        'శక్తి క్షేత్రాలు & కంపనాలను గుర్తించే సామర్ధ్యం',
-        'మూడవ కన్ను (ఆజ్ఞా చక్రం) క్రియాశీలత'
+        'పిల్లల్లోని సుప్త సామర్థ్యాలను వెలికితీయడం & ఆత్మవిశ్వాసం పెంపు',
+        'ఇంద్రియాలను పదునుపెట్టడం — బుద్ధి తీక్షణతరం అవుతుంది',
+        'పిల్లలు చురుకుగా మారతారు; సోమరితనం & మొండితనం తగ్గుతాయి',
+        'ఆసక్తి, ఏకాగ్రత & జ్ఞాపకశక్తి గణనీయంగా మెరుగుపడతాయి',
+        'అంతర్గత శాంతి — మనస్సు శుద్ధి & స్పష్టత',
+        'మూడవ కన్ను మేల్కొలుపు — కళ్ళు మూసి రంగులు, వస్తువులు గుర్తించగలరు',
+        'దివ్య దృష్టి మేల్కొలుపు & విద్యాసంబంధ తెలివి పదునుపడుతుంది',
+        'ఋషి-స్ఫూర్తి శిక్షణ కార్యక్రమం — రుజువైన విజయాలతో'
       ],
       levels: ['🌱 1వ స్థాయి - పునాది', '🌿 2వ స్థాయి - మధ్యస్థం', '🌳 3వ స్థాయి - అధునాతనం'],
       badge: '3 స్థాయిలు'
@@ -257,8 +273,8 @@ const courseData = {
   mind: {
     en: {
       title: 'Mind Power (3 Levels)',
-      desc: 'Improves focus, concentration, and cognitive abilities through NLP techniques, stress-free goal setting, and boosted creativity for children.',
-      benefits: 'Laser-sharp focus and concentration. Enhanced memory retention and recall. NLP techniques for overcoming negative patterns. Stress-free goal setting. Boosted creativity. Increased confidence. Meditation and mindfulness skills. Improved decision-making.',
+      desc: 'Improves focus, concentration, and cognitive abilities through NLP techniques, stress-free goal setting, and boosted creativity for children. Includes Eklavya Vidye — 100% Memory Power: memorise entire textbook contents in just a few days, remember essential topics forever, replicate thousands of pages in minutes, and score high marks in exams.',
+      benefits: 'Laser-sharp focus and concentration. Enhanced memory retention and recall. NLP techniques for overcoming negative patterns. Stress-free goal setting. Boosted creativity. 100% Memory Power through Eklavya Vidye.',
       benefitsList: [
         'Laser-sharp focus & concentration',
         'Enhanced memory retention & recall',
@@ -267,22 +283,31 @@ const courseData = {
         'Boosted creativity & problem-solving',
         'Increased confidence & self-assurance',
         'Meditation & mindfulness skills',
-        'Improved decision-making abilities'
+        'Improved decision-making abilities',
+        '📚 Eklavya Vidye — memorise entire textbook contents in a few days',
+        'Easily remember essential topics forever',
+        'Replicate thousands of pages in minutes',
+        'Score high marks in exams with confidence',
+        'Relieve confusion, forgetfulness, fatigue & stress',
+        'Skills to remember more in less time — allow time for all-round growth',
+        '⏱️ Minimum 1 week per course — limited seats per batch'
       ],
       levels: ['🌱 1st Level - Foundation', '🌿 2nd Level - Intermediate', '🌳 3rd Level - Advanced'],
       badge: '3 Levels'
     },
     te: {
-      title: 'మనో శక్తి',
-      desc: 'మానసిక స్పష్టత మరియు బలాన్ని పెంచే కేంద్రీకృత పద్ధతుల ద్వారా మీ మనస్సు యొక్క శక్తిని సాధించండి.',
-      benefits: 'పదునైన ఏకాగ్రత మరియు శ్రద్ధ. మెరుగైన జ్ఞాపకశక్తి మరియు గుర్తుకు తెచ్చుకునే సామర్ధ్యం. ఆలోచనలు మరియు భావోద్వేగాలపై నియంత్రణ. మానసిక శక్తి ద్వారా కోరికలను వ్యక్తం చేయడం. ఒత్తిడి నిర్మూలన మరియు మానసిక శాంతి. పరాభౌతిక (టెలిపతి) సంభాషణ సామర్థ్యాలు.',
+      title: 'మనో శక్తి (3 స్థాయిలు)',
+      desc: 'మానసిక స్పష్టత మరియు బలాన్ని పెంచే కేంద్రీకృత పద్ధతుల ద్వారా మీ మనస్సు యొక్క శక్తిని సాధించండి. ఏక్లవ్య విద్యే — 100% జ్ఞాపకశక్తి: కొన్ని రోజులలోనే మొత్తం పాఠ్యపుస్తక విషయాలను గుర్తుంచుకోండి.',
+      benefits: 'పదునైన ఏకాగ్రత మరియు శ్రద్ధ. మెరుగైన జ్ఞాపకశక్తి. ఒత్తిడి నిర్మూలన మరియు మానసిక శాంతి.',
       benefitsList: [
         'పదునైన ఏకాగ్రత & శ్రద్ధ',
         'మెరుగైన జ్ఞాపకశక్తి & గుర్తుకు తెచ్చుకునే సామర్ధ్యం',
         'ఆలోచనలు & భావోద్వేగాలపై నియంత్రణ',
-        'మానసిక శక్తి ద్వారా కోరికలను వ్యక్తం చేయడం',
         'ఒత్తిడి నిర్మూలన & మానసిక శాంతి',
-        'పరాభౌతిక (టెలిపతి) సంభాషణ సామర్థ్యాలు'
+        '📚 ఏక్లవ్య విద్యే — పాఠ్యపుస్తక విషయాలను గుర్తుంచుకోండి',
+        'ముఖ్యమైన అంశాలను శాశ్వతంగా గుర్తుంచుకోండి',
+        'పరీక్షలలో మంచి మార్కులు సాధించండి',
+        'తక్కువ సమయంలో ఎక్కువ గుర్తుంచుకునే నైపుణ్యాలు'
       ],
       levels: ['🌱 1వ స్థాయి - పునాది', '🌿 2వ స్థాయి - మధ్యస్థం', '🌳 3వ స్థాయి - అధునాతనం'],
       badge: '3 స్థాయిలు'
@@ -357,7 +382,7 @@ const courseData = {
   dowsing: {
     en: {
       title: 'Dowsing — The Divine Art',
-      desc: 'Dowsing is a divine art mentioned in the Koorma Purana. It is a multi-dimensional practice that explores the negative and positive vibrations of objects and space in the environment, linked with Cosmic Intelligence. Using tools like pendulums, L-rods, or Y-shaped twigs, dowsers detect hidden energy fields and answer questions by tapping into the subconscious mind.',
+      desc: 'Dowsing is a divine art mentioned in the Koorma Purana. It is a multi-dimensional practice that explores the negative and positive vibrations of objects and space in the environment, linked with Cosmic Intelligence. Using tools like pendulums, L-rods, or Y-shaped twigs, dowsers detect hidden energy fields and answer questions by tapping into the subconscious mind. This art comes under the Occult Sciences.',
       benefits: 'Detect and measure subtle energy fields. Vastu/Feng Shui negative energy zone detection. Map dowsing and information dowsing. Aura checking and energetic imbalance detection. Field dowsing for locating water, minerals, and objects. Radiesthesia — sensitivity to radiations from materials.',
       benefitsList: [
         'Detect & measure subtle energy fields linked to Cosmic Intelligence',
@@ -367,22 +392,24 @@ const courseData = {
         'Information Dowsing — gain spiritual insight on various subjects',
         'Aura checking & energetic imbalance detection',
         'Divination — get guidance on life questions through pendulum',
-        'Radiesthesia — sensitivity to radiations emitted from materials'
+        'Radiesthesia — sensitivity to radiations emitted from materials',
+        'Part of the ancient Occult Sciences tradition'
       ],
       levels: [],
       badge: '🎁 FREE'
     },
     te: {
-      title: 'డౌసింగ్ పద్ధతి',
-      desc: 'డౌసింగ్ యొక్క ప్రాచీన కళను నేర్చుకోండి — ఆధ్యాత్మిక అంతర్ దృష్టి ద్వారా మార్గదర్శకత్వం చేయబడిన లోలకాలు మరియు దివ్య సాధనాలను ఉపయోగించి సూక్ష్మ శక్తి క్షేత్రాలు, నీటి వనరులు మరియు దాగిన కంపనాలను గుర్తించడం.',
-      benefits: 'సూక్ష్మ శక్తి క్షేత్రాలను గుర్తించి కొలవండి. నీటి వనరులు, ఖనిజాలు మరియు పోయిన వస్తువులను కనుగొనండి. ప్రదేశాలలో శక్తి అసమతుల్యతలను నిర్ధారించండి. అంతర్జ్ఞాన గ్రహణ సామర్థ్యాలను మెరుగుపరచండి. నిర్ణయాధికార మార్గదర్శకత్వం కోసం లోలకాన్ని ఉపయోగించండి. భూమి యొక్క అయస్కాంత క్షేత్ర రేఖలతో అనుసంధానం.',
+      title: 'డౌసింగ్ — దివ్య కళ',
+      desc: 'డౌసింగ్ కూర్మ పురాణంలో ప్రస్తావించబడిన దివ్య కళ. ఇది పరిసరంలోని వస్తువులు మరియు ప్రదేశం యొక్క ప్రతికూల మరియు సానుకూల కంపనాలను అన్వేషించే బహుళ-ఆయామ అభ్యాసం, విశ్వ బుద్ధితో అనుసంధానమైనది.',
+      benefits: 'సూక్ష్మ శక్తి క్షేత్రాలను గుర్తించి కొలవండి. వాస్తు/ఫెంగ్ షుయ్ నెగటివ్ ఎనర్జీ జోన్ డిటెక్షన్.',
       benefitsList: [
-        'సూక్ష్మ శక్తి క్షేత్రాలను గుర్తించి & కొలవండి',
-        'నీటి వనరులు, ఖనిజాలు & పోయిన వస్తువులను కనుగొనండి',
-        'ప్రదేశాలలో శక్తి అసమతుల్యతలను నిర్ధారించండి',
-        'అంతర్జ్ఞాన గ్రహణ సామర్థ్యాలను మెరుగుపరచండి',
-        'నిర్ణయాధికార మార్గదర్శకత్వం కోసం లోలకం ఉపయోగం',
-        'భూమి యొక్క అయస్కాంత క్షేత్ర రేఖలతో అనుసంధానం'
+        'విశ్వ బుద్ధితో అనుసంధానమైన సూక్ష్మ శక్తి క్షేత్రాల గుర్తింపు',
+        'వాస్తు/ఫెంగ్ షుయ్ — ప్రతికూల శక్తి జోన్లు & అడ్డంకుల గుర్తింపు',
+        'ఫీల్డ్ డౌసింగ్ — నీరు, ఖనిజాలు & వస్తువుల కనుగొనటం',
+        'మ్యాప్ డౌసింగ్ — మ్యాప్‌లను ఉపయోగించి దూరంలో వస్తువుల గుర్తింపు',
+        'ఆరా తనిఖీ & శక్తి అసమతుల్యత గుర్తింపు',
+        'జీవిత ప్రశ్నలపై లోలకం ద్వారా మార్గదర్శకత్వం',
+        'ప్రాచీన అతీంద్రియ విజ్ఞానాల సంప్రదాయంలో భాగం'
       ],
       levels: [],
       badge: '🎁 ఉచితం'
@@ -423,14 +450,15 @@ const courseData = {
   vaasthu: {
     en: {
       title: 'Vaasthu Vidya — Vedic Science of Space',
-      desc: 'Vaasthu Vidya is an ancient Vedic science pioneered by Vishwakarma and Mayudu. Every house and structure is surrounded by planetary vibrations and Cosmic Energy. Where there are negative vibrations, they must be converted into positive vibrations to ensure a smooth life. With simple remedies, the energy dimensions can be corrected without heavy expense.',
-      benefits: 'Identify negative vibrations in homes and business spaces. Convert negative energy dimensions to positive. Simple remedies without costly rebuilding. Align structures with planetary vibrations and Cosmic Energy. Ensure smooth life through energy correction. Ancient Vedic science of Vishwakarma and Mayudu.',
+      desc: 'Vaasthu Vidya is an ancient Vedic science pioneered by Vishwakarma and Mayudu. Every house and structure is surrounded by planetary vibrations and Cosmic Energy. Where there are negative vibrations, they must be converted into positive vibrations to ensure a smooth life. If you have a Vaasthu issue in your house or business sector, you need not worry — no need to spend more money. With simple remedies, the energy dimensions can be corrected without heavy expense — no need to demolish or rebuild. This art comes under the Occult Sciences.',
+      benefits: 'Identify negative vibrations in homes and business spaces. Convert negative energy dimensions to positive. Simple remedies without costly rebuilding.',
       benefitsList: [
         'Identify negative vibrations in homes & business spaces',
         'Convert negative energy to positive through simple remedies',
-        'No demolition or costly rebuilding needed',
+        'No demolition or costly rebuilding needed — no heavy expense',
         'Align structures with planetary vibrations & Cosmic Energy',
         'Ensure smooth & prosperous life through energy correction',
+        'Simple remedies to change the energy dimensions for Vaasthu correction',
         'Ancient Vedic science pioneered by Vishwakarma & Mayudu',
         'Part of the Occult Sciences tradition',
         'Personalised Vaasthu consultation & correction'
@@ -440,14 +468,16 @@ const courseData = {
     },
     te: {
       title: 'వాస్తు విద్య — వేద ప్రదేశ విజ్ఞానం',
-      desc: 'వాస్తు విద్య విశ్వకర్మ మరియు మయుడు ద్వారా ప్రారంభించబడిన ప్రాచీన వేద విజ్ఞానం. ప్రతి ఇల్లు మరియు నిర్మాణం గ్రహ కంపనాలు మరియు విశ్వ శక్తితో చుట్టబడి ఉంటుంది. ప్రతికూల కంపనాలను సానుకూల కంపనాలుగా మార్చడం ద్వారా సజావుగా జీవనం సాగించవచ్చు.',
+      desc: 'వాస్తు విద్య విశ్వకర్మ మరియు మయుడు ద్వారా ప్రారంభించబడిన ప్రాచీన వేద విజ్ఞానం. ప్రతి ఇల్లు మరియు నిర్మాణం గ్రహ కంపనాలు మరియు విశ్వ శక్తితో చుట్టబడి ఉంటుంది. సాధారణ ఉపాయాలతో శక్తి కొలతలను సరిచేయవచ్చు — ఎక్కువ ఖర్చు అవసరం లేదు.',
       benefitsList: [
         'ఇళ్లు & వ్యాపార ప్రదేశాలలో ప్రతికూల కంపనాల గుర్తింపు',
         'సాధారణ ఉపాయాల ద్వారా ప్రతికూల శక్తిని సానుకూలంగా మార్చడం',
         'కూల్చివేత లేదా ఖరీదైన పునర్నిర్మాణం అవసరం లేదు',
         'గ్రహ కంపనాలు & విశ్వ శక్తితో నిర్మాణాల సమలేఖనం',
         'శక్తి దిద్దుబాటు ద్వారా సజావు & సంపన్న జీవనం',
-        'విశ్వకర్మ & మయుడు ప్రారంభించిన ప్రాచీన వేద విజ్ఞానం'
+        'వాస్తు దిద్దుబాటు కోసం శక్తి కొలతలను సాధారణ ఉపాయాలతో మార్చండి',
+        'విశ్వకర్మ & మయుడు ప్రారంభించిన ప్రాచీన వేద విజ్ఞానం',
+        'అతీంద్రియ విజ్ఞానాల సంప్రదాయంలో భాగం'
       ],
       levels: [],
       badge: '🎁 ఉచితం'
@@ -615,7 +645,7 @@ const uiTranslations = {
       'Relief from unexplained physical symptoms',
       'Mental clarity & removal of confusion/brain fog'
     ],
-    bookHealing: 'Book a Healing Session',
+    bookHealing: 'Healing Requisition Form',
     healingPriceNote: 'Healing sessions are personalized. Contact us for consultation & pricing details.',
     tapExploreHealing: '✨ Tap to Explore Full Benefits',
     connectionTitle: '🌺 Connection to Vibhuti Yoga & Sanatana Vidya',
@@ -650,7 +680,7 @@ const uiTranslations = {
       'వివరించలేని శారీరక లక్షణాల నుండి ఉపశమనం',
       'మానసిక స్పష్టత & గందరగోళం తొలగింపు'
     ],
-    bookHealing: 'నయం సెషన్ బుక్ చేయండి',
+    bookHealing: 'హీలింగ్ అభ్యర్థన ఫారం',
     healingPriceNote: 'నయం సెషన్లు వ్యక్తిగతీకరించబడతాయి. సంప్రదింపు & ధరల వివరాల కోసం మమ్మల్ని సంప్రదించండి.',
     tapExploreHealing: '✨ పూర్తి ప్రయోజనాలను అన్వేషించండి',
     connectionTitle: '🌺 విభూతి యోగ & సనాతన విద్యతో అనుసంధానం',
