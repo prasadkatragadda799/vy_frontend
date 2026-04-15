@@ -6,9 +6,10 @@
 
     /* Use the new vertical mobile background */
     body {
-        background-image: url('background-mobile.jpg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
+        background: var(--bg-parchment) !important;
+        background-image: none !important;
+        background-size: initial !important;
+        background-position: initial !important;
         background-attachment: fixed !important;
     }
 

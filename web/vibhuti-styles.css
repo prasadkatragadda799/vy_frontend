@@ -11,9 +11,9 @@
     /* === SACRED PARCHMENT PALETTE - Matching Client Reference === */
 
     /* Background tones - warm parchment */
-    --bg-parchment: #EDE5D8;
+    --bg-parchment: #E6DFD1;
     /* Main warm cream background */
-    --bg-parchment-light: #F5EFE6;
+    --bg-parchment-light: #EFE8DB;
     /* Lighter cream for header */
     --bg-parchment-mid: #E0D8CC;
     /* Medium parchment for sections */
@@ -78,9 +78,7 @@ body {
     overflow-x: hidden;
     overflow-y: visible;
     background: var(--bg-parchment);
-    background-image:
-        radial-gradient(ellipse at top left, rgba(212, 168, 71, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(184, 134, 11, 0.06) 0%, transparent 50%);
+    background-image: none;
     background-attachment: fixed;
 }
 
