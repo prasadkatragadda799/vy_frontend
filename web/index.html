@@ -178,8 +178,12 @@
       }
 
       body {
-        background: url("background-mobile.jpg") no-repeat center center !important;
-        background-size: cover !important;
+        background: var(--bg-parchment) !important;
+        background-image:
+          radial-gradient(circle at 20% 20%, rgba(184, 134, 11, 0.06) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
+          linear-gradient(135deg, #f5f2eb 0%, #ede7dc 100%) !important;
+        background-size: auto !important;
         background-attachment: fixed !important;
         min-height: 100vh !important;
       }
@@ -190,7 +194,7 @@
         padding: 0 !important;
       }
 
-      /* EXTREMELY TRANSPARENT glass card for mobile */
+      /* Mobile card should match desktop palette */
       .glass-card {
         width: 100% !important;
         height: auto !important;
@@ -198,13 +202,10 @@
         border-radius: 0 !important;
         border-left: none !important;
         border-right: none !important;
-        /* ONLY 8% opacity - background shows through perfectly */
-        background: linear-gradient(135deg,
-            rgba(30, 46, 69, 0.1) 0%,
-            rgba(45, 69, 99, 0.08) 50%,
-            rgba(58, 81, 113, 0.06) 100%) !important;
-        backdrop-filter: blur(2px) !important;
-        -webkit-backdrop-filter: blur(2px) !important;
+        background: var(--bg-parchment-light) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid var(--border-gold) !important;
         overflow: visible !important;
       }
 
@@ -226,11 +227,12 @@
         flex-direction: column !important;
         gap: 15px !important;
         padding: 15px 16px !important;
-        background: rgba(30, 46, 69, 0.95) !important;
+        background: var(--bg-parchment-light) !important;
         backdrop-filter: blur(25px) !important;
         -webkit-backdrop-filter: blur(25px) !important;
         z-index: 1000 !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 4px 20px rgba(107, 74, 0, 0.12) !important;
+        border-bottom: 1px solid var(--border-gold) !important;
       }
 
       /* Content offset for fixed header */
@@ -318,34 +320,62 @@
         font-size: 15px !important;
         padding: 8px 16px !important;
         white-space: nowrap !important;
+        color: var(--golden-deep) !important;
+        background: rgba(184, 134, 11, 0.08) !important;
+        border: 1px solid var(--border-gold) !important;
       }
 
-      /* ALMOST INVISIBLE sections for mobile */
+      .nav-link.active {
+        background: var(--golden-primary) !important;
+        color: var(--golden-deep) !important;
+        border-color: var(--golden-deep) !important;
+      }
+
+      /* Keep mobile sections consistent with desktop cards */
       .section-full {
-        background: rgba(30, 46, 69, 0.05) !important;
-        backdrop-filter: blur(1px) !important;
-        -webkit-backdrop-filter: blur(1px) !important;
+        background: rgba(255, 252, 248, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
         padding: 40px 20px !important;
         margin: 0 16px 20px !important;
-        border: 1px solid rgba(255, 216, 155, 0.1) !important;
+        border: 1px solid var(--border-gold) !important;
       }
 
-      #home {
-        background: transparent !important;
-        backdrop-filter: none !important;
-        margin: 0 !important;
-      }
+      #home { margin: 0 !important; }
 
-      /* Text with subtle shadows for readability */
+      /* Match desktop text contrast */
       .hero-title,
       .section-heading {
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+        text-shadow: none !important;
       }
 
       .hero-description,
       .class-desc,
       .benefit-desc {
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+        text-shadow: none !important;
+      }
+
+      .course-card-inner,
+      .class-card,
+      .benefit-card,
+      .contact-card {
+        background: rgba(255, 252, 248, 0.90) !important;
+        border: 1px solid var(--border-gold) !important;
+      }
+
+      .course-title-v2,
+      .class-title,
+      .benefit-title,
+      .contact-title {
+        color: var(--golden-deep) !important;
+      }
+
+      .course-desc-v2,
+      .class-desc,
+      .benefit-desc,
+      .contact-text,
+      .techniques-subtitle {
+        color: var(--text-body) !important;
       }
     }
 
