@@ -417,7 +417,7 @@ const courseData = {
   },
   agni: {
     en: {
-      title: 'Agni Technique',
+      title: 'Nitya Agni Hotram',
       desc: 'Master the sacred Vedic fire technique — harness the transformative power of Agni for purification, energy activation, and spiritual awakening through ancient fire rituals.',
       benefits: 'Purify body, mind and environment with sacred fire. Boost digestive fire for health. Transform negative karma through fire rituals. Activate inner spiritual fire. Create protective energy shield around you. Harness fire element for manifestation power.',
       benefitsList: [
@@ -432,7 +432,7 @@ const courseData = {
       badge: '🎁 FREE'
     },
     te: {
-      title: 'అగ్ని పద్ధతి',
+      title: 'నిత్య అగ్ని హోత్రం',
       desc: 'పవిత్ర వేద అగ్ని పద్ధతిని సాధించండి — ప్రాచీన అగ్ని కర్మల ద్వారా శుద్ధీకరణ, శక్తి క్రియాశీలత మరియు ఆధ్యాత్మిక మేల్కొలుపు కోసం అగ్ని యొక్క పరివర్తన శక్తిని ఉపయోగించుకోండి.',
       benefits: 'పవిత్ర అగ్నితో శరీరం, మనస్సు మరియు పరిసరాలను శుద్ధి చేయండి. ఆరోగ్యం కోసం జఠరాగ్నిని పెంచండి. అగ్ని కర్మల ద్వారా ప్రతికూల కర్మను రూపాంతరం చేయండి. అంతర్గత ఆధ్యాత్మిక అగ్నిని క్రియాశీలం చేయండి. మీ చుట్టూ రక్షణాత్మక శక్తి కవచాన్ని సృష్టించండి. వ్యక్తీకరణ శక్తి కోసం అగ్ని మూలకాన్ని ఉపయోగించుకోండి.',
       benefitsList: [
