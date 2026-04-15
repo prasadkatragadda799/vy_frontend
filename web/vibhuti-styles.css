@@ -11,9 +11,9 @@
     /* === SACRED PARCHMENT PALETTE - Matching Client Reference === */
 
     /* Background tones - warm parchment */
-    --bg-parchment: #E6DFD1;
+    --bg-parchment: #DDD4C4;
     /* Main warm cream background */
-    --bg-parchment-light: #EFE8DB;
+    --bg-parchment-light: #E8DECF;
     /* Lighter cream for header */
     --bg-parchment-mid: #E0D8CC;
     /* Medium parchment for sections */
@@ -32,13 +32,13 @@
     /* Light gold — decorative */
 
     /* Text Colors */
-    --text-heading: #6B4A00;
+    --text-heading: #5A3D00;
     /* Deep amber for main headings */
-    --text-subheading: #2D2419;
+    --text-subheading: #21190F;
     /* Very dark warm brown for subheadings */
-    --text-body: #3D3020;
+    --text-body: #2E2418;
     /* Dark charcoal for body text */
-    --text-muted: #6B5A48;
+    --text-muted: #5A4A39;
     /* Muted warm brown for secondary text */
     --text-label: #9B750D;
     /* Golden amber for labels/categories */
@@ -54,14 +54,14 @@
     --text-secondary: #6B5A48;
 
     /* Borders */
-    --border-gold: rgba(184, 134, 11, 0.25);
-    --border-gold-strong: rgba(184, 134, 11, 0.5);
-    --border-warm: rgba(107, 74, 0, 0.15);
+    --border-gold: rgba(139, 96, 0, 0.35);
+    --border-gold-strong: rgba(139, 96, 0, 0.65);
+    --border-warm: rgba(90, 61, 0, 0.25);
 
     /* Shadows */
-    --shadow-warm: 0 4px 24px rgba(107, 74, 0, 0.12);
-    --shadow-card: 0 8px 32px rgba(107, 74, 0, 0.10);
-    --shadow-hover: 0 16px 48px rgba(107, 74, 0, 0.18);
+    --shadow-warm: 0 6px 24px rgba(62, 43, 0, 0.16);
+    --shadow-card: 0 10px 30px rgba(62, 43, 0, 0.14);
+    --shadow-hover: 0 18px 52px rgba(62, 43, 0, 0.24);
 
     /* Typography */
     --font-heading: 'Cinzel', serif;
@@ -121,15 +121,15 @@ body :is(h1, h2, h3, h4, h5, h6,
     max-width: 1200px;
     height: calc(100vh - 140px);
     margin-top: 0;
-    background: rgba(245, 240, 232, 0.6);
+    background: rgba(236, 227, 213, 0.78);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
     border-radius: 0 0 28px 28px;
     border: 1px solid var(--border-gold);
     border-top: none;
     box-shadow:
-        0 8px 40px rgba(107, 74, 0, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        0 10px 44px rgba(62, 43, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
     display: flex;
     flex-direction: column;
     overflow: hidden;
