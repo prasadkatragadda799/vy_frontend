@@ -16,9 +16,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="vibhuti-styles.css?v=30" />
-  <link rel="stylesheet" href="mobile-responsive.css?v=30" />
-  <link rel="stylesheet" href="mobile-ultra-transparent.css?v=30" />
+  <link rel="stylesheet" href="vibhuti-styles.css?v=31" />
+  <link rel="stylesheet" href="mobile-responsive.css?v=31" />
   <style>
     /* === VIDEO SPLASH SCREEN === */
     #splash-screen {
@@ -27,15 +26,15 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #000;
+      background: var(--bg-parchment);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10000;
       overflow: hidden;
       transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.2s ease,
+        visibility 1.2s ease;
     }
 
     #splash-screen.fade-out {
@@ -55,30 +54,24 @@
       }
     }
 
-    @keyframes floatBg {
+    @keyframes floatSvg {
       0% {
         transform: translateY(0px) scale(1);
-        opacity: 0.15;
-        text-shadow:
-          0 0 20px #d4a574,
-          0 0 40px #d4a574;
+        opacity: 0.7;
+        /* Much higher opacity for proper visualization */
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
       }
 
       50% {
-        transform: translateY(-30px) scale(1.1);
-        opacity: 0.5;
-        text-shadow:
-          0 0 30px #e8c89e,
-          0 0 60px #e8c89e,
-          0 0 90px #fff;
+        transform: translateY(-25px) scale(1.08);
+        opacity: 0.95;
+        filter: drop-shadow(0 8px 20px rgba(93, 64, 55, 0.3));
       }
 
       100% {
         transform: translateY(0px) scale(1);
-        opacity: 0.15;
-        text-shadow:
-          0 0 20px #d4a574,
-          0 0 40px #d4a574;
+        opacity: 0.7;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
       }
     }
 
@@ -93,286 +86,162 @@
       background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Sri_Yantra.svg/1024px-Sri_Yantra.svg.png") no-repeat center center;
       background-size: contain;
       border-radius: 50%;
-      opacity: 0.15;
-      mix-blend-mode: screen;
+      opacity: 0.18;
+      mix-blend-mode: multiply;
       z-index: 20;
       pointer-events: none;
-      filter: blur(2px) drop-shadow(0 0 50px #d4a574);
+      filter: blur(1px) drop-shadow(0 0 20px rgba(93, 64, 55, 0.2));
       animation: spinSlow 60s linear infinite;
     }
 
+    /* Unified SVG-based background elements - High Visibility Theme */
     .splash-bg-element {
       position: absolute;
-      font-size: max(10vw, 70px);
-      color: transparent;
-      -webkit-text-stroke: 1px #d4a574;
-      opacity: 0.35;
       z-index: 20;
       pointer-events: none;
-      animation: floatBg 8s ease-in-out infinite alternate;
+      animation: floatSvg 8s ease-in-out infinite alternate;
+    }
+
+    .splash-bg-element svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: #5d4037;
+      /* Deep bronze for perfect visualization on light parchment */
+      stroke-width: 2.8;
+      /* Thicker strokes for better clarity */
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .splash-bg-om {
-      top: 20%;
-      right: 15%;
+      top: 16%;
+      right: 12%;
+      width: max(10vw, 80px);
+      height: max(10vw, 80px);
       animation-delay: 0s;
     }
 
     .splash-bg-trishul {
-      bottom: 25%;
-      left: 15%;
+      bottom: 18%;
+      left: 12%;
+      width: max(9vw, 75px);
+      height: max(12vw, 100px);
       animation-delay: -2s;
     }
 
     .splash-bg-goddess {
-      bottom: 25%;
-      right: 15%;
-      width: max(10vw, 80px);
-      height: max(10vw, 80px);
+      bottom: 18%;
+      right: 12%;
+      width: max(10vw, 85px);
+      height: max(10vw, 85px);
       animation-delay: -3s;
-      background: url('splash_goddess.jpg') center/contain no-repeat;
+      overflow: hidden;
       border-radius: 50%;
-      filter: drop-shadow(0 0 20px #d4a574);
-      mix-blend-mode: screen;
-      opacity: 0.8 !important;
-      /* higher opacity to match its detail */
+    }
+
+    .splash-bg-goddess img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: sepia(0.6) saturate(0.5) brightness(1.2);
+      mix-blend-mode: luminosity;
     }
 
     .splash-bg-damaru {
-      top: 20%;
-      left: 15%;
-      width: max(8vw, 60px);
-      height: max(8vw, 60px);
+      top: 16%;
+      left: 12%;
+      width: max(9vw, 75px);
+      height: max(9vw, 75px);
       animation-delay: -4s;
-      filter: drop-shadow(0 0 20px #d4a574);
     }
 
     .splash-bg-damaru svg {
-      width: 100%;
-      height: 100%;
-      fill: none;
-      stroke: #d4a574;
-      stroke-width: 6;
-      stroke-linejoin: round;
+      stroke-width: 2.5;
     }
 
-    #splash-video {
+    .splash-video-frame {
       position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 1000px;
-      height: auto;
-      max-height: 95vh;
-      object-fit: contain;
+      z-index: 30;
+      margin-top: 2.5cm;
+      /* Adjusted to 0.5cm only from top */
+      width: calc(min(78vw, 620px) - 1cm);
+      /* Reduced by 0.5cm on each side */
+      height: calc(min(78vw, 620px) - 1cm);
+      max-width: calc(78vh - 1cm);
+      max-height: calc(78vh - 1cm);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(212, 165, 116, 0.6);
+      box-shadow:
+        0 0 0 8px rgba(232, 222, 207, 0.3),
+        0 0 40px rgba(212, 165, 116, 0.35);
+      background: var(--bg-parchment);
     }
 
-    /* === CRITICAL MOBILE FIX - INLINE TO BYPASS CACHE === */
+    .splash-video-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+      /* Very subtle golden inner ring */
+      box-shadow:
+        inset 0 0 0 2px rgba(212, 165, 116, 0.2);
+    }
+
+    /* Show the video DIRECTLY — full native quality, scaled and positioned */
+    #splash-video {
+      position: absolute;
+      top: 57%;
+      left: 50%;
+      /* Scaled to 135% to keep the content "closed" within the smaller frame */
+      width: 135%;
+      height: 135%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    /* Unmute hint styling */
+    #unmute-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #8b7355;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      z-index: 1000;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+      background: rgba(232, 222, 207, 0.65);
+      padding: 8px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+    }
+
     @media (max-width: 768px) {
-
-      /* Scrolling must work */
-      html,
-      body {
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        height: auto !important;
+      .splash-video-frame {
+        width: min(86vw, 460px);
+        height: min(86vw, 460px);
       }
 
-      body {
-        background: var(--bg-parchment) !important;
-        background-image: none !important;
-        background-size: initial !important;
-        background-attachment: fixed !important;
-        min-height: 100vh !important;
-      }
-
-      .main-container {
-        display: block !important;
-        height: auto !important;
-        padding: 0 !important;
-      }
-
-      /* Mobile card should match desktop palette */
-      .glass-card {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        border-radius: 0 !important;
-        border-left: none !important;
-        border-right: none !important;
-        background: var(--bg-parchment-light) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid var(--border-gold) !important;
-        overflow: visible !important;
-      }
-
-      /* Content flows naturally on mobile - NO SCROLL HIJACKING */
-      .content-scroll-area {
-        overflow: visible !important;
-        height: auto !important;
-        display: block !important;
-      }
-
-      /* Header - Mobile Layout - FIXED AT TOP */
-      .header {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        transform: none !important;
-        flex-direction: column !important;
-        gap: 15px !important;
-        padding: 15px 16px !important;
-        background: var(--bg-parchment-light) !important;
-        backdrop-filter: blur(25px) !important;
-        -webkit-backdrop-filter: blur(25px) !important;
-        z-index: 1000 !important;
-        box-shadow: 0 4px 20px rgba(107, 74, 0, 0.12) !important;
-        border-bottom: 1px solid var(--border-gold) !important;
-      }
-
-      /* Content offset for fixed header */
-      .glass-card {
-        padding-top: 260px !important;
-      }
-
-      /* Unwrap logo section for reordering */
-      .logo-section {
-        display: contents !important;
-      }
-
-      /* 1. TOP: Vibhuti Yoga Title - red with gold glow outline */
-      .logo-text {
-        order: 1 !important;
-        width: 100% !important;
-        text-align: center !important;
-        font-size: 30px !important;
-        margin-bottom: 5px !important;
-        color: #c00 !important;
-        font-weight: 900 !important;
-        text-shadow:
-          0 1px 0 rgba(255, 255, 255, 0.2),
-          0 -1px 2px rgba(255, 216, 155, 0.8),
-          1px 0 2px rgba(245, 215, 148, 0.75),
-          -1px 0 2px rgba(245, 215, 148, 0.75),
-          0 1px 2px rgba(245, 215, 148, 0.75),
-          0 2px 5px rgba(212, 165, 116, 0.65),
-          0 3px 10px rgba(212, 165, 116, 0.55),
-          0 0 14px rgba(255, 216, 155, 0.5) !important;
-      }
-
-      /* 2. MIDDLE: Headers (Navigation) */
-      .nav-menu {
-        order: 2 !important;
-        width: 100% !important;
-        overflow-x: auto !important;
-        gap: 12px !important;
-        justify-content: center !important;
-        padding-bottom: 5px !important;
-      }
-
-      /* 3. BOTTOM: Logo Image - LARGER */
-      .logo-icon {
-        order: 3 !important;
-        margin-top: 10px !important;
-        transform: none !important;
-        display: flex !important;
-        justify-content: center !important;
-        width: 100% !important;
-      }
-
-      .logo-image {
-        width: 120px !important;
-        height: 120px !important;
-        border-radius: 50% !important;
-        box-shadow: 0 0 25px rgba(255, 216, 155, 0.5) !important;
-        margin: 0 auto !important;
-      }
-
-      /* Donate Button inside Nav */
-      .donate-header-btn {
-        padding: 10px 18px !important;
-        font-size: 15px !important;
-        white-space: nowrap !important;
-        width: auto !important;
-        min-width: fit-content !important;
-        margin-left: 5px !important;
-        box-shadow: 0 4px 15px rgba(245, 215, 148, 0.3) !important;
-        order: 99 !important;
-        /* Ensure it's last in nav */
-      }
-
-      /* Hide Desktop Big Logo on Mobile */
-      .hero-large-logo {
-        display: none !important;
-      }
-
-      .nav-menu::-webkit-scrollbar {
-        display: none !important;
-      }
-
-      .nav-link {
-        flex: 0 0 auto !important;
-        font-size: 15px !important;
-        padding: 8px 16px !important;
-        white-space: nowrap !important;
-        color: var(--golden-deep) !important;
-        background: rgba(184, 134, 11, 0.08) !important;
-        border: 1px solid var(--border-gold) !important;
-      }
-
-      .nav-link.active {
-        background: var(--golden-primary) !important;
-        color: var(--golden-deep) !important;
-        border-color: var(--golden-deep) !important;
-      }
-
-      /* Keep mobile sections consistent with desktop cards */
-      .section-full {
-        background: rgba(255, 252, 248, 0.85) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        padding: 40px 20px !important;
-        margin: 0 16px 20px !important;
-        border: 1px solid var(--border-gold) !important;
-      }
-
-      #home { margin: 0 !important; }
-
-      /* Match desktop text contrast */
-      .hero-title,
-      .section-heading {
-        text-shadow: none !important;
-      }
-
-      .hero-description,
-      .class-desc,
-      .benefit-desc {
-        text-shadow: none !important;
-      }
-
-      .course-card-inner,
-      .class-card,
-      .benefit-card,
-      .contact-card {
-        background: rgba(255, 252, 248, 0.90) !important;
-        border: 1px solid var(--border-gold) !important;
-      }
-
-      .course-title-v2,
-      .class-title,
-      .benefit-title,
-      .contact-title {
-        color: var(--golden-deep) !important;
-      }
-
-      .course-desc-v2,
-      .class-desc,
-      .benefit-desc,
-      .contact-text,
-      .techniques-subtitle {
-        color: var(--text-body) !important;
+      .splash-bg-om,
+      .splash-bg-trishul,
+      .splash-bg-damaru,
+      .splash-bg-goddess {
+        width: max(16vw, 55px) !important;
+        height: max(16vw, 55px) !important;
       }
     }
 
@@ -394,29 +263,61 @@
 <body>
   <!-- VIDEO SPLASH SCREEN -->
   <div id="splash-screen">
-    <video id="splash-video" autoplay muted playsinline preload="auto">
-      <source src="final.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <div class="splash-video-frame">
+      <video id="splash-video" autoplay muted playsinline preload="auto">
+        <source src="final.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
     <!-- Subtle helper to let user know they can click for sound -->
-    <div id="unmute-hint"
-      style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-family: sans-serif; font-size: 14px; letter-spacing: 1px; z-index: 1000; pointer-events: none; transition: opacity 0.5s ease;">
+    <div id="unmute-hint">
       Tap anywhere for sound 🔊
     </div>
 
-    <!-- Cinematic Overlay Effects (ON TOP OF VIDEO) -->
+    <!-- Cinematic Overlay Effects — all SVG-based for cross-platform uniformity -->
     <div class="splash-bg-logo"></div>
-    <div class="splash-bg-element splash-bg-om">ॐ</div>
-    <div class="splash-bg-element splash-bg-trishul">🔱</div>
+
+    <!-- Om symbol (SVG) -->
+    <div class="splash-bg-element splash-bg-om">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,72 C20,72 12,64 12,54 C12,44 20,36 30,36 C36,36 40,39 42,42" stroke-width="3" />
+        <path d="M42,42 C46,34 54,30 62,32 C72,34 78,44 74,54 C70,64 60,70 50,68" stroke-width="3" />
+        <path d="M50,68 C44,66 40,60 42,54 C44,48 50,46 54,48 C58,50 60,56 56,60" stroke-width="3" />
+        <path d="M74,28 C74,24 78,20 82,20 C86,20 88,24 86,28 C84,32 78,34 74,32" stroke-width="2.5" fill="none" />
+        <path d="M80,20 C80,16 82,12 84,10" stroke-width="2" fill="none" />
+        <path d="M56,30 Q58,20 54,14 Q50,8 46,12" stroke-width="2.5" fill="none" />
+      </svg>
+    </div>
+
+    <!-- Trishul / Trident (SVG) -->
+    <div class="splash-bg-element splash-bg-trishul">
+      <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="20" x2="40" y2="115" stroke-width="3" />
+        <path d="M40,20 C40,10 40,6 40,4" stroke-width="3" />
+        <path d="M20,30 C22,18 30,8 40,4 C50,8 58,18 60,30" stroke-width="2.5" fill="none" />
+        <path d="M20,30 C18,24 16,16 18,8" stroke-width="2.5" fill="none" />
+        <path d="M60,30 C62,24 64,16 62,8" stroke-width="2.5" fill="none" />
+        <circle cx="40" cy="32" r="3" fill="#d4a574" stroke="none" />
+        <path d="M34,38 L46,38" stroke-width="2" />
+      </svg>
+    </div>
+
+    <!-- Damaru (SVG) -->
     <div class="splash-bg-element splash-bg-damaru">
       <svg viewBox="0 0 100 100">
         <path d="M20,10 Q50,-10 80,10 L50,50 L80,90 Q50,110 20,90 L50,50 Z" />
-        <line x1="50" y1="50" x2="30" y2="50" />
-        <circle cx="28" cy="50" r="4" fill="#d4a574" stroke="none" />
+        <line x1="50" y1="50" x2="28" y2="50" />
+        <circle cx="25" cy="50" r="4" fill="#d4a574" stroke="none" />
+        <line x1="50" y1="50" x2="72" y2="50" />
+        <circle cx="75" cy="50" r="4" fill="#d4a574" stroke="none" />
       </svg>
     </div>
-    <div class="splash-bg-element splash-bg-goddess"></div>
+
+    <!-- Goddess image (uniform circular element) -->
+    <div class="splash-bg-element splash-bg-goddess">
+      <img src="splash_goddess.jpg" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <script>
@@ -427,15 +328,13 @@
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("splash-video");
       const splashScreen = document.getElementById("splash-screen");
-      const mainContent = document.getElementById("main-content");
       const unmuteHint = document.getElementById("unmute-hint");
       let isRevealed = false;
       let videoStarted = false;
       let startTime = Date.now();
       const minDuration = 7000; // Force exactly 7 seconds minimum
 
-      // Browser Autoplay Policy Trick:
-      // Autoplay the video muted, then unmute on first user click.
+      // Browser Autoplay Policy: autoplay muted, unmute on first click
       const unmuteVideo = () => {
         video.muted = false;
         if (unmuteHint) unmuteHint.style.opacity = "0";
@@ -445,6 +344,9 @@
 
       document.addEventListener("click", unmuteVideo);
       document.addEventListener("touchstart", unmuteVideo);
+
+      // No canvas processing needed — CSS mix-blend-mode handles black removal
+      // at full native video quality via GPU compositing
 
       const executeReveal = () => {
         if (isRevealed) return;
@@ -460,10 +362,14 @@
           if (splashScreen.parentNode) {
             splashScreen.parentNode.removeChild(splashScreen);
           }
-        }, 1000);
+        }, 1200);
       };
 
       const attemptReveal = (triggerEvent) => {
+        if (!videoStarted) {
+          executeReveal();
+          return;
+        }
         const elapsed = Date.now() - startTime;
         const remaining = minDuration - elapsed;
 
@@ -478,15 +384,15 @@
       video.addEventListener("play", () => {
         if (!videoStarted) {
           videoStarted = true;
-          startTime = Date.now(); // Reset timer to 0 so we get an honest 7s from playback start
+          startTime = Date.now();
         }
       });
 
       video.addEventListener("ended", () => attemptReveal("ended"));
       video.addEventListener("error", () => attemptReveal("error"));
 
-      // Generous fallback (12 seconds)
-      setTimeout(() => attemptReveal("timeout"), 12000);
+      // Generous fallback (15 seconds from page load)
+      setTimeout(() => attemptReveal("timeout"), 15000);
 
       // Force play safely (muted)
       const playPromise = video.play();
@@ -506,7 +412,6 @@
         <div class="logo-icon">
           <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" class="logo-image" />
         </div>
-        <span class="logo-text">Vibhuti Yoga</span>
       </div>
 
       <nav class="nav-menu">
@@ -529,25 +434,18 @@
             <section id="home" class="section-full active-section">
               <div class="hero-wrapper" style="
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: space-between;
-                    gap: 60px;
-                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    gap: 28px;
+                    width: 100%;
                   ">
                 <div class="hero-large-logo">
-                  <img src="vy_logo.jpg" alt="Vibhuti Yoga Big Logo" style="
-                        width: 220px;
-                        height: 220px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        box-shadow: 0 8px 32px rgba(107, 74, 0, 0.18);
-                        border: 3px solid var(--border-gold-strong);
-                      " />
+                  <img src="assets/vibhuti-yoga-board-final-v2.png" alt="Vibhuti Yoga Board" class="hero-board-image" />
                 </div>
-                <div class="hero-text-content" style="flex: 1; text-align: left">
+                <div class="hero-text-content" style="width: 100%; text-align: center">
                   <h1 class="hero-title"
-                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 2.6rem; line-height: 1.3; margin-bottom: 8px; font-weight: 800; color: var(--golden-deep); text-shadow: none;"
-                  >
+                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 2.6rem; line-height: 1.3; margin-bottom: 8px; font-weight: 800; color: var(--golden-deep); text-shadow: none;">
                     VIBHUTI MIRACLE IN THE
                     <br><span
                       style="color: var(--golden-primary); font-family: var(--font-heading); font-weight: 900; text-shadow: none; font-size: 3rem; letter-spacing: 4px;">6th
@@ -2157,8 +2055,26 @@
       // tabs have been removed so this is a no-op
     }
 
+    let hasUserOpenedRegistrationForm = false;
+
+    function hideRegistrationForm() {
+      const formSection = document.getElementById("registration-form-section");
+      if (formSection && !hasUserOpenedRegistrationForm) {
+        formSection.style.display = "none";
+      }
+    }
+
+    function resetRegistrationFormVisibility() {
+      hasUserOpenedRegistrationForm = false;
+      const formSection = document.getElementById("registration-form-section");
+      if (formSection) {
+        formSection.style.display = "none";
+      }
+    }
+
     // ── Register button on course cards ───────────────────────────────────────
     function registerForCourse(courseName) {
+      hasUserOpenedRegistrationForm = true;
       // Show the registration form section
       const formSection = document.getElementById("registration-form-section");
       if (formSection) {
@@ -2182,9 +2098,24 @@
 
     // Keep registration form hidden by default until user clicks Register
     document.addEventListener("DOMContentLoaded", () => {
-      const formSection = document.getElementById("registration-form-section");
-      if (formSection) formSection.style.display = "none";
+      resetRegistrationFormVisibility();
+
+      // Extra safety: if any scroll-related behavior touches layout,
+      // keep the form hidden until Register is explicitly clicked.
+      window.addEventListener("scroll", hideRegistrationForm, { passive: true });
+      const scrollContainer = document.getElementById("scroll-container");
+      if (scrollContainer) {
+        scrollContainer.addEventListener("scroll", hideRegistrationForm, { passive: true });
+      }
     });
+
+    // Handle browser back/forward cache restores.
+    window.addEventListener("pageshow", () => {
+      resetRegistrationFormVisibility();
+    });
+
+    // Expose to shared navigation script (vibhuti-script.js).
+    window.resetRegistrationFormVisibility = resetRegistrationFormVisibility;
 
     // ── Load classes from API into the select ─────────────────────────────────
     async function loadClasses() {

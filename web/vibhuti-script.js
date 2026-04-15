@@ -9,6 +9,13 @@ function getHeaderHeight() {
   return header ? header.offsetHeight : 120;
 }
 
+function updateHeaderOffset() {
+  const root = document.documentElement;
+  const headerHeight = getHeaderHeight();
+  const safeGap = window.innerWidth <= 768 ? 10 : 14;
+  root.style.setProperty("--header-offset", `${headerHeight + safeGap}px`);
+}
+
 // ── Show a specific section, hide all others ─────────────────────────────────
 function scrollToSection(sectionId) {
   showSection(sectionId);
@@ -18,6 +25,12 @@ function showSection(sectionId) {
   const allSections = document.querySelectorAll(".section-full");
   const targetSection = document.getElementById(sectionId);
   if (!targetSection) return;
+
+  // Registration form should only appear from an explicit Register click.
+  // Reset it whenever user leaves the Courses section.
+  if (sectionId !== "classes" && typeof window.resetRegistrationFormVisibility === "function") {
+    window.resetRegistrationFormVisibility();
+  }
 
   // Hide ALL sections
   allSections.forEach((section) => {
@@ -108,6 +121,8 @@ function showCopyNotification() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  updateHeaderOffset();
+
   // Initialize tab-based navigation
   initTabNavigation();
 
@@ -135,6 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   document.head.appendChild(style);
 });
+
+window.addEventListener("load", updateHeaderOffset);
+window.addEventListener("resize", updateHeaderOffset, { passive: true });
+window.addEventListener("orientationchange", updateHeaderOffset);
 
 window.scrollToSection = scrollToSection;
 window.showSection = showSection;
