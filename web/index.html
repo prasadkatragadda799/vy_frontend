@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vibhuti Yoga — Vibhuti Miracle in the 6th & 7th Sense</title>
   <meta name="description"
-    content="Vibhuti Miracle in the 6th & 7th Sense — A transformative programme for children aged 6-16 and seniors, focusing on mind development through Intuitional Power, Mind Power, Holistic Healing, Dowsing, Vaasthu Vidya & Eklavya Vidye (100% Memory Power)." />
+    content="Vibhuti Yoga Miracle in the 6th & 7th Sense — A transformative programme for children aged 6-16 and seniors, focusing on mind development through Intuitional Power, Mind Power, Holistic Healing, Dowsing, Vaasthu Vidya & Eklavya Vidye (100% Memory Power)." />
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -406,19 +406,15 @@
 
   <!-- MAIN CONTENT -->
   <div id="main-content">
+    <div class="top-banner-strip" id="top-banner-strip">
+      <img src="assets/vibhuti-yoga-board-final-v2.png" alt="Vibhuti Yoga Banner" class="top-banner-image" />
+    </div>
     <!-- FIXED HEADER - Outside glass-card to avoid backdrop-filter containment -->
     <header class="header" id="main-header">
-      <div class="logo-section">
-        <div class="logo-icon">
-          <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" class="logo-image" />
-        </div>
-      </div>
-
       <nav class="nav-menu">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
         <a href="#healing" class="nav-link" data-section="healing">Healing</a>
-        <a href="#benefits" class="nav-link" data-section="benefits">Benefits</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
           <i class="fas fa-heart"></i>
@@ -441,7 +437,7 @@
                     width: 100%;
                   ">
                 <div class="hero-large-logo">
-                  <img src="assets/vibhuti-yoga-board-final-v2.png" alt="Vibhuti Yoga Board" class="hero-board-image" />
+                  <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" class="hero-main-logo" />
                 </div>
                 <div class="hero-text-content" style="width: 100%; text-align: center">
                   <h1 class="hero-title"
@@ -456,6 +452,11 @@
                     A Transformative Programme for Children Aged 6–16 & Seniors — Mind Development, Empowerment & Divine
                     Sciences
                   </p>
+                  <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
+                    title="Listen to home introduction">
+                    <i class="fas fa-volume-up"></i>
+                    <span>Listen</span>
+                  </button>
                   <div class="hero-description custom-meaning">
                     <h3 class="meaning-title">🕉️ Three Pillars of Transformation</h3>
 
@@ -644,6 +645,47 @@
                   </div>
                 </div>
 
+              </div>
+
+              <div class="testimonials-marquee-wrap" aria-label="Student testimonials">
+                <h3 class="testimonials-title">What Families Say</h3>
+                <div class="testimonials-marquee">
+                  <div class="testimonials-track">
+                    <article class="testimonial-card">
+                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
+                      <span>- Parent, Hyderabad</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
+                      <span>- Parent, Vijayawada</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
+                      <span>- Parent, Warangal</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
+                      <span>- Parent, Guntur</span>
+                    </article>
+
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
+                      <span>- Parent, Hyderabad</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
+                      <span>- Parent, Vijayawada</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
+                      <span>- Parent, Warangal</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
+                      <span>- Parent, Guntur</span>
+                    </article>
+                  </div>
+                </div>
               </div>
 
               <!-- ═══════════════ FREE TECHNIQUES SECTION ═══════════════ -->
@@ -1320,15 +1362,39 @@
                 </div>
               </div>
 
+              <div style="
+                  max-width: 900px;
+                  margin: 34px auto 0;
+                  background: rgba(255, 252, 248, 0.92);
+                  border: 1px solid var(--border-gold-strong);
+                  border-radius: 20px;
+                  padding: 30px 26px;
+                  box-shadow: var(--shadow-card);
+                ">
+                <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:14px;">
+                  Healing requisition is a sacred request, not a generic appointment. Share your concern with clarity,
+                  so the guidance, prayer, and healing protocol can be aligned to your exact energetic and emotional state.
+                </p>
+                <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:20px;">
+                  This process helps us understand your challenge, recommend the right healing path, and respond with
+                  compassion, confidentiality, and spiritual precision.
+                </p>
+                <div style="text-align:center;">
+                  <button type="button" class="donate-btn-large" onclick="showHealingForm()" style="display:inline-flex;">
+                    <i class="fas fa-notes-medical"></i> Open Healing Requisition Form
+                  </button>
+                </div>
+              </div>
+
               <!-- ── Healing Application Form ── -->
-              <div style="max-width: 540px; margin: 40px auto 0;">
+              <div id="healing-form-section" style="max-width: 540px; margin: 40px auto 0; display: none;">
                 <h3 style="
                   text-align: center;
                   color: var(--golden-primary);
                   font-family: 'Cinzel', serif;
                   font-size: 1.4rem;
                   margin-bottom: 25px;
-                  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+                  text-shadow: none;
                 ">🙏 Healing Requisition Form</h3>
 
                 <div class="registration-box" style="
@@ -1564,65 +1630,6 @@
 
             </section>
 
-            <section id="benefits" class="section-full">
-              <h2 class="section-heading">
-                <span class="accent">✦</span>
-                Key Benefits
-                <span class="accent">✦</span>
-              </h2>
-              <div class="benefits-grid">
-                <div class="benefit-card">
-                  <div class="benefit-icon">
-                    <i class="fas fa-eye"></i>
-                  </div>
-                  <h3 class="benefit-title">Enhanced Focus & IQ</h3>
-                  <p class="benefit-desc">
-                    Sharpen concentration, improve cognitive abilities, and boost overall IQ through targeted mind
-                    development techniques.
-                  </p>
-                </div>
-                <div class="benefit-card">
-                  <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                  <h3 class="benefit-title">Boosted Creativity</h3>
-                  <p class="benefit-desc">
-                    Unlock imaginative thinking and creative problem-solving skills that empower children to think
-                    beyond boundaries.
-                  </p>
-                </div>
-                <div class="benefit-card">
-                  <div class="benefit-icon"><i class="fas fa-bullseye"></i></div>
-                  <h3 class="benefit-title">Stress-Free Goal Setting</h3>
-                  <p class="benefit-desc">
-                    Learn to set and achieve goals with a calm, focused, and positive mindset — free from anxiety and
-                    pressure.
-                  </p>
-                </div>
-                <div class="benefit-card">
-                  <div class="benefit-icon"><i class="fas fa-user-shield"></i></div>
-                  <h3 class="benefit-title">Increased Confidence</h3>
-                  <p class="benefit-desc">
-                    Build self-assurance and the courage to face challenges with meditation, mindfulness, and NLP
-                    techniques.
-                  </p>
-                </div>
-                <div class="benefit-card">
-                  <div class="benefit-icon"><i class="fas fa-brain"></i></div>
-                  <h3 class="benefit-title">Improved Decision-Making</h3>
-                  <p class="benefit-desc">
-                    Develop enhanced emotional intelligence and the ability to make clear, well-informed decisions.
-                  </p>
-                </div>
-                <div class="benefit-card">
-                  <div class="benefit-icon"><i class="fas fa-hands-helping"></i></div>
-                  <h3 class="benefit-title">Better Social Skills</h3>
-                  <p class="benefit-desc">
-                    Improve relationships, build empathy, and support slow learners & hyperactive children through
-                    personalized guidance.
-                  </p>
-                </div>
-              </div>
-            </section>
-
             <section id="contact" class="section-full">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
@@ -1673,152 +1680,196 @@
             <section id="donate" class="section-full">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
-                Support Our Mission
+                Sacred Donation Seva
                 <span class="accent">✦</span>
               </h2>
-              <!-- DONATION CONTENT -->
-              <div id="tab-donation" class="tab-content active" style="display: block; animation: fadeIn 0.5s ease">
-                <div class="donate-box" style="
-                      background: rgba(255, 255, 255, 0.95);
-                      padding: 30px;
-                      border-radius: 24px;
-                      max-width: 500px;
-                      margin: 0 auto;
-                      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                      color: #2d4563;
-                    ">
-                  <div
-                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <img src="form_banner.png" alt="Contribute with Love"
-                      style="width: 100%; display: block; object-fit: cover; height: auto;">
+
+              <div style="
+                  max-width: 980px;
+                  margin: 0 auto;
+                  background: rgba(255, 252, 248, 0.92);
+                  border: 1px solid var(--border-gold-strong);
+                  border-radius: 20px;
+                  padding: 30px;
+                  box-shadow: var(--shadow-card);
+                ">
+                <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 20px; text-align:center;">
+                  Choose your path below. Both are sacred, but each serves a different purpose.
+                </p>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                  <div style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
+                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Donation Seva</h4>
+                    <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
+                      Support dharmic education, healing outreach, and children’s growth. Your donation creates visible
+                      impact and sustains sacred work for the community.
+                    </p>
+                    <button type="button" class="donate-btn-large" onclick="showDonationForm()" style="display:inline-flex; font-size:14px; padding:10px 18px;">
+                      <i class="fas fa-filter"></i> Filter: Donation
+                    </button>
                   </div>
 
-                  <!-- QR CODE - Centered and Prominent -->
-                  <div class="qr-container" style="text-align: center; margin-bottom: 25px">
-                    <div class="qr-frame" style="
-                          display: inline-block;
-                          padding: 15px;
+                  <div style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
+                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Karmic Debt Resolution</h4>
+                    <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
+                      When life feels blocked despite effort, submit your sankalpa for focused karmic debt cleansing.
+                      This path is for intention-led spiritual correction and inner release.
+                    </p>
+                    <button type="button" class="donate-btn-large" onclick="showKarmicDebtForm()"
+                      style="display:inline-flex; font-size:14px; padding:10px 18px; background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+                      <i class="fas fa-filter"></i> Filter: Karmic Debt
+                    </button>
+                  </div>
+                </div>
+
+                <p style="font-size:13px; color:var(--text-muted); margin-top:14px; text-align:center;">
+                  Form stays hidden until you click a filter button.
+                </p>
+              </div>
+
+              <div id="donation-form-section" style="display: none; margin-top: 34px;">
+                <div id="tab-donation" class="tab-content active" style="display: block; animation: fadeIn 0.5s ease">
+                  <div class="donate-box" style="
+                        background: rgba(255, 255, 255, 0.95);
+                        padding: 30px;
+                        border-radius: 24px;
+                        max-width: 500px;
+                        margin: 0 auto;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                        color: #2d4563;
+                      ">
+                    <div
+                      style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                      <img src="form_banner.png" alt="Contribute with Love"
+                        style="width: 100%; display: block; object-fit: cover; height: auto;">
+                    </div>
+
+                    <!-- QR CODE - Centered and Prominent -->
+                    <div class="qr-container" style="text-align: center; margin-bottom: 25px">
+                      <div class="qr-frame" style="
+                            display: inline-block;
+                            padding: 15px;
+                            background: linear-gradient(
+                              135deg,
+                              #fff9f0 0%,
+                              #fff 100%
+                            );
+                            border-radius: 20px;
+                            border: 3px solid #d4a574;
+                            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+                          ">
+                        <img src="qr-code.png" alt="Scan to Pay" class="qr-code" style="
+                              width: 180px;
+                              height: 180px;
+                              border-radius: 12px;
+                            " />
+                      </div>
+                      <p style="
+                            margin-top: 12px;
+                            font-size: 14px;
+                            color: #7f8c8d;
+                          ">
+                        <i class="fas fa-qrcode" style="color: #d4a574"></i>
+                        Scan with any UPI App
+                      </p>
+                    </div>
+
+                    <!-- UPI ID - Centered and Styled -->
+                    <div class="upi-section" style="
                           background: linear-gradient(
                             135deg,
-                            #fff9f0 0%,
-                            #fff 100%
+                            #f8f9fa 0%,
+                            #e8f4f8 100%
                           );
-                          border-radius: 20px;
-                          border: 3px solid #d4a574;
-                          box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+                          padding: 18px 20px;
+                          border-radius: 16px;
+                          border: 2px solid #d4a574;
+                          margin-bottom: 20px;
+                          text-align: center;
                         ">
-                      <img src="qr-code.png" alt="Scan to Pay" class="qr-code" style="
-                            width: 180px;
-                            height: 180px;
-                            border-radius: 12px;
-                          " />
+                      <span style="
+                            display: block;
+                            font-size: 12px;
+                            color: #7f8c8d;
+                            margin-bottom: 8px;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                          ">
+                        UPI ID
+                      </span>
+                      <div style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 12px;
+                          ">
+                        <span class="upi-label" style="
+                              color: #2d4563;
+                              font-weight: 700;
+                              font-family: &quot;Courier New&quot;, monospace;
+                              font-size: 20px;
+                              letter-spacing: 1px;
+                            ">srivsn@icici</span>
+                        <button class="copy-btn" onclick="copyUPI()" style="
+                              background: linear-gradient(
+                                135deg,
+                                #d4a574,
+                                #e8c89e
+                              );
+                              border: none;
+                              padding: 10px 18px;
+                              border-radius: 10px;
+                              color: #2d4563;
+                              cursor: pointer;
+                              font-weight: 600;
+                              font-size: 14px;
+                              display: flex;
+                              align-items: center;
+                              gap: 6px;
+                              transition: all 0.3s ease;
+                              box-shadow: 0 3px 10px rgba(212, 165, 116, 0.3);
+                            ">
+                          <i class="far fa-copy"></i> Copy
+                        </button>
+                      </div>
                     </div>
-                    <p style="
-                          margin-top: 12px;
-                          font-size: 14px;
-                          color: #7f8c8d;
-                        ">
-                      <i class="fas fa-qrcode" style="color: #d4a574"></i>
-                      Scan with any UPI App
-                    </p>
-                  </div>
 
-                  <!-- UPI ID - Centered and Styled -->
-                  <div class="upi-section" style="
-                        background: linear-gradient(
-                          135deg,
-                          #f8f9fa 0%,
-                          #e8f4f8 100%
-                        );
-                        padding: 18px 20px;
-                        border-radius: 16px;
-                        border: 2px solid #d4a574;
-                        margin-bottom: 20px;
-                        text-align: center;
-                      ">
-                    <span style="
-                          display: block;
-                          font-size: 12px;
-                          color: #7f8c8d;
-                          margin-bottom: 8px;
-                          text-transform: uppercase;
-                          letter-spacing: 1px;
-                        ">
-                      UPI ID
-                    </span>
-                    <div style="
+                    <!-- Pay Button -->
+                    <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga&cu=INR" class="donate-btn-large" style="
+                          width: 100%;
                           display: flex;
                           align-items: center;
                           justify-content: center;
-                          gap: 12px;
+                          gap: 10px;
+                          text-decoration: none;
+                          padding: 16px 24px;
+                          margin-bottom: 30px;
+                          background: linear-gradient(135deg, #27ae60, #2ecc71);
+                          color: white;
+                          font-weight: 700;
+                          font-size: 18px;
+                          border-radius: 30px;
+                          box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
+                          transition: all 0.3s ease;
                         ">
-                      <span class="upi-label" style="
-                            color: #2d4563;
-                            font-weight: 700;
-                            font-family: &quot;Courier New&quot;, monospace;
-                            font-size: 20px;
-                            letter-spacing: 1px;
-                          ">srivsn@icici</span>
-                      <button class="copy-btn" onclick="copyUPI()" style="
-                            background: linear-gradient(
-                              135deg,
-                              #d4a574,
-                              #e8c89e
-                            );
-                            border: none;
-                            padding: 10px 18px;
-                            border-radius: 10px;
-                            color: #2d4563;
-                            cursor: pointer;
-                            font-weight: 600;
-                            font-size: 14px;
-                            display: flex;
-                            align-items: center;
-                            gap: 6px;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 3px 10px rgba(212, 165, 116, 0.3);
-                          ">
-                        <i class="far fa-copy"></i> Copy
-                      </button>
-                    </div>
-                  </div>
+                      <i class="fas fa-mobile-alt"></i> Pay via UPI App
+                    </a>
 
-                  <!-- Pay Button -->
-                  <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga&cu=INR" class="donate-btn-large" style="
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 10px;
-                        text-decoration: none;
-                        padding: 16px 24px;
-                        margin-bottom: 30px;
-                        background: linear-gradient(135deg, #27ae60, #2ecc71);
-                        color: white;
-                        font-weight: 700;
-                        font-size: 18px;
-                        border-radius: 30px;
-                        box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
-                        transition: all 0.3s ease;
-                      ">
-                    <i class="fas fa-mobile-alt"></i> Pay via UPI App
-                  </a>
+                    <!-- RECEIPT SUBMISSION -->
+                    <hr style="
+                          border: 0;
+                          border-top: 1px dashed #bdc3c7;
+                          margin: 20px 0;
+                        " />
+                    <h4 style="
+                          color: #2c3e50;
+                          margin-bottom: 15px;
+                          font-size: 18px;
+                        ">
+                      ✨ Verify Donation
+                    </h4>
 
-                  <!-- RECEIPT SUBMISSION -->
-                  <hr style="
-                        border: 0;
-                        border-top: 1px dashed #bdc3c7;
-                        margin: 20px 0;
-                      " />
-                  <h4 style="
-                        color: #2c3e50;
-                        margin-bottom: 15px;
-                        font-size: 18px;
-                      ">
-                    ✨ Verify Donation
-                  </h4>
-
-                  <form id="receipt-form" onsubmit="submitReceipt(event)" style="text-align: left">
+                    <form id="receipt-form" onsubmit="submitReceipt(event)" style="text-align: left">
                     <div style="margin-bottom: 15px">
                       <label style="
                             display: block;
@@ -2000,6 +2051,71 @@
                         ">
                       <i class="fas fa-paper-plane"></i> Submit
                     </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div id="karmic-debt-form-section" style="display: none; margin-top: 34px;">
+                <div class="donate-box" style="
+                      background: rgba(255, 255, 255, 0.95);
+                      padding: 30px;
+                      border-radius: 24px;
+                      max-width: 720px;
+                      margin: 0 auto;
+                      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                      color: #2d4563;
+                    ">
+                  <h4 style="font-size: 24px; margin-bottom: 12px; color: var(--golden-deep);">Karmic Debt Resolution Request</h4>
+                  <p style="font-size: 15px; line-height: 1.8; color: #4b5563; margin-bottom: 18px;">
+                    Share your sankalpa with clarity. This request helps us align your offering with prayerful intention
+                    for karmic healing, ancestral harmony, and dharmic progress.
+                  </p>
+                  <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)" style="text-align: left">
+                    <div style="margin-bottom: 14px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Full Name *</label>
+                      <input type="text" id="karmic-name" required placeholder="Enter your full name" style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+                    </div>
+                    <div style="margin-bottom: 14px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Phone Number *</label>
+                      <input type="tel" id="karmic-phone" required placeholder="Enter your phone number" style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+                    </div>
+                    <div style="margin-bottom: 14px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Email (Optional)</label>
+                      <input type="email" id="karmic-email" placeholder="Enter your email" style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+                    </div>
+                    <div style="margin-bottom: 14px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Primary Area of Karmic Burden *</label>
+                      <select id="karmic-area" required style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; background:#fff; box-sizing:border-box;">
+                        <option value="">Select one</option>
+                        <option>Family / Relationships</option>
+                        <option>Health and Vitality</option>
+                        <option>Finance and Livelihood</option>
+                        <option>Ancestral / Pitru Challenges</option>
+                        <option>Mental Restlessness / Fear</option>
+                        <option>Spiritual Blockages</option>
+                      </select>
+                    </div>
+                    <div style="margin-bottom: 14px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Sankalpa (Intention / Prayer) *</label>
+                      <textarea id="karmic-sankalpa" required rows="4" placeholder="Write your clear spiritual intention" style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:15px; box-sizing:border-box; resize:vertical;"></textarea>
+                    </div>
+                    <div style="margin-bottom: 18px;">
+                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Preferred Seva Amount (INR, Optional)</label>
+                      <input type="number" id="karmic-amount" placeholder="e.g. 1100" style="
+                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+                    </div>
+                    <button type="submit" id="karmic-submit-btn" style="
+                        width:100%; padding:14px; background: linear-gradient(135deg, #8e44ad, #9b59b6);
+                        border:none; color:#fff; border-radius:30px; font-weight:700; font-size:16px; cursor:pointer;
+                        box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);">
+                      <i class="fas fa-paper-plane"></i> Submit Karmic Debt Request
+                    </button>
                   </form>
                 </div>
               </div>
@@ -2072,6 +2188,58 @@
       }
     }
 
+    function showDonationForm() {
+      const donationFormSection = document.getElementById("donation-form-section");
+      if (donationFormSection) {
+        const karmicSection = document.getElementById("karmic-debt-form-section");
+        if (karmicSection) karmicSection.style.display = "none";
+        donationFormSection.style.display = "block";
+        setTimeout(() => {
+          donationFormSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+
+    function showKarmicDebtForm() {
+      const karmicSection = document.getElementById("karmic-debt-form-section");
+      if (karmicSection) {
+        const donationFormSection = document.getElementById("donation-form-section");
+        if (donationFormSection) donationFormSection.style.display = "none";
+        karmicSection.style.display = "block";
+        setTimeout(() => {
+          karmicSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+
+    function resetDonationFormVisibility() {
+      const donationFormSection = document.getElementById("donation-form-section");
+      if (donationFormSection) {
+        donationFormSection.style.display = "none";
+      }
+      const karmicSection = document.getElementById("karmic-debt-form-section");
+      if (karmicSection) {
+        karmicSection.style.display = "none";
+      }
+    }
+
+    function showHealingForm() {
+      const healingFormSection = document.getElementById("healing-form-section");
+      if (healingFormSection) {
+        healingFormSection.style.display = "block";
+        setTimeout(() => {
+          healingFormSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+
+    function resetHealingFormVisibility() {
+      const healingFormSection = document.getElementById("healing-form-section");
+      if (healingFormSection) {
+        healingFormSection.style.display = "none";
+      }
+    }
+
     // ── Register button on course cards ───────────────────────────────────────
     function registerForCourse(courseName) {
       hasUserOpenedRegistrationForm = true;
@@ -2099,6 +2267,8 @@
     // Keep registration form hidden by default until user clicks Register
     document.addEventListener("DOMContentLoaded", () => {
       resetRegistrationFormVisibility();
+      resetDonationFormVisibility();
+      resetHealingFormVisibility();
 
       // Extra safety: if any scroll-related behavior touches layout,
       // keep the form hidden until Register is explicitly clicked.
@@ -2112,10 +2282,17 @@
     // Handle browser back/forward cache restores.
     window.addEventListener("pageshow", () => {
       resetRegistrationFormVisibility();
+      resetDonationFormVisibility();
+      resetHealingFormVisibility();
     });
 
     // Expose to shared navigation script (vibhuti-script.js).
     window.resetRegistrationFormVisibility = resetRegistrationFormVisibility;
+    window.resetDonationFormVisibility = resetDonationFormVisibility;
+    window.showDonationForm = showDonationForm;
+    window.showKarmicDebtForm = showKarmicDebtForm;
+    window.showHealingForm = showHealingForm;
+    window.resetHealingFormVisibility = resetHealingFormVisibility;
 
     // ── Load classes from API into the select ─────────────────────────────────
     async function loadClasses() {
@@ -2284,6 +2461,49 @@
         }
       } catch (err) {
         showToast("❌ " + err.message);
+      } finally {
+        btn.innerHTML = orig;
+        btn.disabled = false;
+      }
+    }
+
+    async function submitKarmicDebtForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById("karmic-submit-btn");
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+      btn.disabled = true;
+
+      const name = document.getElementById("karmic-name").value.trim();
+      const phone = document.getElementById("karmic-phone").value.trim();
+      const email = document.getElementById("karmic-email").value.trim();
+      const area = document.getElementById("karmic-area").value;
+      const sankalpa = document.getElementById("karmic-sankalpa").value.trim();
+      const amount = document.getElementById("karmic-amount").value.trim();
+
+      const msgLines = [
+        "🙏 *KARMIC DEBT RESOLUTION REQUEST*",
+        "",
+        `👤 *Name:* ${name}`,
+        `📞 *Phone:* ${phone}`,
+        email ? `📧 *Email:* ${email}` : "",
+        `🧭 *Primary Area:* ${area}`,
+        amount ? `💰 *Preferred Seva Amount:* ₹${amount}` : "",
+        "",
+        "🕉️ *Sankalpa / Intention:*",
+        sankalpa,
+        "",
+        "— Sent from Vibhuti Yoga Website"
+      ].filter(Boolean).join("\n");
+
+      const whatsappUrl = `https://wa.me/917842434643?text=${encodeURIComponent(msgLines)}`;
+
+      try {
+        window.open(whatsappUrl, "_blank");
+        showToast("✅ Karmic debt request prepared. Please send it on WhatsApp.");
+        e.target.reset();
+      } catch (err) {
+        showToast("❌ Unable to open WhatsApp. Please try again.");
       } finally {
         btn.innerHTML = orig;
         btn.disabled = false;

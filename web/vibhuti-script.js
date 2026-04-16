@@ -6,7 +6,10 @@ let currentActiveSection = "home"; // Track which section is currently shown
 
 function getHeaderHeight() {
   const header = document.getElementById("main-header");
-  return header ? header.offsetHeight : 120;
+  const topBanner = document.getElementById("top-banner-strip");
+  const headerHeight = header ? header.offsetHeight : 120;
+  const bannerHeight = topBanner ? topBanner.offsetHeight : 0;
+  return headerHeight + bannerHeight;
 }
 
 function updateHeaderOffset() {
@@ -30,6 +33,21 @@ function showSection(sectionId) {
   // Reset it whenever user leaves the Courses section.
   if (sectionId !== "classes" && typeof window.resetRegistrationFormVisibility === "function") {
     window.resetRegistrationFormVisibility();
+  }
+  if (sectionId !== "donate" && typeof window.resetDonationFormVisibility === "function") {
+    window.resetDonationFormVisibility();
+  }
+  if (sectionId !== "healing" && typeof window.resetHealingFormVisibility === "function") {
+    window.resetHealingFormVisibility();
+  }
+
+  if (window.speechSynthesis && window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll(".course-tts-btn.speaking, .home-tts-btn.speaking").forEach((btn) => {
+      btn.classList.remove("speaking");
+    });
+    currentSpeech = null;
+    homeSpeechActive = false;
   }
 
   // Hide ALL sections
@@ -227,17 +245,7 @@ function speakModalDetails() {
 
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(fullText);
-  if (currentLang === 'te') {
-    utterance.lang = 'te-IN';
-    if (cachedFemaleVoiceTE) utterance.voice = cachedFemaleVoiceTE;
-    utterance.rate = 0.8;
-    utterance.pitch = 0.9;
-  } else {
-    utterance.lang = 'en-IN';
-    if (cachedFemaleVoiceEN) utterance.voice = cachedFemaleVoiceEN;
-    utterance.rate = 0.8;
-    utterance.pitch = 0.9; // Lower pitch, slower rate for a very soft, calming voice
-  }
+  applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
 
   window.speechSynthesis.speak(utterance);
 }
@@ -716,45 +724,64 @@ let voicesLoaded = false;
 let cachedFemaleVoiceEN = null;
 let cachedFemaleVoiceTE = null;
 
+function scoreVoice(voice, langKey = "en") {
+  const name = (voice.name || "").toLowerCase();
+  const lang = (voice.lang || "").toLowerCase();
+  let score = 0;
+
+  if (langKey === "en") {
+    if (lang.includes("en-in") || lang.includes("en_in") || name.includes("india") || name.includes("indian")) score += 70;
+    if (name.includes("neerja") || name.includes("veena") || name.includes("lekha") || name.includes("aditi")) score += 60;
+    if (name.includes("female") || name.includes("woman") || name.includes("samantha")) score += 28;
+    if (name.includes("google")) score += 8;
+    if (lang.startsWith("en")) score += 14;
+  } else if (langKey === "te") {
+    if (lang.includes("te-in") || lang.startsWith("te")) score += 90;
+    if (name.includes("telugu")) score += 40;
+    if (name.includes("female") || name.includes("woman")) score += 20;
+    if (name.includes("india") || name.includes("indian")) score += 12;
+  }
+
+  return score;
+}
+
+function getBestVoice(voices, langKey = "en") {
+  let bestVoice = null;
+  let bestScore = -1;
+  voices.forEach((voice) => {
+    const voiceScore = scoreVoice(voice, langKey);
+    if (voiceScore > bestScore) {
+      bestScore = voiceScore;
+      bestVoice = voice;
+    }
+  });
+  return bestVoice;
+}
+
+function applySoftIndianVoice(utterance, langPref = "en") {
+  if (langPref === "te") {
+    utterance.lang = "te-IN";
+    if (cachedFemaleVoiceTE) utterance.voice = cachedFemaleVoiceTE;
+    utterance.rate = 0.78;
+    utterance.pitch = 0.95;
+    utterance.volume = 1;
+    return;
+  }
+
+  utterance.lang = "en-IN";
+  if (cachedFemaleVoiceEN) utterance.voice = cachedFemaleVoiceEN;
+  utterance.rate = 0.76;
+  utterance.pitch = 1.08;
+  utterance.volume = 1;
+}
+
 function loadVoices() {
   const voices = window.speechSynthesis.getVoices();
   if (voices.length === 0) return;
   voicesLoaded = true;
 
-  // Find soft-spoken female English voice (calm, Indian or gentle British/Samantha preferred)
-  const femaleKeywords = ['samantha', 'veena', 'neerja', 'lekha', 'google uk english female', 'female', 'woman', 'fiona', 'moira', 'victoria'];
-  const indianKeywords = ['india', 'indian', 'hindi', 'en-in', 'en_in', 'veena', 'neerja', 'lekha'];
-
-  // Priority 1: Indian female voice
-  cachedFemaleVoiceEN = voices.find(v =>
-    v.lang.toLowerCase().includes('en') &&
-    (indianKeywords.some(k => v.name.toLowerCase().includes(k) || v.lang.toLowerCase().includes(k))) &&
-    femaleKeywords.some(k => v.name.toLowerCase().includes(k))
-  );
-
-  // Priority 2: Any female English voice
-  if (!cachedFemaleVoiceEN) {
-    cachedFemaleVoiceEN = voices.find(v =>
-      v.lang.toLowerCase().startsWith('en') &&
-      femaleKeywords.some(k => v.name.toLowerCase().includes(k))
-    );
-  }
-
-  // Priority 3: Google UK English Female (very common)
-  if (!cachedFemaleVoiceEN) {
-    cachedFemaleVoiceEN = voices.find(v => v.name.toLowerCase().includes('google uk english female'));
-  }
-
-  // Priority 4: Any high-pitched English voice
-  if (!cachedFemaleVoiceEN) {
-    cachedFemaleVoiceEN = voices.find(v => v.lang.toLowerCase().startsWith('en'));
-  }
-
-  // Find Telugu voice
-  cachedFemaleVoiceTE = voices.find(v => v.lang.toLowerCase().includes('te'));
-  if (!cachedFemaleVoiceTE) {
-    cachedFemaleVoiceTE = voices.find(v => v.name.toLowerCase().includes('telugu'));
-  }
+  cachedFemaleVoiceEN = getBestVoice(voices, "en") || voices.find((v) => v.lang?.toLowerCase().startsWith("en")) || null;
+  cachedFemaleVoiceTE = getBestVoice(voices, "te") || voices.find((v) => v.lang?.toLowerCase().startsWith("te")) || null;
 
   console.log('🔊 English voice:', cachedFemaleVoiceEN?.name || 'default');
   console.log('🔊 Telugu voice:', cachedFemaleVoiceTE?.name || 'default (will use lang tag)');
@@ -767,6 +794,50 @@ if (window.speechSynthesis) {
 }
 
 let currentSpeech = null;
+let homeSpeechActive = false;
+
+function speakHomeSection() {
+  const homeButton = document.getElementById("home-tts-btn");
+  const homeSection = document.getElementById("home");
+  if (!homeSection || !homeButton) return;
+
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll(".course-tts-btn.speaking, .home-tts-btn.speaking").forEach((btn) => {
+      btn.classList.remove("speaking");
+    });
+    if (homeSpeechActive) {
+      homeSpeechActive = false;
+      return;
+    }
+  }
+
+  const meaningText = homeSection.querySelector(".custom-meaning")?.innerText || "";
+  const titleText = homeSection.querySelector(".hero-title")?.innerText || "";
+  const subtitleText = homeSection.querySelector(".hero-subtitle")?.innerText || "";
+  const fullText = `${titleText}. ${subtitleText}. ${meaningText}`.replace(/\s+/g, " ").trim();
+  if (!fullText) return;
+
+  const utterance = new SpeechSynthesisUtterance(fullText);
+  applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
+
+  homeButton.classList.add("speaking");
+  homeSpeechActive = true;
+  currentSpeech = "home";
+
+  utterance.onend = () => {
+    homeButton.classList.remove("speaking");
+    homeSpeechActive = false;
+    currentSpeech = null;
+  };
+  utterance.onerror = () => {
+    homeButton.classList.remove("speaking");
+    homeSpeechActive = false;
+    currentSpeech = null;
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
 
 function speakCourse(courseId) {
   const data = courseData[courseId];
@@ -793,18 +864,7 @@ function speakCourse(courseId) {
     : (langData.benefits || '');
   const text = `${langData.title}. ${langData.desc} ${keyBenefitsLabel}: ${benefitsText}`;
   const utterance = new SpeechSynthesisUtterance(text);
-
-  if (currentLang === 'te') {
-    utterance.lang = 'te-IN';
-    if (cachedFemaleVoiceTE) utterance.voice = cachedFemaleVoiceTE;
-    utterance.rate = 0.8;
-    utterance.pitch = 0.9;
-  } else {
-    utterance.lang = 'en-IN';
-    if (cachedFemaleVoiceEN) utterance.voice = cachedFemaleVoiceEN;
-    utterance.rate = 0.8;
-    utterance.pitch = 0.9; // Lower pitch, slower rate for a soft, calming presentation
-  }
+  applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
 
   // Find and highlight the button
   const card = document.getElementById(`course-${courseId}`);
@@ -835,7 +895,7 @@ function switchLanguage(lang) {
   // Stop any ongoing speech
   if (window.speechSynthesis.speaking) {
     window.speechSynthesis.cancel();
-    document.querySelectorAll('.course-tts-btn.speaking').forEach(btn => {
+    document.querySelectorAll('.course-tts-btn.speaking, .home-tts-btn.speaking').forEach(btn => {
       btn.classList.remove('speaking');
     });
   }
@@ -957,5 +1017,6 @@ function updateHTML(id, html) {
 // Make functions globally accessible
 window.toggleBenefits = toggleBenefits;
 window.speakCourse = speakCourse;
+window.speakHomeSection = speakHomeSection;
 window.switchLanguage = switchLanguage;
 window.switchVidyaTab = function () { }; // Keep for compatibility
