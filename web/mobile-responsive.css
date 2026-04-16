@@ -362,20 +362,36 @@
         gap: 18px !important;
     }
 
+    .courses-subheading {
+        margin-top: 44px !important;
+    }
+
+    .techniques-subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+        margin: 0 auto 22px !important;
+        padding: 0 8px !important;
+    }
+
     .course-card-v2 {
         width: 100% !important;
     }
 
     .course-card-inner {
-        padding: 28px 18px !important;
+        padding: 30px 18px 22px !important;
+        min-height: auto !important;
     }
 
     .course-title-v2 {
-        font-size: 20px !important;
+        font-size: 19px !important;
+        min-height: auto !important;
     }
 
     .course-desc-v2 {
         font-size: 14px !important;
+        line-height: 1.72 !important;
+        min-height: auto !important;
+        -webkit-line-clamp: 6 !important;
     }
 
     .course-image-v2 {
@@ -409,6 +425,13 @@
     .course-explore-btn {
         font-size: 13px !important;
         padding: 9px 18px !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .register-class-btn {
+        width: 100% !important;
+        justify-content: center !important;
     }
 
     .benefits-panel-inner {
@@ -478,6 +501,28 @@
         background: rgba(255, 255, 255, 0.08) !important;
         border: 1px solid rgba(255, 216, 155, 0.15) !important;
         border-radius: 20px !important;
+    }
+
+    #contact .contact-intro {
+        font-size: 15px !important;
+        line-height: 1.75 !important;
+        margin-bottom: 24px !important;
+        color: var(--text-body) !important;
+    }
+
+    #contact .contact-card {
+        background: rgba(255, 252, 248, 0.9) !important;
+        border: 1px solid var(--border-gold) !important;
+        min-height: auto !important;
+    }
+
+    #contact .contact-actions {
+        gap: 10px !important;
+    }
+
+    #contact .contact-action-btn {
+        width: 100% !important;
+        justify-content: center !important;
     }
 
     .vidya-expertise-container {
@@ -573,14 +618,11 @@
 
     /* === FOOTER === */
     .footer {
-        padding: 24px 20px !important;
-        background: linear-gradient(135deg,
-                rgba(30, 46, 69, 0.90) 0%,
-                rgba(45, 69, 99, 0.85) 100%) !important;
-        backdrop-filter: blur(20px) !important;
-        border-top: 1px solid rgba(255, 216, 155, 0.2) !important;
+        padding: 22px 16px !important;
+        background: var(--bg-parchment-mid) !important;
+        border-top: 2px solid var(--border-gold) !important;
         flex-direction: column !important;
-        gap: 20px !important;
+        gap: 14px !important;
     }
 
     .social-links {
@@ -595,8 +637,18 @@
     }
 
     .footer-text {
-        font-size: 14px !important;
+        font-size: 13px !important;
         text-align: center !important;
+    }
+
+    .footer-contact-row {
+        flex-direction: column !important;
+        gap: 8px !important;
+        font-size: 13px !important;
+    }
+
+    .footer-separator {
+        display: none !important;
     }
 }
 
