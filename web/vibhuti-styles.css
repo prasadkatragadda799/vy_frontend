@@ -59,9 +59,9 @@
     --border-warm: rgba(90, 61, 0, 0.25);
 
     /* Shadows */
-    --shadow-warm: 0 6px 24px rgba(62, 43, 0, 0.16);
-    --shadow-card: 0 10px 30px rgba(62, 43, 0, 0.14);
-    --shadow-hover: 0 18px 52px rgba(62, 43, 0, 0.24);
+    --shadow-warm: 0 6px 24px rgba(212, 165, 116, 0.35);
+    --shadow-card: 0 10px 30px rgba(212, 165, 116, 0.3);
+    --shadow-hover: 0 18px 52px rgba(212, 165, 116, 0.45);
 
     /* Typography */
     --font-heading: 'Cinzel', serif;
@@ -72,19 +72,25 @@
 
 .top-banner-strip {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 1200px;
     height: var(--top-banner-height);
     z-index: 1001;
     background: var(--bg-parchment-light);
-    border-bottom: 1px solid var(--border-gold);
+    border: 2px solid var(--golden-primary);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px 0;
+    padding: 2px;
     overflow: hidden;
+    box-shadow: 
+        0 0 15px rgba(184, 134, 11, 0.35),
+        0 0 30px rgba(212, 165, 116, 0.25),
+        0 8px 25px rgba(184, 134, 11, 0.2);
 }
 
 .top-banner-image {
@@ -92,7 +98,7 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
-    border-radius: 10px;
+    border-radius: 16px;
     display: block;
 }
 
@@ -185,7 +191,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 /* === STICKY HEADER — Sacred Parchment Style === */
 .header {
     position: fixed;
-    top: var(--top-banner-height);
+    top: calc(var(--top-banner-height) + 20px);
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -407,8 +413,8 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .hero-main-logo {
-    width: min(240px, 72vw);
-    height: min(240px, 72vw);
+    width: min(300px, 80vw);
+    height: min(300px, 80vw);
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid var(--golden-primary);
@@ -522,11 +528,11 @@ body :is(h1, h2, h3, h4, h5, h6,
 .custom-meaning .meaning-title {
     color: var(--golden-deep);
     font-family: var(--font-heading);
-    font-size: 22px;
-    margin-bottom: 24px;
+    font-size: 24px;
+    margin-bottom: 28px;
     text-align: center;
     text-shadow: none !important;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
@@ -540,12 +546,13 @@ body :is(h1, h2, h3, h4, h5, h6,
 
 .custom-meaning h4 {
     color: var(--golden-primary);
+    font-family: var(--font-heading);
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     border-bottom: 1px solid var(--border-warm);
-    padding-bottom: 6px;
+    padding-bottom: 8px;
     text-transform: uppercase;
 }
 
@@ -557,20 +564,29 @@ body :is(h1, h2, h3, h4, h5, h6,
 
 .custom-meaning li {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-body);
-    margin-bottom: 8px;
-    padding-left: 24px;
+    margin-bottom: 10px;
+    padding: 12px 16px 12px 24px;
     position: relative;
-    line-height: 1.6;
+    line-height: 1.7;
+    background: rgba(255, 252, 248, 0.6);
+    border-radius: 12px;
+    border: 1px solid var(--border-gold);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-meaning li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.2);
 }
 
 .custom-meaning li .bullet {
     position: absolute;
-    left: 0;
-    top: 2px;
+    left: 8px;
+    top: 14px;
     color: var(--golden-accent);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .custom-meaning strong {
@@ -1602,7 +1618,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     height: 70px;
     margin: 0 auto 20px;
     background: linear-gradient(135deg, rgba(184, 134, 11, 0.10), rgba(201, 168, 76, 0.10));
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1620,9 +1636,8 @@ body :is(h1, h2, h3, h4, h5, h6,
 .course-image-v2 {
     width: 140px;
     height: 140px;
-    min-height: 140px;
     margin: 0 auto 20px;
-    border-radius: 50%;
+    border-radius: 12px;
     overflow: hidden;
     border: 3px solid var(--border-gold-strong);
     box-shadow: 0 8px 24px rgba(107, 74, 0, 0.18);
@@ -1732,7 +1747,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 
     0%,
     100% {
-        box-shadow: 0 0 4px rgba(184, 134, 11, 0.2);
+        box-shadow: 0 10px 45px rgba(212, 165, 116, 0.45);
     }
 
     50% {
@@ -1867,7 +1882,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     width: 160px;
     height: 160px;
     margin: 0 auto 24px;
-    border-radius: 50%;
+    border-radius: 12px;
     overflow: hidden;
     border: 4px solid var(--border-gold-strong);
     box-shadow: 0 12px 36px rgba(107, 74, 0, 0.2);
@@ -1912,7 +1927,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     text-align: center;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 30px 90px rgba(184, 134, 11, 0.4);
     border: 2px solid var(--border-gold);
 }
 
@@ -2955,7 +2970,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     background: white;
     border-radius: 16px;
     box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.3),
+        0 15px 50px rgba(212, 165, 116, 0.4),
         inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     width: 100%;
     border: 3px solid transparent;
@@ -3112,4 +3127,21 @@ body :is(h1, h2, h3, h4, h5, h6,
     .donate-description {
         text-shadow: none !important;
     }
+}
+
+/* FORMS FOCUS GLOW */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none !important;
+    border-color: var(--golden-primary) !important;
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.7) !important;
+    background-color: #fff !important;
+}
+
+/* Ensure form cards have golden glow */
+.registration-box, 
+.healing-application-form,
+.donation-box {
+    box-shadow: 0 15px 50px rgba(212, 165, 116, 0.45) !important;
 }

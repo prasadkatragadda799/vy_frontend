@@ -59,7 +59,7 @@
         transform: translateY(0px) scale(1);
         opacity: 0.7;
         /* Much higher opacity for proper visualization */
-        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+        filter: drop-shadow(0 2px 5px rgba(184, 134, 11, 0.2));
       }
 
       50% {
@@ -71,7 +71,7 @@
       100% {
         transform: translateY(0px) scale(1);
         opacity: 0.7;
-        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+        filter: drop-shadow(0 2px 5px rgba(184, 134, 11, 0.2));
       }
     }
 
@@ -165,8 +165,6 @@
     .splash-video-frame {
       position: relative;
       z-index: 30;
-      margin-top: 2.5cm;
-      /* Adjusted to 0.5cm only from top */
       width: calc(min(78vw, 620px) - 1cm);
       /* Reduced by 0.5cm on each side */
       height: calc(min(78vw, 620px) - 1cm);
@@ -234,6 +232,7 @@
       .splash-video-frame {
         width: min(86vw, 460px);
         height: min(86vw, 460px);
+        margin-top: 0;
       }
 
       .splash-bg-om,
@@ -242,6 +241,27 @@
       .splash-bg-goddess {
         width: max(16vw, 55px) !important;
         height: max(16vw, 55px) !important;
+      }
+    }
+
+    /* Tablet centering fix */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .splash-video-frame {
+        width: min(55vw, 480px);
+        height: min(55vw, 480px);
+        margin-top: 0;
+      }
+
+      #splash-screen {
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Ensure splash is always centered on all screens */
+    @media (min-width: 1025px) {
+      .splash-video-frame {
+        margin-top: 0;
       }
     }
 
@@ -414,6 +434,7 @@
       <nav class="nav-menu">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
+        <a href="#testimonials" class="nav-link" data-section="testimonials">Testimonials</a>
         <a href="#healing" class="nav-link" data-section="healing">Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
@@ -441,88 +462,72 @@
                 </div>
                 <div class="hero-text-content" style="width: 100%; text-align: center">
                   <h1 class="hero-title"
-                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 2.6rem; line-height: 1.3; margin-bottom: 8px; font-weight: 800; color: var(--golden-deep); text-shadow: none;">
-                    VIBHUTI YOGA MIRACLE IN THE
-                    <br><span
-                      style="color: var(--golden-primary); font-family: var(--font-heading); font-weight: 900; text-shadow: none; font-size: 3rem; letter-spacing: 4px;">6th
-                      & 7th SENSE</span>
+                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 3.2rem; line-height: 1.2; margin-bottom: 0; font-weight: 900; color: var(--golden-deep); text-shadow: none; letter-spacing: 6px;">
+                    VIBHUTI YOGA
                   </h1>
-                  <p class="hero-subtitle"
-                    style="font-family: var(--font-body); font-style: normal; font-size: 1rem; color: var(--text-subheading); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 35px; font-weight: 600; text-shadow: none;">
-                    A Transformative Programme for Children Aged 6–16 & Seniors — Mind Development, Empowerment & Divine
-                    Sciences
+                  <p class="hero-tagline"
+                    style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--golden-primary); letter-spacing: 3px; text-transform: uppercase; margin: 12px 0 35px; font-weight: 700; text-shadow: none; line-height: 1.4;">
+                    Miracles in the 6th & 7th Sense
                   </p>
                   <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
                     title="Listen to home introduction">
                     <i class="fas fa-volume-up"></i>
                     <span>Listen</span>
                   </button>
+
                   <div class="hero-description custom-meaning">
-                    <h3 class="meaning-title">🕉️ Three Pillars of Transformation</h3>
+                    <h3 class="meaning-title">🕉️ What Vibhuti Yoga Means</h3>
 
-                    <div class="meaning-block">
-                      <h4>1. Intuitional Power (Wonders of the 6th & 7th Sense)</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Special camp for children aged 6–16 and seniors — unlocks
-                          latent potential</li>
-                        <li><span class="bullet">✦</span> Refines senses, sharpens intellect, enhances concentration &
-                          memory</li>
-                        <li><span class="bullet">✦</span> Awakens the 'Third Eye' — read, play, skate & identify objects
-                          blindfolded</li>
-                        <li><span class="bullet">✦</span> Divine Vision awakened — all facets of academic intelligence
-                          sharpened</li>
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        <strong style="color: var(--golden-deep); font-size: 17px;">Vibhuti Yoga</strong> — also known as the <em>"Yoga of Divine Manifestations"</em> — is the name given to the <strong>tenth chapter of the Bhagavad Gita</strong>. In this sacred chapter, Lord Krishna reveals His divine glories and omnipresence to Arjuna, proclaiming that He is the source of all beings and all things. Every expression of brilliance, strength, and beauty in this universe is a spark of His infinite splendour.
+                      </p>
+                    </div>
+
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <h4>✦ Vibhuti — Divine Glory &amp; Supreme Power</h4>
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        <strong style="color: var(--golden-deep);">Vibhuti</strong> means <em>wealth, opulence, and greatness</em>. It refers to the divinity, extraordinary powers, and universal form of the Supreme Consciousness. Vibhuti is also the holy ash — <em>Bhasma</em> — worn by seekers as a mark of purification and surrender. Just as fire transforms matter into its purest essence, Vibhuti represents the soul's journey from the material to the divine — a reminder that beneath every form lies something indestructible and luminous.
+                      </p>
+                    </div>
+
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <h4>✦ Yoga — The Path of Union</h4>
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        <strong style="color: var(--golden-deep);">Yoga</strong> is far more than physical practice. It is the ancient science of <em>union</em> — connecting the individual self (<em>Jeevatma</em>) with the Universal Self (<em>Paramatma</em>). Through disciplined practice, meditation, and self-awareness, Yoga awakens the dormant faculties within every human being and transforms everyday life into a sacred experience.
+                      </p>
+                    </div>
+
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <h4>✦ The Divine Manifestations</h4>
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        In the tenth chapter of the Bhagavad Gita, Lord Krishna reveals how His divine energy manifests in the universe's most powerful, beautiful, and sacred aspects. He is the origin and essence of everything — from the elements of nature to the most revered beings. Understanding Vibhuti Yoga helps devotees transcend material illusion by realising that the Divine is present in all things.
+                      </p>
+                    </div>
+
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <h4>✦ Awakening the 6th &amp; 7th Sense</h4>
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        <strong style="color: var(--golden-deep);">Vibhuti Yoga</strong> is the path of awakening the <em>extraordinary powers</em> that already reside within us — the miraculous faculties of the 6th and 7th senses. It is a Rishi-inspired programme that draws upon ancient Vedic wisdom to unlock intuition, sharpen intellect, enhance memory, and awaken the legendary <strong>'Third Eye'</strong> — enabling perception far beyond the ordinary.
+                      </p>
+                    </div>
+
+                    <div class="meaning-block" style="margin-bottom: 28px;">
+                      <h4>✦ Spiritual Growth &amp; Inner Transformation</h4>
+                      <ul class="meaning-list">
+                        <li><span class="bullet">✦</span> <strong>Self-Realisation</strong> — Understand your true nature beyond body and mind</li>
+                        <li><span class="bullet">✦</span> <strong>Inner Peace</strong> — Cultivate a calm, mindful, and centred being</li>
+                        <li><span class="bullet">✦</span> <strong>Cosmic Awareness</strong> — Perceive the unity of all beings with the Divine</li>
+                        <li><span class="bullet">✦</span> <strong>Emotional Intelligence</strong> — Master thoughts, emotions, and actions with clarity</li>
+                        <li><span class="bullet">✦</span> <strong>Holistic Well-Being</strong> — Achieve harmony of body, mind, and spirit</li>
                       </ul>
                     </div>
 
                     <div class="meaning-block">
-                      <h4>2. Mind Power</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Improves focus, concentration, and cognitive abilities</li>
-                        <li><span class="bullet">✦</span> NLP techniques for overcoming negative patterns</li>
-                        <li><span class="bullet">✦</span> Stress-free goal setting and boosted creativity</li>
-                      </ul>
-                    </div>
-
-                    <div class="meaning-block">
-                      <h4>3. Holistic Healing Power</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Promotes emotional balance and physical well-being</li>
-                        <li><span class="bullet">✦</span> Cultivates a positive mindset and inner peace</li>
-                        <li><span class="bullet">✦</span> Support for slow learners & hyperactive children</li>
-                      </ul>
-                    </div>
-
-                    <div class="meaning-block">
-                      <h4>🔮 Occult Sciences — Dowsing & Vaasthu Vidya</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Dowsing — divine art from the Koorma Purana, linked with
-                          Cosmic Intelligence</li>
-                        <li><span class="bullet">✦</span> Vaasthu Vidya — Vedic science of Vishwakarma & Mayudu for
-                          energy correction</li>
-                        <li><span class="bullet">✦</span> Simple remedies to convert negative vibrations into positive —
-                          no heavy expense</li>
-                      </ul>
-                    </div>
-
-                    <div class="meaning-block">
-                      <h4>📚 Eklavya Vidye — 100% Memory Power</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Memorise entire textbook contents in a few days — remember
-                          forever</li>
-                        <li><span class="bullet">✦</span> Score high marks, relieve confusion, stress & fatigue</li>
-                        <li><span class="bullet">✦</span> ⏱️ Minimum 1 week per course — limited seats per batch</li>
-                      </ul>
-                    </div>
-
-                    <div class="meaning-block">
-                      <h4>🎯 Programme Goals</h4>
-                      <ul>
-                        <li><span class="bullet">✦</span> Empower children with essential life skills</li>
-                        <li><span class="bullet">✦</span> Foster a positive and growth-oriented mindset</li>
-                        <li><span class="bullet">✦</span> Support unique learning needs</li>
-                        <li><span class="bullet">✦</span> Promote emotional and physical well-being</li>
-                        <li><span class="bullet">✦</span> Register today to secure your child's admission!</li>
-                      </ul>
+                      <h4>✦ Our Sacred Purpose</h4>
+                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                        At Vibhuti Yoga, we believe every child and every seeker carries within them a spark of the infinite. Our mission is to nurture that spark — through the science of intuition, the discipline of the mind, and the healing power of holistic well-being — into a flame of self-mastery, confidence, and divine awareness. This is not merely education; it is <em>transformation</em>.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -564,22 +569,11 @@
                 <!-- ═══════════════ COURSE: INTUITION POWER ═══════════════ -->
                 <div class="course-card-v2" data-course="Intuition Power" id="course-intuition">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-levels" id="badge-intuition">3 Levels</div>
                     <button class="course-tts-btn" onclick="speakCourse('intuition')" title="Listen to course details">
                       <i class="fas fa-volume-up"></i>
                     </button>
-                    <div class="course-image-v2"><img src="assets/intuition_power.png" alt="Intuition Power"></div>
-                    <h3 class="course-title-v2" id="title-intuition">Intuition Power (3 Levels)</h3>
-                    <p class="course-desc-v2" id="desc-intuition">Wonders of the 6th & 7th Sense — A special camp
-                      designed for children aged 6 to 16 (as well as seniors) conducted by Vibhuti Yoga trainers. This
-                      Rishi-inspired programme unlocks latent potential, boosts self-confidence, refines the senses,
-                      sharpens intellect, enhances concentration & memory, and awakens the 'Third Eye' — enabling
-                      extraordinary perception even while blindfolded.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="intuition">🌱 1st Level - Foundation</span>
-                      <span data-level-item="intuition">🌿 2nd Level - Intermediate</span>
-                      <span data-level-item="intuition">🌳 3rd Level - Advanced</span>
-                    </div>
+                    <div class="course-image-v2"><img src="assets/intuition_detail_1.png" alt="Intuition Power"></div>
+                    <h3 class="course-title-v2" id="title-intuition">Intuition Power</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('intuition')">
                       <span id="explore-btn-intuition">✨ Tap to Explore Benefits</span>
                     </button>
@@ -593,21 +587,11 @@
                 <!-- ═══════════════ COURSE: MIND POWER ═══════════════ -->
                 <div class="course-card-v2" data-course="Mind Power" id="course-mind">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-intermediate" id="badge-mind">3 Levels</div>
                     <button class="course-tts-btn" onclick="speakCourse('mind')" title="Listen to course details">
                       <i class="fas fa-volume-up"></i>
                     </button>
                     <div class="course-image-v2"><img src="assets/mind_power.png" alt="Mind Power"></div>
-                    <h3 class="course-title-v2" id="title-mind">Mind Power (3 Levels)</h3>
-                    <p class="course-desc-v2" id="desc-mind">Improves focus, concentration, and cognitive abilities
-                      through NLP techniques, stress-free goal setting, and boosted creativity. Includes Eklavya Vidye —
-                      100% Memory Power: memorise entire textbook contents in a few days, remember essential topics
-                      forever, and score high marks in exams.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="mind">🌱 1st Level - Foundation</span>
-                      <span data-level-item="mind">🌿 2nd Level - Intermediate</span>
-                      <span data-level-item="mind">🌳 3rd Level - Advanced</span>
-                    </div>
+                    <h3 class="course-title-v2" id="title-mind">Mind Power</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('mind')">
                       <span id="explore-btn-mind">✨ Tap to Explore Benefits</span>
                     </button>
@@ -620,21 +604,11 @@
                 <!-- ═══════════════ COURSE: HOLISTIC HEALING ENERGY POWER ═══════════════ -->
                 <div class="course-card-v2" data-course="Holistic Healing Energy Power" id="course-holistic">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-advanced" id="badge-holistic">3 Modules</div>
                     <button class="course-tts-btn" onclick="speakCourse('holistic')" title="Listen to course details">
                       <i class="fas fa-volume-up"></i>
                     </button>
                     <div class="course-image-v2"><img src="assets/holistic_healing.png" alt="Holistic Healing"></div>
-                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing (3 Levels)</h3>
-                    <p class="course-desc-v2" id="desc-holistic">Promotes emotional balance, physical well-being, and a
-                      positive mindset. Supports slow learners and hyperactive children with personalised
-                      guidance.<br><br><strong>Note: The holistic healing class will be in Prana Yoga Ashramam.</strong>
-                    </p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="holistic">✨ 1st Module - Basics</span>
-                      <span data-level-item="holistic">💫 2nd Module - Practitioner</span>
-                      <span data-level-item="holistic">⭐ 3rd Module - Master</span>
-                    </div>
+                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing Energy Power (Pranic Healing)</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('holistic')">
                       <span id="explore-btn-holistic">✨ Tap to Explore Benefits</span>
                     </button>
@@ -647,6 +621,7 @@
 
               </div>
 
+            <section id="testimonials" class="section-full">
               <div class="testimonials-marquee-wrap" aria-label="Student testimonials">
                 <h3 class="testimonials-title">What Families Say</h3>
                 <div class="testimonials-marquee">
@@ -687,24 +662,21 @@
                   </div>
                 </div>
               </div>
+            </section>
 
               <!-- ═══════════════ FREE TECHNIQUES SECTION ═══════════════ -->
               <h2 class="section-heading courses-subheading">
                 <span class="accent">✦</span>
-                <span id="heading-free-tech">Free Techniques & Divine Sciences with Registration</span>
+                <span id="heading-free-tech">Complimentary Divine Sciences</span>
                 <span class="accent">✦</span>
               </h2>
-              <p class="techniques-subtitle" id="subtitle-free-tech">These powerful techniques are included
-                <strong>FREE</strong> when you
-                register for any of our courses above
-              </p>
+
 
               <div class="courses-unified-grid techniques-grid">
 
                 <!-- ═══════════════ COURSE: AKUL SCIENCE ═══════════════ -->
                 <div class="course-card-v2 technique-card" data-course="Akul Science" id="course-akul">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-special" id="badge-akul">New</div>
                     <button class="course-tts-btn" onclick="speakCourse('akul')" title="Listen to course details">
                       <i class="fas fa-volume-up"></i>
                     </button>
@@ -712,13 +684,6 @@
                       <img src="akul_science.png" alt="Akul Science">
                     </div>
                     <h3 class="course-title-v2" id="title-akul">Akul Science</h3>
-                    <p class="course-desc-v2" id="desc-akul">Explore the ancient science of Akul — the formless, supreme
-                      consciousness beyond creation. A profound journey into the science of the unmanifest.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="akul">🕉️ Theory & Philosophy</span>
-                      <span data-level-item="akul">🧘 Practical Meditation</span>
-                      <span data-level-item="akul">✨ Advanced Realization</span>
-                    </div>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('akul')">
                       <span id="explore-btn-akul">✨ Tap to Explore Benefits</span>
                     </button>
@@ -731,7 +696,6 @@
                 <!-- ═══════════════ TECHNIQUE: NITYA AGNI HOTRAM ═══════════════ -->
                 <div class="course-card-v2 technique-card" data-course="Nitya Agni Hotram" id="course-agni">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-free" id="badge-agni">🎁 FREE</div>
                     <button class="course-tts-btn" onclick="speakCourse('agni')" title="Listen to technique details">
                       <i class="fas fa-volume-up"></i>
                     </button>
@@ -739,9 +703,6 @@
                       <img src="agni_technique.png" alt="Nitya Agni Hotram">
                     </div>
                     <h3 class="course-title-v2" id="title-agni">Nitya Agni Hotram</h3>
-                    <p class="course-desc-v2" id="desc-agni">Master the sacred Vedic fire technique — harness the
-                      transformative power of Agni for purification, energy activation, and spiritual awakening through
-                      ancient fire rituals. </p>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('agni')">
                       <span id="explore-btn-agni">✨ Tap to Explore Benefits</span>
                     </button>
@@ -754,7 +715,6 @@
                 <!-- ═══════════════ TECHNIQUE: EKLAVYA VIDYE (100% MEMORY POWER) ═══════════════ -->
                 <div class="course-card-v2 technique-card" data-course="Eklavya Vidye" id="course-eklavya">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-free" id="badge-eklavya">🎁 FREE</div>
                     <button class="course-tts-btn" onclick="speakCourse('eklavya')" title="Listen to technique details">
                       <i class="fas fa-volume-up"></i>
                     </button>
@@ -762,18 +722,47 @@
                       <i class="fas fa-brain"
                         style="font-size: 60px; color: var(--golden-primary); padding: 20px; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
                     </div>
-                    <h3 class="course-title-v2" id="title-eklavya">Eklavya Vidye — 100% Memory Power</h3>
-                    <p class="course-desc-v2" id="desc-eklavya">100% Mind Power Eklavya Vidye — memorise entire textbook
-                      contents in just a few days! Easily remember essential topics forever, replicate thousands of
-                      pages in minutes, score high marks in exams, and get a chance to become a world talent. Relieves
-                      confusion, forgetfulness, fatigue, depression, and stress. Gain health, happiness, and skills to
-                      remember more in less time.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="eklavya">📚 Minimum 1 week per course</span>
-                      <span data-level-item="eklavya">🎯 Limited seats per batch</span>
-                    </div>
+                    <h3 class="course-title-v2" id="title-eklavya">Eklavya Vidye</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('eklavya')">
                       <span id="explore-btn-eklavya">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <div class="free-tag-note" data-free-note>
+                      <i class="fas fa-gift"></i> Included free with any course registration
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ═══════════════ TECHNIQUE: DOWSING — THE DIVINE ART ═══════════════ -->
+                <div class="course-card-v2 technique-card" data-course="Dowsing" id="course-dowsing">
+                  <div class="course-card-inner">
+                    <button class="course-tts-btn" onclick="speakCourse('dowsing')" title="Listen to technique details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <img src="dowsing_technique.png" alt="Dowsing — The Divine Art">
+                    </div>
+                    <h3 class="course-title-v2" id="title-dowsing">Dowsing — The Divine Art</h3>
+                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dowsing')">
+                      <span id="explore-btn-dowsing">✨ Tap to Explore Benefits</span>
+                    </button>
+                    <div class="free-tag-note" data-free-note>
+                      <i class="fas fa-gift"></i> Included free with any course registration
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ═══════════════ TECHNIQUE: VAASTHU VIDYA ═══════════════ -->
+                <div class="course-card-v2 technique-card" data-course="Vaasthu Vidya" id="course-vaasthu">
+                  <div class="course-card-inner">
+                    <button class="course-tts-btn" onclick="speakCourse('vaasthu')" title="Listen to technique details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="course-image-v2">
+                      <i class="fas fa-home" style="font-size: 60px; color: var(--golden-primary); padding: 20px; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                    </div>
+                    <h3 class="course-title-v2" id="title-vaasthu">Vaasthu Vidya / Vedic Vastu</h3>
+                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('vaasthu')">
+                      <span id="explore-btn-vaasthu">✨ Tap to Explore Benefits</span>
                     </button>
                     <div class="free-tag-note" data-free-note>
                       <i class="fas fa-gift"></i> Included free with any course registration
@@ -789,8 +778,7 @@
                 <span id="heading-vidyas">Advanced Divine Sciences (Vidyas)</span>
                 <span class="accent">✦</span>
               </h2>
-              <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred
-                sciences.
+              <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred sciences.
                 <strong>We'll guide you to the right master.</strong>
               </p>
 
@@ -799,7 +787,6 @@
                 <!-- ═══════════════ REFERENCE: DHANUR VIDYA ═══════════════ -->
                 <div class="course-card-v2 reference-card" data-course="Dhanur Vidya" id="course-dhanur">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-reference" id="badge-dhanur">🏹 Partner</div>
                     <div class="reference-wing-badge" data-ref-badge>
                       <i class="fas fa-feather-alt"></i> Referred Course
                     </div>
@@ -809,14 +796,7 @@
                     <div class="course-image-v2">
                       <img src="dhanur_logo.png" alt="Dhanur Vidya">
                     </div>
-                    <h3 class="course-title-v2" id="title-dhanur">Dhanur Vidya (धनुर्विद्या)</h3>
-                    <p class="course-desc-v2" id="desc-dhanur">The ancient Vedic science of archery & martial arts — one
-                      of the 64 Kalas. Encompasses bow, arrows, divine weapons, mental discipline & warrior ethics.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="dhanur">🏹 Astra Vidya — Divine Weapons</span>
-                      <span data-level-item="dhanur">⚔️ Shastra Vidya — Combat Skills</span>
-                      <span data-level-item="dhanur">🧠 Dharana — Mental Discipline</span>
-                    </div>
+                    <h3 class="course-title-v2" id="title-dhanur">Dhanur Vidya</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dhanur')">
                       <span id="explore-btn-dhanur">✨ Tap to Explore Benefits</span>
                     </button>
@@ -831,7 +811,6 @@
                 <!-- ═══════════════ REFERENCE: SRI VIDYA ═══════════════ -->
                 <div class="course-card-v2 reference-card" data-course="Sri Vidya" id="course-sri">
                   <div class="course-card-inner">
-                    <div class="course-badge-v2 badge-reference" id="badge-sri">🔱 Partner</div>
                     <div class="reference-wing-badge" data-ref-badge>
                       <i class="fas fa-feather-alt"></i> Referred Course
                     </div>
@@ -841,14 +820,7 @@
                     <div class="course-image-v2">
                       <img src="sri_chakra_logo.png" alt="Sri Vidya">
                     </div>
-                    <h3 class="course-title-v2" id="title-sri">Sri Vidya (श्रीविद्या)</h3>
-                    <p class="course-desc-v2" id="desc-sri">The supreme Tantric-Vedic tradition of worshipping Devi. A
-                      profound path focusing deeply on Sri Durga Sapta Sadi and Varahi Sadhana.</p>
-                    <div class="course-levels-v2">
-                      <span data-level-item="sri">🌺 Sri Durga Sapta Sadi</span>
-                      <span data-level-item="sri">🔱 Varahi Sadhana</span>
-                      <span data-level-item="sri">🌙 Sri Chakra Worship</span>
-                    </div>
+                    <h3 class="course-title-v2" id="title-sri">Sri Vidya</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('sri')">
                       <span id="explore-btn-sri">✨ Tap to Explore Benefits</span>
                     </button>
@@ -859,6 +831,8 @@
                     </button>
                   </div>
                 </div>
+
+              </div>
 
               </div>
 
@@ -880,11 +854,11 @@
                       border-radius: 24px;
                       max-width: 500px;
                       margin: 0 auto;
-                      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                      box-shadow: 0 10px 45px rgba(212, 165, 116, 0.45);
                       color: #2d4563;
                     ">
                   <div
-                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
                     <img src="form_banner.png" alt="Class Registration"
                       style="width: 100%; display: block; object-fit: cover; height: auto;">
                   </div>
@@ -958,34 +932,7 @@
                         <option value="">Loading courses…</option>
                       </select>
                     </div>
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Preferred Time</label>
-                      <select id="reg-time" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            background: white;
-                            cursor: pointer;
-                            box-sizing: border-box;
-                          ">
-                        <option value="Morning (6 AM - 9 AM)">
-                          🌅 Morning (6 AM - 9 AM)
-                        </option>
-                        <option value="Afternoon (12 PM - 3 PM)">
-                          ☀️ Afternoon (12 PM - 3 PM)
-                        </option>
-                        <option value="Evening (5 PM - 8 PM)">
-                          🌆 Evening (5 PM - 8 PM)
-                        </option>
-                      </select>
-                    </div>
+
 
                     <div style="margin-bottom: 20px">
                       <label style="
@@ -1330,7 +1277,7 @@
                       </div>
                       <div class="healing-feature-item">
                         <i class="fas fa-balance-scale"></i>
-                        <span data-healing-feature>Chakra Balancing & Alignment</span>
+                        <span data-healing-feature>Chakras Balancing & Alignment</span>
                       </div>
                       <div class="healing-feature-item">
                         <i class="fas fa-magic"></i>
@@ -1343,6 +1290,18 @@
                       <div class="healing-feature-item">
                         <i class="fas fa-heart"></i>
                         <span data-healing-feature>Emotional & Mental Healing</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-smile-beam"></i>
+                        <span data-healing-feature>Stress & Tension Relief</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <span data-healing-feature>Psychological Conditions Healing</span>
+                      </div>
+                      <div class="healing-feature-item">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span data-healing-feature>Anxiety & Worry Dissolution</span>
                       </div>
                     </div>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('healing')"
@@ -1403,11 +1362,11 @@
                   border-radius: 24px;
                   max-width: 500px;
                   margin: 0 auto;
-                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                  box-shadow: 0 10px 45px rgba(212, 165, 116, 0.45);
                   color: #2d4563;
                 ">
                   <div
-                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
                     <img src="form_banner.png" alt="Healing Application"
                       style="width: 100%; display: block; object-fit: cover; height: auto;">
                   </div>
@@ -1450,7 +1409,7 @@
                         <option value="">-- Select Healing Type --</option>
                         <option value="Aura Cleansing & Purification">🌟 Aura Cleansing & Purification</option>
                         <option value="Negative Energy Removal">🛡️ Negative Energy Removal</option>
-                        <option value="Chakra Balancing & Alignment">⚖️ Chakra Balancing & Alignment</option>
+                        <option value="Chakras Balancing & Alignment">⚖️ Chakras Balancing & Alignment</option>
                         <option value="Spiritual Protection Shield">✨ Spiritual Protection Shield</option>
                         <option value="Karmic Debt Cleansing">🍃 Karmic Debt Cleansing</option>
                         <option value="Emotional & Mental Healing">💚 Emotional & Mental Healing</option>
@@ -1488,19 +1447,7 @@
                         font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <!-- Preferred Time -->
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Preferred
-                        Time</label>
-                      <select id="heal-time" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
-                        <option value="Morning (6 AM - 9 AM)">🌅 Morning (6 AM - 9 AM)</option>
-                        <option value="Afternoon (12 PM - 3 PM)">☀️ Afternoon (12 PM - 3 PM)</option>
-                        <option value="Evening (5 PM - 8 PM)">🌆 Evening (5 PM - 8 PM)</option>
-                        <option value="Flexible">🕐 Flexible (Any time)</option>
-                      </select>
-                    </div>
+
 
                     <!-- Aadhaar Number -->
                     <div style="margin-bottom: 15px">
@@ -1767,11 +1714,11 @@
                         border-radius: 24px;
                         max-width: 500px;
                         margin: 0 auto;
-                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                        box-shadow: 0 10px 35px rgba(184, 134, 11, 0.25);
                         color: #2d4563;
                       ">
                     <div
-                      style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                      style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
                       <img src="form_banner.png" alt="Contribute with Love"
                         style="width: 100%; display: block; object-fit: cover; height: auto;">
                     </div>
@@ -2095,7 +2042,7 @@
                       border-radius: 24px;
                       max-width: 720px;
                       margin: 0 auto;
-                      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                      box-shadow: 0 10px 35px rgba(184, 134, 11, 0.25);
                       color: #2d4563;
                     ">
                   <h4 style="font-size: 24px; margin-bottom: 12px; color: var(--golden-deep);">Karmic Debt Resolution Request</h4>
@@ -2327,7 +2274,7 @@
           "Intuition Power": { label: "🧠 Intuition Power", items: [] },
           "Mind Power": { label: "💭 Mind Power", items: [] },
           "Holistic Healing Energy Power": {
-            label: "✨ Holistic Healing Energy Power",
+            label: "✨ Holistic Healing Energy Power (Pranic Healing)",
             items: [],
           },
         };
@@ -2396,7 +2343,7 @@
       const email = document.getElementById("reg-email").value.trim();
       if (email) fd.append("email", email);
       fd.append("class_id", document.getElementById("reg-class").value);
-      fd.append("preferred_time", document.getElementById("reg-time").value);
+
       fd.append(
         "location",
         document.getElementById("reg-location").value.trim(),
@@ -2573,7 +2520,7 @@
       const issue = document.getElementById("heal-issue").value.trim();
       const location = document.getElementById("heal-location").value.trim();
       const prefDate = document.getElementById("heal-date").value;
-      const prefTime = document.getElementById("heal-time").value;
+
       const aadhaar = document.getElementById("heal-aadhaar-number").value.trim();
       const amount = document.getElementById("heal-amount").value;
       const txnId = document.getElementById("heal-txn-id").value.trim();
@@ -2588,7 +2535,7 @@
         `🔮 *Healing Type:* ${healType}`,
         `📍 *Location:* ${location}`,
         `📅 *Preferred Date:* ${prefDate}`,
-        `⏰ *Preferred Time:* ${prefTime}`,
+
         ``,
         `📝 *Issue / Concern:*`,
         issue,
@@ -2612,7 +2559,7 @@
         fd.append("issue_description", issue);
         fd.append("location", location);
         fd.append("preferred_date", prefDate);
-        fd.append("preferred_time", prefTime);
+
         fd.append("aadhaar_number", aadhaar);
         if (amount) fd.append("amount_paid", amount);
         if (txnId) fd.append("transaction_id", txnId);

@@ -15,7 +15,7 @@ function getHeaderHeight() {
 function updateHeaderOffset() {
   const root = document.documentElement;
   const headerHeight = getHeaderHeight();
-  const safeGap = window.innerWidth <= 768 ? 10 : 14;
+  const safeGap = window.innerWidth <= 768 ? 20 : 34; // Increased to account for banner gap
   root.style.setProperty("--header-offset", `${headerHeight + safeGap}px`);
 }
 
@@ -203,7 +203,12 @@ function showCourseStory(courseId) {
   const gallerySection = document.getElementById('story-gallery-section');
   
   // Create a mapping or logic for extra images
-  const extraImgSrc = `assets/${courseId}_detail_1.png`;
+  let extraImgSrc = `assets/${courseId}_detail_1.png`;
+  
+  // Swapped for Intuition Power as per user request (Child logo on main, Rishi logo in detail)
+  if (courseId === 'intuition') {
+    extraImgSrc = 'assets/intuition_power.png';
+  }
   
   // We can pre-check if image exists by trying to load it or just assigning it and using onerror
   extraImgElement.src = extraImgSrc;
@@ -342,7 +347,7 @@ const courseData = {
   },
   holistic: {
     en: {
-      title: 'Holistic Healing (3 Levels)',
+      title: 'Holistic Healing Energy Power (Pranic Healing)',
       desc: 'Promotes emotional balance, physical well-being, and a positive mindset. Supports slow learners and hyperactive children with personalized guidance.',
       benefits: 'Emotional balance and well-being. Physical health and vitality. Positive mindset cultivation. Support for slow learners and hyperactive children. Addiction prevention and overall wellness. Personalized attention and holistic development. Better social skills and relationships. Enhanced emotional intelligence.',
       benefitsList: [
@@ -476,7 +481,7 @@ const courseData = {
   },
   vaasthu: {
     en: {
-      title: 'Vaasthu Vidya — Vedic Science of Space',
+      title: 'Vaasthu Vidya / Vedic Vastu',
       desc: 'Vaasthu Vidya is an ancient Vedic science pioneered by Vishwakarma and Mayudu. Every house and structure is surrounded by planetary vibrations and Cosmic Energy. Where there are negative vibrations, they must be converted into positive vibrations to ensure a smooth life. If you have a Vaasthu issue in your house or business sector, you need not worry — no need to spend more money. With simple remedies, the energy dimensions can be corrected without heavy expense — no need to demolish or rebuild. This art comes under the Occult Sciences.',
       benefits: 'Identify negative vibrations in homes and business spaces. Convert negative energy dimensions to positive. Simple remedies without costly rebuilding.',
       benefitsList: [
@@ -647,8 +652,8 @@ const courseData = {
 const uiTranslations = {
   en: {
     ourCourses: 'Our Courses',
-    freeTechniques: 'Free Techniques & Divine Sciences',
-    freeTechSubtitle: 'These powerful techniques are included <strong>FREE</strong> when you register for any of our courses above',
+    freeTechniques: 'Complimentary Divine Sciences',
+    freeTechSubtitle: '',
     advancedVidyas: 'Advanced Divine Sciences (Vidyas)',
     vidyaSubtitle: 'We partner with expert Gurus for these advanced sacred sciences. <strong>We\'ll guide you to the right master.</strong>',
     divineHealing: 'Divine Healing Services',
@@ -660,7 +665,7 @@ const uiTranslations = {
     referredCourse: 'Referred Course',
     healingTitle: '🙏 Aura Cleansing & Energy Healing',
     healingDesc: 'Experience divine healing through the power of ancient Sanatana practices. Our expert healers cleanse negative aura, remove malefic energy attachments, balance disturbed chakras, and restore your natural divine light.',
-    healingFeatures: ['Negative Energy Removal', 'Aura Cleansing & Purification', 'Chakra Balancing & Alignment', 'Spiritual Protection Shield', 'Karmic Debt Cleansing', 'Emotional & Mental Healing'],
+    healingFeatures: ['Negative Energy Removal', 'Aura Cleansing & Purification', 'Chakras Balancing & Alignment', 'Spiritual Protection Shield', 'Karmic Debt Cleansing', 'Emotional & Mental Healing', 'Stress & Tension Relief', 'Psychological Conditions Healing', 'Anxiety & Worry Dissolution'],
     healingBenefitsTitle: '🌟 Healing Benefits',
     healingBenefits: [
       'Complete aura purification & energetic reset',
@@ -682,8 +687,8 @@ const uiTranslations = {
   },
   te: {
     ourCourses: 'మా కోర్సులు',
-    freeTechniques: 'ఉచిత టెక్నిక్‌లు & దివ్య విజ్ఞానాలు',
-    freeTechSubtitle: 'ఈ శక్తివంతమైన టెక్నిక్‌లు మీరు పైన ఉన్న ఏదైనా కోర్సుకు నమోదు చేసుకున్నప్పుడు <strong>ఉచితంగా</strong> చేర్చబడతాయి',
+    freeTechniques: 'పురస్కృత దివ్య విజ్ఞానాలు',
+    freeTechSubtitle: '',
     advancedVidyas: 'ఆధునాతన దివ్య విజ్ఞానాలు (విద్యలు)',
     vidyaSubtitle: 'ఈ ఆధునాతన పవిత్ర విజ్ఞానాల కోసం మేము నిపుణ గురువులతో భాగస్వామ్యం కలిగి ఉన్నాము. <strong>మేము మిమ్మల్ని సరైన గురువు వద్దకు మార్గదర్శకత్వం చేస్తాము.</strong>',
     divineHealing: 'దివ్య నయం సేవలు',
@@ -695,7 +700,7 @@ const uiTranslations = {
     referredCourse: 'రెఫర్ చేయబడిన కోర్సు',
     healingTitle: '🙏 ఆరా శుద్ధీకరణ & శక్తి నయం',
     healingDesc: 'ప్రాచీన సనాతన ఆచారాల శక్తి ద్వారా దివ్య ఉపశమనాన్ని అనుభవించండి. మా నిపుణ ఉపశమనకారులు ప్రతికూల ఆరాను శుద్ధి చేస్తారు, హానికరమైన శక్తి సంబంధాలను తొలగిస్తారు, అసమతుల్య చక్రాలను సమతుల్యం చేస్తారు మరియు మీ సహజ దివ్య కాంతిని పునరుద్ధరిస్తారు.',
-    healingFeatures: ['ప్రతికూల శక్తి తొలగింపు', 'ఆరా శుద్ధీకరణ & పవిత్రీకరణ', 'చక్ర సమతుల్యం & సమలేఖనం', 'ఆధ్యాత్మిక రక్షణ కవచం', 'కర్మ రుణ శుద్ధీకరణ', 'భావోద్వేగ & మానసిక నయం'],
+    healingFeatures: ['ప్రతికూల శక్తి తొలగింపు', 'ఆరా శుద్ధీకరణ & పవిత్రీకరణ', 'చక్రాల సమతుల్యం & సమలేఖనం', 'ఆధ్యాత్మిక రక్షణ కవచం', 'కర్మ రుణ శుద్ధీకరణ', 'భావోద్వేగ & మానసిక నయం', 'ఒత్తిడి & టెన్షన్ ఉపశమనం', 'మానసిక ఆరోగ్య స్థితిగతుల నయం', 'ఆందోళన & చింత తొలగింపు'],
     healingBenefitsTitle: '🌟 నయం ప్రయోజనాలు',
     healingBenefits: [
       'పూర్తి ఆరా శుద్ధీకరణ & శక్తి పునరుద్ధరణ',
@@ -718,7 +723,9 @@ const uiTranslations = {
 };
 
 // ============================================================================
-// FEMALE VOICE SELECTION + TTS
+// DEVI VOICE — Traditional Indian Temple Priestess TTS
+// Calm, graceful, spiritual. Speaks slowly with warmth and devotion.
+// Subtle Indian rhythm. Like a temple priestess blessing you.
 // ============================================================================
 let voicesLoaded = false;
 let cachedFemaleVoiceEN = null;
@@ -730,16 +737,36 @@ function scoreVoice(voice, langKey = "en") {
   let score = 0;
 
   if (langKey === "en") {
-    if (lang.includes("en-in") || lang.includes("en_in") || name.includes("india") || name.includes("indian")) score += 70;
-    if (name.includes("neerja") || name.includes("veena") || name.includes("lekha") || name.includes("aditi")) score += 60;
-    if (name.includes("female") || name.includes("woman") || name.includes("samantha")) score += 28;
-    if (name.includes("google")) score += 8;
-    if (lang.startsWith("en")) score += 14;
+    // Strongly prefer Indian English female voices
+    if (lang.includes("en-in") || lang.includes("en_in")) score += 100;
+    if (name.includes("india") || name.includes("indian")) score += 80;
+    
+    // Named Indian female voices (highest priority)
+    if (name.includes("neerja")) score += 120;
+    if (name.includes("veena")) score += 115;
+    if (name.includes("lekha")) score += 110;
+    if (name.includes("aditi")) score += 105;
+    if (name.includes("priya")) score += 100;
+    if (name.includes("rishi")) score += 95;
+    
+    // Female voice indicators
+    if (name.includes("female") || name.includes("woman")) score += 50;
+    if (name.includes("samantha")) score += 30;
+    if (name.includes("zira")) score += 25;
+    if (name.includes("google") && lang.includes("en-in")) score += 60;
+    if (name.includes("google")) score += 10;
+    if (lang.startsWith("en")) score += 8;
+    
+    // Penalize male-sounding voices
+    if (name.includes("daniel") || name.includes("james") || name.includes("david")) score -= 50;
+    if (name.includes("male") && !name.includes("female")) score -= 40;
   } else if (langKey === "te") {
-    if (lang.includes("te-in") || lang.startsWith("te")) score += 90;
-    if (name.includes("telugu")) score += 40;
-    if (name.includes("female") || name.includes("woman")) score += 20;
-    if (name.includes("india") || name.includes("indian")) score += 12;
+    if (lang.includes("te-in") || lang.startsWith("te")) score += 120;
+    if (name.includes("telugu")) score += 60;
+    if (name.includes("female") || name.includes("woman")) score += 40;
+    if (name.includes("india") || name.includes("indian")) score += 20;
+    // Penalize male voices
+    if (name.includes("male") && !name.includes("female")) score -= 40;
   }
 
   return score;
@@ -762,16 +789,18 @@ function applySoftIndianVoice(utterance, langPref = "en") {
   if (langPref === "te") {
     utterance.lang = "te-IN";
     if (cachedFemaleVoiceTE) utterance.voice = cachedFemaleVoiceTE;
-    utterance.rate = 0.78;
-    utterance.pitch = 0.95;
+    // Devi persona: slow, devotional Telugu delivery
+    utterance.rate = 0.65;
+    utterance.pitch = 1.05;
     utterance.volume = 1;
     return;
   }
 
   utterance.lang = "en-IN";
   if (cachedFemaleVoiceEN) utterance.voice = cachedFemaleVoiceEN;
-  utterance.rate = 0.76;
-  utterance.pitch = 1.08;
+  // Devi persona: calm, warm, slow — like a temple priestess blessing
+  utterance.rate = 0.65;
+  utterance.pitch = 1.12;
   utterance.volume = 1;
 }
 
@@ -783,8 +812,8 @@ function loadVoices() {
   cachedFemaleVoiceEN = getBestVoice(voices, "en") || voices.find((v) => v.lang?.toLowerCase().startsWith("en")) || null;
   cachedFemaleVoiceTE = getBestVoice(voices, "te") || voices.find((v) => v.lang?.toLowerCase().startsWith("te")) || null;
 
-  console.log('🔊 English voice:', cachedFemaleVoiceEN?.name || 'default');
-  console.log('🔊 Telugu voice:', cachedFemaleVoiceTE?.name || 'default (will use lang tag)');
+  console.log('🙏 Devi English voice:', cachedFemaleVoiceEN?.name || 'default');
+  console.log('🙏 Devi Telugu voice:', cachedFemaleVoiceTE?.name || 'default (will use lang tag)');
 }
 
 // Load voices
