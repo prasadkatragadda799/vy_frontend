@@ -16,8 +16,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="vibhuti-styles.css?v=31" />
-  <link rel="stylesheet" href="mobile-responsive.css?v=31" />
+  <link rel="stylesheet" href="vibhuti-styles.css?v=38" />
+  <link rel="stylesheet" href="mobile-responsive.css?v=38" />
   <style>
     /* === VIDEO SPLASH SCREEN === */
     #splash-screen {
@@ -57,21 +57,20 @@
     @keyframes floatSvg {
       0% {
         transform: translateY(0px) scale(1);
-        opacity: 0.7;
-        /* Much higher opacity for proper visualization */
-        filter: drop-shadow(0 2px 5px rgba(184, 134, 11, 0.2));
+        opacity: 0.8;
+        filter: drop-shadow(0 0 10px rgba(184, 134, 11, 0.3));
       }
 
       50% {
-        transform: translateY(-25px) scale(1.08);
-        opacity: 0.95;
-        filter: drop-shadow(0 8px 20px rgba(93, 64, 55, 0.3));
+        transform: translateY(-25px) scale(1.1);
+        opacity: 1;
+        filter: drop-shadow(0 0 25px rgba(212, 165, 116, 0.7));
       }
 
       100% {
         transform: translateY(0px) scale(1);
-        opacity: 0.7;
-        filter: drop-shadow(0 2px 5px rgba(184, 134, 11, 0.2));
+        opacity: 0.8;
+        filter: drop-shadow(0 0 10px rgba(184, 134, 11, 0.3));
       }
     }
 
@@ -106,12 +105,11 @@
       width: 100%;
       height: 100%;
       fill: none;
-      stroke: #5d4037;
-      /* Deep bronze for perfect visualization on light parchment */
-      stroke-width: 2.8;
-      /* Thicker strokes for better clarity */
+      stroke: #d4a574; /* Radiant Golden Amber */
+      stroke-width: 3.2; /* Slightly thicker for better glow presence */
       stroke-linecap: round;
       stroke-linejoin: round;
+      filter: drop-shadow(0 0 8px rgba(212, 165, 116, 0.5));
     }
 
     .splash-bg-om {
@@ -434,7 +432,7 @@
       <nav class="nav-menu">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
-        <a href="#testimonials" class="nav-link" data-section="testimonials">Testimonials</a>
+        <a href="#testimonials" class="nav-link" data-section="testimonials">Feed</a>
         <a href="#healing" class="nav-link" data-section="healing">Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
@@ -457,25 +455,26 @@
                     gap: 28px;
                     width: 100%;
                   ">
-                <div class="hero-large-logo">
+                <div class="hero-large-logo" style="order: 1; margin-top: 15px;">
                   <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" class="hero-main-logo" />
                 </div>
-                <div class="hero-text-content" style="width: 100%; text-align: center">
+                <div class="hero-text-content" style="width: 100%; text-align: center; order: 2;">
                   <h1 class="hero-title"
-                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 3.2rem; line-height: 1.2; margin-bottom: 0; font-weight: 900; color: var(--golden-deep); text-shadow: none; letter-spacing: 6px;">
+                    style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 5px; font-weight: 900; color: var(--golden-deep); text-shadow: 0 2px 4px rgba(139,96,0,0.12); letter-spacing: 8px;">
                     VIBHUTI YOGA
                   </h1>
                   <p class="hero-tagline"
-                    style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--golden-primary); letter-spacing: 3px; text-transform: uppercase; margin: 12px 0 35px; font-weight: 700; text-shadow: none; line-height: 1.4;">
-                    Miracles in the 6th & 7th Sense
+                    style="font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--golden-primary); letter-spacing: 4px; text-transform: uppercase; margin: 15px 0 35px; font-weight: 700; text-shadow: none; line-height: 1.3;">
+                    Divine Vision of the Universe
                   </p>
+                </div>
                   <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
                     title="Listen to home introduction">
                     <i class="fas fa-volume-up"></i>
                     <span>Listen</span>
                   </button>
 
-                  <div class="hero-description custom-meaning">
+                  <div class="glass-card hero-description custom-meaning">
                     <h3 class="meaning-title">🕉️ What Vibhuti Yoga Means</h3>
 
                     <div class="meaning-block" style="margin-bottom: 28px;">
@@ -532,25 +531,7 @@
                   </div>
                 </div>
               </div>
-              <div class="hero-stats">
-                <div class="stat-card">
-                  <div class="stat-icon"><i class="fas fa-users"></i></div>
-                  <div class="stat-number">10,000+</div>
-                  <div class="stat-label">Students</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-icon">
-                    <i class="fas fa-certificate"></i>
-                  </div>
-                  <div class="stat-number">500+</div>
-                  <div class="stat-label">Instructors</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                  <div class="stat-number">50+</div>
-                  <div class="stat-label">Countries</div>
-                </div>
-              </div>
+
             </section>
 
             <!-- About section removed -->
@@ -621,56 +602,12 @@
 
               </div>
 
-            <section id="testimonials" class="section-full">
-              <div class="testimonials-marquee-wrap" aria-label="Student testimonials">
-                <h3 class="testimonials-title">What Families Say</h3>
-                <div class="testimonials-marquee">
-                  <div class="testimonials-track">
-                    <article class="testimonial-card">
-                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
-                      <span>- Parent, Hyderabad</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
-                      <span>- Parent, Vijayawada</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
-                      <span>- Parent, Warangal</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
-                      <span>- Parent, Guntur</span>
-                    </article>
-
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
-                      <span>- Parent, Hyderabad</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
-                      <span>- Parent, Vijayawada</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
-                      <span>- Parent, Warangal</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
-                      <span>- Parent, Guntur</span>
-                    </article>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-              <!-- ═══════════════ FREE TECHNIQUES SECTION ═══════════════ -->
+              <!-- ═══════════════ FREE TECHNIQUES SECTION (Merged) ═══════════════ -->
               <h2 class="section-heading courses-subheading">
                 <span class="accent">✦</span>
                 <span id="heading-free-tech">Complimentary Divine Sciences</span>
                 <span class="accent">✦</span>
               </h2>
-
 
               <div class="courses-unified-grid techniques-grid">
 
@@ -834,7 +771,8 @@
 
               </div>
 
-              </div>
+
+
 
 
 
@@ -864,159 +802,125 @@
                   </div>
 
                   <form id="registration-form" onsubmit="submitRegistration(event)" style="text-align: left">
+                    
+                    <!-- 1. Aadhaar Number -->
                     <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Your Name *</label>
-                      <input type="text" id="reg-name" required placeholder="Enter your full name" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Number *</label>
+                      <input type="text" id="reg-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
+
+                    <!-- 2. Course Drop Down -->
                     <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Phone Number *</label>
-                      <input type="tel" id="reg-phone" required placeholder="Enter your phone number" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Email (Optional)</label>
-                      <input type="email" id="reg-email" placeholder="Enter your email" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Select Class *</label>
-                      <select id="reg-class" required style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            background: white;
-                            cursor: pointer;
-                            box-sizing: border-box;
-                          ">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Select Class *</label>
+                      <select id="reg-class" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
                         <option value="">Loading courses…</option>
                       </select>
                     </div>
 
-
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Location (City/Area) *</label>
-                      <input type="text" id="reg-location" required placeholder="Enter your location" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Siblings (Name & Age) - Optional</label>
-                      <input type="text" id="reg-siblings" placeholder="e.g. Rahul (12), Priya (8)" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-
+                    <!-- 3. Name -->
                     <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Number *</label>
-                      <input type="text" id="reg-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number"
-                        maxlength="12" pattern="\d{12}" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Card Front (Image/PDF) *</label>
-                      <input type="file" id="reg-aadhaar-front" required accept="image/*,.pdf" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 14px;
-                            background: #f8f9fa;
-                          " />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
+                      <input type="text" id="reg-name" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
+                    <!-- 4. Qualification -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Qualification *</label>
+                      <input type="text" id="reg-qualification" required placeholder="Enter your qualification" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 5. Phone Number -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Phone Number *</label>
+                      <input type="tel" id="reg-phone" required placeholder="Enter your phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 6. Email -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Email (Optional)</label>
+                      <input type="email" id="reg-email" placeholder="Enter your email" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 7. Siblings -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Siblings (Name & Age) - Optional</label>
+                      <input type="text" id="reg-siblings" placeholder="e.g. Rahul (12), Priya (8)" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 8. Location Present Address -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Location (Present Address) *</label>
+                      <input type="text" id="reg-location" required placeholder="Enter your present address" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 9. Aadhaar Card Image -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
+                      <input type="file" id="reg-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                    </div>
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
+                      <input type="file" id="reg-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                    </div>
+
+                    <!-- 10. Health Issues -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Any Health Issues / Weakness</label>
+                      <input type="text" id="reg-health" placeholder="Mention any health issues or leave blank" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 11. Father Name -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Name *</label>
+                      <input type="text" id="reg-father-name" required placeholder="Enter father's name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 12. Father Phone -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Phone Number *</label>
+                      <input type="tel" id="reg-father-phone" required placeholder="Enter father's phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 13. Father Occupation -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Occupation *</label>
+                      <input type="text" id="reg-father-occupation" required placeholder="Enter father's occupation" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 14. Mother Name -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Name *</label>
+                      <input type="text" id="reg-mother-name" required placeholder="Enter mother's name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 15. Mother Phone -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Phone Number *</label>
+                      <input type="tel" id="reg-mother-phone" required placeholder="Enter mother's phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 16. Mother Occupation -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Occupation *</label>
+                      <input type="text" id="reg-mother-occupation" required placeholder="Enter mother's occupation" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 17. Course Reference Name -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Course Reference Name</label>
+                      <input type="text" id="reg-reference" placeholder="Who referred you to this course?" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 18. Why do want to attend the course -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Why do you want to attend the course? *</label>
+                      <textarea id="reg-reason" required rows="3" placeholder="Briefly explain your reason" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
+                    </div>
+
+                    <!-- 19. Recent Picture -->
                     <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Card Back (Image/PDF) *</label>
-                      <input type="file" id="reg-aadhaar-back" required accept="image/*,.pdf" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 14px;
-                            background: #f8f9fa;
-                          " />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture (Upload) *</label>
+                      <input type="file" id="reg-picture" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
                     <!-- Amount Paid -->
@@ -1237,6 +1141,50 @@
               </div>
             </section>
 
+            <section id="testimonials" class="section-full">
+              <div class="testimonials-marquee-wrap" aria-label="Student testimonials">
+                <h3 class="testimonials-title">What Families Say</h3>
+                <div class="testimonials-marquee">
+                  <div class="testimonials-track">
+                    <article class="testimonial-card">
+                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
+                      <span>- Parent, Hyderabad</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
+                      <span>- Parent, Vijayawada</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
+                      <span>- Parent, Warangal</span>
+                    </article>
+                    <article class="testimonial-card">
+                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
+                      <span>- Parent, Guntur</span>
+                    </article>
+
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
+                      <span>- Parent, Hyderabad</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
+                      <span>- Parent, Vijayawada</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
+                      <span>- Parent, Warangal</span>
+                    </article>
+                    <article class="testimonial-card" aria-hidden="true">
+                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
+                      <span>- Parent, Guntur</span>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
             <!-- ═══════════════════════════════════════════════════════ -->
             <!-- HEALING SECTION (Separate Tab) -->
             <!-- ═══════════════════════════════════════════════════════ -->
@@ -1374,135 +1322,131 @@
                   <form id="healing-form" onsubmit="submitHealingApplication(event)" style="text-align: left">
                     <!-- Name -->
                     <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name
-                        *</label>
-                      <input type="text" id="heal-name" required placeholder="Enter your full name" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
+                      <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- DOB -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Date of Birth *</label>
+                      <input type="date" id="heal-dob" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- DOB Time -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Time of Birth *</label>
+                      <input type="time" id="heal-dob-time" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- DOB Place -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Place of Birth *</label>
+                      <input type="text" id="heal-dob-place" required placeholder="City, State, Country" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- Star (Nakshatra) -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Star (Nakshatra) *</label>
+                      <input type="text" id="heal-star" required placeholder="e.g. Ashwini, Bharani" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Phone -->
                     <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Phone Number
-                        *</label>
-                      <input type="tel" id="heal-phone" required placeholder="Enter your phone number" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Phone Number *</label>
+                      <input type="tel" id="heal-phone" required placeholder="Enter your phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Email -->
                     <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Email
-                        (Optional)</label>
-                      <input type="email" id="heal-email" placeholder="Enter your email" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Email (Optional)</label>
+                      <input type="email" id="heal-email" placeholder="Enter your email" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <!-- Healing Type -->
+                    <!-- Address -->
                     <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Healing
-                        Service *</label>
-                      <select id="heal-type" required style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
-                        <option value="">-- Select Healing Type --</option>
-                        <option value="Aura Cleansing & Purification">🌟 Aura Cleansing & Purification</option>
-                        <option value="Negative Energy Removal">🛡️ Negative Energy Removal</option>
-                        <option value="Chakras Balancing & Alignment">⚖️ Chakras Balancing & Alignment</option>
-                        <option value="Spiritual Protection Shield">✨ Spiritual Protection Shield</option>
-                        <option value="Karmic Debt Cleansing">🍃 Karmic Debt Cleansing</option>
-                        <option value="Emotional & Mental Healing">💚 Emotional & Mental Healing</option>
-                        <option value="Evil Eye / Nazar Dosh Removal">🧿 Evil Eye / Nazar Dosh Removal</option>
-                        <option value="Complete Healing Package">🙏 Complete Healing Package</option>
-                      </select>
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Address *</label>
+                      <input type="text" id="heal-address" required placeholder="Enter your full address" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
-
-                    <!-- Issue Description -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Describe Your
-                        Issue / Concern *</label>
-                      <textarea id="heal-issue" required rows="4"
-                        placeholder="Please describe what you are experiencing — physical, emotional, or spiritual concerns..."
-                        style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
-                    </div>
-
-                    <!-- Location -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Location
-                        (City/Area) *</label>
-                      <input type="text" id="heal-location" required placeholder="Enter your location" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <!-- Preferred Date -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Preferred Date
-                        *</label>
-                      <input type="date" id="heal-date" required style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-
 
                     <!-- Aadhaar Number -->
                     <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Number
-                        *</label>
-                      <input type="text" id="heal-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number"
-                        maxlength="12" pattern="\d{12}" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Number *</label>
+                      <input type="text" id="heal-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <!-- Aadhaar Front -->
+                    <!-- Aadhaar Front & Back -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
+                      <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                    </div>
                     <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card
-                        Front (Image/PDF) *</label>
-                      <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf" style="
-                        width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 14px; background: #f8f9fa;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
+                      <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
-                    <!-- Aadhaar Back -->
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card
-                        Back (Image/PDF) *</label>
-                      <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf" style="
-                        width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 14px; background: #f8f9fa;" />
+                    <!-- Issues Dropdown -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Issues *</label>
+                      <select id="heal-issue-type" required onchange="toggleHealOtherIssue()" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
+                        <option value="">-- Select Issue --</option>
+                        <option value="Physical">Physical</option>
+                        <option value="Psychological">Psychological</option>
+                        <option value="Relationship">Relationship</option>
+                        <option value="Job / Business">Job / Business</option>
+                        <option value="Financial">Financial</option>
+                        <option value="Addictions">Addictions</option>
+                        <option value="Other">If any other please specify</option>
+                      </select>
                     </div>
 
-                    <!-- Amount Paid -->
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Amount Paid
-                        (₹) — if advance payment made</label>
-                      <input type="number" id="heal-amount" placeholder="e.g. 500" min="0" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                    <!-- Other Issue Free Text -->
+                    <div id="heal-issue-other-container" style="margin-bottom: 15px; display: none;">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Please Specify Other Issue *</label>
+                      <input type="text" id="heal-issue-other" placeholder="Specify your issue" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <!-- Transaction ID -->
-                    <div style="margin-bottom: 20px">
-                      <label
-                        style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Transaction/Reference
-                        ID (Optional)</label>
-                      <input type="text" id="heal-txn-id" placeholder="Enter transaction ID if paid" style="
-                        width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px;
-                        font-size: 16px; box-sizing: border-box;" />
+                    <!-- Condition Description -->
+                    <div style="margin-bottom: 15px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Describe condition of whatever the problem is *</label>
+                      <textarea id="heal-condition" required rows="4" placeholder="Detailed description of your condition..." style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
                     </div>
 
-                    <!-- Transaction Receipt -->
+                    <!-- Person Present Photo -->
                     <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Transaction
-                        Receipt (Image/PDF) — Optional</label>
-                      <input type="file" id="heal-receipt" accept="image/*,.pdf" style="
-                        width: 100%; padding: 10px; border: 1px dashed #bdc3c7; border-radius: 10px;
-                        background: rgba(255, 255, 255, 0.5);" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture of Person Requiring Healing (Upload) *</label>
+                      <input type="file" id="heal-photo" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                    </div>
+
+                    <!-- Declaration -->
+                    <div style="margin-bottom: 20px; background: rgba(245, 215, 148, 0.15); border: 1px solid rgba(212, 165, 116, 0.4); padding: 15px; border-radius: 10px;">
+                      <h4 style="color: var(--golden-deep); margin-top: 0; margin-bottom: 10px; font-family: 'Cinzel', serif;">Sacred Declaration</h4>
+                      <p style="font-size: 13px; color: #555; line-height: 1.6; text-align: justify; margin-bottom: 10px;">
+                        I have voluntarily approached the organization for curing my ailments through Pranic Healing. 
+                        I hereby unequivocally declare, convey and affirm my consent and acceptance to use of the principles and techniques of Pranic Healing for healing my ailments, out of my own free will without any duress or compulsion, and at my own risk.
+                      </p>
+                      <p style="font-size: 13px; color: #555; line-height: 1.6; text-align: justify; margin-bottom: 15px;">
+                        I further confirm that I am physically, emotionally and mentally fit for use of the principles and techniques of Pranic Healing for healing my ailments. I assume absolute and unequivocal responsibility for any injury, harm, damage, loss, etc., and the concerned healer, as also, the officers, agents, trustees, employees, etc. of the organization, shall not have any liability in any manner and form whatsoever. I duly and unequivocally waive all rights, claims, interests, etc., of any nature whatsoever, in this regard.
+                      </p>
+                      <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #2d4563; cursor: pointer; font-weight: 600;">
+                        <input type="checkbox" id="heal-declaration" required style="margin-top: 3px;" />
+                        I accept the above declaration.
+                      </label>
+                    </div>
+
+                    <!-- Fee Receipt & Amount -->
+                    <div style="margin-bottom: 20px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Fee Amount Paid (₹) *</label>
+                      <input type="number" id="heal-amount" required placeholder="e.g. 1000" min="1" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <div style="margin-bottom: 20px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Transaction/Reference ID</label>
+                      <input type="text" id="heal-txn-id" placeholder="Enter transaction ID" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <div style="margin-bottom: 20px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Accept and Fee Receipt (Upload) *</label>
+                      <input type="file" id="heal-receipt" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px dashed #bdc3c7; border-radius: 10px; background: rgba(255, 255, 255, 0.5);" />
                     </div>
 
                     <!-- PAYMENT SECTION -->
@@ -1588,14 +1532,14 @@
                 program and how you can enroll your child.
               </p>
               <div class="contact-grid">
-                <div class="contact-card">
+                <div class="glass-card contact-card">
                   <div class="contact-icon">
                     <i class="fas fa-map-marker-alt"></i>
                   </div>
                   <h3 class="contact-title">Visit</h3>
                   <p class="contact-text">Hyderabad<br />Telangana, India</p>
                 </div>
-                <div class="contact-card">
+                <div class="glass-card contact-card">
                   <div class="contact-icon"><i class="fas fa-phone"></i></div>
                   <h3 class="contact-title">Call</h3>
                   <p class="contact-text">
@@ -1605,7 +1549,7 @@
                     <br />Mon-Sat: 6AM - 9PM
                   </p>
                 </div>
-                <div class="contact-card">
+                <div class="glass-card contact-card">
                   <div class="contact-icon">
                     <i class="fas fa-envelope"></i>
                   </div>
@@ -2099,33 +2043,33 @@
                 </div>
               </div>
             </section>
+
+            <footer class="footer">
+              <div class="social-links">
+                <a href="https://www.facebook.com/share/1ECzi4wmCC/" target="_blank" class="social-icon"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/vibhuti7thsence?igsh=cXI4OWY4bDg5cHo1" target="_blank"
+                  class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@vibhuti7thsence?si=rogHVJEZBf3TXu0V" target="_blank" class="social-icon"><i
+                    class="fab fa-youtube"></i></a>
+                <a href="https://wa.me/917842434643" target="_blank" class="social-icon social-icon-whatsapp"><i
+                    class="fab fa-whatsapp"></i></a>
+              </div>
+              <div class="footer-contact-row">
+                <a href="tel:+917842434643" class="footer-contact-link">
+                  <i class="fas fa-phone"></i> +91 78424 34643
+                </a>
+                <span class="footer-separator">|</span>
+                <a href="mailto:vibhuti7thsence@gmail.com" class="footer-contact-link">
+                  <i class="fas fa-envelope"></i> vibhuti7thsence@gmail.com
+                </a>
+              </div>
+              <div class="footer-text">
+                © 2026 Vibhuti Yoga. All rights reserved.
+              </div>
+            </footer>
           </div>
         </div>
-
-        <footer class="footer">
-          <div class="social-links">
-            <a href="https://www.facebook.com/share/1ECzi4wmCC/" target="_blank" class="social-icon"><i
-                class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/vibhuti7thsence?igsh=cXI4OWY4bDg5cHo1" target="_blank"
-              class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@vibhuti7thsence?si=rogHVJEZBf3TXu0V" target="_blank" class="social-icon"><i
-                class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/917842434643" target="_blank" class="social-icon social-icon-whatsapp"><i
-                class="fab fa-whatsapp"></i></a>
-          </div>
-          <div class="footer-contact-row">
-            <a href="tel:+917842434643" class="footer-contact-link">
-              <i class="fas fa-phone"></i> +91 78424 34643
-            </a>
-            <span class="footer-separator">|</span>
-            <a href="mailto:vibhuti7thsence@gmail.com" class="footer-contact-link">
-              <i class="fas fa-envelope"></i> vibhuti7thsence@gmail.com
-            </a>
-          </div>
-          <div class="footer-text">
-            © 2026 Vibhuti Yoga. All rights reserved.
-          </div>
-        </footer>
       </div>
     </div>
   </div>
@@ -2344,10 +2288,7 @@
       if (email) fd.append("email", email);
       fd.append("class_id", document.getElementById("reg-class").value);
 
-      fd.append(
-        "location",
-        document.getElementById("reg-location").value.trim(),
-      );
+      fd.append("location", document.getElementById("reg-location").value.trim());
       const sib = document.getElementById("reg-siblings").value.trim();
       if (sib) fd.append("siblings_name", sib);
       fd.append("amount_paid", document.getElementById("reg-amount").value);
@@ -2362,6 +2303,22 @@
       if (front) fd.append("aadhaar_doc", front);
       if (back) fd.append("aadhaar_doc_back", back);
       if (receipt) fd.append("transaction_receipt_image", receipt);
+
+      // New fields
+      fd.append("qualification", document.getElementById("reg-qualification").value.trim());
+      const health = document.getElementById("reg-health").value.trim();
+      if (health) fd.append("health_issues", health);
+      fd.append("father_name", document.getElementById("reg-father-name").value.trim());
+      fd.append("father_phone", document.getElementById("reg-father-phone").value.trim());
+      fd.append("father_occupation", document.getElementById("reg-father-occupation").value.trim());
+      fd.append("mother_name", document.getElementById("reg-mother-name").value.trim());
+      fd.append("mother_phone", document.getElementById("reg-mother-phone").value.trim());
+      fd.append("mother_occupation", document.getElementById("reg-mother-occupation").value.trim());
+      const ref = document.getElementById("reg-reference").value.trim();
+      if (ref) fd.append("reference_name", ref);
+      fd.append("reason_to_attend", document.getElementById("reg-reason").value.trim());
+      const pic = document.getElementById("reg-picture").files[0];
+      if (pic) fd.append("recent_picture", pic);
 
       try {
         const res = await fetch(`${API_BASE}/api/classes/register-payment`, {
@@ -2506,42 +2463,73 @@
     }
 
     // ── Healing Application submission ──────────────────────────────────────────
+    function toggleHealOtherIssue() {
+      const type = document.getElementById("heal-issue-type").value;
+      const container = document.getElementById("heal-issue-other-container");
+      const input = document.getElementById("heal-issue-other");
+      if (type === "Other") {
+        container.style.display = "block";
+        input.required = true;
+      } else {
+        container.style.display = "none";
+        input.required = false;
+        input.value = "";
+      }
+    }
+
     async function submitHealingApplication(e) {
       e.preventDefault();
+      
+      const decl = document.getElementById("heal-declaration");
+      if (!decl.checked) {
+        showToast("❌ Please accept the Sacred Declaration before submitting.");
+        return;
+      }
+
       const btn = document.getElementById("healing-submit-btn");
       const orig = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
       btn.disabled = true;
 
       const name = document.getElementById("heal-name").value.trim();
+      const dob = document.getElementById("heal-dob").value;
+      const dobTime = document.getElementById("heal-dob-time").value;
+      const dobPlace = document.getElementById("heal-dob-place").value.trim();
+      const star = document.getElementById("heal-star").value.trim();
       const phone = document.getElementById("heal-phone").value.trim();
       const email = document.getElementById("heal-email").value.trim();
-      const healType = document.getElementById("heal-type").value;
-      const issue = document.getElementById("heal-issue").value.trim();
-      const location = document.getElementById("heal-location").value.trim();
-      const prefDate = document.getElementById("heal-date").value;
-
+      const address = document.getElementById("heal-address").value.trim();
       const aadhaar = document.getElementById("heal-aadhaar-number").value.trim();
+      
+      let issueType = document.getElementById("heal-issue-type").value;
+      if (issueType === "Other") {
+        issueType = document.getElementById("heal-issue-other").value.trim();
+      }
+      const condition = document.getElementById("heal-condition").value.trim();
+      
       const amount = document.getElementById("heal-amount").value;
       const txnId = document.getElementById("heal-txn-id").value.trim();
 
       // Build WhatsApp message as primary submission
       const msgLines = [
-        `🙏 *HEALING SESSION APPLICATION*`,
+        `🙏 *HEALING REQUISITION FORM*`,
         ``,
         `👤 *Name:* ${name}`,
+        `📅 *DOB:* ${dob}`,
+        `⏰ *DOB Time:* ${dobTime}`,
+        `📍 *DOB Place:* ${dobPlace}`,
+        `✨ *Star (Nakshatra):* ${star}`,
         `📞 *Phone:* ${phone}`,
         email ? `📧 *Email:* ${email}` : '',
-        `🔮 *Healing Type:* ${healType}`,
-        `📍 *Location:* ${location}`,
-        `📅 *Preferred Date:* ${prefDate}`,
-
-        ``,
-        `📝 *Issue / Concern:*`,
-        issue,
-        ``,
+        `🏠 *Address:* ${address}`,
         `🆔 *Aadhaar:* XXXX XXXX ${aadhaar.slice(-4)}`,
-        amount ? `💰 *Amount Paid:* ₹${amount}` : '',
+        ``,
+        `🔮 *Issue:* ${issueType}`,
+        `📝 *Condition Description:*`,
+        condition,
+        ``,
+        `📜 *Declaration:* Accepted`,
+        amount ? `💰 *Fee Amount Paid:* ₹${amount}` : '',
         txnId ? `🧾 *Transaction ID:* ${txnId}` : '',
         ``,
         `— Sent from Vibhuti Yoga Website`
@@ -2549,26 +2537,32 @@
 
       const whatsappUrl = `https://wa.me/917842434643?text=${encodeURIComponent(msgLines)}`;
 
-      // Also try API submission (FormData)
+      // Try API submission (FormData)
       try {
         const fd = new FormData();
         fd.append("name", name);
+        fd.append("dob", dob);
+        fd.append("dob_time", dobTime);
+        fd.append("dob_place", dobPlace);
+        fd.append("star", star);
         fd.append("mobile", phone);
         if (email) fd.append("email", email);
-        fd.append("healing_type", healType);
-        fd.append("issue_description", issue);
-        fd.append("location", location);
-        fd.append("preferred_date", prefDate);
-
+        fd.append("address", address);
         fd.append("aadhaar_number", aadhaar);
+        fd.append("issue_type", issueType);
+        fd.append("condition_description", condition);
+        fd.append("declaration_accepted", "true");
+
         if (amount) fd.append("amount_paid", amount);
         if (txnId) fd.append("transaction_id", txnId);
 
         const af = document.getElementById("heal-aadhaar-front").files[0];
         const ab = document.getElementById("heal-aadhaar-back").files[0];
+        const photo = document.getElementById("heal-photo").files[0];
         const receipt = document.getElementById("heal-receipt").files[0];
         if (af) fd.append("aadhaar_doc", af);
         if (ab) fd.append("aadhaar_doc_back", ab);
+        if (photo) fd.append("recent_picture", photo);
         if (receipt) fd.append("transaction_receipt_image", receipt);
 
         const res = await fetch(`${API_BASE}/api/healing/apply`, {
@@ -2577,8 +2571,9 @@
         });
         const data = await res.json();
         if (res.ok && data.success) {
-          showToast("✅ Healing application submitted! We will contact you shortly.");
+          showToast("✅ Application submitted! Strictly weekly report should be sent to the guru.");
           e.target.reset();
+          toggleHealOtherIssue();
         } else {
           // API endpoint may not exist yet — fallback to WhatsApp
           throw new Error(data.message || "Submission via API failed");
@@ -2586,8 +2581,9 @@
       } catch (err) {
         // Fallback: send via WhatsApp
         window.open(whatsappUrl, '_blank');
-        showToast("✅ Healing application sent via WhatsApp! We will contact you shortly.");
+        showToast("✅ Application sent! Strictly weekly report should be sent to the guru.");
         e.target.reset();
+        toggleHealOtherIssue();
       } finally {
         btn.innerHTML = orig;
         btn.disabled = false;
