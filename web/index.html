@@ -443,7 +443,7 @@
     </header>
 
     <div class="main-container">
-      <div class="glass-card">
+    <div class="main-viewport-card">
         <div class="content-scroll-area" id="scroll-container">
           <div class="content-inner">
             <section id="home" class="section-full active-section">
@@ -474,7 +474,7 @@
                     <span>Listen</span>
                   </button>
 
-                  <div class="glass-card hero-description custom-meaning">
+                  <div class="hero-description custom-meaning">
                     <h3 class="meaning-title">🕉️ What Vibhuti Yoga Means</h3>
 
                     <div class="meaning-block" style="margin-bottom: 28px;">
@@ -778,214 +778,127 @@
 
 
               <!-- ═══════════════════════════════════════════════════════ -->
-              <!-- COURSE REGISTRATION FORM (Hidden by default, shown on Register click) -->
-              <!-- ═══════════════════════════════════════════════════════ -->
-              <div id="registration-form-section" style="margin-top: 60px; display: none;">
-                <h2 class="section-heading" id="course-registration-heading">
-                  <span class="accent">✦</span>
-                  Course Registration
-                  <span class="accent">✦</span>
-                </h2>
-                <div class="registration-box" style="
-                      background: rgba(255, 255, 255, 0.95);
-                      padding: 30px;
-                      border-radius: 24px;
-                      max-width: 500px;
-                      margin: 0 auto;
-                      box-shadow: 0 10px 45px rgba(212, 165, 116, 0.45);
-                      color: #2d4563;
-                    ">
-                  <div
-                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
-                    <img src="form_banner.png" alt="Class Registration"
-                      style="width: 100%; display: block; object-fit: cover; height: auto;">
+              <!-- ── Registration Form ── -->
+              <div id="registration-form-section" class="premium-form-section" style="display: none;">
+                <h2 class="premium-form-title" id="course-registration-heading">✦ Join Our Sacred Program ✦</h2>
+
+                <div class="premium-form-box">
+                  <div class="premium-form-header">
+                    <img src="form_banner.png" alt="Class Registration">
                   </div>
 
-                  <form id="registration-form" onsubmit="submitRegistration(event)" style="text-align: left">
+                  <form id="registration-form" onsubmit="submitRegistration(event)">
                     
-                    <!-- 1. Aadhaar Number -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Number *</label>
-                      <input type="text" id="reg-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-group">
+                      <label>Aadhaar Number *</label>
+                      <input type="text" id="reg-aadhaar-number" class="form-control" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" />
                     </div>
 
-                    <!-- 2. Course Drop Down -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Select Class *</label>
-                      <select id="reg-class" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
+                    <div class="form-group">
+                      <label>Select Class *</label>
+                      <select id="reg-class" class="form-control" required>
                         <option value="">Loading courses…</option>
                       </select>
                     </div>
 
                     <!-- 3. Name -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
-                      <input type="text" id="reg-name" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div style="margin-bottom: 5px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 3px;">Your Name *</label>
+                      <input type="text" id="reg-name" required placeholder="Enter your full name" style="width: 100%; padding: 8px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    </div>
+
+                    <!-- 3b. Age or Birth Date -->
+                    <div style="margin-bottom: 5px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 3px;">Age or Date of Birth *</label>
+                      <input type="text" id="reg-age" required placeholder="Enter your age or Date of Birth" style="width: 100%; padding: 8px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- 4. Qualification -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Qualification *</label>
-                      <input type="text" id="reg-qualification" required placeholder="Enter your qualification" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div style="margin-bottom: 5px">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 3px;">Qualification *</label>
+                      <input type="text" id="reg-qualification" required placeholder="Enter your qualification" style="width: 100%; padding: 8px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <!-- 5. Phone Number -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Phone Number *</label>
-                      <input type="tel" id="reg-phone" required placeholder="Enter your phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="reg-phone" class="form-control" required placeholder="Enter your phone number" />
+                      </div>
+                      <div class="form-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" id="reg-email" class="form-control" placeholder="Enter your email" />
+                      </div>
                     </div>
 
-                    <!-- 6. Email -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Email (Optional)</label>
-                      <input type="email" id="reg-email" placeholder="Enter your email" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-group">
+                      <label>Location (Present Address) *</label>
+                      <input type="text" id="reg-location" class="form-control" required placeholder="Enter your present address" />
                     </div>
 
-                    <!-- 7. Siblings -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Siblings (Name & Age) - Optional</label>
-                      <input type="text" id="reg-siblings" placeholder="e.g. Rahul (12), Priya (8)" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Aadhaar Card Front *</label>
+                        <input type="file" id="reg-aadhaar-front" class="form-control" required accept="image/*,.pdf" />
+                      </div>
+                      <div class="form-group">
+                        <label>Aadhaar Card Back *</label>
+                        <input type="file" id="reg-aadhaar-back" class="form-control" required accept="image/*,.pdf" />
+                      </div>
                     </div>
 
-                    <!-- 8. Location Present Address -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Location (Present Address) *</label>
-                      <input type="text" id="reg-location" required placeholder="Enter your present address" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Father's Name *</label>
+                        <input type="text" id="reg-father-name" class="form-control" required placeholder="Enter father's name" />
+                      </div>
+                      <div class="form-group">
+                        <label>Father's Phone *</label>
+                        <input type="tel" id="reg-father-phone" class="form-control" required placeholder="Enter father's phone number" />
+                      </div>
                     </div>
 
-                    <!-- 9. Aadhaar Card Image -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
-                      <input type="file" id="reg-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
-                    </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
-                      <input type="file" id="reg-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
-                    </div>
-
-                    <!-- 10. Health Issues -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Any Health Issues / Weakness</label>
-                      <input type="text" id="reg-health" placeholder="Mention any health issues or leave blank" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Mother's Name *</label>
+                        <input type="text" id="reg-mother-name" class="form-control" required placeholder="Enter mother's name" />
+                      </div>
+                      <div class="form-group">
+                        <label>Mother's Phone *</label>
+                        <input type="tel" id="reg-mother-phone" class="form-control" required placeholder="Enter mother's phone number" />
+                      </div>
                     </div>
 
-                    <!-- 11. Father Name -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Name *</label>
-                      <input type="text" id="reg-father-name" required placeholder="Enter father's name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-group">
+                      <label>Why do you want to attend the course? *</label>
+                      <textarea id="reg-reason" class="form-control" required rows="3" placeholder="Briefly explain your reason"></textarea>
                     </div>
 
-                    <!-- 12. Father Phone -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Phone Number *</label>
-                      <input type="tel" id="reg-father-phone" required placeholder="Enter father's phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Amount Paid (₹) *</label>
+                        <input type="number" id="reg-amount" class="form-control" required placeholder="e.g. 5000" min="1" />
+                      </div>
+                      <div class="form-group">
+                        <label>Transaction/Reference ID</label>
+                        <input type="text" id="reg-txn-id" class="form-control" placeholder="Enter transaction ID" />
+                      </div>
                     </div>
 
-                    <!-- 13. Father Occupation -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Father's Occupation *</label>
-                      <input type="text" id="reg-father-occupation" required placeholder="Enter father's occupation" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-group">
+                      <label>Transaction Receipt *</label>
+                      <input type="file" id="reg-receipt" class="form-control" accept="image/*,application/pdf" required />
                     </div>
 
-                    <!-- 14. Mother Name -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Name *</label>
-                      <input type="text" id="reg-mother-name" required placeholder="Enter mother's name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <!-- 15. Mother Phone -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Phone Number *</label>
-                      <input type="tel" id="reg-mother-phone" required placeholder="Enter mother's phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <!-- 16. Mother Occupation -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Mother's Occupation *</label>
-                      <input type="text" id="reg-mother-occupation" required placeholder="Enter mother's occupation" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <!-- 17. Course Reference Name -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Course Reference Name</label>
-                      <input type="text" id="reg-reference" placeholder="Who referred you to this course?" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <!-- 18. Why do want to attend the course -->
-                    <div style="margin-bottom: 15px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Why do you want to attend the course? *</label>
-                      <textarea id="reg-reason" required rows="3" placeholder="Briefly explain your reason" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
-                    </div>
-
-                    <!-- 19. Recent Picture -->
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture (Upload) *</label>
-                      <input type="file" id="reg-picture" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
-                    </div>
-
-                    <!-- Amount Paid -->
-                    <div style="margin-bottom: 20px">
+                    <div style="margin-bottom: 10px">
                       <label style="
                             display: block;
                             font-size: 14px;
                             color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Amount Paid (₹) *</label>
-                      <input type="number" id="reg-amount" required placeholder="e.g. 5000" min="1" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-
-                    <!-- Transaction ID -->
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Transaction/Reference ID</label>
-                      <input type="text" id="reg-txn-id" placeholder="Enter transaction ID from payment" style="
-                            width: 100%;
-                            padding: 12px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-
-                    <!-- Transaction Receipt Image -->
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Transaction Receipt Image *</label>
-                      <input type="file" id="reg-receipt" accept="image/*,application/pdf" required style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px dashed #bdc3c7;
-                            border-radius: 10px;
-                            background: rgba(255, 255, 255, 0.5);
-                          " />
-                    </div>
-
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
+                            margin-bottom: 3px;
                           ">Additional Message (Optional)</label>
-                      <textarea id="reg-message" rows="3" placeholder="Any specific requirements or questions..." style="
+                      <textarea id="reg-message" rows="2" placeholder="Any specific requirements or questions..." style="
                             width: 100%;
-                            padding: 12px;
+                            padding: 8px;
                             border: 1px solid #dfe6e9;
                             border-radius: 10px;
                             font-size: 16px;
@@ -996,25 +909,25 @@
 
                     <!-- PAYMENT SECTION FOR REGISTRATION -->
                     <div style="
-                          margin-top: 30px;
-                          margin-bottom: 25px;
-                          padding-top: 25px;
+                          margin-top: 20px;
+                          margin-bottom: 15px;
+                          padding-top: 15px;
                           border-top: 1px dashed #bdc3c7;
                         ">
                       <h4 style="
                             color: #2c3e50;
-                            margin-bottom: 15px;
-                            font-size: 18px;
+                            margin-bottom: 5px;
+                            font-size: 16px;
                             text-align: center;
                           ">
                         Scan to Pay Course Fee
                       </h4>
 
                       <!-- QR CODE -->
-                      <div class="qr-container" style="text-align: center; margin-bottom: 20px">
+                      <div class="qr-container" style="text-align: center; margin-bottom: 8px">
                         <div class="qr-frame" style="
                               display: inline-block;
-                              padding: 15px;
+                              padding: 10px;
                               background: linear-gradient(
                                 135deg,
                                 #fff9f0 0%,
@@ -1025,14 +938,14 @@
                               box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
                             ">
                           <img src="qr-code.png" alt="Scan to Pay" class="qr-code" style="
-                                width: 160px;
-                                height: 160px;
+                                width: 140px;
+                                height: 140px;
                                 border-radius: 12px;
                               " />
                         </div>
                         <p style="
-                              margin-top: 12px;
-                              font-size: 14px;
+                              margin-top: 8px;
+                              font-size: 12px;
                               color: #7f8c8d;
                             ">
                           <i class="fas fa-qrcode" style="color: #d4a574"></i>
@@ -1047,17 +960,17 @@
                               #f8f9fa 0%,
                               #e8f4f8 100%
                             );
-                            padding: 15px;
+                            padding: 10px;
                             border-radius: 16px;
                             border: 2px solid #d4a574;
-                            margin-bottom: 20px;
+                            margin-bottom: 8px;
                             text-align: center;
                           ">
                         <span style="
                               display: block;
-                              font-size: 12px;
+                              font-size: 10px;
                               color: #7f8c8d;
-                              margin-bottom: 8px;
+                              margin-bottom: 5px;
                               text-transform: uppercase;
                             ">
                           UPI ID
@@ -1066,13 +979,13 @@
                               display: flex;
                               align-items: center;
                               justify-content: center;
-                              gap: 12px;
+                              gap: 10px;
                             ">
                           <span class="upi-label" style="
                                 color: #2d4563;
                                 font-weight: 700;
                                 font-family: &quot;Courier New&quot;, monospace;
-                                font-size: 18px;
+                                font-size: 16px;
                               ">srivsn@icici</span>
                           <button type="button" class="copy-btn" onclick="copyUPI()" title="Copy UPI ID" style="
                                 background: linear-gradient(
@@ -1081,12 +994,12 @@
                                   #e8c89e
                                 );
                                 border: none;
-                                padding: 8px 12px;
+                                padding: 6px 10px;
                                 border-radius: 10px;
                                 color: #2d4563;
                                 cursor: pointer;
                                 font-weight: 600;
-                                font-size: 14px;
+                                font-size: 12px;
                                 display: flex;
                                 align-items: center;
                                 gap: 6px;
@@ -1104,7 +1017,7 @@
                             justify-content: center;
                             gap: 10px;
                             text-decoration: none;
-                            padding: 14px 20px;
+                            padding: 12px 15px;
                             background: linear-gradient(
                               135deg,
                               #27ae60,
@@ -1112,7 +1025,7 @@
                             );
                             color: white;
                             font-weight: 700;
-                            font-size: 16px;
+                            font-size: 14px;
                             border-radius: 30px;
                             box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
                             box-sizing: border-box;
@@ -1121,20 +1034,8 @@
                       </a>
                     </div>
 
-                    <button type="submit" id="registration-submit-btn" style="
-                          width: 100%;
-                          padding: 14px;
-                          background: linear-gradient(135deg, #4caf50, #66bb6a);
-                          border: none;
-                          color: white;
-                          border-radius: 30px;
-                          font-weight: bold;
-                          font-size: 16px;
-                          cursor: pointer;
-                          transition: all 0.3s;
-                          box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-                        ">
-                      <i class="fas fa-paper-plane"></i> Submit
+                    <button type="submit" id="registration-submit-btn" class="form-submit-btn">
+                      <i class="fas fa-paper-plane"></i> Submit Registration
                     </button>
                   </form>
                 </div>
@@ -1294,100 +1195,83 @@
               </div>
 
               <!-- ── Healing Application Form ── -->
-              <div id="healing-form-section" style="max-width: 540px; margin: 40px auto 0; display: none;">
-                <h3 style="
-                  text-align: center;
-                  color: var(--golden-primary);
-                  font-family: 'Cinzel', serif;
-                  font-size: 1.4rem;
-                  margin-bottom: 25px;
-                  text-shadow: none;
-                ">🙏 Healing Requisition Form</h3>
+              <div id="healing-form-section" class="premium-form-section" style="display: none;">
+                <h2 class="premium-form-title">🙏 Healing Requisition Form</h2>
 
-                <div class="registration-box" style="
-                  background: rgba(255, 255, 255, 0.95);
-                  padding: 30px;
-                  border-radius: 24px;
-                  max-width: 500px;
-                  margin: 0 auto;
-                  box-shadow: 0 10px 45px rgba(212, 165, 116, 0.45);
-                  color: #2d4563;
-                ">
-                  <div
-                    style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
-                    <img src="form_banner.png" alt="Healing Application"
-                      style="width: 100%; display: block; object-fit: cover; height: auto;">
+                <div class="premium-form-box">
+                  <div class="premium-form-header">
+                    <img src="form_banner.png" alt="Healing Application">
                   </div>
 
-                  <form id="healing-form" onsubmit="submitHealingApplication(event)" style="text-align: left">
+                  <form id="healing-form" onsubmit="submitHealingApplication(event)">
                     <!-- Name -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
-                      <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- DOB -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Date of Birth *</label>
-                      <input type="date" id="heal-dob" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="date" id="heal-dob" required style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- DOB Time -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Time of Birth *</label>
-                      <input type="time" id="heal-dob-time" required style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="time" id="heal-dob-time" required style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- DOB Place -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Place of Birth *</label>
-                      <input type="text" id="heal-dob-place" required placeholder="City, State, Country" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-dob-place" required placeholder="City, State, Country" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Star (Nakshatra) -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Star (Nakshatra) *</label>
-                      <input type="text" id="heal-star" required placeholder="e.g. Ashwini, Bharani" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-star" required placeholder="e.g. Ashwini, Bharani" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Phone -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Phone Number *</label>
-                      <input type="tel" id="heal-phone" required placeholder="Enter your phone number" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="tel" id="heal-phone" required placeholder="Enter your phone number" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Email -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Email (Optional)</label>
-                      <input type="email" id="heal-email" placeholder="Enter your email" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="email" id="heal-email" placeholder="Enter your email" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Address -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Address *</label>
-                      <input type="text" id="heal-address" required placeholder="Enter your full address" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-address" required placeholder="Enter your full address" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Aadhaar Number -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Number *</label>
-                      <input type="text" id="heal-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Aadhaar Front & Back -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
                       <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
-                    <div style="margin-bottom: 20px">
+                    <div style="margin-bottom: 12px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
                       <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
                     <!-- Issues Dropdown -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Issues *</label>
-                      <select id="heal-issue-type" required onchange="toggleHealOtherIssue()" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
+                      <select id="heal-issue-type" required onchange="toggleHealOtherIssue()" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
                         <option value="">-- Select Issue --</option>
                         <option value="Physical">Physical</option>
                         <option value="Psychological">Psychological</option>
@@ -1400,120 +1284,85 @@
                     </div>
 
                     <!-- Other Issue Free Text -->
-                    <div id="heal-issue-other-container" style="margin-bottom: 15px; display: none;">
+                    <div id="heal-issue-other-container" style="margin-bottom: 8px; display: none;">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Please Specify Other Issue *</label>
-                      <input type="text" id="heal-issue-other" placeholder="Specify your issue" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <input type="text" id="heal-issue-other" placeholder="Specify your issue" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Condition Description -->
-                    <div style="margin-bottom: 15px">
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Describe condition of whatever the problem is *</label>
-                      <textarea id="heal-condition" required rows="4" placeholder="Detailed description of your condition..." style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
+                      <textarea id="heal-condition" required rows="4" placeholder="Detailed description of your condition..." style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
                     </div>
 
                     <!-- Person Present Photo -->
-                    <div style="margin-bottom: 20px">
+                    <div style="margin-bottom: 12px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture of Person Requiring Healing (Upload) *</label>
                       <input type="file" id="heal-photo" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
                     <!-- Declaration -->
-                    <div style="margin-bottom: 20px; background: rgba(245, 215, 148, 0.15); border: 1px solid rgba(212, 165, 116, 0.4); padding: 15px; border-radius: 10px;">
-                      <h4 style="color: var(--golden-deep); margin-top: 0; margin-bottom: 10px; font-family: 'Cinzel', serif;">Sacred Declaration</h4>
-                      <p style="font-size: 13px; color: #555; line-height: 1.6; text-align: justify; margin-bottom: 10px;">
+                    <!-- Declaration -->
+                    <div class="form-group" style="background: rgba(184, 134, 11, 0.05); padding: 20px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 25px;">
+                      <p id="declaration-text" class="declaration-text">
                         I have voluntarily approached the organization for curing my ailments through Pranic Healing. 
                         I hereby unequivocally declare, convey and affirm my consent and acceptance to use of the principles and techniques of Pranic Healing for healing my ailments, out of my own free will without any duress or compulsion, and at my own risk.
-                      </p>
-                      <p style="font-size: 13px; color: #555; line-height: 1.6; text-align: justify; margin-bottom: 15px;">
                         I further confirm that I am physically, emotionally and mentally fit for use of the principles and techniques of Pranic Healing for healing my ailments. I assume absolute and unequivocal responsibility for any injury, harm, damage, loss, etc., and the concerned healer, as also, the officers, agents, trustees, employees, etc. of the organization, shall not have any liability in any manner and form whatsoever. I duly and unequivocally waive all rights, claims, interests, etc., of any nature whatsoever, in this regard.
                       </p>
-                      <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #2d4563; cursor: pointer; font-weight: 600;">
-                        <input type="checkbox" id="heal-declaration" required style="margin-top: 3px;" />
+                      <button type="button" id="toggle-decl-btn" onclick="toggleDeclaration()" style="background: none; border: none; color: var(--golden-deep); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; margin-bottom: 12px; display: block;">View More</button>
+                      
+                      <label style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-body); cursor: pointer; font-weight: 600;">
+                        <input type="checkbox" id="heal-declaration" style="width: 18px; height: 18px; margin-top: 2px;" />
                         I accept the above declaration.
                       </label>
                     </div>
 
                     <!-- Fee Receipt & Amount -->
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Fee Amount Paid (₹) *</label>
-                      <input type="number" id="heal-amount" required placeholder="e.g. 1000" min="1" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Fee Amount Paid (₹) *</label>
+                        <input type="number" id="heal-amount" class="form-control" required placeholder="e.g. 1000" min="1" />
+                      </div>
+                      <div class="form-group">
+                        <label>Transaction ID</label>
+                        <input type="text" id="heal-txn-id" class="form-control" placeholder="Enter ID" />
+                      </div>
                     </div>
 
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Transaction/Reference ID</label>
-                      <input type="text" id="heal-txn-id" placeholder="Enter transaction ID" style="width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
-                    </div>
-
-                    <div style="margin-bottom: 20px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Accept and Fee Receipt (Upload) *</label>
-                      <input type="file" id="heal-receipt" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px dashed #bdc3c7; border-radius: 10px; background: rgba(255, 255, 255, 0.5);" />
+                    <div class="form-group">
+                      <label>Fee Receipt (Upload) *</label>
+                      <input type="file" id="heal-receipt" class="form-control" required accept="image/*,.pdf" />
                     </div>
 
                     <!-- PAYMENT SECTION -->
-                    <div style="
-                      margin-top: 30px; margin-bottom: 25px;
-                      padding-top: 25px; border-top: 1px dashed #bdc3c7;">
-                      <h4 style="color: #2c3e50; margin-bottom: 15px; font-size: 18px; text-align: center;">
+                    <div class="payment-box" style="margin-top: 30px; padding-top: 25px; border-top: 2px dashed var(--border-gold);">
+                      <h4 style="color: var(--golden-deep); margin-bottom: 20px; font-size: 18px; text-align: center; font-family: var(--font-heading);">
                         Scan to Pay (if applicable)
                       </h4>
 
-                      <!-- QR CODE -->
                       <div class="qr-container" style="text-align: center; margin-bottom: 20px">
-                        <div class="qr-frame" style="
-                          display: inline-block; padding: 15px;
-                          background: linear-gradient(135deg, #fff9f0 0%, #fff 100%);
-                          border-radius: 20px; border: 3px solid #d4a574;
-                          box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);">
-                          <img src="qr-code.png" alt="Scan to Pay" class="qr-code" style="
-                            width: 160px; height: 160px; border-radius: 12px;" />
+                        <div class="qr-frame" style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
+                          <img src="qr-code.png" alt="Scan to Pay" style="width: 160px; height: 160px; border-radius: 10px;" />
                         </div>
-                        <p style="margin-top: 12px; font-size: 14px; color: #7f8c8d;">
-                          <i class="fas fa-qrcode" style="color: #d4a574"></i>
-                          Scan with any UPI App
-                        </p>
                       </div>
 
-                      <!-- UPI ID -->
-                      <div class="upi-section" style="
-                        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
-                        padding: 15px; border-radius: 16px; border: 2px solid #d4a574;
-                        margin-bottom: 20px; text-align: center;">
-                        <span
-                          style="display: block; font-size: 12px; color: #7f8c8d; margin-bottom: 8px; text-transform: uppercase;">UPI
-                          ID</span>
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
-                          <span class="upi-label"
-                            style="color: #2d4563; font-weight: 700; font-family: 'Courier New', monospace; font-size: 18px;">srivsn@icici</span>
-                          <button type="button" class="copy-btn" onclick="copyUPI()" title="Copy UPI ID" style="
-                            background: linear-gradient(135deg, #d4a574, #e8c89e); border: none;
-                            padding: 8px 12px; border-radius: 10px; color: #2d4563;
-                            cursor: pointer; font-weight: 600; font-size: 14px;
-                            display: flex; align-items: center; gap: 6px;">
+                      <div class="upi-section" style="background: rgba(184, 134, 11, 0.05); padding: 15px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 20px; text-align: center;">
+                        <span style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 700;">UPI ID</span>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                          <span style="color: var(--golden-deep); font-weight: 700; font-size: 18px;">srivsn@icici</span>
+                          <button type="button" class="copy-btn" onclick="copyUPI()" style="background: var(--golden-deep); border: none; padding: 8px 12px; border-radius: 8px; color: #fff; cursor: pointer;">
                             <i class="far fa-copy"></i>
                           </button>
                         </div>
                       </div>
 
-                      <!-- Pay Button -->
-                      <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga%20Healing&cu=INR" class="donate-btn-large"
-                        style="
-                        width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
-                        text-decoration: none; padding: 14px 20px;
-                        background: linear-gradient(135deg, #27ae60, #2ecc71); color: white;
-                        font-weight: 700; font-size: 16px; border-radius: 30px;
-                        box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4); box-sizing: border-box;">
+                      <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga%20Healing&cu=INR" class="form-submit-btn" style="background: #27ae60; margin-bottom: 20px;">
                         <i class="fas fa-mobile-alt"></i> Pay via UPI App
                       </a>
                     </div>
 
-                    <button type="submit" id="healing-submit-btn" style="
-                      width: 100%; padding: 14px;
-                      background: linear-gradient(135deg, #8e44ad, #9b59b6);
-                      border: none; color: white; border-radius: 30px;
-                      font-weight: bold; font-size: 16px; cursor: pointer;
-                      transition: all 0.3s;
-                      box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);">
-                      <i class="fas fa-paper-plane"></i> Submit Healing Requisition
+                    <button type="submit" id="healing-submit-btn" class="form-submit-btn" disabled style="opacity: 0.5; cursor: not-allowed;">
+                      <i class="fas fa-paper-plane"></i> Submit Requisition
                     </button>
                   </form>
                 </div>
@@ -1532,14 +1381,14 @@
                 program and how you can enroll your child.
               </p>
               <div class="contact-grid">
-                <div class="glass-card contact-card">
+                <div class="contact-card">
                   <div class="contact-icon">
                     <i class="fas fa-map-marker-alt"></i>
                   </div>
                   <h3 class="contact-title">Visit</h3>
                   <p class="contact-text">Hyderabad<br />Telangana, India</p>
                 </div>
-                <div class="glass-card contact-card">
+                <div class="contact-card">
                   <div class="contact-icon"><i class="fas fa-phone"></i></div>
                   <h3 class="contact-title">Call</h3>
                   <p class="contact-text">
@@ -1549,7 +1398,7 @@
                     <br />Mon-Sat: 6AM - 9PM
                   </p>
                 </div>
-                <div class="glass-card contact-card">
+                <div class="contact-card">
                   <div class="contact-icon">
                     <i class="fas fa-envelope"></i>
                   </div>
@@ -1587,13 +1436,15 @@
               </h2>
 
               <div style="
-                  max-width: 980px;
-                  margin: 0 auto;
+                  max-width: none;
+                  margin: 0 -48px;
+                  width: calc(100% + 96px);
                   background: rgba(255, 252, 248, 0.92);
-                  border: 1px solid var(--border-gold-strong);
-                  border-radius: 20px;
-                  padding: 30px;
-                  box-shadow: var(--shadow-card);
+                  border-top: 1px solid var(--border-gold-strong);
+                  border-bottom: 1px solid var(--border-gold-strong);
+                  border-radius: 0;
+                  padding: 40px 48px;
+                  box-shadow: 0 8px 32px rgba(62, 43, 0, 0.12);
                 ">
                 <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 12px; text-align:center;">
                   In Sanatana Dharma, Daana is sacred worship in action. It is not merely giving money - it is an
@@ -1650,49 +1501,20 @@
                 </p>
               </div>
 
-              <div id="donation-form-section" style="display: none; margin-top: 34px;">
-                <div id="tab-donation" class="tab-content active" style="display: block; animation: fadeIn 0.5s ease">
-                  <div class="donate-box" style="
-                        background: rgba(255, 255, 255, 0.95);
-                        padding: 30px;
-                        border-radius: 24px;
-                        max-width: 500px;
-                        margin: 0 auto;
-                        box-shadow: 0 10px 35px rgba(184, 134, 11, 0.25);
-                        color: #2d4563;
-                      ">
-                    <div
-                      style="width: 100%; margin-bottom: 20px; border-radius: 15px; overflow: hidden; border: 2px solid var(--golden-primary); box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);">
-                      <img src="form_banner.png" alt="Contribute with Love"
-                        style="width: 100%; display: block; object-fit: cover; height: auto;">
-                    </div>
+              <div id="donation-form-section" class="premium-form-section" style="display: none;">
+                <h2 class="premium-form-title">🙏 Sacred Contribution</h2>
+                <div class="premium-form-box">
+                  <div class="premium-form-header">
+                    <img src="form_banner.png" alt="Contribute with Love">
+                  </div>
 
                     <!-- QR CODE - Centered and Prominent -->
                     <div class="qr-container" style="text-align: center; margin-bottom: 25px">
-                      <div class="qr-frame" style="
-                            display: inline-block;
-                            padding: 15px;
-                            background: linear-gradient(
-                              135deg,
-                              #fff9f0 0%,
-                              #fff 100%
-                            );
-                            border-radius: 20px;
-                            border: 3px solid #d4a574;
-                            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
-                          ">
-                        <img src="qr-code.png" alt="Scan to Pay" class="qr-code" style="
-                              width: 180px;
-                              height: 180px;
-                              border-radius: 12px;
-                            " />
+                      <div class="qr-frame" style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
+                        <img src="qr-code.png" alt="Scan to Pay" style="width: 180px; height: 180px; border-radius: 10px;" />
                       </div>
-                      <p style="
-                            margin-top: 12px;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                          ">
-                        <i class="fas fa-qrcode" style="color: #d4a574"></i>
+                      <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted); font-weight: 500;">
+                        <i class="fas fa-qrcode" style="color: var(--golden-primary)"></i>
                         Scan with any UPI App
                       </p>
                     </div>
@@ -1778,69 +1600,25 @@
                       <i class="fas fa-mobile-alt"></i> Pay via UPI App
                     </a>
 
-                    <!-- RECEIPT SUBMISSION -->
-                    <hr style="
-                          border: 0;
-                          border-top: 1px dashed #bdc3c7;
-                          margin: 20px 0;
-                        " />
-                    <h4 style="
-                          color: #2c3e50;
-                          margin-bottom: 15px;
-                          font-size: 18px;
-                        ">
-                      ✨ Verify Donation
-                    </h4>
+                    <div id="receipt-form-section" class="premium-form-section" style="margin-top: 30px;">
+                      <h2 class="premium-form-title">✨ Verify Your Donation</h2>
+                      <div class="premium-form-box">
 
-                    <form id="receipt-form" onsubmit="submitReceipt(event)" style="text-align: left">
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Your Name</label>
-                      <input type="text" id="donor-name" required placeholder="Enter your name" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Phone Number</label>
-                      <input type="tel" id="donor-phone" required placeholder="Enter your phone number" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Amount Paid (₹)</label>
-                      <input type="number" id="donor-amount" required placeholder="e.g. 500" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
+                        <form id="receipt-form" onsubmit="submitReceipt(event)">
+                          <div class="form-row">
+                            <div class="form-group">
+                              <label>Your Name</label>
+                              <input type="text" id="donor-name" class="form-control" required placeholder="Enter your name" />
+                            </div>
+                            <div class="form-group">
+                              <label>Phone Number</label>
+                              <input type="tel" id="donor-phone" class="form-control" required placeholder="Enter phone" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Amount Paid (₹)</label>
+                            <input type="number" id="donor-amount" class="form-control" required placeholder="e.g. 500" />
+                          </div>
                     <div style="margin-bottom: 15px">
                       <label style="
                             display: block;
@@ -1979,41 +1757,30 @@
                 </div>
               </div>
 
-              <div id="karmic-debt-form-section" style="display: none; margin-top: 34px;">
-                <div class="donate-box" style="
-                      background: rgba(255, 255, 255, 0.95);
-                      padding: 30px;
-                      border-radius: 24px;
-                      max-width: 720px;
-                      margin: 0 auto;
-                      box-shadow: 0 10px 35px rgba(184, 134, 11, 0.25);
-                      color: #2d4563;
-                    ">
-                  <h4 style="font-size: 24px; margin-bottom: 12px; color: var(--golden-deep);">Karmic Debt Resolution Request</h4>
-                  <p style="font-size: 15px; line-height: 1.8; color: #4b5563; margin-bottom: 18px;">
-                    Share your sankalpa with clarity. This request helps us align your offering with prayerful intention
-                    for karmic healing, ancestral harmony, and dharmic progress.
-                  </p>
-                  <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)" style="text-align: left">
-                    <div style="margin-bottom: 14px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Full Name *</label>
-                      <input type="text" id="karmic-name" required placeholder="Enter your full name" style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+              <!-- Karmic Debt Section -->
+              <div id="karmic-debt-form-section" class="premium-form-section" style="display: none;">
+                <h2 class="premium-form-title">⚖️ Karmic Debt Resolution</h2>
+                <div class="premium-form-box">
+                  <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="karmic-name" class="form-control" required placeholder="Enter name" />
+                      </div>
+                      <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="karmic-phone" class="form-control" required placeholder="Enter phone" />
+                      </div>
                     </div>
-                    <div style="margin-bottom: 14px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Phone Number *</label>
-                      <input type="tel" id="karmic-phone" required placeholder="Enter your phone number" style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+                    
+                    <div class="form-group">
+                      <label>Email (Optional)</label>
+                      <input type="email" id="karmic-email" class="form-control" placeholder="Enter email" />
                     </div>
-                    <div style="margin-bottom: 14px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Email (Optional)</label>
-                      <input type="email" id="karmic-email" placeholder="Enter your email" style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
-                    </div>
-                    <div style="margin-bottom: 14px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Primary Area of Karmic Burden *</label>
-                      <select id="karmic-area" required style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; background:#fff; box-sizing:border-box;">
+
+                    <div class="form-group">
+                      <label>Primary Area of Karmic Burden *</label>
+                      <select id="karmic-area" class="form-control" required>
                         <option value="">Select one</option>
                         <option>Family / Relationships</option>
                         <option>Health and Vitality</option>
@@ -2023,21 +1790,21 @@
                         <option>Spiritual Blockages</option>
                       </select>
                     </div>
-                    <div style="margin-bottom: 14px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Sankalpa (Intention / Prayer) *</label>
-                      <textarea id="karmic-sankalpa" required rows="4" placeholder="Write your clear spiritual intention" style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:15px; box-sizing:border-box; resize:vertical;"></textarea>
+
+                    <div class="form-group">
+                      <label>Sankalpa (Intention / Prayer) *</label>
+                      <textarea id="karmic-sankalpa" class="form-control" required rows="4" placeholder="Write your clear spiritual intention"></textarea>
                     </div>
-                    <div style="margin-bottom: 18px;">
-                      <label style="display:block; font-size:14px; color:#7f8c8d; margin-bottom:5px;">Preferred Seva Amount (INR, Optional)</label>
-                      <input type="number" id="karmic-amount" placeholder="e.g. 1100" style="
-                          width:100%; padding:11px; border:1px solid #dfe6e9; border-radius:8px; font-size:16px; box-sizing:border-box;" />
+
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Preferred Seva Amount (INR)</label>
+                        <input type="number" id="karmic-amount" class="form-control" placeholder="e.g. 1100" />
+                      </div>
                     </div>
-                    <button type="submit" id="karmic-submit-btn" style="
-                        width:100%; padding:14px; background: linear-gradient(135deg, #8e44ad, #9b59b6);
-                        border:none; color:#fff; border-radius:30px; font-weight:700; font-size:16px; cursor:pointer;
-                        box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);">
-                      <i class="fas fa-paper-plane"></i> Submit Karmic Debt Request
+
+                    <button type="submit" id="karmic-submit-btn" class="form-submit-btn">
+                      <i class="fas fa-paper-plane"></i> Submit Karmic Resolution
                     </button>
                   </form>
                 </div>
@@ -2205,52 +1972,30 @@
     window.showHealingForm = showHealingForm;
     window.resetHealingFormVisibility = resetHealingFormVisibility;
 
-    // ── Load classes from API into the select ─────────────────────────────────
+    // ── Load classes into the select (Frontend Static List) ─────────────────────
     async function loadClasses() {
       const sel = document.getElementById("reg-class");
-      try {
-        const res = await fetch(`${API_BASE}/api/classes`);
-        const json = await res.json();
-        if (!json.success) throw new Error("API error");
+      sel.innerHTML = '<option value="">-- Choose a Course --</option>';
 
-        sel.innerHTML = '<option value="">-- Choose a Course --</option>';
-        const groups = {
-          "Intuition Power": { label: "🧠 Intuition Power", items: [] },
-          "Mind Power": { label: "💭 Mind Power", items: [] },
-          "Holistic Healing Energy Power": {
-            label: "✨ Holistic Healing Energy Power (Pranic Healing)",
-            items: [],
-          },
-        };
+      const courses = [
+        "Intuition Power",
+        "Mind Power",
+        "Holistic Healing Energy Power (Pranic Healing)",
+        "Akul Science",
+        "Dowsing — The Divine Art",
+        "Nitya Agni Hotram",
+        "Vaasthu Vidya / Vedic Vastu",
+        "Eklavya Vidye — 100% Memory Power",
+        "Dhanur Vidya",
+        "Sri Vidya"
+      ];
 
-        json.data.forEach((cls) => {
-          const fee = cls.total_fee.toLocaleString("en-IN");
-          const opt = document.createElement("option");
-          opt.value = cls.id;
-          opt.textContent = `${cls.class_name} (₹${fee})`;
-
-          let placed = false;
-          for (const key of Object.keys(groups)) {
-            if (cls.class_name.startsWith(key)) {
-              groups[key].items.push(opt);
-              placed = true;
-              break;
-            }
-          }
-          if (!placed) sel.appendChild(opt);
-        });
-
-        for (const { label, items } of Object.values(groups)) {
-          if (!items.length) continue;
-          const grp = document.createElement("optgroup");
-          grp.label = label;
-          items.forEach((o) => grp.appendChild(o));
-          sel.appendChild(grp);
-        }
-      } catch {
-        sel.innerHTML =
-          '<option value="">-- Could not load courses --</option>';
-      }
+      courses.forEach((courseName) => {
+        const opt = document.createElement("option");
+        opt.value = courseName;
+        opt.textContent = courseName;
+        sel.appendChild(opt);
+      });
     }
 
     // ── Toast ─────────────────────────────────────────────────────────────────
@@ -2282,62 +2027,61 @@
       btn.disabled = true;
 
       const fd = new FormData();
-      fd.append("name", document.getElementById("reg-name").value.trim());
-      fd.append("mobile", document.getElementById("reg-phone").value.trim());
-      const email = document.getElementById("reg-email").value.trim();
-      if (email) fd.append("email", email);
-      fd.append("class_id", document.getElementById("reg-class").value);
+      fd.append("author_name", document.getElementById("reg-name").value.trim());
+      
+      const sel = document.getElementById("reg-class");
+      const courseName = sel.options[sel.selectedIndex].text.replace(/\s*\(₹.*\)/, '').trim();
+      fd.append("course_name", courseName || document.getElementById("reg-class").value);
 
+      fd.append("mobile", document.getElementById("reg-phone").value.trim());
       fd.append("location", document.getElementById("reg-location").value.trim());
-      const sib = document.getElementById("reg-siblings").value.trim();
-      if (sib) fd.append("siblings_name", sib);
+      fd.append("qualification", document.getElementById("reg-qualification").value.trim());
+      
+      const fatherName = document.getElementById("reg-father-name").value.trim();
+      const motherName = document.getElementById("reg-mother-name").value.trim();
+      fd.append("father_or_mother_name", fatherName || motherName || "Not provided");
+      
+      const ageInput = document.getElementById("reg-age");
+      if (ageInput) fd.append("age_or_birth_date", ageInput.value.trim());
+      
       fd.append("amount_paid", document.getElementById("reg-amount").value);
+      
+      const sib = document.getElementById("reg-siblings").value.trim();
+      if (sib) fd.append("sibling_details", sib);
+
       const txn = document.getElementById("reg-txn-id").value.trim();
       if (txn) fd.append("transaction_id", txn);
+
       const msg = document.getElementById("reg-message").value.trim();
-      if (msg) fd.append("message", msg);
-      fd.append("aadhaar_number", document.getElementById("reg-aadhaar-number").value.trim());
+      const reason = document.getElementById("reg-reason").value.trim();
+      const health = document.getElementById("reg-health").value.trim();
+      let additional = [];
+      if (msg) additional.push("Message: " + msg);
+      if (reason) additional.push("Reason: " + reason);
+      if (health) additional.push("Health: " + health);
+      if (additional.length > 0) fd.append("additional_message", additional.join(" | "));
+      
+      const ref = document.getElementById("reg-reference").value.trim();
+      if (ref) fd.append("referrer_name", ref);
+
       const front = document.getElementById("reg-aadhaar-front").files[0];
       const back = document.getElementById("reg-aadhaar-back").files[0];
       const receipt = document.getElementById("reg-receipt").files[0];
-      if (front) fd.append("aadhaar_doc", front);
-      if (back) fd.append("aadhaar_doc_back", back);
+      if (front) fd.append("aadhar_card_front", front);
+      if (back) fd.append("aadhar_card_back", back);
       if (receipt) fd.append("transaction_receipt_image", receipt);
 
-      // New fields
-      fd.append("qualification", document.getElementById("reg-qualification").value.trim());
-      const health = document.getElementById("reg-health").value.trim();
-      if (health) fd.append("health_issues", health);
-      fd.append("father_name", document.getElementById("reg-father-name").value.trim());
-      fd.append("father_phone", document.getElementById("reg-father-phone").value.trim());
-      fd.append("father_occupation", document.getElementById("reg-father-occupation").value.trim());
-      fd.append("mother_name", document.getElementById("reg-mother-name").value.trim());
-      fd.append("mother_phone", document.getElementById("reg-mother-phone").value.trim());
-      fd.append("mother_occupation", document.getElementById("reg-mother-occupation").value.trim());
-      const ref = document.getElementById("reg-reference").value.trim();
-      if (ref) fd.append("reference_name", ref);
-      fd.append("reason_to_attend", document.getElementById("reg-reason").value.trim());
-      const pic = document.getElementById("reg-picture").files[0];
-      if (pic) fd.append("recent_picture", pic);
-
       try {
-        const res = await fetch(`${API_BASE}/api/classes/register-payment`, {
+        const res = await fetch(`${API_BASE}/api/yoga-form/submissions`, {
           method: "POST",
           body: fd,
         });
         const data = await res.json();
         if (res.ok && data.success) {
-          const d = data.data;
-          showToast(
-            `✅ ${data.message} — Paid ₹${(d.paid_till_now || d.amount_paid_now || 0).toLocaleString("en-IN")} / ₹${(d.agreed_fee || d.total_fee || 0).toLocaleString("en-IN")}`,
-          );
+          showToast(`✅ ${data.message || "Form submitted successfully."}`);
           e.target.reset();
-        } else if (res.status === 409) {
-          showToast(
-            "ℹ️ " +
-            (data.message ||
-              "Fee already fully paid for this mobile + class."),
-          );
+        } else if (res.status === 422) {
+          showToast("❌ Validation failed: " + (data.message || "Please check your inputs."));
         } else {
           throw new Error(data.message || "Registration failed");
         }
@@ -2510,47 +2254,18 @@
       const amount = document.getElementById("heal-amount").value;
       const txnId = document.getElementById("heal-txn-id").value.trim();
 
-      // Build WhatsApp message as primary submission
-      const msgLines = [
-        `🙏 *HEALING REQUISITION FORM*`,
-        ``,
-        `👤 *Name:* ${name}`,
-        `📅 *DOB:* ${dob}`,
-        `⏰ *DOB Time:* ${dobTime}`,
-        `📍 *DOB Place:* ${dobPlace}`,
-        `✨ *Star (Nakshatra):* ${star}`,
-        `📞 *Phone:* ${phone}`,
-        email ? `📧 *Email:* ${email}` : '',
-        `🏠 *Address:* ${address}`,
-        `🆔 *Aadhaar:* XXXX XXXX ${aadhaar.slice(-4)}`,
-        ``,
-        `🔮 *Issue:* ${issueType}`,
-        `📝 *Condition Description:*`,
-        condition,
-        ``,
-        `📜 *Declaration:* Accepted`,
-        amount ? `💰 *Fee Amount Paid:* ₹${amount}` : '',
-        txnId ? `🧾 *Transaction ID:* ${txnId}` : '',
-        ``,
-        `— Sent from Vibhuti Yoga Website`
-      ].filter(Boolean).join('\n');
-
-      const whatsappUrl = `https://wa.me/917842434643?text=${encodeURIComponent(msgLines)}`;
-
-      // Try API submission (FormData)
       try {
         const fd = new FormData();
-        fd.append("name", name);
-        fd.append("dob", dob);
-        fd.append("dob_time", dobTime);
-        fd.append("dob_place", dobPlace);
-        fd.append("star", star);
+        fd.append("full_name", name);
+        fd.append("date_of_birth", dob);
+        if (dobTime) fd.append("time_of_birth", dobTime);
+        if (dobPlace) fd.append("place_of_birth", dobPlace);
         fd.append("mobile", phone);
         if (email) fd.append("email", email);
-        fd.append("address", address);
+        if (address) fd.append("address", address);
         fd.append("aadhaar_number", aadhaar);
         fd.append("issue_type", issueType);
-        fd.append("condition_description", condition);
+        fd.append("issue_description", condition);
         fd.append("declaration_accepted", "true");
 
         if (amount) fd.append("amount_paid", amount);
@@ -2560,30 +2275,27 @@
         const ab = document.getElementById("heal-aadhaar-back").files[0];
         const photo = document.getElementById("heal-photo").files[0];
         const receipt = document.getElementById("heal-receipt").files[0];
-        if (af) fd.append("aadhaar_doc", af);
-        if (ab) fd.append("aadhaar_doc_back", ab);
-        if (photo) fd.append("recent_picture", photo);
+        if (af) fd.append("aadhar_card_front", af);
+        if (ab) fd.append("aadhar_card_back", ab);
+        if (photo) fd.append("current_picture", photo);
         if (receipt) fd.append("transaction_receipt_image", receipt);
 
-        const res = await fetch(`${API_BASE}/api/healing/apply`, {
+        const res = await fetch(`${API_BASE}/api/healing-form/submissions`, {
           method: "POST",
           body: fd,
         });
         const data = await res.json();
         if (res.ok && data.success) {
-          showToast("✅ Application submitted! Strictly weekly report should be sent to the guru.");
+          showToast(`✅ ${data.message || "Healing form submitted successfully."}`);
           e.target.reset();
           toggleHealOtherIssue();
+        } else if (res.status === 422) {
+          showToast("❌ Validation failed: " + (data.message || "Please check your inputs."));
         } else {
-          // API endpoint may not exist yet — fallback to WhatsApp
           throw new Error(data.message || "Submission via API failed");
         }
       } catch (err) {
-        // Fallback: send via WhatsApp
-        window.open(whatsappUrl, '_blank');
-        showToast("✅ Application sent! Strictly weekly report should be sent to the guru.");
-        e.target.reset();
-        toggleHealOtherIssue();
+        showToast("❌ " + err.message);
       } finally {
         btn.innerHTML = orig;
         btn.disabled = false;

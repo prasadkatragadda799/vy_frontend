@@ -134,15 +134,7 @@ body {
 
 /* Global blocker to prevent text from scrolling behind the header and top banner */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: calc(var(--top-banner-height) + 110px);
-    background-color: #F4ECE1;
-    z-index: 990; /* Just below header (1000) and banner (1001) */
-    pointer-events: none;
+    display: none;
 }
 
 /* Remove global golden glow — not needed on light background */
@@ -174,16 +166,17 @@ body :is(h1, h2, h3, h4, h5, h6,
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: var(--header-offset) 20px 30px 20px;
+    padding: var(--header-offset) 20px 10px 20px;
+    box-sizing: border-box;
     /* Top padding tracks fixed header height */
 }
 
 /* === CONTENT CARD — Sacred Parchment Style === */
-.glass-card {
-    width: 100%;
+.main-viewport-card {
+    width: calc(100vw - 40px);
     max-width: 1200px;
-    height: calc(100vh - 140px);
-    margin-top: 0;
+    height: calc(100vh - 165px);
+    margin: 0 auto;
     background: rgba(236, 227, 213, 0.78);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
@@ -198,13 +191,22 @@ body :is(h1, h2, h3, h4, h5, h6,
     overflow: hidden;
 }
 
+.glass-card {
+    background: rgba(236, 227, 213, 0.78);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border-radius: 20px;
+    border: 1px solid var(--border-gold);
+    box-shadow: 0 4px 20px rgba(62, 43, 0, 0.1);
+}
+
 /* === STICKY HEADER — Sacred Parchment Style === */
 .header {
     position: fixed;
     top: calc(var(--top-banner-height) + 20px);
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: calc(100% - 40px);
     max-width: 1200px;
     z-index: 1000;
     display: flex;
@@ -371,10 +373,12 @@ body :is(h1, h2, h3, h4, h5, h6,
 
 /* === SECTIONS === */
 .section-full {
-    padding: 20px 0;
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    flex: 1;
+    box-sizing: border-box;
 }
 
 /* === HERO SECTION — Sacred Parchment Style === */
@@ -540,11 +544,14 @@ body :is(h1, h2, h3, h4, h5, h6,
 /* === CUSTOM MEANING SECTION === */
 .custom-meaning {
     border: 1px solid var(--border-gold);
-    border-radius: 16px;
-    padding: 30px 36px;
-    margin: 0 auto 40px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 40px 48px;
+    margin: 0 -48px 40px;
     text-align: left;
-    max-width: 850px;
+    max-width: none;
+    width: calc(100% + 96px);
     background: rgba(255, 252, 248, 0.85);
     box-shadow: var(--shadow-card);
 }
@@ -1196,23 +1203,27 @@ body :is(h1, h2, h3, h4, h5, h6,
 /* === CONTACT GRID — Parchment Theme === */
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    align-items: stretch;
+    align-items: start;
+    max-width: none;
+    margin: 0 -48px;
+    width: calc(100% + 96px);
+    padding: 0;
 }
 
 .contact-card {
     background: rgba(255, 252, 248, 0.85);
     border: 1px solid var(--border-gold);
     border-radius: 16px;
-    padding: 36px 24px;
+    padding: 24px 20px;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 230px;
+    min-height: 150px;
 }
 
 .contact-card:hover {
@@ -1255,7 +1266,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 .contact-intro {
     text-align: center;
     max-width: 760px;
-    margin: 0 auto 34px;
+    margin: 0 auto 20px;
     font-size: 17px;
     line-height: 1.8;
     color: var(--text-body);
@@ -1272,7 +1283,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .contact-actions {
-    margin-top: 28px;
+    margin-top: 15px;
     display: flex;
     gap: 14px;
     justify-content: center;
@@ -1299,6 +1310,152 @@ body :is(h1, h2, h3, h4, h5, h6,
     transform: translateY(-2px);
     background: var(--golden-deep);
     color: #fff;
+    box-shadow: 0 8px 24px rgba(107, 74, 0, 0.25);
+}
+
+/* === PREMIUM FORM STYLES === */
+.premium-form-section {
+    width: 100%;
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 0 10px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.premium-form-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 28px;
+    box-shadow: 0 15px 50px rgba(107, 74, 0, 0.15);
+    border: 1px solid var(--border-gold);
+    color: var(--text-body);
+}
+
+.premium-form-header {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid var(--golden-primary);
+    box-shadow: 0 6px 20px rgba(184, 134, 11, 0.2);
+}
+
+.premium-form-header img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.premium-form-title {
+    text-align: center;
+    color: var(--golden-deep);
+    font-family: var(--font-heading);
+    font-size: 24px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #E0D8CC;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--golden-primary);
+    box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15);
+}
+
+.form-submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--golden-deep);
+    border: none;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(139, 96, 0, 0.25);
+    margin-top: 20px;
+}
+
+.form-submit-btn:hover {
+    background: var(--golden-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(139, 96, 0, 0.35);
+}
+
+.form-submit-btn i {
+    font-size: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.declaration-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 8px;
+    max-height: 42px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.declaration-text.expanded {
+    max-height: 1000px;
+}
+
+.declaration-text:not(.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .premium-form-box {
+        padding: 24px 18px;
+    }
 }
 
 /* === DONATE SECTION — Parchment Theme === */
@@ -1312,7 +1469,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     text-align: center;
     line-height: 1.9;
     max-width: 700px;
-    margin: 0 auto 36px;
+    margin: 0 auto 24px;
 }
 
 .upi-section {
@@ -1405,7 +1562,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 
 /* === FOOTER — Parchment Theme === */
 .footer {
-    padding: 48px 40px;
+    padding: 24px 20px;
     background: linear-gradient(to bottom, rgba(221, 212, 196, 0.2), rgba(184, 134, 11, 0.08));
     border-top: 2px solid var(--border-gold-strong);
     display: flex;
@@ -1540,7 +1697,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     background: rgba(255, 252, 248, 0.82);
     border: 1px solid var(--border-gold);
     border-radius: 18px;
-    padding: 34px 24px 26px;
+    padding: 24px 20px 20px;
     text-align: center;
     position: relative;
     height: 100%;
@@ -1549,7 +1706,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     align-items: center;
     box-shadow: var(--shadow-card);
     transition: all 0.3s ease;
-    min-height: 640px;
+    min-height: 520px;
 }
 
 .course-card-v2:hover {
@@ -1657,7 +1814,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 .course-icon-v2 {
     width: 70px;
     height: 70px;
-    margin: 0 auto 20px;
+    margin: 0 auto 12px;
     background: linear-gradient(135deg, rgba(184, 134, 11, 0.10), rgba(201, 168, 76, 0.10));
     border-radius: 12px;
     display: flex;
@@ -1677,7 +1834,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 .course-image-v2 {
     width: 140px;
     height: 140px;
-    margin: 0 auto 20px;
+    margin: 0 auto 12px;
     border-radius: 12px;
     overflow: hidden;
     border: 3px solid var(--border-gold-strong);
@@ -1703,8 +1860,8 @@ body :is(h1, h2, h3, h4, h5, h6,
     font-size: 20px;
     font-weight: 700;
     color: var(--golden-deep);
-    margin-bottom: 14px;
-    min-height: 56px;
+    margin-bottom: 8px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1717,18 +1874,18 @@ body :is(h1, h2, h3, h4, h5, h6,
     font-weight: 400;
     color: var(--text-body);
     line-height: 1.75;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 98px;
+    min-height: 80px;
 }
 
 /* Course Levels V2 */
 .course-levels-v2 {
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     font-size: 12px;
     color: var(--text-muted);
     border-top: 1px solid var(--border-warm);
@@ -1755,7 +1912,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
@@ -2781,9 +2938,12 @@ body :is(h1, h2, h3, h4, h5, h6,
     }
 
     .classes-grid,
-    .benefits-grid,
-    .contact-grid {
+    .benefits-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(3, 1fr); /* Ensure 3 columns even on smaller tablets */
     }
 
     .courses-unified-grid {

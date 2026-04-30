@@ -15,8 +15,21 @@ function getHeaderHeight() {
 function updateHeaderOffset() {
   const root = document.documentElement;
   const headerHeight = getHeaderHeight();
-  const safeGap = window.innerWidth <= 768 ? 20 : 34; // Increased to account for banner gap
+  const safeGap = window.innerWidth <= 768 ? 10 : 12; // Tighter fit for desktop and mobile
   root.style.setProperty("--header-offset", `${headerHeight + safeGap}px`);
+
+  // Dynamically sync header width to match the exact matter page width (glass-card)
+  const header = document.getElementById("main-header");
+  const mainCard = document.querySelector(".main-viewport-card");
+  if (header && mainCard) {
+    if (window.innerWidth > 1100) {
+      // Use getBoundingClientRect for sub-pixel precision
+      const cardWidth = mainCard.getBoundingClientRect().width;
+      header.style.width = `${cardWidth}px`;
+    } else {
+      header.style.width = '';
+    }
+  }
 }
 
 // ── Show a specific section, hide all others ─────────────────────────────────
@@ -82,6 +95,12 @@ function showSection(sectionId) {
   }
 
   currentActiveSection = sectionId;
+
+  // Ensure header syncs perfectly with the newly visible section
+  updateHeaderOffset();
+
+  // Extra safety: re-check after a brief moment to catch any layout shifts
+  setTimeout(updateHeaderOffset, 50);
 }
 
 // ── Initialize: hide all sections except home ────────────────────────────────
@@ -167,7 +186,32 @@ document.addEventListener("DOMContentLoaded", () => {
         @keyframes slideUp { from { transform: translate(-50%, 20px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
     `;
   document.head.appendChild(style);
+
+  // Healing form declaration logic
+  const healDecl = document.getElementById('heal-declaration');
+  const healSubmit = document.getElementById('healing-submit-btn');
+  if (healDecl && healSubmit) {
+    healDecl.addEventListener('change', () => {
+      healSubmit.disabled = !healDecl.checked;
+      healSubmit.style.opacity = healDecl.checked ? '1' : '0.5';
+      healSubmit.style.cursor = healDecl.checked ? 'pointer' : 'not-allowed';
+    });
+  }
 });
+
+function toggleDeclaration() {
+  const text = document.getElementById('declaration-text');
+  const btn = document.getElementById('toggle-decl-btn');
+  if (!text || !btn) return;
+
+  if (text.classList.contains('expanded')) {
+    text.classList.remove('expanded');
+    btn.textContent = 'View More';
+  } else {
+    text.classList.add('expanded');
+    btn.textContent = 'View Less';
+  }
+}
 
 window.addEventListener("load", updateHeaderOffset);
 window.addEventListener("resize", updateHeaderOffset, { passive: true });
@@ -201,22 +245,22 @@ function showCourseStory(courseId) {
   // Load extra storytelling image if available
   const extraImgElement = document.getElementById('story-extra-image');
   const gallerySection = document.getElementById('story-gallery-section');
-  
+
   // Create a mapping or logic for extra images
   let extraImgSrc = `assets/${courseId}_detail_1.png`;
-  
+
   // Swapped for Intuition Power as per user request (Child logo on main, Rishi logo in detail)
   if (courseId === 'intuition') {
     extraImgSrc = 'assets/intuition_power.png';
   }
-  
+
   // We can pre-check if image exists by trying to load it or just assigning it and using onerror
   extraImgElement.src = extraImgSrc;
-  extraImgElement.onload = function() {
-      gallerySection.style.display = 'block';
+  extraImgElement.onload = function () {
+    gallerySection.style.display = 'block';
   };
-  extraImgElement.onerror = function() {
-      gallerySection.style.display = 'none';
+  extraImgElement.onerror = function () {
+    gallerySection.style.display = 'none';
   };
 
   const ul = document.getElementById('story-benefits-ul');
@@ -740,7 +784,7 @@ function scoreVoice(voice, langKey = "en") {
     // Strongly prefer Indian English female voices
     if (lang.includes("en-in") || lang.includes("en_in")) score += 100;
     if (name.includes("india") || name.includes("indian")) score += 80;
-    
+
     // Named Indian female voices (highest priority)
     if (name.includes("neerja")) score += 120;
     if (name.includes("veena")) score += 115;
@@ -748,7 +792,7 @@ function scoreVoice(voice, langKey = "en") {
     if (name.includes("aditi")) score += 105;
     if (name.includes("priya")) score += 100;
     if (name.includes("rishi")) score += 95;
-    
+
     // Female voice indicators
     if (name.includes("female") || name.includes("woman")) score += 50;
     if (name.includes("samantha")) score += 30;
@@ -756,7 +800,7 @@ function scoreVoice(voice, langKey = "en") {
     if (name.includes("google") && lang.includes("en-in")) score += 60;
     if (name.includes("google")) score += 10;
     if (lang.startsWith("en")) score += 8;
-    
+
     // Penalize male-sounding voices
     if (name.includes("daniel") || name.includes("james") || name.includes("david")) score -= 50;
     if (name.includes("male") && !name.includes("female")) score -= 40;
