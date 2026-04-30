@@ -7,49 +7,34 @@
 @media (min-width: 769px) and (max-width: 1100px) {
     .top-banner-strip {
         position: fixed !important;
-        top: 10px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
         transform: none !important;
-        height: var(--top-banner-height, 84px) !important;
-        border-radius: 15px !important;
+        height: 100px !important;
+        border-radius: 0 !important;
         z-index: 1100 !important;
-        overflow: hidden !important;
-        box-shadow: 0 4px 12px rgba(62, 43, 0, 0.15) !important;
-        background: transparent !important;
+        background: #fdfaf5 !important;
     }
 
     .header {
         position: fixed !important;
-        top: calc(10px + var(--top-banner-height) + 10px) !important;
+        top: 100px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
         z-index: 1000 !important;
-        padding: 14px 24px !important;
-    }
-
-    .top-banner-image {
-        border-radius: 15px !important;
-        object-fit: contain !important;
+        padding: 15px 30px !important;
+        border-radius: 0 !important;
+        background: #fdfaf5 !important;
+        box-shadow: 0 2px 10px rgba(62, 43, 0, 0.1) !important;
     }
 
     .main-viewport-card {
-        max-width: 100% !important;
-        border-radius: 0 !important;
-        width: 100% !important;
-    }
-
-    .nav-link {
-        font-size: 13px !important;
-        padding: 8px 12px !important;
-    }
-
-    .donate-header-btn {
-        font-size: 12px !important;
-        padding: 8px 16px !important;
-    }
-
-    .content-scroll-area {
-        padding: 0 28px !important;
+        margin-top: 180px !important;
+        width: 95% !important;
+        height: calc(100vh - 200px) !important;
     }
 
     .courses-unified-grid {
@@ -57,60 +42,11 @@
         gap: 20px !important;
     }
 
-    .story-page-content {
-        padding: 40px 30px !important;
-        max-width: 90% !important;
-    }
-
-    .story-benefits ul {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    .section-full {
-        padding: 30px 24px !important;
-    }
-
-    .hero-main-logo {
-        width: 220px !important;
-        height: 220px !important;
-    }
-
-    /* Tablet contact cards */
-    .contact-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 16px !important;
-    }
-
-    .contact-card {
-        padding: 20px 16px !important;
-    }
-
-    /* Tablet forms */
-    .premium-form-section {
-        max-width: 90% !important;
-    }
-
-    .premium-form-box {
-        padding: 30px 24px !important;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    /* Tablet healing */
-    .healing-service-content {
-        gap: 24px !important;
-    }
-
-    .healing-features {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    /* Tablet donate */
-    .donate-btn-large {
-        font-size: 15px !important;
-        padding: 14px 30px !important;
+    .custom-meaning, .contact-grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 }
 
@@ -138,15 +74,8 @@
         min-height: 100vh !important;
         display: block !important;
         padding: 0 !important;
-        word-break: break-word !important;
-        hyphens: auto !important;
-        box-sizing: border-box !important;
         overflow-x: hidden !important;
-    }
-
-    *, ::before, ::after {
-        box-sizing: border-box !important;
-        max-width: 100% !important;
+        width: 100% !important;
     }
 
     /* Main container flows naturally */
@@ -198,8 +127,8 @@
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        height: calc(var(--top-banner-height) + 80px) !important; /* Sufficient to cover banner area */
-        background: #fdfaf5 !important; /* Solid color to mask content */
+        height: calc(var(--top-banner-height) + 60px) !important;
+        background: #fdfaf5 !important;
         z-index: 1085 !important;
         display: block !important;
     }
@@ -336,14 +265,14 @@
         padding: 8px 14px !important;
         white-space: nowrap !important;
         border-radius: 8px !important;
-        margin-left: auto !important;
+        margin-left: 10px !important; /* Changed from auto to fixed margin to prevent push-off */
     }
 
     /* === SECTIONS - match desktop parchment cards === */
     .section-full {
         padding: 36px 20px !important;
         min-height: auto !important;
-        margin: 0 12px 20px !important; /* Natural 12px margin on sides */
+        margin: 0 12px 20px !important;
         background: rgba(255, 252, 248, 0.94) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
@@ -351,21 +280,8 @@
         border: 1px solid var(--border-gold) !important;
         box-shadow: 0 4px 20px rgba(62, 43, 0, 0.08) !important;
         box-sizing: border-box !important;
-        width: auto !important; /* Let margins define width */
-        max-width: none !important;
-        overflow-x: hidden !important;
-    }
-
-    .section-full p, 
-    .section-full div, 
-    .section-full span,
-    .section-full h1,
-    .section-full h2,
-    .section-full h3,
-    .section-full h4 {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+        width: auto !important;
+        overflow: hidden !important;
         overflow-wrap: break-word !important;
         word-wrap: break-word !important;
     }
@@ -438,6 +354,8 @@
         border: 1px solid var(--border-gold) !important;
         border-radius: 16px !important;
         box-sizing: border-box !important;
+        transform: none !important;
+        left: 0 !important;
     }
 
     .testimonials-marquee-wrap {
@@ -472,6 +390,7 @@
         gap: 12px !important;
         margin-bottom: 30px !important;
         width: 100% !important;
+        line-height: 1.2 !important;
     }
 
     .about-intro {
@@ -523,6 +442,7 @@
         align-items: center !important;
         width: 100% !important;
         gap: 24px !important;
+        margin: 0 !important;
     }
 
     .courses-unified-grid {
@@ -638,6 +558,7 @@
         font-size: 14px !important;
         line-height: 1.7 !important;
         text-align: center !important;
+        margin-bottom: 20px !important;
     }
 
     .healing-features {
@@ -787,7 +708,17 @@
         padding: 0 4px !important;
     }
 
-    /* === GOOGLE FORM === */
+    #donate > div[style*="margin: 0 -48px"] {
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 20px 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    #donate > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+
     .google-form-container {
         margin: 0 16px 24px !important;
         border-radius: 24px !important;
@@ -796,35 +727,82 @@
                 rgba(45, 69, 99, 0.85) 100%) !important;
     }
 
-    .form-header {
-        padding: 30px 20px !important;
+    /* Fixed overflow for sections with negative margins in inline styles or base CSS */
+    #healing > div[style*="margin: 34px auto 0"],
+    #donate > div[style*="margin: 0 -48px"],
+    .custom-meaning,
+    .contact-grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+        left: 0 !important;
+        transform: none !important;
     }
 
-    .form-icon-wrapper {
-        width: 64px !important;
-        height: 64px !important;
+    #healing > div[style*="max-width: 900px"] {
+        max-width: 100% !important;
     }
 
-    .form-heading {
-        font-size: 26px !important;
+    /* Force all form elements to respect containment */
+    .form-control, 
+    input[type="text"], 
+    input[type="tel"], 
+    input[type="email"], 
+    input[type="number"], 
+    input[type="file"],
+    select, 
+    textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    .form-description {
-        font-size: 16px !important;
-    }
-
-    .form-content {
-        padding: 0 20px 40px !important;
-    }
-
-    /* === FOOTER === */
-    .footer {
-        padding: 24px 16px !important;
-        background: rgba(236, 227, 213, 0.95) !important;
-        border-top: 2px solid var(--border-gold) !important;
+    .form-row {
+        display: flex !important;
         flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .form-group {
+        width: 100% !important;
+    }
+
+    /* Ensure UPI and QR sections are centered and contained */
+    .upi-section, .qr-container {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .upi-label {
+        font-size: 14px !important;
+        padding: 10px !important;
+        word-break: break-all !important;
+    }
+
+    .qr-frame {
+        width: 180px !important;
+        height: 180px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Fixed grid overflow in donate section */
+    #donate div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
         gap: 16px !important;
-        text-align: center !important;
+    }
+
+    .donate-btn-large {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: center !important;
     }
 
     .social-links {
