@@ -240,12 +240,12 @@
     }
 
     .nav-link.active {
-        background: var(--golden-primary) !important; /* Solid block color */
-        color: #fff !important; /* White text for contrast */
+        background: rgba(184, 134, 11, 0.10) !important;
+        color: var(--golden-deep) !important;
         font-weight: 700 !important;
         border-radius: 4px !important;
-        box-shadow: 0 2px 4px rgba(184, 134, 11, 0.3) !important; /* Subtle shadow for block effect */
-        border: none !important;
+        border-bottom: 2px solid var(--golden-primary) !important;
+        box-shadow: none !important;
     }
 
     .donate-header-btn {
