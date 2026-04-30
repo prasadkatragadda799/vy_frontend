@@ -453,7 +453,7 @@
       <nav class="nav-menu">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
-        <a href="#testimonials" class="nav-link" data-section="testimonials">Feed</a>
+        <a href="#feed" class="nav-link" data-section="feed">Feed</a>
         <a href="#healing" class="nav-link" data-section="healing">Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
@@ -1063,44 +1063,220 @@
               </div>
             </section>
 
-            <section id="testimonials" class="section-full">
-              <div class="testimonials-marquee-wrap" aria-label="Student testimonials">
-                <h3 class="testimonials-title">What Families Say</h3>
-                <div class="testimonials-marquee">
-                  <div class="testimonials-track">
-                    <article class="testimonial-card">
-                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
-                      <span>- Parent, Hyderabad</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
-                      <span>- Parent, Vijayawada</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
-                      <span>- Parent, Warangal</span>
-                    </article>
-                    <article class="testimonial-card">
-                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
-                      <span>- Parent, Guntur</span>
-                    </article>
+            <section id="feed" class="section-full">
+              <style>
+                #feed {
+                  background: rgba(255, 252, 248, 0.94);
+                  border: 1px solid var(--border-gold);
+                  border-radius: 24px;
+                  padding: 40px;
+                }
+                .feed-grid {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 30px;
+                  margin-top: 30px;
+                }
+                .feed-column-title {
+                  font-family: var(--font-heading);
+                  color: var(--golden-deep);
+                  font-size: 22px;
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  border-bottom: 2px solid var(--golden-primary);
+                  padding-bottom: 10px;
+                }
+                .feed-card {
+                  background: white;
+                  border-radius: 16px;
+                  padding: 20px;
+                  margin-bottom: 20px;
+                  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                  border: 1px solid rgba(184, 134, 11, 0.2);
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .feed-card:hover {
+                  transform: translateY(-5px);
+                  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
+                  border-color: var(--golden-primary);
+                }
+                .event-date {
+                  background: linear-gradient(135deg, var(--golden-primary), var(--golden-deep));
+                  color: white;
+                  border-radius: 12px;
+                  padding: 10px;
+                  text-align: center;
+                  min-width: 60px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                }
+                .event-date span { font-size: 24px; font-weight: bold; line-height: 1; }
+                .event-date small { font-size: 12px; letter-spacing: 1px; }
+                .event-card { display: flex; gap: 15px; align-items: flex-start; }
+                .event-info h4 { margin: 0 0 8px; font-size: 16px; color: var(--text-dark); }
+                .event-info p { margin: 0; font-size: 14px; color: var(--text-body); line-height: 1.5; }
+                
+                .review-header { display: flex; gap: 15px; align-items: center; margin-bottom: 12px; }
+                .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--golden-primary); }
+                .review-header h4 { margin: 0 0 5px; font-size: 15px; color: var(--text-dark); }
+                .stars { color: #f39c12; font-size: 14px; letter-spacing: 2px; }
+                .review-card p { font-style: italic; color: var(--text-body); font-size: 14px; line-height: 1.6; margin: 0; }
+                
+                .gallery-grid {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  gap: 15px;
+                }
+                .gallery-item {
+                  position: relative;
+                  border-radius: 12px;
+                  overflow: hidden;
+                  aspect-ratio: 1;
+                  background: #f1f2f6;
+                  border: 1px solid rgba(0,0,0,0.05);
+                  transition: transform 0.3s;
+                }
+                .gallery-item:hover { transform: scale(1.05); }
+                .gallery-item img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+                .gallery-overlay {
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+                  display: flex;
+                  align-items: flex-end;
+                  padding: 12px;
+                  opacity: 0;
+                  transition: opacity 0.3s;
+                }
+                .gallery-item:hover .gallery-overlay { opacity: 1; }
+                .gallery-overlay span { color: white; font-size: 13px; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
 
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"My child now focuses better and studies with joy. The confidence shift is amazing."</p>
-                      <span>- Parent, Hyderabad</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"After joining, memory and concentration improved quickly. We can see daily progress."</p>
-                      <span>- Parent, Vijayawada</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"The trainers are calm, patient, and structured. My son is more disciplined and positive."</p>
-                      <span>- Parent, Warangal</span>
-                    </article>
-                    <article class="testimonial-card" aria-hidden="true">
-                      <p>"Excellent balance of spiritual wisdom and practical life skills for children."</p>
-                      <span>- Parent, Guntur</span>
-                    </article>
+                .gallery-item.placeholder {
+                  background: linear-gradient(135deg, #e8c89e, #d4a574);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                }
+                .gallery-item.placeholder span {
+                  font-size: 13px;
+                  font-weight: 600;
+                  text-align: center;
+                  padding: 10px;
+                  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                }
+
+                @media (max-width: 1024px) {
+                  .feed-grid { grid-template-columns: repeat(2, 1fr); }
+                  .feed-gallery-column { grid-column: span 2; }
+                  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+                }
+                @media (max-width: 768px) {
+                  .feed-grid { grid-template-columns: 1fr; gap: 20px; }
+                  .feed-gallery-column { grid-column: span 1; }
+                  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+                  #feed { padding: 25px 15px; }
+                }
+              </style>
+
+              <h2 class="section-heading">
+                <span class="accent">✦</span>
+                Community Feed & Updates
+                <span class="accent">✦</span>
+              </h2>
+              
+              <div class="feed-grid">
+                <!-- Events Column -->
+                <div class="feed-column">
+                  <h3 class="feed-column-title"><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                  <div class="feed-card event-card">
+                    <div class="event-date"><span>15</span><small>OCT</small></div>
+                    <div class="event-info">
+                      <h4>Full Moon Meditation</h4>
+                      <p>Join us for a powerful group meditation session to harness lunar energies for inner peace.</p>
+                    </div>
+                  </div>
+                  <div class="feed-card event-card">
+                    <div class="event-date"><span>22</span><small>NOV</small></div>
+                    <div class="event-info">
+                      <h4>Pranic Healing Workshop</h4>
+                      <p>An introductory session on aura cleansing and foundational self-healing techniques.</p>
+                    </div>
+                  </div>
+                  <div class="feed-card event-card">
+                    <div class="event-date"><span>05</span><small>DEC</small></div>
+                    <div class="event-info">
+                      <h4>Guru Purnima Celebration</h4>
+                      <p>Special yagna and satsang. Open to all students and their families.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Reviews Column -->
+                <div class="feed-column">
+                  <h3 class="feed-column-title"><i class="fas fa-star"></i> Course Reviews</h3>
+                  <div class="feed-card review-card">
+                    <div class="review-header">
+                      <img src="vy_logo.jpg" alt="Student" class="review-avatar">
+                      <div>
+                        <h4>Rajesh Kumar</h4>
+                        <div class="stars">★★★★★</div>
+                      </div>
+                    </div>
+                    <p>"The Mind Power course completely transformed my son's approach to studying. He is much more focused now."</p>
+                  </div>
+                  <div class="feed-card review-card">
+                    <div class="review-header">
+                      <img src="vy_logo.jpg" alt="Student" class="review-avatar">
+                      <div>
+                        <h4>Anita S.</h4>
+                        <div class="stars">★★★★★</div>
+                      </div>
+                    </div>
+                    <p>"Aura cleansing sessions brought peace to our home. Highly recommend the divine healing services."</p>
+                  </div>
+                  <div class="feed-card review-card">
+                    <div class="review-header">
+                      <img src="vy_logo.jpg" alt="Student" class="review-avatar">
+                      <div>
+                        <h4>Priya M.</h4>
+                        <div class="stars">★★★★★</div>
+                      </div>
+                    </div>
+                    <p>"Learning Sri Vidya here was a profound spiritual experience. The teachings are authentic and deeply rooted."</p>
+                  </div>
+                </div>
+
+                <!-- Gallery Column -->
+                <div class="feed-column feed-gallery-column">
+                  <h3 class="feed-column-title"><i class="fas fa-images"></i> Sacred Gallery</h3>
+                  <div class="gallery-grid">
+                    <div class="gallery-item placeholder">
+                      <span>Ashram Event<br>(Placeholder)</span>
+                    </div>
+                    <div class="gallery-item placeholder">
+                      <span>Meditation Retreat<br>(Placeholder)</span>
+                    </div>
+                    <div class="gallery-item placeholder">
+                      <span>Agni Hotram<br>(Placeholder)</span>
+                    </div>
+                    <div class="gallery-item placeholder">
+                      <span>Healing Session<br>(Placeholder)</span>
+                    </div>
+                    <div class="gallery-item placeholder">
+                      <span>Dhanur Vidya<br>(Placeholder)</span>
+                    </div>
+                    <div class="gallery-item placeholder">
+                      <span>Community<br>(Placeholder)</span>
+                    </div>
                   </div>
                 </div>
               </div>
