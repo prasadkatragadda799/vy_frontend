@@ -207,61 +207,62 @@
         font-weight: 700 !important;
     }
 
-    /* Fixed Grid Navigation instead of horizontal scroll */
+    /* Single-row fixed Navigation */
     .nav-menu {
         width: 100% !important;
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        grid-template-rows: auto auto !important;
-        gap: 8px !important;
-        padding: 8px 10px !important;
-        box-sizing: border-box !important;
-        overflow: visible !important;
-        white-space: normal !important;
-        flex-wrap: wrap !important; /* Fallback */
-        justify-items: stretch !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow: hidden !important;
+        justify-content: space-between !important;
         align-items: center !important;
+        gap: 2px !important;
+        padding: 6px 4px !important;
+        box-sizing: border-box !important;
         background: #fdfaf5 !important;
     }
 
     .nav-link {
         flex: 1 1 auto !important;
-        font-size: 10px !important;
-        padding: 8px 4px !important;
-        background: rgba(184, 134, 11, 0.04) !important;
-        border: 1px solid rgba(184, 134, 11, 0.1) !important;
-        border-radius: 8px !important;
+        font-size: 8.5px !important; /* Extremely small to fit 6 items */
+        padding: 8px 2px !important;
+        background: transparent !important;
+        border: none !important;
         white-space: nowrap !important;
         color: var(--golden-deep) !important;
         transition: all 0.3s ease !important;
-        letter-spacing: 0.2px !important;
+        letter-spacing: 0 !important;
         text-transform: uppercase !important;
         text-align: center !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        min-height: 36px !important;
+        min-width: 0 !important; /* Allow shrinking */
     }
 
     .nav-link.active {
-        background: rgba(184, 134, 11, 0.12) !important;
+        background: rgba(184, 134, 11, 0.08) !important;
         color: var(--golden-deep) !important;
-        border: 1px solid var(--golden-primary) !important;
         font-weight: 700 !important;
+        border-radius: 4px !important;
     }
 
     .donate-header-btn {
-        grid-column: span 1 !important; /* Part of the grid now */
-        font-size: 10px !important;
-        padding: 8px 4px !important;
+        flex: 0 0 auto !important;
+        font-size: 8.5px !important;
+        padding: 6px 6px !important;
         white-space: nowrap !important;
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         margin-left: 0 !important;
-        width: 100% !important;
-        min-height: 36px !important;
-        justify-content: center !important;
         background: var(--golden-deep) !important;
-        box-shadow: 0 2px 8px rgba(107, 74, 0, 0.2) !important;
+        color: #fff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 2px !important;
+    }
+
+    .donate-header-btn i {
+        display: none !important; /* Hide icon to save space on single-row mobile */
     }
 
     /* === SECTIONS - match desktop parchment cards === */
