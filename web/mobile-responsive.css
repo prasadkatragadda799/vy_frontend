@@ -240,10 +240,12 @@
     }
 
     .nav-link.active {
-        background: rgba(184, 134, 11, 0.08) !important;
-        color: var(--golden-deep) !important;
+        background: var(--golden-primary) !important; /* Solid block color */
+        color: #fff !important; /* White text for contrast */
         font-weight: 700 !important;
         border-radius: 4px !important;
+        box-shadow: 0 2px 4px rgba(184, 134, 11, 0.3) !important; /* Subtle shadow for block effect */
+        border: none !important;
     }
 
     .donate-header-btn {
