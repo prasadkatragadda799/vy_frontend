@@ -207,65 +207,61 @@
         font-weight: 700 !important;
     }
 
-    /* Horizontal scrollable navigation */
+    /* Fixed Grid Navigation instead of horizontal scroll */
     .nav-menu {
         width: 100% !important;
-        display: flex !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-rows: auto auto !important;
+        gap: 8px !important;
+        padding: 8px 10px !important;
         box-sizing: border-box !important;
-        padding: 6px 12px !important;
-        gap: 12px !important;
-        justify-content: flex-start !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        flex-wrap: wrap !important; /* Fallback */
+        justify-items: stretch !important;
         align-items: center !important;
-        -webkit-overflow-scrolling: touch !important;
-        scrollbar-width: none !important;
-        white-space: nowrap !important;
-        flex-wrap: nowrap !important;
-    }
-
-    .nav-menu::-webkit-scrollbar {
-        display: none !important;
+        background: #fdfaf5 !important;
     }
 
     .nav-link {
-        flex: 0 0 auto !important;
-        font-size: 11px !important;
-        padding: 8px 10px !important;
-        background: transparent !important;
-        border: none !important;
-        border-bottom: 2px solid transparent !important;
+        flex: 1 1 auto !important;
+        font-size: 10px !important;
+        padding: 8px 4px !important;
+        background: rgba(184, 134, 11, 0.04) !important;
+        border: 1px solid rgba(184, 134, 11, 0.1) !important;
         border-radius: 8px !important;
         white-space: nowrap !important;
         color: var(--golden-deep) !important;
         transition: all 0.3s ease !important;
-        letter-spacing: 0.5px !important;
+        letter-spacing: 0.2px !important;
         text-transform: uppercase !important;
-        outline: none !important;
-        box-shadow: none !important;
         text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 36px !important;
     }
 
     .nav-link.active {
-        background: rgba(184, 134, 11, 0.10) !important;
+        background: rgba(184, 134, 11, 0.12) !important;
         color: var(--golden-deep) !important;
-        border-bottom-color: var(--golden-primary) !important;
-        box-shadow: none !important;
-    }
-
-    .nav-link:focus,
-    .nav-link:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
+        border: 1px solid var(--golden-primary) !important;
+        font-weight: 700 !important;
     }
 
     .donate-header-btn {
-        flex: 0 0 auto !important;
-        font-size: 11px !important;
-        padding: 8px 14px !important;
+        grid-column: span 1 !important; /* Part of the grid now */
+        font-size: 10px !important;
+        padding: 8px 4px !important;
         white-space: nowrap !important;
         border-radius: 8px !important;
-        margin-left: 10px !important; /* Changed from auto to fixed margin to prevent push-off */
+        margin-left: 0 !important;
+        width: 100% !important;
+        min-height: 36px !important;
+        justify-content: center !important;
+        background: var(--golden-deep) !important;
+        box-shadow: 0 2px 8px rgba(107, 74, 0, 0.2) !important;
     }
 
     /* === SECTIONS - match desktop parchment cards === */
