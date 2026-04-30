@@ -1471,10 +1471,8 @@
                   In Sanatana Dharma, Daana is sacred worship in action. It is not merely giving money - it is an
                   offering of gratitude at the feet of the Divine, made with humility and bhava.
                 </p>
-                <p style="font-size: 15px; line-height: 1.8; color: var(--text-body); margin-bottom: 16px; text-align:center;">
-                  When a contribution is made with pure sankalpa, it purifies the giver, nourishes dharmic work, and
-                  invites grace into one’s home, mind, and lineage. If this mission has touched your heart, consider this
-                  your sacred opportunity to serve.
+                <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 16px; text-align:center; font-weight: 600; font-style: italic;">
+                  Whatever you offer—whether good deeds or heartfelt donations—returns to you multiplied. Such is the Divine Law.
                 </p>
                 <div style="max-width:860px; margin:0 auto 20px; background: rgba(255,255,255,0.85); border:1px solid var(--border-gold); border-radius:14px; padding:14px 16px;">
                   <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin:0 0 8px;">
@@ -1628,152 +1626,66 @@
                         <form id="receipt-form" onsubmit="submitReceipt(event)">
                           <div class="form-row">
                             <div class="form-group">
-                              <label>Your Name</label>
+                              <label>Name *</label>
                               <input type="text" id="donor-name" class="form-control" required placeholder="Enter your name" />
                             </div>
                             <div class="form-group">
-                              <label>Phone Number</label>
+                              <label>Phone Number *</label>
                               <input type="tel" id="donor-phone" class="form-control" required placeholder="Enter phone" />
                             </div>
                           </div>
+                          <div class="form-row">
+                            <div class="form-group">
+                              <label>Email (Optional)</label>
+                              <input type="email" id="donor-email" class="form-control" placeholder="Enter email" />
+                            </div>
+                            <div class="form-group">
+                              <label>Place *</label>
+                              <input type="text" id="donor-place" class="form-control" required placeholder="Enter your city/place" />
+                            </div>
+                          </div>
                           <div class="form-group">
-                            <label>Amount Paid (₹)</label>
+                            <label>Aadhaar Number *</label>
+                            <input type="text" id="donor-aadhaar-number" class="form-control" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" />
+                          </div>
+                          <div class="form-group">
+                            <label>Donate To *</label>
+                            <select id="donor-category" class="form-control" required onchange="toggleDonorOther()">
+                              <option value="">Select Category</option>
+                              <option value="Kid Education">Kid Education</option>
+                              <option value="Ashramam">Ashramam</option>
+                              <option value="Health">Health</option>
+                              <option value="Annadhan">Annadhan</option>
+                              <option value="Any other">Any other</option>
+                            </select>
+                          </div>
+                          <div class="form-group" id="donor-other-container" style="display: none;">
+                            <label>Please Specify *</label>
+                            <input type="text" id="donor-other-specify" class="form-control" placeholder="Specify your cause" />
+                          </div>
+                          <div class="form-group">
+                            <label>Amount Paid (₹) *</label>
                             <input type="number" id="donor-amount" class="form-control" required placeholder="e.g. 500" />
                           </div>
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Transaction/Reference ID (Optional)</label>
-                      <input type="text" id="donor-txn-id" placeholder="Enter transaction ID from payment" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-
-                    <!-- NEW: Aadhaar documents and receipt for donations -->
-                    <div style="margin-bottom: 15px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Number *</label>
-                      <input type="text" id="donor-aadhaar-number" required placeholder="Enter 12-digit Aadhaar number"
-                        maxlength="12" pattern="\d{12}" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            box-sizing: border-box;
-                          " />
-                    </div>
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Card Front (Image/PDF) *</label>
-                      <input type="file" id="donor-aadhaar-front" required accept="image/*,.pdf" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 14px;
-                            background: #f8f9fa;
-                          " />
-                    </div>
-
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Aadhaar Card Back (Image/PDF) *</label>
-                      <input type="file" id="donor-aadhaar-back" required accept="image/*,.pdf" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 14px;
-                            background: #f8f9fa;
-                          " />
-                    </div>
-
-                    <div style="margin-bottom: 20px">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Transaction Receipt (Image/PDF) *</label>
-                      <input type="file" id="donor-receipt" required accept="image/*,.pdf" style="
-                            width: 100%;
-                            padding: 10px;
-                            border: 1px solid #dfe6e9;
-                            border-radius: 10px;
-                            font-size: 14px;
-                            background: #f8f9fa;
-                          " />
-                    </div>
-
-                    <!-- Screenshot Upload (only for WhatsApp) -->
-                    <div id="screenshot-upload-section" style="margin-bottom: 20px; display: none">
-                      <label style="
-                            display: block;
-                            font-size: 14px;
-                            color: #7f8c8d;
-                            margin-bottom: 5px;
-                          ">Upload Receipt Screenshot</label>
-                      <div class="file-upload-wrapper" style="position: relative">
-                        <input type="file" id="receipt-file" accept="image/*" onchange="handleFileSelect(this)"
-                          style="display: none" />
-                        <label for="receipt-file" id="file-label" style="
-                              display: block;
-                              padding: 12px;
-                              background: #f1f2f6;
-                              border-radius: 8px;
-                              border: 2px dashed #b2bec3;
-                              text-align: center;
-                              cursor: pointer;
-                              transition: all 0.3s;
-                              color: #636e72;
-                            ">
-                          <i class="fas fa-cloud-upload-alt" style="
-                                font-size: 20px;
-                                margin-bottom: 5px;
-                                display: block;
-                              "></i>
-                          <span id="file-text">Tap to Select Screenshot</span>
-                        </label>
-                      </div>
-                    </div>
-
-                    <button type="submit" id="donation-submit-btn" style="
-                          width: 100%;
-                          padding: 14px;
-                          background: linear-gradient(135deg, #4caf50, #66bb6a);
-                          border: none;
-                          color: white;
-                          border-radius: 30px;
-                          font-weight: bold;
-                          font-size: 16px;
-                          cursor: pointer;
-                          transition: all 0.3s;
-                          box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-                        ">
-                      <i class="fas fa-paper-plane"></i> Submit
-                    </button>
-                    </form>
+                          <div class="form-group">
+                            <label>Transaction/Reference ID (Optional)</label>
+                            <input type="text" id="donor-txn-id" class="form-control" placeholder="Enter transaction ID" />
+                          </div>
+                          <div class="form-group">
+                            <label>Upload Recent Picture of Individual *</label>
+                            <input type="file" id="donor-picture" required accept="image/*" class="form-control" style="background:#f8f9fa; padding:10px;" />
+                          </div>
+                          <div class="form-group">
+                            <label>Transaction Receipt Picture *</label>
+                            <input type="file" id="donor-receipt" required accept="image/*,.pdf" class="form-control" style="background:#f8f9fa; padding:10px;" />
+                          </div>
+                          <button type="submit" id="donation-submit-btn" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #4caf50, #66bb6a); border: none; color: white; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);">
+                            <i class="fas fa-paper-plane"></i> Submit
+                          </button>
+                          <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
+                            The donation you are making is offered in the name of Vibhuti Yoga.
+                          </p>
+                        </form>
                   </div>
                 </div>
               </div>
@@ -1785,7 +1697,7 @@
                   <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)">
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Full Name *</label>
+                        <label>Name *</label>
                         <input type="text" id="karmic-name" class="form-control" required placeholder="Enter name" />
                       </div>
                       <div class="form-group">
@@ -1794,39 +1706,57 @@
                       </div>
                     </div>
                     
-                    <div class="form-group">
-                      <label>Email (Optional)</label>
-                      <input type="email" id="karmic-email" class="form-control" placeholder="Enter email" />
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" id="karmic-email" class="form-control" placeholder="Enter email" />
+                      </div>
+                      <div class="form-group">
+                        <label>Place *</label>
+                        <input type="text" id="karmic-place" class="form-control" required placeholder="Enter your city/place" />
+                      </div>
                     </div>
 
                     <div class="form-group">
-                      <label>Primary Area of Karmic Burden *</label>
-                      <select id="karmic-area" class="form-control" required>
-                        <option value="">Select one</option>
-                        <option>Family / Relationships</option>
-                        <option>Health and Vitality</option>
-                        <option>Finance and Livelihood</option>
-                        <option>Ancestral / Pitru Challenges</option>
-                        <option>Mental Restlessness / Fear</option>
-                        <option>Spiritual Blockages</option>
+                      <label>Aadhaar Number *</label>
+                      <input type="text" id="karmic-aadhaar" class="form-control" required placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Karmic Repay *</label>
+                      <select id="karmic-repay-category" class="form-control" required onchange="toggleKarmicOther()">
+                        <option value="">Select Category</option>
+                        <option value="Gurudev">Gurudev</option>
+                        <option value="Service Others">Service Others</option>
                       </select>
                     </div>
 
-                    <div class="form-group">
-                      <label>Sankalpa (Intention / Prayer) *</label>
-                      <textarea id="karmic-sankalpa" class="form-control" required rows="4" placeholder="Write your clear spiritual intention"></textarea>
+                    <div class="form-group" id="karmic-other-container" style="display: none;">
+                      <label>Please Specify *</label>
+                      <input type="text" id="karmic-other-specify" class="form-control" placeholder="Specify service" />
                     </div>
 
-                    <div class="form-row">
-                      <div class="form-group">
-                        <label>Preferred Seva Amount (INR)</label>
-                        <input type="number" id="karmic-amount" class="form-control" placeholder="e.g. 1100" />
-                      </div>
+                    <div class="form-group">
+                      <label>Transaction Amount (INR) *</label>
+                      <input type="number" id="karmic-amount" class="form-control" required placeholder="e.g. 1100" />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Upload Recent Picture of Individual *</label>
+                      <input type="file" id="karmic-picture" required accept="image/*" class="form-control" style="background:#f8f9fa; padding:10px;" />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Transaction Receipt Picture *</label>
+                      <input type="file" id="karmic-receipt" required accept="image/*,.pdf" class="form-control" style="background:#f8f9fa; padding:10px;" />
                     </div>
 
                     <button type="submit" id="karmic-submit-btn" class="form-submit-btn">
                       <i class="fas fa-paper-plane"></i> Submit Karmic Resolution
                     </button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
+                      The donation you are making is offered in the name of Vibhuti Yoga.
+                    </p>
                   </form>
                 </div>
               </div>
@@ -2114,6 +2044,34 @@
       }
     }
 
+    function toggleDonorOther() {
+      const cat = document.getElementById("donor-category").value;
+      const container = document.getElementById("donor-other-container");
+      const input = document.getElementById("donor-other-specify");
+      if (cat === "Any other") {
+        container.style.display = "block";
+        input.required = true;
+      } else {
+        container.style.display = "none";
+        input.required = false;
+        input.value = "";
+      }
+    }
+
+    function toggleKarmicOther() {
+      const cat = document.getElementById("karmic-repay-category").value;
+      const container = document.getElementById("karmic-other-container");
+      const input = document.getElementById("karmic-other-specify");
+      if (cat === "Service Others") {
+        container.style.display = "block";
+        input.required = true;
+      } else {
+        container.style.display = "none";
+        input.required = false;
+        input.value = "";
+      }
+    }
+
     // ── Donation submission ────────────────────────────────────────────────────
     async function submitReceipt(e) {
       e.preventDefault();
@@ -2125,16 +2083,24 @@
       const fd = new FormData();
       fd.append("name", document.getElementById("donor-name").value.trim());
       fd.append("mobile", document.getElementById("donor-phone").value.trim());
+      fd.append("email", document.getElementById("donor-email").value.trim());
+      fd.append("place", document.getElementById("donor-place").value.trim());
       fd.append("aadhaar_number", document.getElementById("donor-aadhaar-number").value.trim());
       fd.append("amount_paid", document.getElementById("donor-amount").value);
+      
+      let category = document.getElementById("donor-category").value;
+      if (category === "Any other") {
+        category = document.getElementById("donor-other-specify").value.trim();
+      }
+      fd.append("donation_category", category);
+
       const txn = document.getElementById("donor-txn-id").value.trim();
       if (txn) fd.append("transaction_id", txn);
-      const af = document.getElementById("donor-aadhaar-front").files[0];
-      const ab = document.getElementById("donor-aadhaar-back").files[0];
-      const rf = document.getElementById("donor-receipt").files[0];
-      if (af) fd.append("aadhaar_front_doc", af);
-      if (ab) fd.append("aadhaar_back_doc", ab);
-      if (rf) fd.append("transaction_rep_doc", rf);
+
+      const pic = document.getElementById("donor-picture").files[0];
+      const receipt = document.getElementById("donor-receipt").files[0];
+      if (pic) fd.append("current_picture", pic);
+      if (receipt) fd.append("transaction_rep_doc", receipt);
 
       try {
         const res = await fetch(`${API_BASE}/api/donations`, {
@@ -2145,6 +2111,7 @@
         if (res.ok && data.success) {
           showToast("✅ Donation submitted! Thank you for your support.");
           e.target.reset();
+          toggleDonorOther();
         } else {
           throw new Error(data.message || "Donation submission failed");
         }
@@ -2160,15 +2127,20 @@
       e.preventDefault();
       const btn = document.getElementById("karmic-submit-btn");
       const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing…';
       btn.disabled = true;
 
       const name = document.getElementById("karmic-name").value.trim();
       const phone = document.getElementById("karmic-phone").value.trim();
       const email = document.getElementById("karmic-email").value.trim();
-      const area = document.getElementById("karmic-area").value;
-      const sankalpa = document.getElementById("karmic-sankalpa").value.trim();
+      const place = document.getElementById("karmic-place").value.trim();
+      const aadhaar = document.getElementById("karmic-aadhaar").value.trim();
       const amount = document.getElementById("karmic-amount").value.trim();
+      
+      let repayCat = document.getElementById("karmic-repay-category").value;
+      if (repayCat === "Service Others") {
+        repayCat = "Service Others: " + document.getElementById("karmic-other-specify").value.trim();
+      }
 
       const msgLines = [
         "🙏 *KARMIC DEBT RESOLUTION REQUEST*",
@@ -2176,11 +2148,14 @@
         `👤 *Name:* ${name}`,
         `📞 *Phone:* ${phone}`,
         email ? `📧 *Email:* ${email}` : "",
-        `🧭 *Primary Area:* ${area}`,
-        amount ? `💰 *Preferred Seva Amount:* ₹${amount}` : "",
+        `📍 *Place:* ${place}`,
+        `🔖 *Aadhaar:* ${aadhaar}`,
+        `⚖️ *Karmic Repay:* ${repayCat}`,
+        amount ? `💰 *Transaction Amount:* ₹${amount}` : "",
         "",
-        "🕉️ *Sankalpa / Intention:*",
-        sankalpa,
+        "⚠️ *PLEASE ATTACH THE FOLLOWING IN THIS CHAT:*",
+        "1. Your recent picture",
+        "2. The transaction receipt picture",
         "",
         "— Sent from Vibhuti Yoga Website"
       ].filter(Boolean).join("\n");
@@ -2189,8 +2164,9 @@
 
       try {
         window.open(whatsappUrl, "_blank");
-        showToast("✅ Karmic debt request prepared. Please send it on WhatsApp.");
+        showToast("✅ Karmic debt request prepared. Please remember to attach your pictures in WhatsApp.");
         e.target.reset();
+        toggleKarmicOther();
       } catch (err) {
         showToast("❌ Unable to open WhatsApp. Please try again.");
       } finally {
