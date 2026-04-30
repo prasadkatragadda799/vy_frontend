@@ -138,6 +138,8 @@
         min-height: 100vh !important;
         display: block !important;
         padding: 0 !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
     }
 
     /* Main container flows naturally */
@@ -182,9 +184,17 @@
         padding: 20px 0 40px !important;
     }
 
-    /* Blocker to prevent text from scrolling behind header and banner */
+    /* Fixed header blocker to hide scrolling content behind fixed elements */
     body::before {
-        display: none !important;
+        content: "" !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: calc(var(--top-banner-height) + 80px) !important; /* Sufficient to cover banner area */
+        background: #fdfaf5 !important; /* Solid color to mask content */
+        z-index: 1085 !important;
+        display: block !important;
     }
 
     .top-banner-strip {
@@ -199,7 +209,7 @@
         z-index: 1100 !important;
         overflow: hidden !important;
         box-shadow: 0 4px 15px rgba(62, 43, 0, 0.15) !important;
-        background: transparent !important;
+        background: #fdfaf5 !important; /* Solid background to mask scrolling content */
     }
 
     .top-banner-image {
@@ -213,22 +223,20 @@
     /* === HEADER - FIXED BELOW TOP BANNER === */
     .header {
         position: fixed !important;
-        top: calc(8px + var(--top-banner-height) + 8px) !important;
+        top: calc(8px + var(--top-banner-height) + 4px) !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
         max-width: none !important;
         box-sizing: border-box !important;
         padding: 0 !important;
-        background: var(--bg-parchment-light) !important;
-        backdrop-filter: blur(25px) !important;
-        -webkit-backdrop-filter: blur(25px) !important;
+        background: #fdfaf5 !important; /* Fully opaque background */
         border-bottom: 1px solid var(--border-gold) !important;
         border-radius: 0 !important;
-        z-index: 1090 !important;
+        z-index: 1095 !important;
         display: block !important;
         overflow: hidden !important;
-        box-shadow: 0 2px 12px rgba(62, 43, 0, 0.12) !important;
+        box-shadow: 0 2px 10px rgba(62, 43, 0, 0.1) !important;
         transform: none !important;
     }
 
@@ -255,11 +263,12 @@
     }
 
     .logo-text {
-        font-size: 20px !important;
+        font-size: 19px !important;
         letter-spacing: 0.5px !important;
         color: #c00 !important;
         margin: 0 !important;
         width: auto !important;
+        font-weight: 700 !important;
     }
 
     /* Horizontal scrollable navigation */
@@ -285,8 +294,8 @@
 
     .nav-link {
         flex: 0 0 auto !important;
-        font-size: 12px !important;
-        padding: 8px 12px !important;
+        font-size: 11px !important;
+        padding: 8px 10px !important;
         background: transparent !important;
         border: none !important;
         border-bottom: 2px solid transparent !important;
@@ -325,26 +334,30 @@
 
     /* === SECTIONS - match desktop parchment cards === */
     .section-full {
-        padding: 36px 18px !important;
+        padding: 36px 20px !important;
         min-height: auto !important;
-        margin: 0 12px 20px !important;
-        background: rgba(255, 252, 248, 0.88) !important;
+        margin: 0 10px 20px !important;
+        background: rgba(255, 252, 248, 0.92) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
         border-radius: 20px !important;
         border: 1px solid var(--border-gold) !important;
         box-shadow: 0 4px 20px rgba(62, 43, 0, 0.08) !important;
+        box-sizing: border-box !important;
+        width: calc(100% - 20px) !important;
     }
 
     #home {
-        background: rgba(255, 252, 248, 0.88) !important;
+        background: rgba(255, 252, 248, 0.92) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
         border-radius: 20px !important;
         border: 1px solid var(--border-gold) !important;
         box-shadow: 0 4px 20px rgba(62, 43, 0, 0.08) !important;
-        margin: 0 12px 20px !important;
-        padding: 36px 18px !important;
+        margin: 0 10px 20px !important;
+        padding: 36px 20px !important;
+        box-sizing: border-box !important;
+        width: calc(100% - 20px) !important;
     }
 
     /* === TYPOGRAPHY === */

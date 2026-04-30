@@ -233,12 +233,33 @@
         margin-top: 0;
       }
 
-      .splash-bg-om,
-      .splash-bg-trishul,
-      .splash-bg-damaru,
+      /* Reduce icon sizes and push to corners to prevent overlap on mobile */
+      .splash-bg-om {
+        top: 8% !important;
+        right: 6% !important;
+        width: 50px !important;
+        height: 50px !important;
+      }
+
+      .splash-bg-trishul {
+        bottom: 8% !important;
+        left: 6% !important;
+        width: 45px !important;
+        height: 60px !important;
+      }
+
       .splash-bg-goddess {
-        width: max(16vw, 55px) !important;
-        height: max(16vw, 55px) !important;
+        bottom: 8% !important;
+        right: 6% !important;
+        width: 50px !important;
+        height: 50px !important;
+      }
+
+      .splash-bg-damaru {
+        top: 8% !important;
+        left: 6% !important;
+        width: 45px !important;
+        height: 45px !important;
       }
     }
 
