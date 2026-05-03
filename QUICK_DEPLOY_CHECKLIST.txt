@@ -1,0 +1,50 @@
+═══════════════════════════════════════════════════════════════════
+  QUICK DEPLOYMENT CHECKLIST - GoDaddy
+═══════════════════════════════════════════════════════════════════
+
+📁 FILES TO UPLOAD (from web/ folder):
+───────────────────────────────────────────────────────────────────
+✅ index.html
+✅ vibhuti-styles.css
+✅ mobile-responsive.css
+✅ mobile-ultra-transparent.css
+✅ vibhuti-script.js
+✅ background.png
+✅ background-mobile.jpg
+✅ logo.jpg
+✅ splash-image.jpg
+✅ qr-code.png
+✅ favicon.png
+✅ icons/Icon-192.png
+✅ icons/Icon-512.png
+✅ icons/Icon-maskable-192.png
+✅ icons/Icon-maskable-512.png
+
+📍 UPLOAD LOCATION:
+───────────────────────────────────────────────────────────────────
+GoDaddy File Manager → public_html/ folder
+
+🔧 STEPS:
+───────────────────────────────────────────────────────────────────
+1. Log in to GoDaddy
+2. Go to "My Products" → "Manage" (your hosting)
+3. Open "File Manager"
+4. Navigate to public_html/
+5. Upload ALL files from web/ folder
+6. Create icons/ folder and upload icon files
+7. Set permissions to 644 for all files
+8. Visit your domain to test
+
+🌐 AFTER UPLOAD:
+───────────────────────────────────────────────────────────────────
+- Test: http://yourdomain.com
+- Enable SSL/HTTPS in GoDaddy hosting panel
+- Test mobile view on phone
+
+⚠️ COMMON ISSUES:
+───────────────────────────────────────────────────────────────────
+- Images not loading? → Check file paths in HTML
+- CSS not working? → Clear browser cache (Ctrl+F5)
+- 404 error? → Make sure index.html is in public_html/ root
+
+═══════════════════════════════════════════════════════════════════

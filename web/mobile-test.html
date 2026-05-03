@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('background.png') no-repeat center top;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 200vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 30px 16px 20px 16px;
+        }
+
+        .box {
+            background: rgba(30, 46, 69, 0.10);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 216, 155, 0.3);
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            padding: 0 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mobile Test - Can you see the background?</h1>
+
+        <div class="box">
+            <h2>Section 1</h2>
+            <p>If the cosmic background is visible behind this box, transparency is working!</p>
+        </div>
+
+        <div class="box">
+            <h2>Section 2</h2>
+            <p>Scroll down to test if scrolling works...</p>
+        </div>
+
+        <div class="box">
+            <h2>Section 3</h2>
+            <p>Keep scrolling...</p>
+        </div>
+
+        <div class="box">
+            <h2>Section 4</h2>
+            <p>Almost there...</p>
+        </div>
+
+        <div class="box">
+            <h2>Section 5</h2>
+            <p>If you can see this, scrolling works!</p>
+        </div>
+
+        <div class="box">
+            <h2>BOTTOM</h2>
+            <p>✅ Background visible? ✅ Scrolling works?</p>
+        </div>
+    </div>
+</body>
+
+</html>
