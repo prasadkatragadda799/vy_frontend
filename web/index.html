@@ -357,6 +357,46 @@
         transform: translateY(0);
       }
     }
+
+    /* ── Found-User Name Badge ─────────────────────────────── */
+    .found-user-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      border: 2px solid #66bb6a;
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      animation: fadeInUp 0.5s ease forwards;
+      box-shadow: 0 4px 18px rgba(76, 175, 80, 0.15);
+    }
+    .found-user-badge .found-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, #43a047, #66bb6a);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 20px;
+      flex-shrink: 0; box-shadow: 0 3px 10px rgba(76,175,80,0.25);
+    }
+    .found-user-badge .found-details {
+      flex: 1;
+    }
+    .found-user-badge .found-label {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+      color: #388e3c; font-weight: 700; margin-bottom: 4px;
+    }
+    .found-user-badge .found-name {
+      font-size: 20px; font-weight: 800; color: #1b5e20;
+      font-family: var(--font-heading);
+    }
+    .found-user-badge .found-icon {
+      font-size: 22px; color: #43a047;
+    }
+
+    /* Hide fields not needed for returning users */
+    .found-skip-hidden {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -893,7 +933,7 @@
                       </select>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Your Full Name *</label>
                         <input type="text" id="reg-name" class="form-control" required placeholder="Enter full name" />
@@ -904,7 +944,7 @@
                       </div>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Qualification *</label>
                         <input type="text" id="reg-qualification" class="form-control" required placeholder="Your qualification" />
@@ -915,12 +955,12 @@
                       </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" data-found-skip>
                       <label>Location (Present Address) *</label>
                       <input type="text" id="reg-location" class="form-control" required placeholder="Enter your present address" />
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Aadhaar Card Front *</label>
                         <input type="file" id="reg-aadhaar-front" class="form-control" required accept="image/*,.pdf" />
@@ -931,7 +971,7 @@
                       </div>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Father's Name *</label>
                         <input type="text" id="reg-father-name" class="form-control" required placeholder="Enter father's name" />
@@ -942,7 +982,7 @@
                       </div>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Mother's Name *</label>
                         <input type="text" id="reg-mother-name" class="form-control" required placeholder="Enter mother's name" />
@@ -1731,12 +1771,12 @@
 
                     <div id="heal-rest" style="display: none;">
                       <!-- Name -->
-                    <div style="margin-bottom: 8px">
+                    <div style="margin-bottom: 8px" data-found-skip>
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
                       <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Date of Birth *</label>
                         <input type="date" id="heal-dob" required class="form-control" />
@@ -1747,7 +1787,7 @@
                       </div>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Place of Birth *</label>
                         <input type="text" id="heal-dob-place" required class="form-control" placeholder="City, State, Country" />
@@ -1758,7 +1798,7 @@
                       </div>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Email (Optional)</label>
                         <input type="email" id="heal-email" class="form-control" placeholder="Enter your email" />
@@ -1770,11 +1810,11 @@
                     </div>
 
                     <!-- Aadhaar Front & Back -->
-                    <div style="margin-bottom: 8px">
+                    <div style="margin-bottom: 8px" data-found-skip>
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
                       <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
-                    <div style="margin-bottom: 12px">
+                    <div style="margin-bottom: 12px" data-found-skip>
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
                       <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
@@ -2130,7 +2170,7 @@
                           </div>
 
                           <div id="donor-rest" style="display: none;">
-                            <div class="form-row">
+                            <div class="form-row" data-found-skip>
                             <div class="form-group">
                               <label>Full Name *</label>
                               <input type="text" id="donor-name" class="form-control" required placeholder="Enter your name" />
@@ -2141,11 +2181,11 @@
                             </div>
                           </div>
                           
-                          <div class="form-group">
+                          <div class="form-group" data-found-skip>
                             <label>Place *</label>
                             <input type="text" id="donor-place" class="form-control" required placeholder="Enter your city/place" />
                           </div>
-                          <div class="form-row">
+                          <div class="form-row" data-found-skip>
                             <div class="form-group">
                               <label>Aadhaar Card Front *</label>
                               <input type="file" id="donor-aadhaar-front" class="form-control" required accept="image/*,.pdf" style="background:#f8f9fa; padding:10px;" />
@@ -2178,7 +2218,7 @@
                             <label>Transaction/Reference ID (Optional)</label>
                             <input type="text" id="donor-txn-id" class="form-control" placeholder="Enter transaction ID" />
                           </div>
-                          <div class="form-group">
+                          <div class="form-group" data-found-skip>
                             <label>Upload Recent Picture of Individual *</label>
                             <input type="file" id="donor-picture" required accept="image/*" class="form-control" style="background:#f8f9fa; padding:10px;" />
                           </div>
@@ -2219,7 +2259,7 @@
                     </div>
 
                     <div id="karmic-rest" style="display: none;">
-                      <div class="form-row">
+                      <div class="form-row" data-found-skip>
                         <div class="form-group">
                         <label>Your Full Name *</label>
                         <input type="text" id="karmic-name" class="form-control" required placeholder="Enter name" />
@@ -2230,7 +2270,7 @@
                       </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" data-found-skip>
                       <label>Place *</label>
                       <input type="text" id="karmic-place" class="form-control" required placeholder="Enter your city/place" />
                     </div>
@@ -2347,22 +2387,111 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying…';
       btn.disabled = true;
 
-      // Simulate verification delay
-      setTimeout(() => {
+      // Call the lookup-user API
+      fetch(`${API_BASE}/api/classes/lookup-user`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mobile: phone.value.trim(),
+          aadhaar_number: aadhaar.value.trim()
+        })
+      })
+      .then(res => res.json())
+      .then(result => {
+        const isFound = result.success && result.data && result.data.found === true;
+        const userName = isFound ? result.data.name : null;
+
         btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
         btn.style.background = '#27ae60';
         btn.style.borderColor = '#27ae60';
-        
-        rest.style.display = 'block';
-        rest.style.animation = 'fadeInUp 0.6s ease forwards';
-        
-        showToast("✅ Identity verified. Please complete the rest of the form.");
-        
+
+        // Lock the verification fields
         aadhaar.readOnly = true;
         phone.readOnly = true;
         aadhaar.style.background = '#f0f0f0';
         phone.style.background = '#f0f0f0';
-      }, 1500);
+
+        // Remove any previous found-badge in this form
+        const existingBadge = rest.parentElement.querySelector('.found-user-badge');
+        if (existingBadge) existingBadge.remove();
+
+        if (isFound && userName) {
+          // ── USER FOUND: Show name badge, hide already-known fields ──
+          const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+          const badge = document.createElement('div');
+          badge.className = 'found-user-badge';
+          badge.innerHTML = `
+            <div class="found-avatar">${initials}</div>
+            <div class="found-details">
+              <div class="found-label">Welcome Back</div>
+              <div class="found-name">${userName}</div>
+            </div>
+            <i class="fas fa-check-double found-icon"></i>
+          `;
+          // Insert badge right before the rest container
+          rest.parentElement.insertBefore(badge, rest);
+
+          // Store found name in a hidden input for submission
+          let hiddenName = rest.querySelector('.found-name-value');
+          if (!hiddenName) {
+            hiddenName = document.createElement('input');
+            hiddenName.type = 'hidden';
+            hiddenName.className = 'found-name-value';
+            rest.prepend(hiddenName);
+          }
+          hiddenName.value = userName;
+
+          // Pre-fill and set the name input if it exists
+          const nameField = rest.querySelector('[id$="-name"]');
+          if (nameField) {
+            nameField.value = userName;
+          }
+
+          // Hide fields that are already known for returning users
+          rest.querySelectorAll('[data-found-skip]').forEach(el => {
+            el.classList.add('found-skip-hidden');
+          });
+
+          // Remove 'required' from hidden file inputs so form can submit
+          rest.querySelectorAll('.found-skip-hidden input[required], .found-skip-hidden select[required], .found-skip-hidden textarea[required]').forEach(el => {
+            el.dataset.wasRequired = 'true';
+            el.removeAttribute('required');
+          });
+
+          showToast(`🙏 Welcome back, ${userName}! Please complete the remaining details.`);
+        } else {
+          // ── USER NOT FOUND: Show entire form ──
+          rest.querySelectorAll('[data-found-skip]').forEach(el => {
+            el.classList.remove('found-skip-hidden');
+          });
+          // Restore required attributes if previously removed
+          rest.querySelectorAll('[data-was-required]').forEach(el => {
+            el.setAttribute('required', '');
+            delete el.dataset.wasRequired;
+          });
+
+          showToast("✅ Identity verified. Please complete the full form.");
+        }
+
+        // Show the rest of the form
+        rest.style.display = 'block';
+        rest.style.animation = 'fadeInUp 0.6s ease forwards';
+      })
+      .catch(err => {
+        console.error("Lookup API error:", err);
+        // On API failure, fall back to showing the full form
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+        btn.style.background = '#27ae60';
+        btn.style.borderColor = '#27ae60';
+        aadhaar.readOnly = true;
+        phone.readOnly = true;
+        aadhaar.style.background = '#f0f0f0';
+        phone.style.background = '#f0f0f0';
+
+        rest.style.display = 'block';
+        rest.style.animation = 'fadeInUp 0.6s ease forwards';
+        showToast("✅ Identity verified. Please complete the form.");
+      });
     }
 
     // ── Tab switching ──────────────────────────────────────────────────────────
@@ -2384,6 +2513,7 @@
       const formSection = document.getElementById("registration-form-section");
       if (formSection) {
         formSection.style.display = "none";
+        cleanupFoundUserState(formSection);
       }
     }
 
@@ -2411,14 +2541,49 @@
       }
     }
 
+    // ── Cleanup found-user state for a form section ───────────────────────────
+    function cleanupFoundUserState(section) {
+      if (!section) return;
+      // Remove found-user badges
+      section.querySelectorAll('.found-user-badge').forEach(b => b.remove());
+      // Remove hidden name inputs
+      section.querySelectorAll('.found-name-value').forEach(h => h.remove());
+      // Un-hide all found-skip fields
+      section.querySelectorAll('[data-found-skip]').forEach(el => {
+        el.classList.remove('found-skip-hidden');
+      });
+      // Restore required attributes
+      section.querySelectorAll('[data-was-required]').forEach(el => {
+        el.setAttribute('required', '');
+        delete el.dataset.wasRequired;
+      });
+      // Hide rest containers
+      section.querySelectorAll('[id$="-rest"]').forEach(r => { r.style.display = 'none'; });
+      // Reset verify buttons
+      section.querySelectorAll('.verify-btn').forEach(btn => {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Verify';
+        btn.disabled = false;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+      });
+      // Unlock verification inputs
+      section.querySelectorAll('.verification-header input').forEach(inp => {
+        inp.readOnly = false;
+        inp.style.background = '';
+        inp.value = '';
+      });
+    }
+
     function resetDonationFormVisibility() {
       const donationFormSection = document.getElementById("donation-form-section");
       if (donationFormSection) {
         donationFormSection.style.display = "none";
+        cleanupFoundUserState(donationFormSection);
       }
       const karmicSection = document.getElementById("karmic-debt-form-section");
       if (karmicSection) {
         karmicSection.style.display = "none";
+        cleanupFoundUserState(karmicSection);
       }
     }
 
@@ -2436,6 +2601,7 @@
       const healingFormSection = document.getElementById("healing-form-section");
       if (healingFormSection) {
         healingFormSection.style.display = "none";
+        cleanupFoundUserState(healingFormSection);
       }
     }
 
@@ -2563,23 +2729,27 @@
       const fd = new FormData();
 
       // Required fields per /api/yoga-form/submissions spec
-      fd.append("author_name", document.getElementById("reg-name").value.trim());
+      const foundNameInput = document.querySelector('#reg-rest .found-name-value');
+      const regNameField = document.getElementById("reg-name");
+      fd.append("author_name", (foundNameInput && foundNameInput.value) ? foundNameInput.value : regNameField.value.trim());
 
       const sel = document.getElementById("reg-class");
       const selOpt = sel.options[sel.selectedIndex];
       const courseName = (selOpt.dataset.name || selOpt.textContent.replace(/\s*\(₹.*\)/, '')).trim();
       fd.append("course_name", courseName);
 
+      const isFoundUser = !!document.querySelector('#reg-rest .found-name-value');
+
       const fatherName = document.getElementById("reg-father-name").value.trim();
       const motherName = document.getElementById("reg-mother-name").value.trim();
-      fd.append("father_or_mother_name", fatherName || motherName || "Not provided");
+      fd.append("father_or_mother_name", fatherName || motherName || (isFoundUser ? "On file" : "Not provided"));
 
-      fd.append("qualification", document.getElementById("reg-qualification").value.trim());
+      fd.append("qualification", document.getElementById("reg-qualification").value.trim() || (isFoundUser ? "On file" : ""));
 
       const ageInput = document.getElementById("reg-age");
-      if (ageInput) fd.append("age_or_birth_date", ageInput.value.trim());
+      if (ageInput && ageInput.value.trim()) fd.append("age_or_birth_date", ageInput.value.trim());
 
-      fd.append("location", document.getElementById("reg-location").value.trim());
+      fd.append("location", document.getElementById("reg-location").value.trim() || (isFoundUser ? "On file" : ""));
       fd.append("mobile", document.getElementById("reg-phone").value.trim());
       fd.append("amount_paid", document.getElementById("reg-amount").value);
 
@@ -2675,7 +2845,9 @@
 
       const fd = new FormData();
       // Required fields per /api/donations spec
-      fd.append("name", document.getElementById("donor-name").value.trim());
+      const donorFoundName = document.querySelector('#donor-rest .found-name-value');
+      const donorNameField = document.getElementById("donor-name");
+      fd.append("name", (donorFoundName && donorFoundName.value) ? donorFoundName.value : donorNameField.value.trim());
       fd.append("mobile", document.getElementById("donor-phone").value.trim());
       fd.append("aadhaar_number", document.getElementById("donor-aadhaar-number").value.trim());
       fd.append("amount_paid", document.getElementById("donor-amount").value);
@@ -2729,7 +2901,9 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing…';
       btn.disabled = true;
 
-      const name = document.getElementById("karmic-name").value.trim();
+      const karmicFoundName = document.querySelector('#karmic-rest .found-name-value');
+      const karmicNameField = document.getElementById("karmic-name");
+      const name = (karmicFoundName && karmicFoundName.value) ? karmicFoundName.value : karmicNameField.value.trim();
       const phone = document.getElementById("karmic-phone").value.trim();
       const email = document.getElementById("karmic-email").value.trim();
       const place = document.getElementById("karmic-place").value.trim();
@@ -2831,7 +3005,9 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
       btn.disabled = true;
 
-      const name     = document.getElementById("heal-name").value.trim();
+      const healFoundName = document.querySelector('#heal-rest .found-name-value');
+      const healNameField = document.getElementById("heal-name");
+      const name = (healFoundName && healFoundName.value) ? healFoundName.value : healNameField.value.trim();
       const dob      = document.getElementById("heal-dob").value;
       const dobTime  = document.getElementById("heal-dob-time").value;
       const dobPlace = document.getElementById("heal-dob-place").value.trim();
