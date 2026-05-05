@@ -397,6 +397,87 @@
     .found-skip-hidden {
       display: none !important;
     }
+
+    /* ── Payment Summary Card (Returning Users) ─────────── */
+    .payment-summary-card {
+      background: linear-gradient(135deg, #f0f7ff 0%, #f8fcff 100%);
+      border: 2px solid #4a9eff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.5s ease forwards;
+      box-shadow: 0 4px 18px rgba(74, 158, 255, 0.12);
+    }
+    .psc-header {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: #2d4563;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(74, 158, 255, 0.2);
+    }
+    .psc-header i {
+      color: #4a9eff;
+    }
+    .psc-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .psc-row:last-child {
+      border-bottom: none;
+    }
+    .psc-course {
+      font-weight: 700;
+      color: var(--golden-deep);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 140px;
+    }
+    .psc-amounts {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .psc-paid {
+      color: #27ae60;
+      font-weight: 600;
+    }
+    .psc-remaining {
+      font-weight: 600;
+    }
+    .psc-status {
+      font-size: 10px;
+      font-weight: 800;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .psc-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .psc-amounts {
+        gap: 10px;
+      }
+    }
   </style>
 </head>
 
@@ -2387,19 +2468,22 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying…';
       btn.disabled = true;
 
+      const phoneVal = phone.value.trim();
+      const aadhaarVal = aadhaar.value.trim();
+
       // Call the lookup-user API
       fetch(`${API_BASE}/api/classes/lookup-user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          mobile: phone.value.trim(),
-          aadhaar_number: aadhaar.value.trim()
+          mobile: phoneVal,
+          aadhaar_number: aadhaarVal
         })
       })
       .then(res => res.json())
-      .then(result => {
+      .then(async result => {
         const isFound = result.success && result.data && result.data.found === true;
-        const userName = isFound ? result.data.name : null;
+        const userName = isFound ? (result.data.your_full_name || result.data.name) : null;
 
         btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
         btn.style.background = '#27ae60';
@@ -2411,9 +2495,14 @@
         aadhaar.style.background = '#f0f0f0';
         phone.style.background = '#f0f0f0';
 
-        // Remove any previous found-badge in this form
-        const existingBadge = rest.parentElement.querySelector('.found-user-badge');
-        if (existingBadge) existingBadge.remove();
+        // Remove any previous found-badge or payment summary in this form
+        const formSection = rest.closest('.premium-form-section') || rest.closest('form')?.closest('.premium-form-box')?.parentElement;
+        if (formSection) {
+          formSection.querySelectorAll('.found-user-badge, .payment-summary-card').forEach(el => el.remove());
+        } else {
+          const existingBadge = rest.parentElement.querySelector('.found-user-badge');
+          if (existingBadge) existingBadge.remove();
+        }
 
         if (isFound && userName) {
           // ── USER FOUND: Show name badge, hide already-known fields ──
@@ -2457,6 +2546,70 @@
             el.dataset.wasRequired = 'true';
             el.removeAttribute('required');
           });
+
+          // ── FORM-SPECIFIC POST-VERIFICATION ──
+
+          // REGISTRATION: Fetch payment summary for returning user
+          if (prefix === 'reg') {
+            try {
+              const summaryRes = await fetch(`${API_BASE}/api/classes/payment-summary?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
+              const summaryData = await summaryRes.json();
+              if (summaryData.success && Array.isArray(summaryData.data) && summaryData.data.length > 0) {
+                const summaryCard = document.createElement('div');
+                summaryCard.className = 'payment-summary-card';
+                let rows = '';
+                summaryData.data.forEach(item => {
+                  const statusColor = item.payment_status === 'completed' ? '#27ae60' : (item.payment_status === 'partial' ? '#f39c12' : '#e74c3c');
+                  const statusIcon = item.payment_status === 'completed' ? 'fa-check-circle' : (item.payment_status === 'partial' ? 'fa-clock' : 'fa-exclamation-circle');
+                  rows += `
+                    <div class="psc-row">
+                      <div class="psc-course"><i class="fas fa-book"></i> ${item.class_name || 'Course #' + item.class_id}</div>
+                      <div class="psc-amounts">
+                        <span class="psc-paid"><i class="fas fa-rupee-sign"></i> ${item.paid_amount || 0} paid</span>
+                        <span class="psc-remaining" style="color:${statusColor}"><i class="fas ${statusIcon}"></i> ₹${item.remaining_amount || item.pending_amount || 0} remaining</span>
+                      </div>
+                      <div class="psc-status" style="background:${statusColor}">${(item.payment_status || 'pending').toUpperCase()}</div>
+                    </div>
+                  `;
+                });
+                summaryCard.innerHTML = `
+                  <div class="psc-header"><i class="fas fa-receipt"></i> Your Payment History</div>
+                  ${rows}
+                `;
+                rest.parentElement.insertBefore(summaryCard, rest);
+              }
+            } catch (summaryErr) {
+              console.warn("Payment summary fetch failed:", summaryErr);
+            }
+          }
+
+          // DONATION: Check eligibility
+          if (prefix === 'donor') {
+            try {
+              const eligRes = await fetch(`${API_BASE}/api/donations/verify-eligibility?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
+              const eligData = await eligRes.json();
+              if (eligData.success && eligData.data && !eligData.data.can_donate) {
+                const eligBanner = document.createElement('div');
+                eligBanner.className = 'payment-summary-card';
+                eligBanner.style.borderColor = '#e74c3c';
+                eligBanner.style.background = 'linear-gradient(135deg, #ffeef0 0%, #fff5f5 100%)';
+                eligBanner.innerHTML = `
+                  <div class="psc-header" style="color:#c0392b"><i class="fas fa-exclamation-triangle"></i> Donation Not Available</div>
+                  <p style="margin:10px 0 0; font-size:14px; color:#7f8c8d; line-height:1.6">${eligData.data.message || 'You must have a class registration before making a donation. Please register for a course first.'}</p>
+                `;
+                rest.parentElement.insertBefore(eligBanner, rest);
+                // Still show form but disable submit
+                const submitBtn = rest.querySelector('#donation-submit-btn');
+                if (submitBtn) {
+                  submitBtn.disabled = true;
+                  submitBtn.style.opacity = '0.5';
+                  submitBtn.style.cursor = 'not-allowed';
+                }
+              }
+            } catch (eligErr) {
+              console.warn("Donation eligibility check failed:", eligErr);
+            }
+          }
 
           showToast(`🙏 Welcome back, ${userName}! Please complete the remaining details.`);
         } else {
@@ -2544,8 +2697,8 @@
     // ── Cleanup found-user state for a form section ───────────────────────────
     function cleanupFoundUserState(section) {
       if (!section) return;
-      // Remove found-user badges
-      section.querySelectorAll('.found-user-badge').forEach(b => b.remove());
+      // Remove found-user badges and payment summary cards
+      section.querySelectorAll('.found-user-badge, .payment-summary-card').forEach(b => b.remove());
       // Remove hidden name inputs
       section.querySelectorAll('.found-name-value').forEach(h => h.remove());
       // Un-hide all found-skip fields
@@ -2718,7 +2871,7 @@
       }, 3500);
     }
 
-    // ── Registration submission ────────────────────────────────────────────────
+    // ── Registration submission (POST /api/classes/register-payment) ─────────
     async function submitRegistration(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
@@ -2728,73 +2881,78 @@
 
       const fd = new FormData();
 
-      // Required fields per /api/yoga-form/submissions spec
+      // Identity fields
       const foundNameInput = document.querySelector('#reg-rest .found-name-value');
       const regNameField = document.getElementById("reg-name");
-      fd.append("author_name", (foundNameInput && foundNameInput.value) ? foundNameInput.value : regNameField.value.trim());
+      fd.append("your_full_name", (foundNameInput && foundNameInput.value) ? foundNameInput.value : regNameField.value.trim());
 
+      fd.append("phone_number", document.getElementById("reg-phone").value.trim());
+      fd.append("aadhaar_number", document.getElementById("reg-aadhaar-number").value.trim());
+
+      // Course selection — send numeric class_id
       const sel = document.getElementById("reg-class");
-      const selOpt = sel.options[sel.selectedIndex];
-      const courseName = (selOpt.dataset.name || selOpt.textContent.replace(/\s*\(₹.*\)/, '')).trim();
-      fd.append("course_name", courseName);
+      fd.append("class_id", sel.value);
+
+      // Fee & transaction
+      fd.append("fee_amount_paid", document.getElementById("reg-amount").value);
+      const txn = document.getElementById("reg-txn-id").value.trim();
+      if (txn) fd.append("transaction_id", txn);
 
       const isFoundUser = !!document.querySelector('#reg-rest .found-name-value');
 
-      const fatherName = document.getElementById("reg-father-name").value.trim();
-      const motherName = document.getElementById("reg-mother-name").value.trim();
-      fd.append("father_or_mother_name", fatherName || motherName || (isFoundUser ? "On file" : "Not provided"));
+      // Personal details
+      const ageInput = document.getElementById("reg-age");
+      if (ageInput && ageInput.value.trim()) fd.append("age_or_birth", ageInput.value.trim());
 
       fd.append("qualification", document.getElementById("reg-qualification").value.trim() || (isFoundUser ? "On file" : ""));
-
-      const ageInput = document.getElementById("reg-age");
-      if (ageInput && ageInput.value.trim()) fd.append("age_or_birth_date", ageInput.value.trim());
-
       fd.append("location", document.getElementById("reg-location").value.trim() || (isFoundUser ? "On file" : ""));
-      fd.append("mobile", document.getElementById("reg-phone").value.trim());
-      fd.append("amount_paid", document.getElementById("reg-amount").value);
-
-      const txn = document.getElementById("reg-txn-id").value.trim();
-      if (txn) fd.append("transaction_id", txn);
 
       const emailEl = document.getElementById("reg-email");
       if (emailEl && emailEl.value.trim()) fd.append("email", emailEl.value.trim());
 
-      // Pack UI-only fields (no direct API field) into additional_message — zero data loss
-      const aadhaarNum  = document.getElementById("reg-aadhaar-number").value.trim();
+      // Parent details
+      const fatherName = document.getElementById("reg-father-name").value.trim();
+      const motherName = document.getElementById("reg-mother-name").value.trim();
+      if (fatherName) fd.append("father_name", fatherName);
+      if (motherName) fd.append("mother_name", motherName);
+
       const fatherPhone = document.getElementById("reg-father-phone").value.trim();
       const motherPhone = document.getElementById("reg-mother-phone").value.trim();
-      const reason      = document.getElementById("reg-reason")  ? document.getElementById("reg-reason").value.trim()  : "";
-      const msg         = document.getElementById("reg-message") ? document.getElementById("reg-message").value.trim() : "";
+      if (fatherPhone) fd.append("father_phone", fatherPhone);
+      if (motherPhone) fd.append("mother_phone", motherPhone);
 
-      const extraParts = [
-        aadhaarNum  && "Aadhaar: "      + aadhaarNum,
-        fatherName  && fatherPhone && "Father Phone: " + fatherPhone,
-        motherName  && motherPhone && "Mother Phone: " + motherPhone,
-        reason      && "Reason: "       + reason,
-        msg         && "Message: "      + msg,
-      ].filter(Boolean);
-      if (extraParts.length) fd.append("additional_message", extraParts.join(" | "));
+      // Reason & message
+      const reason = document.getElementById("reg-reason") ? document.getElementById("reg-reason").value.trim() : "";
+      if (reason) fd.append("why_attend_course", reason);
 
-      // File uploads
+      const msg = document.getElementById("reg-message") ? document.getElementById("reg-message").value.trim() : "";
+      if (msg) fd.append("additional_message", msg);
+
+      // File uploads — correct field names per API spec
       const front   = document.getElementById("reg-aadhaar-front").files[0];
       const back    = document.getElementById("reg-aadhaar-back").files[0];
       const receipt = document.getElementById("reg-receipt").files[0];
-      if (front)   fd.append("aadhar_card_front", front);
-      if (back)    fd.append("aadhar_card_back", back);
-      if (receipt) fd.append("transaction_receipt_image", receipt);
+      if (front)   fd.append("aadhaar_front", front);
+      if (back)    fd.append("aadhaar_back", back);
+      if (receipt) fd.append("transaction_receipt", receipt);
 
       try {
-        const res = await fetch(`${API_BASE}/api/yoga-form/submissions`, {
+        const res = await fetch(`${API_BASE}/api/classes/register-payment`, {
           method: "POST",
           body: fd,
         });
         const data = await res.json();
         if (res.ok && (data.success !== false)) {
-          showToast(`✅ ${data.message || "Registration submitted successfully!"}`);
+          // Show rich success with payment info
+          const d = data.data || {};
+          const successMsg = d.remaining_amount !== undefined
+            ? `Registration successful! Paid ₹${d.amount_paid_now || d.fee_amount_paid}. Remaining: ₹${d.remaining_amount}. Status: ${d.payment_status || 'Pending'}`
+            : (data.message || "Registration submitted successfully!");
+          showToast(`✅ ${successMsg}`);
           e.target.reset();
           await loadClasses();
         } else if (res.status === 422) {
-          const detail = data.detail ? JSON.stringify(data.detail) : (data.message || "Please check your inputs.");
+          const detail = data.message || "Please check your inputs.";
           showToast("❌ Validation failed: " + detail);
         } else {
           throw new Error(data.message || "Registration failed");
@@ -2822,10 +2980,10 @@
     }
 
     function toggleKarmicOther() {
-      const cat = document.getElementById("karmic-repay-category").value;
+      const cat = document.getElementById("karmic-reason").value;
       const container = document.getElementById("karmic-other-container");
       const input = document.getElementById("karmic-other-specify");
-      if (cat === "Service Others") {
+      if (cat === "Other") {
         container.style.display = "block";
         input.required = true;
       } else {
@@ -2835,7 +2993,7 @@
       }
     }
 
-    // ── Donation submission ────────────────────────────────────────────────────
+    // ── Donation submission (POST /api/donations) ──────────────────────────────
     async function submitReceipt(e) {
       e.preventDefault();
       const btn = document.getElementById("donation-submit-btn");
@@ -2843,14 +3001,42 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
       btn.disabled = true;
 
+      const phoneVal   = document.getElementById("donor-phone").value.trim();
+      const aadhaarVal = document.getElementById("donor-aadhaar-number").value.trim();
+
+      // Pre-check: verify donation eligibility (must have a class registration)
+      try {
+        const eligRes = await fetch(`${API_BASE}/api/donations/verify-eligibility?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
+        const eligData = await eligRes.json();
+        if (eligData.success && eligData.data && !eligData.data.can_donate) {
+          showToast(`❌ ${eligData.data.message || "You must have a class registration before donating."}`);
+          btn.innerHTML = orig;
+          btn.disabled = false;
+          return;
+        }
+      } catch (eligErr) {
+        console.warn("Eligibility check failed, proceeding:", eligErr);
+      }
+
       const fd = new FormData();
+
       // Required fields per /api/donations spec
       const donorFoundName = document.querySelector('#donor-rest .found-name-value');
       const donorNameField = document.getElementById("donor-name");
-      fd.append("name", (donorFoundName && donorFoundName.value) ? donorFoundName.value : donorNameField.value.trim());
-      fd.append("mobile", document.getElementById("donor-phone").value.trim());
-      fd.append("aadhaar_number", document.getElementById("donor-aadhaar-number").value.trim());
-      fd.append("amount_paid", document.getElementById("donor-amount").value);
+      fd.append("full_name", (donorFoundName && donorFoundName.value) ? donorFoundName.value : donorNameField.value.trim());
+      fd.append("phone_number", phoneVal);
+      fd.append("aadhaar_number", aadhaarVal);
+      fd.append("place", document.getElementById("donor-place").value.trim());
+
+      // Category
+      let category = document.getElementById("donor-category").value;
+      if (category === "Any other") {
+        const specify = document.getElementById("donor-other-specify").value.trim();
+        category = specify || "Other";
+      }
+      fd.append("donation_category", category);
+
+      fd.append("amount", document.getElementById("donor-amount").value);
 
       // Optional fields
       const email = document.getElementById("donor-email").value.trim();
@@ -2859,16 +3045,15 @@
       const txn = document.getElementById("donor-txn-id").value.trim();
       if (txn) fd.append("transaction_id", txn);
 
-      // Required file uploads per API spec
+      // File uploads — correct field names per API spec
       const aadhaarFront = document.getElementById("donor-aadhaar-front").files[0];
       const aadhaarBack  = document.getElementById("donor-aadhaar-back").files[0];
       const receipt      = document.getElementById("donor-receipt").files[0];
-      if (aadhaarFront) fd.append("aadhaar_front_doc", aadhaarFront);
-      if (aadhaarBack)  fd.append("aadhaar_back_doc",  aadhaarBack);
-      if (receipt)      fd.append("transaction_rep_doc", receipt);
-
-      // Extra UI-only fields (not in API spec — kept for internal record)
-      // place, category, picture are collected but not forwarded to API
+      const picture      = document.getElementById("donor-picture").files[0];
+      if (aadhaarFront) fd.append("aadhaar_front", aadhaarFront);
+      if (aadhaarBack)  fd.append("aadhaar_back",  aadhaarBack);
+      if (receipt)      fd.append("receipt_photo", receipt);
+      if (picture)      fd.append("individual_photo", picture);
 
       try {
         const res = await fetch(`${API_BASE}/api/donations`, {
@@ -2877,11 +3062,12 @@
         });
         const data = await res.json();
         if (res.ok && (data.success !== false)) {
-          showToast("✅ Donation submitted! Thank you for your sacred offering. 🙏");
+          const d = data.data || {};
+          showToast(`✅ ${data.message || "Donation submitted!"} ${d.amount ? '(₹' + d.amount + ')' : ''} Thank you for your sacred offering. 🙏`);
           e.target.reset();
           toggleDonorOther();
         } else if (res.status === 422) {
-          const detail = data.detail ? JSON.stringify(data.detail) : (data.message || "Please check your inputs.");
+          const detail = data.message || "Please check your inputs.";
           showToast("❌ Validation failed: " + detail);
         } else {
           throw new Error(data.message || "Donation submission failed");
@@ -2912,36 +3098,66 @@
       
       let reason = document.getElementById("karmic-reason").value;
       if (reason === "Other") {
-        reason = "Other: " + document.getElementById("karmic-other-specify").value.trim();
+        const otherSpec = document.getElementById("karmic-other-specify").value.trim();
+        reason = otherSpec ? "Other: " + otherSpec : "Other";
       }
 
-      const msgLines = [
-        "🙏 *KARMIC DEBT RESOLUTION REQUEST*",
-        "",
-        `👤 *Name:* ${name}`,
-        `📞 *Phone:* ${phone}`,
-        email ? `📧 *Email:* ${email}` : "",
-        `📍 *Place:* ${place}`,
-        `🔖 *Aadhaar:* ${aadhaar}`,
-        `⚖️ *Karmic Repay:* ${repayCat}`,
-        amount ? `💰 *Transaction Amount:* ₹${amount}` : "",
-        "",
-        "⚠️ *PLEASE ATTACH THE FOLLOWING IN THIS CHAT:*",
-        "1. Your recent picture",
-        "2. The transaction receipt picture",
-        "",
-        "— Sent from Vibhuti Yoga Website"
-      ].filter(Boolean).join("\n");
-
-      const whatsappUrl = `https://wa.me/917842434643?text=${encodeURIComponent(msgLines)}`;
+      // Submit via Donations API with karmic debt category
+      const fd = new FormData();
+      fd.append("full_name", name);
+      fd.append("phone_number", phone);
+      fd.append("aadhaar_number", aadhaar);
+      fd.append("place", place || "Not specified");
+      fd.append("donation_category", "Karmic Debt: " + reason);
+      fd.append("amount", amount);
+      if (email) fd.append("email", email);
+      
+      // File uploads
+      const photo = document.getElementById("karmic-photo").files[0];
+      const receipt = document.getElementById("karmic-receipt").files[0];
+      if (photo)   fd.append("individual_photo", photo);
+      if (receipt) fd.append("receipt_photo", receipt);
 
       try {
+        const res = await fetch(`${API_BASE}/api/donations`, {
+          method: "POST",
+          body: fd,
+        });
+        const data = await res.json();
+        if (res.ok && (data.success !== false)) {
+          showToast("✅ Karmic debt resolution offering submitted. May your path be cleared. 🙏");
+          e.target.reset();
+          toggleKarmicOther();
+        } else if (res.status === 422) {
+          showToast("❌ " + (data.message || "Please check your inputs."));
+        } else {
+          throw new Error(data.message || "Submission failed");
+        }
+      } catch (err) {
+        // Fallback to WhatsApp if API fails
+        const msgLines = [
+          "🙏 *KARMIC DEBT RESOLUTION REQUEST*",
+          "",
+          `👤 *Name:* ${name}`,
+          `📞 *Phone:* ${phone}`,
+          email ? `📧 *Email:* ${email}` : "",
+          `📍 *Place:* ${place}`,
+          `🔖 *Aadhaar:* ${aadhaar}`,
+          `⚖️ *Reason:* ${reason}`,
+          amount ? `💰 *Amount:* ₹${amount}` : "",
+          "",
+          "⚠️ *PLEASE ATTACH THE FOLLOWING IN THIS CHAT:*",
+          "1. Your recent picture",
+          "2. The transaction receipt picture",
+          "",
+          "— Sent from Vibhuti Yoga Website"
+        ].filter(Boolean).join("\n");
+
+        const whatsappUrl = `https://wa.me/917842434643?text=${encodeURIComponent(msgLines)}`;
         window.open(whatsappUrl, "_blank");
-        showToast("✅ Karmic debt request prepared. Please remember to attach your pictures in WhatsApp.");
+        showToast("✅ Request sent via WhatsApp. Please attach your pictures in the chat.");
         e.target.reset();
         toggleKarmicOther();
-      } catch (err) {
-        showToast("❌ Unable to open WhatsApp. Please try again.");
       } finally {
         btn.innerHTML = orig;
         btn.disabled = false;
@@ -2991,6 +3207,7 @@
       }
     }
 
+    // ── Healing submission (POST /api/healing-form/submissions) ─────────────────
     async function submitHealingApplication(e) {
       e.preventDefault();
       
@@ -3011,7 +3228,7 @@
       const dob      = document.getElementById("heal-dob").value;
       const dobTime  = document.getElementById("heal-dob-time").value;
       const dobPlace = document.getElementById("heal-dob-place").value.trim();
-      const star     = document.getElementById("heal-star").value.trim();  // Nakshatra — no API field, packed into issue_description
+      const star     = document.getElementById("heal-star").value.trim();
       const phone    = document.getElementById("heal-phone").value.trim();
       const email    = document.getElementById("heal-email").value.trim();
       const address  = document.getElementById("heal-address").value.trim();
@@ -3023,39 +3240,39 @@
       }
       const condition = document.getElementById("heal-condition").value.trim();
 
-      // Prepend Nakshatra to issue_description so no UI data is silently lost
-      const issueDescription = star
-        ? `Nakshatra (Star): ${star}\n\n${condition}`
-        : condition;
-
       const amount = document.getElementById("heal-amount").value;
       const txnId  = document.getElementById("heal-txn-id").value.trim();
 
       try {
         const fd = new FormData();
-        fd.append("full_name", name);
+        // Correct field names per API spec
+        fd.append("your_name", name);
+        fd.append("phone_number", phone);
+        fd.append("aadhaar_number", aadhaar);
         fd.append("date_of_birth", dob);
         if (dobTime)  fd.append("time_of_birth", dobTime);
         if (dobPlace) fd.append("place_of_birth", dobPlace);
-        fd.append("mobile", phone);
-        if (email)   fd.append("email", email);
-        if (address) fd.append("address", address);
-        fd.append("aadhaar_number", aadhaar);
-        fd.append("issue_type", issueType);
-        fd.append("issue_description", issueDescription);
+        if (address)  fd.append("address", address);
+        fd.append("issues", issueType);
+        fd.append("problem_description", condition);
         fd.append("declaration_accepted", "true");
 
-        if (amount) fd.append("amount_paid", amount);
+        // Star (Nakshatra) — API has optional 'star' field
+        if (star) fd.append("star", star);
+
+        if (email) fd.append("email", email);
+        if (amount) fd.append("fee_amount_paid", amount);
         if (txnId)  fd.append("transaction_id", txnId);
 
+        // File uploads — correct field names per API spec
         const af      = document.getElementById("heal-aadhaar-front").files[0];
         const ab      = document.getElementById("heal-aadhaar-back").files[0];
         const photo   = document.getElementById("heal-photo").files[0];
         const receipt = document.getElementById("heal-receipt").files[0];
-        if (af)      fd.append("aadhar_card_front", af);
-        if (ab)      fd.append("aadhar_card_back", ab);
-        if (photo)   fd.append("current_picture", photo);
-        if (receipt) fd.append("transaction_receipt_image", receipt);
+        if (af)      fd.append("aadhaar_front", af);
+        if (ab)      fd.append("aadhaar_back", ab);
+        if (photo)   fd.append("recent_picture", photo);
+        if (receipt) fd.append("fee_receipt", receipt);
 
         const res = await fetch(`${API_BASE}/api/healing-form/submissions`, {
           method: "POST",
@@ -3067,7 +3284,7 @@
           e.target.reset();
           toggleHealOtherIssue();
         } else if (res.status === 422) {
-          const detail = data.detail ? JSON.stringify(data.detail) : (data.message || "Please check your inputs.");
+          const detail = data.message || "Please check your inputs.";
           showToast("❌ Validation failed: " + detail);
         } else {
           throw new Error(data.message || "Submission via API failed");
