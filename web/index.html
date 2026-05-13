@@ -1014,11 +1014,11 @@
                       </select>
                     </div>
 
+                    <div class="form-group">
+                      <label>Your Full Name *</label>
+                      <input type="text" id="reg-name" class="form-control" required placeholder="Enter full name" />
+                    </div>
                     <div class="form-row" data-found-skip>
-                      <div class="form-group">
-                        <label>Your Full Name *</label>
-                        <input type="text" id="reg-name" class="form-control" required placeholder="Enter full name" />
-                      </div>
                       <div class="form-group">
                         <label>Age or Date of Birth *</label>
                         <input type="text" id="reg-age" class="form-control" required placeholder="e.g. 25 or 15/05/1998" />
@@ -1852,7 +1852,7 @@
 
                     <div id="heal-rest" style="display: none;">
                       <!-- Name -->
-                    <div style="margin-bottom: 8px" data-found-skip>
+                    <div style="margin-bottom: 8px">
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
                       <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
@@ -1928,7 +1928,7 @@
                     </div>
 
                     <!-- Person Present Photo -->
-                    <div style="margin-bottom: 12px">
+                    <div style="margin-bottom: 12px" data-found-skip>
                       <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture of Person Requiring Healing (Upload) *</label>
                       <input type="file" id="heal-photo" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
@@ -2251,7 +2251,7 @@
                           </div>
 
                           <div id="donor-rest" style="display: none;">
-                            <div class="form-row" data-found-skip>
+                            <div class="form-row">
                             <div class="form-group">
                               <label>Full Name *</label>
                               <input type="text" id="donor-name" class="form-control" required placeholder="Enter your name" />
@@ -2530,10 +2530,14 @@
           }
           hiddenName.value = userName;
 
-          // Pre-fill and set the name input if it exists
+          // Pre-fill and lock the name field for returning users
           const nameField = rest.querySelector('[id$="-name"]');
           if (nameField) {
             nameField.value = userName;
+            nameField.readOnly = true;
+            nameField.style.background = '#f0f0f0';
+            nameField.style.cursor = 'not-allowed';
+            nameField.dataset.foundLocked = 'true';
           }
 
           // Hide fields that are already known for returning users
@@ -2724,6 +2728,14 @@
         inp.readOnly = false;
         inp.style.background = '';
         inp.value = '';
+      });
+      // Reset found-locked name fields
+      section.querySelectorAll('[data-found-locked]').forEach(el => {
+        el.readOnly = false;
+        el.style.background = '';
+        el.style.cursor = '';
+        el.value = '';
+        delete el.dataset.foundLocked;
       });
     }
 
