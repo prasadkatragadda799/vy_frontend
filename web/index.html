@@ -1074,6 +1074,11 @@
                       </div>
                     </div>
 
+                    <div class="form-group" data-found-skip>
+                      <label>Siblings Name (Optional)</label>
+                      <input type="text" id="reg-siblings-name" class="form-control" placeholder="Enter siblings name(s)" />
+                    </div>
+
                     <div class="form-group">
                       <label>Why do you want to attend the course? *</label>
                       <textarea id="reg-reason" class="form-control" required rows="3" placeholder="Briefly explain your reason"></textarea>
@@ -2932,6 +2937,9 @@
       const motherPhone = document.getElementById("reg-mother-phone").value.trim();
       if (fatherPhone) fd.append("father_phone", fatherPhone);
       if (motherPhone) fd.append("mother_phone", motherPhone);
+
+      const siblingsName = document.getElementById("reg-siblings-name").value.trim();
+      if (siblingsName) fd.append("siblings_name", siblingsName);
 
       // Reason & message
       const reason = document.getElementById("reg-reason") ? document.getElementById("reg-reason").value.trim() : "";
