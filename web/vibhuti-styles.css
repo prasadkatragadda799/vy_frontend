@@ -66,7 +66,7 @@
     /* Typography */
     --font-heading: 'Cinzel', serif;
     --font-body: 'Lato', sans-serif;
-    --top-banner-height: 96px;
+    --top-banner-height: 122px;
     --header-offset: 110px;
 }
 
@@ -96,21 +96,110 @@
     display: block;
 }
 
+/* === TOP BANNER BRANDING — logo (left) + centered VIBHUTI YOGA title === */
+/* Expose a warm yellowish-golden background + allow the logo halo to glow out */
+.top-banner-strip {
+    overflow: visible;
+    background: linear-gradient(135deg, #F7E4AC 0%, #EEC97E 46%, #DCAF63 100%);
+    border: 1.5px solid rgba(184, 134, 11, 0.5);
+    box-shadow:
+        0 6px 22px rgba(139, 96, 0, 0.22),
+        inset 0 0 18px rgba(255, 248, 224, 0.35);
+}
+
+.top-banner-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 0 clamp(12px, 2.5vw, 26px);
+    box-sizing: border-box;
+}
+
+/* Centered title — takes the middle, symmetric between logo and spacer */
+.top-banner-title {
+    flex: 1 1 auto;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--golden-deep);
+    letter-spacing: clamp(3px, 1.4vw, 11px);
+    font-size: clamp(1.5rem, 5.6vw, 3.1rem);
+    text-shadow:
+        0 1px 2px rgba(255, 248, 224, 0.7),
+        0 3px 10px rgba(107, 74, 0, 0.28);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Circle logo pinned on the LEFT */
+.top-banner-logo {
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Invisible spacer equal to the logo so the title stays visually centered */
+.top-banner-spacer {
+    flex: 0 0 auto;
+    width: calc(var(--top-banner-height) - 18px);
+    height: 1px;
+}
+
+/* Soft radial aura — same palette as the hero glow */
+.top-banner-logo::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 248, 224, 0.55) 0%, rgba(245, 215, 148, 0.32) 45%, rgba(212, 165, 116, 0) 72%);
+    filter: blur(2px);
+    animation: auraPulse 3.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.top-banner-logo img {
+    position: relative;
+    z-index: 1;
+    width: calc(var(--top-banner-height) - 18px);
+    height: calc(var(--top-banner-height) - 18px);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff8e0;
+    outline: 2px solid var(--golden-primary);
+    box-shadow:
+        0 0 16px rgba(255, 248, 224, 0.65),
+        0 0 30px rgba(212, 165, 116, 0.45),
+        0 0 48px rgba(212, 165, 116, 0.28),
+        inset 0 0 14px rgba(245, 215, 148, 0.22);
+    animation: innerAuraPulse 2.8s ease-in-out infinite;
+}
+
 @media (max-width: 1024px) {
     :root {
-        --top-banner-height: 84px;
+        --top-banner-height: 106px;
     }
 }
 
 @media (max-width: 768px) {
     :root {
-        --top-banner-height: 72px;
+        --top-banner-height: 92px;
     }
 }
 
 @media (max-width: 480px) {
     :root {
-        --top-banner-height: 62px;
+        --top-banner-height: 80px;
     }
 }
 
@@ -251,58 +340,45 @@ body :is(h1, h2, h3, h4, h5, h6,
     width: 100%;
 }
 
+/* All nav "filter" buttons share the same golden design as the donation button */
 .nav-link {
     font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 10px 22px;
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    border-bottom: 2px solid transparent;
+    border: none;
     outline: none;
-    box-shadow: none;
-}
-
-.nav-link::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--golden-primary);
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
+    background: var(--golden-deep);
+    box-shadow: 0 4px 16px rgba(107, 74, 0, 0.25);
+    white-space: nowrap;
 }
 
 .nav-link:hover {
-    color: var(--golden-deep);
+    color: #fff;
+    transform: translateY(-2px);
+    background: var(--golden-primary);
+    box-shadow: 0 8px 24px rgba(107, 74, 0, 0.35);
 }
 
-.nav-link:hover::before {
-    opacity: 0.10;
-}
-
-/* ACTIVE NAVIGATION */
+/* ACTIVE NAVIGATION — slightly brighter golden fill */
 .nav-link.active {
-    color: var(--golden-deep);
+    color: #fff;
     font-weight: 700;
-    background: rgba(184, 134, 11, 0.10);
-    border-bottom-color: var(--golden-primary);
-}
-
-.nav-link.active::before {
-    opacity: 0;
+    background: var(--golden-primary);
+    box-shadow: 0 6px 20px rgba(107, 74, 0, 0.4), inset 0 0 0 2px rgba(255, 248, 224, 0.5);
 }
 
 .nav-link:focus,
 .nav-link:focus-visible {
     outline: none;
-    box-shadow: none;
+    box-shadow: 0 4px 16px rgba(107, 74, 0, 0.25);
 }
 
 .header-actions {
@@ -1954,6 +2030,33 @@ body :is(h1, h2, h3, h4, h5, h6,
     }
 }
 
+/* Enhanced, much brighter halo specifically for the "Tap to Explore Benefits" buttons */
+.course-explore-btn.glow-pulse {
+    animation: exploreGlow 2.4s ease-in-out infinite;
+    border-color: var(--golden-primary);
+    background: rgba(212, 165, 116, 0.14);
+}
+
+@keyframes exploreGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px rgba(245, 215, 148, 0.55),
+            0 0 22px rgba(212, 165, 116, 0.45),
+            0 0 38px rgba(184, 134, 11, 0.30);
+        border-color: var(--golden-primary);
+    }
+
+    50% {
+        box-shadow:
+            0 0 18px rgba(245, 215, 148, 0.90),
+            0 0 42px rgba(212, 165, 116, 0.72),
+            0 0 70px rgba(184, 134, 11, 0.52);
+        border-color: var(--golden-deep);
+    }
+}
+
 /* === STORY PAGE FULLSCREEN OVERLAY — Parchment Theme === */
 .story-page-overlay {
     position: fixed;
@@ -3350,4 +3453,252 @@ textarea:focus {
 .healing-application-form,
 .donation-box {
     box-shadow: 0 15px 50px rgba(212, 165, 116, 0.45) !important;
+}
+/* ============================================================
+   FOLLOW / OTP VERIFICATION POPUP
+   ============================================================ */
+.follow-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(46, 30, 8, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.follow-popup-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.follow-popup {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: var(--bg-parchment-light, #fdf7ec);
+    background-image:
+        radial-gradient(at 100% 0%, rgba(212, 165, 116, 0.12) 0px, transparent 55%),
+        radial-gradient(at 0% 100%, rgba(139, 96, 0, 0.08) 0px, transparent 55%);
+    border: 2px solid var(--golden-primary, #d4a574);
+    border-radius: 24px;
+    padding: 30px 26px 26px;
+    text-align: center;
+    box-shadow:
+        0 0 0 1px rgba(245, 215, 148, 0.4),
+        0 20px 60px rgba(62, 43, 0, 0.35);
+    transform: translateY(16px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.follow-popup-overlay.visible .follow-popup {
+    transform: translateY(0) scale(1);
+}
+
+.follow-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(212, 165, 116, 0.15);
+    color: var(--golden-deep, #8b6000);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.follow-popup-close:hover {
+    background: rgba(212, 165, 116, 0.35);
+    transform: rotate(90deg);
+}
+
+.follow-popup-logo {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 14px;
+}
+
+.follow-popup-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--golden-primary, #d4a574);
+    box-shadow:
+        0 0 15px rgba(245, 215, 148, 0.45),
+        0 0 30px rgba(212, 165, 116, 0.3);
+}
+
+.follow-popup-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--golden-deep, #8b6000);
+    margin: 0 0 6px;
+    letter-spacing: 1px;
+}
+
+.follow-popup-subtitle {
+    font-size: 0.92rem;
+    color: var(--text-body, #5a4632);
+    margin: 0 0 20px;
+    line-height: 1.45;
+}
+
+.follow-field {
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+.follow-field label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--golden-deep, #8b6000);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.follow-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    font-size: 1rem;
+    color: var(--text-body, #3e2b00);
+    background: rgba(255, 255, 255, 0.65);
+    border: 1.5px solid var(--border-gold, #d4a574);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.follow-field input:focus {
+    border-color: var(--golden-primary, #d4a574);
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.22);
+}
+
+.follow-otp-hint {
+    font-size: 0.9rem;
+    color: var(--text-body, #5a4632);
+    margin: 4px 0 18px;
+    line-height: 1.45;
+}
+
+.follow-otp-hint span {
+    font-weight: 700;
+    color: var(--golden-deep, #8b6000);
+    white-space: nowrap;
+}
+
+.follow-otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.follow-otp-box {
+    width: 52px;
+    height: 58px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--golden-deep, #8b6000);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1.5px solid var(--border-gold, #d4a574);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.follow-otp-box:focus {
+    border-color: var(--golden-primary, #d4a574);
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.25);
+}
+
+.follow-error {
+    min-height: 18px;
+    margin: 4px 0 10px;
+    font-size: 0.82rem;
+    color: #b5423a;
+    font-weight: 600;
+}
+
+.follow-primary-btn {
+    width: 100%;
+    padding: 13px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #d4a574 0%, #b8860b 100%);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(184, 134, 11, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.follow-primary-btn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(184, 134, 11, 0.45);
+}
+
+.follow-primary-btn:active {
+    transform: translateY(0);
+}
+
+.follow-link-btn {
+    margin-top: 12px;
+    background: none;
+    border: none;
+    color: var(--golden-deep, #8b6000);
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.follow-success-icon {
+    width: 64px;
+    height: 64px;
+    margin: 6px auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    background: linear-gradient(135deg, #7bb662 0%, #4e8b3a 100%);
+    border-radius: 50%;
+    box-shadow: 0 8px 22px rgba(78, 139, 58, 0.4);
+}
+
+.follow-success-text {
+    font-size: 1.05rem;
+    color: var(--text-body, #3e2b00);
+    margin: 0 0 22px;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .follow-popup {
+        padding: 26px 20px 22px;
+    }
+
+    .follow-otp-box {
+        width: 46px;
+        height: 52px;
+        font-size: 1.3rem;
+    }
 }

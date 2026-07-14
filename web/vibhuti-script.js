@@ -546,7 +546,7 @@ const courseData = {
   },
   dowsing: {
     en: {
-      title: 'Dowsing — The Divine Art',
+      title: 'Dowsing — The Divine Art (Akul Science)',
       desc: 'Dowsing is a divine art mentioned in the Koorma Purana. It is a multi-dimensional practice that explores the negative and positive vibrations of objects and space in the environment, linked with Cosmic Intelligence. Using tools like pendulums, L-rods, or Y-shaped twigs, dowsers detect hidden energy fields and answer questions by tapping into the subconscious mind. This art comes under the Occult Sciences.',
       benefits: 'Detect and measure subtle energy fields. Vastu/Feng Shui negative energy zone detection. Map dowsing and information dowsing. Aura checking and energetic imbalance detection. Field dowsing for locating water, minerals, and objects. Radiesthesia — sensitivity to radiations from materials.',
       benefitsList: [
@@ -564,7 +564,7 @@ const courseData = {
       badge: '🎁 FREE'
     },
     te: {
-      title: 'డౌసింగ్ — దివ్య కళ',
+      title: 'డౌసింగ్ — దివ్య కళ (అకుల్ విజ్ఞానం)',
       desc: 'డౌసింగ్ కూర్మ పురాణంలో ప్రస్తావించబడిన దివ్య కళ. ఇది పరిసరంలోని వస్తువులు మరియు ప్రదేశం యొక్క ప్రతికూల మరియు సానుకూల కంపనాలను అన్వేషించే బహుళ-ఆయామ అభ్యాసం, విశ్వ బుద్ధితో అనుసంధానమైనది.',
       benefits: 'సూక్ష్మ శక్తి క్షేత్రాలను గుర్తించి కొలవండి. వాస్తు/ఫెంగ్ షుయ్ నెగటివ్ ఎనర్జీ జోన్ డిటెక్షన్.',
       benefitsList: [
@@ -582,7 +582,7 @@ const courseData = {
   },
   agni: {
     en: {
-      title: 'Nitya Agni Hotram',
+      title: 'Nitya Agni Hotram (Akul Science)',
       desc: 'Master the sacred Vedic fire technique — harness the transformative power of Agni for purification, energy activation, and spiritual awakening through ancient fire rituals.',
       benefits: 'Purify body, mind and environment with sacred fire. Boost digestive fire for health. Transform negative karma through fire rituals. Activate inner spiritual fire. Create protective energy shield around you. Harness fire element for manifestation power.',
       benefitsList: [
@@ -597,7 +597,7 @@ const courseData = {
       badge: '🎁 FREE'
     },
     te: {
-      title: 'నిత్య అగ్ని హోత్రం',
+      title: 'నిత్య అగ్ని హోత్రం (అకుల్ విజ్ఞానం)',
       desc: 'పవిత్ర వేద అగ్ని పద్ధతిని సాధించండి — ప్రాచీన అగ్ని కర్మల ద్వారా శుద్ధీకరణ, శక్తి క్రియాశీలత మరియు ఆధ్యాత్మిక మేల్కొలుపు కోసం అగ్ని యొక్క పరివర్తన శక్తిని ఉపయోగించుకోండి.',
       benefits: 'పవిత్ర అగ్నితో శరీరం, మనస్సు మరియు పరిసరాలను శుద్ధి చేయండి. ఆరోగ్యం కోసం జఠరాగ్నిని పెంచండి. అగ్ని కర్మల ద్వారా ప్రతికూల కర్మను రూపాంతరం చేయండి. అంతర్గత ఆధ్యాత్మిక అగ్నిని క్రియాశీలం చేయండి. మీ చుట్టూ రక్షణాత్మక శక్తి కవచాన్ని సృష్టించండి. వ్యక్తీకరణ శక్తి కోసం అగ్ని మూలకాన్ని ఉపయోగించుకోండి.',
       benefitsList: [
@@ -787,9 +787,9 @@ const uiTranslations = {
     ourCourses: 'Our Courses',
     freeTechniques: 'Complimentary Divine Sciences',
     freeTechSubtitle: '',
-    advancedVidyas: 'Advanced Divine Sciences (Vidyas)',
+    advancedVidyas: 'Reference Courses',
     vidyaSubtitle: 'We partner with expert Gurus for these advanced sacred sciences. <strong>We\'ll guide you to the right master.</strong>',
-    divineHealing: 'Divine Healing Services',
+    divineHealing: 'Healing Requisition Form',
     tapExplore: '✨ Tap to Explore Benefits',
     keyBenefits: '🌟 Key Benefits',
     register: 'Register',
@@ -822,9 +822,9 @@ const uiTranslations = {
     ourCourses: 'మా కోర్సులు',
     freeTechniques: 'పురస్కృత దివ్య విజ్ఞానాలు',
     freeTechSubtitle: '',
-    advancedVidyas: 'ఆధునాతన దివ్య విజ్ఞానాలు (విద్యలు)',
+    advancedVidyas: 'రెఫరెన్స్ కోర్సులు',
     vidyaSubtitle: 'ఈ ఆధునాతన పవిత్ర విజ్ఞానాల కోసం మేము నిపుణ గురువులతో భాగస్వామ్యం కలిగి ఉన్నాము. <strong>మేము మిమ్మల్ని సరైన గురువు వద్దకు మార్గదర్శకత్వం చేస్తాము.</strong>',
-    divineHealing: 'దివ్య నయం సేవలు',
+    divineHealing: 'హీలింగ్ అభ్యర్థన ఫారం',
     tapExplore: '✨ ప్రయోజనాలను అన్వేషించండి',
     keyBenefits: '🌟 ముఖ్య ప్రయోజనాలు',
     register: 'నమోదు',
@@ -874,25 +874,32 @@ function scoreVoice(voice, langKey = "en") {
     if (lang.includes("en-in") || lang.includes("en_in")) score += 100;
     if (name.includes("india") || name.includes("indian")) score += 80;
 
-    // Named Indian female voices (highest priority)
-    if (name.includes("neerja")) score += 120;
-    if (name.includes("veena")) score += 115;
-    if (name.includes("lekha")) score += 110;
-    if (name.includes("aditi")) score += 105;
-    if (name.includes("priya")) score += 100;
-    if (name.includes("rishi")) score += 95;
+    // Named Indian female voices (highest priority — traditional, warm, feminine)
+    if (name.includes("neerja")) score += 130;   // Microsoft en-IN female
+    if (name.includes("heera")) score += 128;    // Microsoft en-IN female
+    if (name.includes("veena")) score += 120;    // macOS en-IN female
+    if (name.includes("raveena")) score += 122;  // Amazon Polly en-IN female
+    if (name.includes("kajal")) score += 118;    // Amazon Polly en-IN female
+    if (name.includes("lekha")) score += 112;
+    if (name.includes("aditi")) score += 110;
+    if (name.includes("priya")) score += 105;
+    if (name.includes("ananya") || name.includes("isha")) score += 100;
 
     // Female voice indicators
-    if (name.includes("female") || name.includes("woman")) score += 50;
+    if (name.includes("female") || name.includes("woman")) score += 70;
     if (name.includes("samantha")) score += 30;
     if (name.includes("zira")) score += 25;
     if (name.includes("google") && lang.includes("en-in")) score += 60;
+    if (name.includes("google") && name.includes("female")) score += 40;
     if (name.includes("google")) score += 10;
     if (lang.startsWith("en")) score += 8;
 
-    // Penalize male-sounding voices
-    if (name.includes("daniel") || name.includes("james") || name.includes("david")) score -= 50;
-    if (name.includes("male") && !name.includes("female")) score -= 40;
+    // Penalize male-sounding voices (incl. Indian male voices rishi/ravi/hemant/prabhat)
+    if (name.includes("rishi") || name.includes("ravi") || name.includes("hemant") ||
+        name.includes("prabhat") || name.includes("madhur")) score -= 90;
+    if (name.includes("daniel") || name.includes("james") || name.includes("david") ||
+        name.includes("mark") || name.includes("alex") || name.includes("fred")) score -= 60;
+    if (name.includes("male") && !name.includes("female")) score -= 70;
   } else if (langKey === "te") {
     if (lang.includes("te-in") || lang.startsWith("te")) score += 120;
     if (name.includes("telugu")) score += 60;
@@ -931,9 +938,11 @@ function applySoftIndianVoice(utterance, langPref = "en") {
 
   utterance.lang = "en-IN";
   if (cachedFemaleVoiceEN) utterance.voice = cachedFemaleVoiceEN;
-  // Devi persona: calm, warm, slow — like a temple priestess blessing
-  utterance.rate = 0.65;
-  utterance.pitch = 1.12;
+  // Devi persona: traditional, smooth, warm feminine tone — gentle Telugu-like
+  // cadence but spoken in English. Slightly higher pitch for a soft feminine
+  // quality, unhurried but flowing rate so it reads smooth (not choppy).
+  utterance.rate = 0.72;
+  utterance.pitch = 1.18;
   utterance.volume = 1;
 }
 

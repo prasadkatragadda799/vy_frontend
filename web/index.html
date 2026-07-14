@@ -16,8 +16,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="vibhuti-styles.css?v=38" />
-  <link rel="stylesheet" href="mobile-responsive.css?v=38" />
+  <link rel="stylesheet" href="vibhuti-styles.css?v=40" />
+  <link rel="stylesheet" href="mobile-responsive.css?v=40" />
   <style>
     /* === VIDEO SPLASH SCREEN === */
     #splash-screen {
@@ -541,6 +541,158 @@
     </div>
   </div>
 
+  <!-- ===== FOLLOW / OTP VERIFICATION POPUP (shown ~1s after splash) ===== -->
+  <div id="follow-popup-overlay" class="follow-popup-overlay" aria-hidden="true">
+    <div class="follow-popup" role="dialog" aria-modal="true" aria-labelledby="follow-popup-title">
+      <button type="button" class="follow-popup-close" id="follow-popup-close" aria-label="Close">&times;</button>
+      <div class="follow-popup-logo">
+        <img src="vy_logo.jpg" alt="Vibhuti Yoga" />
+      </div>
+      <h2 class="follow-popup-title" id="follow-popup-title">Stay Connected 🕉️</h2>
+      <p class="follow-popup-subtitle">Follow Vibhuti Yoga — enter your details to receive divine updates.</p>
+
+      <!-- Step 1: details -->
+      <div class="follow-step" id="follow-step-details">
+        <div class="follow-field">
+          <label for="follow-name">Name</label>
+          <input type="text" id="follow-name" placeholder="Your full name" autocomplete="name" />
+        </div>
+        <div class="follow-field">
+          <label for="follow-mobile">Mobile Number</label>
+          <input type="tel" id="follow-mobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" autocomplete="tel" />
+        </div>
+        <p class="follow-error" id="follow-details-error"></p>
+        <button type="button" class="follow-primary-btn" id="follow-send-otp">Verify</button>
+      </div>
+
+      <!-- Step 2: OTP -->
+      <div class="follow-step" id="follow-step-otp" style="display: none;">
+        <p class="follow-otp-hint">Enter the 4-digit OTP sent to <span id="follow-otp-target">your mobile</span>.</p>
+        <div class="follow-otp-inputs">
+          <input type="text" class="follow-otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 1" />
+          <input type="text" class="follow-otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 2" />
+          <input type="text" class="follow-otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 3" />
+          <input type="text" class="follow-otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 4" />
+        </div>
+        <p class="follow-error" id="follow-otp-error"></p>
+        <button type="button" class="follow-primary-btn" id="follow-submit-otp">Submit</button>
+        <button type="button" class="follow-link-btn" id="follow-back">&larr; Edit details</button>
+      </div>
+
+      <!-- Step 3: success -->
+      <div class="follow-step" id="follow-step-success" style="display: none;">
+        <div class="follow-success-icon">✓</div>
+        <p class="follow-success-text">Thank you for connecting with Vibhuti Yoga!</p>
+        <button type="button" class="follow-primary-btn" id="follow-done">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Follow / OTP verification popup =====
+    (function () {
+      const overlay = document.getElementById("follow-popup-overlay");
+      const closeBtn = document.getElementById("follow-popup-close");
+      const doneBtn = document.getElementById("follow-done");
+      const backBtn = document.getElementById("follow-back");
+      const sendOtpBtn = document.getElementById("follow-send-otp");
+      const submitOtpBtn = document.getElementById("follow-submit-otp");
+
+      const stepDetails = document.getElementById("follow-step-details");
+      const stepOtp = document.getElementById("follow-step-otp");
+      const stepSuccess = document.getElementById("follow-step-success");
+
+      const nameInput = document.getElementById("follow-name");
+      const mobileInput = document.getElementById("follow-mobile");
+      const detailsError = document.getElementById("follow-details-error");
+      const otpError = document.getElementById("follow-otp-error");
+      const otpTarget = document.getElementById("follow-otp-target");
+      const otpBoxes = Array.prototype.slice.call(document.querySelectorAll(".follow-otp-box"));
+
+      let opened = false;
+
+      function showStep(step) {
+        stepDetails.style.display = step === "details" ? "block" : "none";
+        stepOtp.style.display = step === "otp" ? "block" : "none";
+        stepSuccess.style.display = step === "success" ? "block" : "none";
+      }
+
+      window.showFollowPopup = function () {
+        if (opened) return;
+        opened = true;
+        showStep("details");
+        overlay.classList.add("visible");
+        overlay.setAttribute("aria-hidden", "false");
+        setTimeout(() => nameInput && nameInput.focus(), 250);
+      };
+
+      function closePopup() {
+        overlay.classList.remove("visible");
+        overlay.setAttribute("aria-hidden", "true");
+      }
+
+      // Only allow digits in the mobile field
+      mobileInput.addEventListener("input", () => {
+        mobileInput.value = mobileInput.value.replace(/\D/g, "").slice(0, 10);
+      });
+
+      // Step 1 -> Step 2
+      sendOtpBtn.addEventListener("click", () => {
+        detailsError.textContent = "";
+        const name = nameInput.value.trim();
+        const mobile = mobileInput.value.trim();
+        if (name.length < 2) {
+          detailsError.textContent = "Please enter your name.";
+          return;
+        }
+        if (mobile.length !== 10) {
+          detailsError.textContent = "Please enter a valid 10-digit mobile number.";
+          return;
+        }
+        otpTarget.textContent = "+91 " + mobile;
+        showStep("otp");
+        otpBoxes.forEach((b) => (b.value = ""));
+        setTimeout(() => otpBoxes[0] && otpBoxes[0].focus(), 150);
+      });
+
+      // OTP box auto-advance / backspace handling
+      otpBoxes.forEach((box, idx) => {
+        box.addEventListener("input", () => {
+          box.value = box.value.replace(/\D/g, "").slice(0, 1);
+          if (box.value && idx < otpBoxes.length - 1) otpBoxes[idx + 1].focus();
+        });
+        box.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !box.value && idx > 0) otpBoxes[idx - 1].focus();
+        });
+      });
+
+      // Step 2 -> Step 3
+      submitOtpBtn.addEventListener("click", () => {
+        otpError.textContent = "";
+        const otp = otpBoxes.map((b) => b.value).join("");
+        if (!/^\d{4}$/.test(otp)) {
+          otpError.textContent = "Please enter the 4-digit OTP.";
+          return;
+        }
+        // Front-end only: no backend, so any complete 4-digit OTP is accepted.
+        showStep("success");
+      });
+
+      backBtn.addEventListener("click", () => showStep("details"));
+      closeBtn.addEventListener("click", closePopup);
+      doneBtn.addEventListener("click", closePopup);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closePopup();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("visible")) closePopup();
+      });
+
+      // Fallback: if the splash script never triggers it, show after 9s
+      setTimeout(() => window.showFollowPopup && window.showFollowPopup(), 9000);
+    })();
+  </script>
+
   <script>
     // Lock scroll immediately
     document.body.style.overflow = "hidden";
@@ -584,6 +736,11 @@
             splashScreen.parentNode.removeChild(splashScreen);
           }
         }, 1200);
+
+        // Show the follow / OTP popup ~1s after the splash ends
+        setTimeout(() => {
+          if (window.showFollowPopup) window.showFollowPopup();
+        }, 1000);
       };
 
       const attemptReveal = (triggerEvent) => {
@@ -628,7 +785,15 @@
   <!-- MAIN CONTENT -->
   <div id="main-content">
     <div class="top-banner-strip" id="top-banner-strip">
-      <img src="assets/vibhuti-yoga-board-final-v2.png" alt="Vibhuti Yoga Banner" class="top-banner-image" />
+      <!-- Original board banner image — replaced by the glowing logo + VIBHUTI YOGA title below -->
+      <!-- <img src="assets/vibhuti-yoga-board-final-v2.png" alt="Vibhuti Yoga Banner" class="top-banner-image" /> -->
+      <div class="top-banner-brand">
+        <span class="top-banner-logo">
+          <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" />
+        </span>
+        <span class="top-banner-title">VIBHUTI YOGA</span>
+        <span class="top-banner-spacer" aria-hidden="true"></span>
+      </div>
     </div>
     <!-- FIXED HEADER - Outside glass-card to avoid backdrop-filter containment -->
     <header class="header" id="main-header">
@@ -636,7 +801,7 @@
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
         <a href="#feed" class="nav-link" data-section="feed">Feed</a>
-        <a href="#healing" class="nav-link" data-section="healing">Healing</a>
+        <a href="#healing" class="nav-link" data-section="healing">Request Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
           <i class="fas fa-heart"></i>
@@ -658,18 +823,20 @@
                     gap: 28px;
                     width: 100%;
                   ">
+                <!-- Circle logo + VIBHUTI YOGA title moved to the top banner — commented out here -->
+                <!--
                 <div class="hero-large-logo" style="order: 1; margin-top: 15px;">
                   <img src="vy_logo.jpg" alt="Vibhuti Yoga Logo" class="hero-main-logo" />
                 </div>
+                -->
                 <div class="hero-text-content" style="width: 100%; text-align: center; order: 2;">
+                  <!--
                   <h1 class="hero-title"
                     style="font-family: 'Cinzel', serif; text-transform: uppercase; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 5px; font-weight: 900; color: var(--golden-deep); text-shadow: 0 2px 4px rgba(139,96,0,0.12); letter-spacing: 8px;">
                     VIBHUTI YOGA
                   </h1>
-                  <p class="hero-tagline"
-                    style="font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--golden-primary); letter-spacing: 4px; text-transform: uppercase; margin: 15px 0 35px; font-weight: 700; text-shadow: none; line-height: 1.3;">
-                    Divine Vision of the Universe
-                  </p>
+                  -->
+                  <!-- Tagline "Divine Vision of the Universe" removed per request -->
                 </div>
                   <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
                     title="Listen to home introduction">
@@ -678,7 +845,7 @@
                   </button>
 
                   <div class="hero-description custom-meaning">
-                    <h3 class="meaning-title">🕉️ What Vibhuti Yoga Means</h3>
+                    <h3 class="meaning-title">What Vibhuti Yoga Means</h3>
 
                     <div class="meaning-block" style="margin-bottom: 28px;">
                       <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
@@ -814,24 +981,7 @@
 
               <div class="courses-unified-grid techniques-grid">
 
-                <!-- ═══════════════ COURSE: AKUL SCIENCE ═══════════════ -->
-                <div class="course-card-v2 technique-card" data-course="Akul Science" id="course-akul">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('akul')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="akul_science.png" alt="Akul Science">
-                    </div>
-                    <h3 class="course-title-v2" id="title-akul">Akul Science</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('akul')">
-                      <span id="explore-btn-akul">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <button class="register-class-btn" data-register-text onclick="registerForCourse('Akul Science')">
-                      <i class="fas fa-user-plus"></i> Register
-                    </button>
-                  </div>
-                </div>
+                <!-- Akul Science standalone block removed per request (its label is now shown on Nitya Agni Hotram & Dowsing) -->
 
                 <!-- ═══════════════ TECHNIQUE: NITYA AGNI HOTRAM ═══════════════ -->
                 <div class="course-card-v2 technique-card" data-course="Nitya Agni Hotram" id="course-agni">
@@ -842,7 +992,7 @@
                     <div class="course-image-v2">
                       <img src="agni_technique.png" alt="Nitya Agni Hotram">
                     </div>
-                    <h3 class="course-title-v2" id="title-agni">Nitya Agni Hotram</h3>
+                    <h3 class="course-title-v2" id="title-agni">Nitya Agni Hotram (Akul Science)</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('agni')">
                       <span id="explore-btn-agni">✨ Tap to Explore Benefits</span>
                     </button>
@@ -852,25 +1002,7 @@
                   </div>
                 </div>
 
-                <!-- ═══════════════ TECHNIQUE: EKLAVYA VIDYE (100% MEMORY POWER) ═══════════════ -->
-                <div class="course-card-v2 technique-card" data-course="Eklavya Vidye" id="course-eklavya">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('eklavya')" title="Listen to technique details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <i class="fas fa-brain"
-                        style="font-size: 60px; color: var(--golden-primary); padding: 20px; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
-                    </div>
-                    <h3 class="course-title-v2" id="title-eklavya">Eklavya Vidye</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('eklavya')">
-                      <span id="explore-btn-eklavya">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <div class="free-tag-note" data-free-note>
-                      <i class="fas fa-gift"></i> Included free with any course registration
-                    </div>
-                  </div>
-                </div>
+                <!-- Eklavya Vidye block removed per request -->
 
                 <!-- ═══════════════ TECHNIQUE: DOWSING — THE DIVINE ART ═══════════════ -->
                 <div class="course-card-v2 technique-card" data-course="Dowsing" id="course-dowsing">
@@ -881,7 +1013,7 @@
                     <div class="course-image-v2">
                       <img src="dowsing_technique.png" alt="Dowsing — The Divine Art">
                     </div>
-                    <h3 class="course-title-v2" id="title-dowsing">Dowsing — The Divine Art</h3>
+                    <h3 class="course-title-v2" id="title-dowsing">Dowsing — The Divine Art (Akul Science)</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dowsing')">
                       <span id="explore-btn-dowsing">✨ Tap to Explore Benefits</span>
                     </button>
@@ -898,7 +1030,7 @@
                       <i class="fas fa-volume-up"></i>
                     </button>
                     <div class="course-image-v2">
-                      <i class="fas fa-home" style="font-size: 60px; color: var(--golden-primary); padding: 20px; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+                      <img src="vastu_vidya.svg" alt="Vaasthu Vidya — Vastu Purusha Mandala">
                     </div>
                     <h3 class="course-title-v2" id="title-vaasthu">Vaasthu Vidya / Vedic Vastu</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('vaasthu')">
@@ -915,7 +1047,7 @@
               <!-- ═══════════════ REFERENCE COURSES (PARTNER WINGS) ═══════════════ -->
               <h2 class="section-heading courses-subheading">
                 <span class="accent">✦</span>
-                <span id="heading-vidyas">Advanced Divine Sciences (Vidyas)</span>
+                <span id="heading-vidyas">Reference Courses</span>
                 <span class="accent">✦</span>
               </h2>
               <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred sciences.
@@ -1728,7 +1860,7 @@
             <section id="healing" class="section-full">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
-                <span id="heading-healing">Divine Healing Services</span>
+                <span id="heading-healing">Healing Requisition Form</span>
                 <span class="accent">✦</span>
               </h2>
 
@@ -2042,8 +2174,8 @@
                   </div>
                   <h3 class="contact-title">Email</h3>
                   <p class="contact-text">
-                    <a href="mailto:vibhuti7thsence@gmail.com" class="contact-link">
-                      vibhuti7thsence@gmail.com
+                    <a href="mailto:vibhutiyogateam@gmail.com" class="contact-link">
+                      vibhutiyogateam@gmail.com
                     </a>
                     <br />24-hour response
                   </p>
@@ -2057,7 +2189,7 @@
                 <a class="contact-action-btn" href="https://wa.me/917842434643" target="_blank" rel="noopener noreferrer">
                   <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
-                <a class="contact-action-btn" href="mailto:vibhuti7thsence@gmail.com">
+                <a class="contact-action-btn" href="mailto:vibhutiyogateam@gmail.com">
                   <i class="fas fa-envelope"></i> Email Us
                 </a>
               </div>
@@ -2126,7 +2258,7 @@
                       relationships, finances, emotional heaviness, and inner peace.
                     </p>
                     <button type="button" class="donate-btn-large" onclick="showKarmicDebtForm()"
-                      style="display:inline-flex; font-size:14px; padding:10px 18px; background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+                      style="display:inline-flex; font-size:14px; padding:10px 18px;">
                       <i class="fas fa-om"></i> Karmic Debt
                     </button>
                   </div>
@@ -2432,8 +2564,8 @@
                   <i class="fas fa-phone"></i> +91 78424 34643
                 </a>
                 <span class="footer-separator">|</span>
-                <a href="mailto:vibhuti7thsence@gmail.com" class="footer-contact-link">
-                  <i class="fas fa-envelope"></i> vibhuti7thsence@gmail.com
+                <a href="mailto:vibhutiyogateam@gmail.com" class="footer-contact-link">
+                  <i class="fas fa-envelope"></i> vibhutiyogateam@gmail.com
                 </a>
               </div>
               <div class="footer-text">
@@ -3319,7 +3451,7 @@
 
     document.addEventListener("DOMContentLoaded", loadClasses);
   </script>
-  <script src="vibhuti-script.js?v=11"></script>
+  <script src="vibhuti-script.js?v=12"></script>
 
   <!-- COURSE STORY PAGE (Full Screen) -->
   <div id="course-story-page" class="story-page-overlay">

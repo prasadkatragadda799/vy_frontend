@@ -12,15 +12,15 @@
         right: 0 !important;
         width: 100% !important;
         transform: none !important;
-        height: 100px !important;
+        height: 122px !important;
         border-radius: 0 !important;
         z-index: 1100 !important;
-        background: #fdfaf5 !important;
+        background: linear-gradient(135deg, #F7E4AC 0%, #EEC97E 46%, #DCAF63 100%) !important;
     }
 
     .header {
         position: fixed !important;
-        top: 100px !important;
+        top: 122px !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
@@ -32,9 +32,9 @@
     }
 
     .main-viewport-card {
-        margin-top: 180px !important;
+        margin-top: 202px !important;
         width: 95% !important;
-        height: calc(100vh - 200px) !important;
+        height: calc(100vh - 222px) !important;
     }
 
     .courses-unified-grid {
@@ -52,7 +52,7 @@
 
 @media (max-width: 768px) {
     :root {
-        --top-banner-height: 84px !important;
+        --top-banner-height: 100px !important;
     }
 
     /* === MOBILE LAYOUT === */
@@ -145,7 +145,7 @@
         z-index: 1100 !important;
         overflow: hidden !important;
         box-shadow: 0 4px 15px rgba(62, 43, 0, 0.15) !important;
-        background: #fdfaf5 !important; /* Solid background to mask scrolling content */
+        background: linear-gradient(135deg, #F7E4AC 0%, #EEC97E 46%, #DCAF63 100%) !important; /* Golden background (masks scrolling content) */
     }
 
     .top-banner-image {
@@ -948,7 +948,7 @@
 /* === SMALL MOBILE (< 480px) === */
 @media (max-width: 480px) {
     :root {
-        --top-banner-height: 74px !important;
+        --top-banner-height: 88px !important;
     }
 
     .top-banner-strip {
