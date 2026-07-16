@@ -105,8 +105,10 @@
       width: 100%;
       height: 100%;
       fill: none;
-      stroke: #d4a574; /* Radiant Golden Amber */
-      stroke-width: 3.2; /* Slightly thicker for better glow presence */
+      stroke: #d4a574;
+      /* Radiant Golden Amber */
+      stroke-width: 3.2;
+      /* Slightly thicker for better glow presence */
       stroke-linecap: round;
       stroke-linejoin: round;
       filter: drop-shadow(0 0 8px rgba(212, 165, 116, 0.5));
@@ -342,16 +344,19 @@
         flex-direction: column;
         align-items: stretch;
       }
+
       .verify-btn {
         width: 100%;
         justify-content: center;
       }
     }
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -371,26 +376,45 @@
       animation: fadeInUp 0.5s ease forwards;
       box-shadow: 0 4px 18px rgba(76, 175, 80, 0.15);
     }
+
     .found-user-badge .found-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
       background: linear-gradient(135deg, #43a047, #66bb6a);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 800; font-size: 20px;
-      flex-shrink: 0; box-shadow: 0 3px 10px rgba(76,175,80,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(76, 175, 80, 0.25);
     }
+
     .found-user-badge .found-details {
       flex: 1;
     }
+
     .found-user-badge .found-label {
-      font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
-      color: #388e3c; font-weight: 700; margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #388e3c;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
+
     .found-user-badge .found-name {
-      font-size: 20px; font-weight: 800; color: #1b5e20;
+      font-size: 20px;
+      font-weight: 800;
+      color: #1b5e20;
       font-family: var(--font-heading);
     }
+
     .found-user-badge .found-icon {
-      font-size: 22px; color: #43a047;
+      font-size: 22px;
+      color: #43a047;
     }
 
     /* Hide fields not needed for returning users */
@@ -408,6 +432,7 @@
       animation: fadeInUp 0.5s ease forwards;
       box-shadow: 0 4px 18px rgba(74, 158, 255, 0.12);
     }
+
     .psc-header {
       font-family: var(--font-heading);
       font-size: 16px;
@@ -420,21 +445,25 @@
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(74, 158, 255, 0.2);
     }
+
     .psc-header i {
       color: #4a9eff;
     }
+
     .psc-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 12px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       gap: 12px;
       flex-wrap: wrap;
     }
+
     .psc-row:last-child {
       border-bottom: none;
     }
+
     .psc-course {
       font-weight: 700;
       color: var(--golden-deep);
@@ -445,19 +474,23 @@
       flex: 1;
       min-width: 140px;
     }
+
     .psc-amounts {
       display: flex;
       gap: 16px;
       font-size: 13px;
       flex-wrap: wrap;
     }
+
     .psc-paid {
       color: #27ae60;
       font-weight: 600;
     }
+
     .psc-remaining {
       font-weight: 600;
     }
+
     .psc-status {
       font-size: 10px;
       font-weight: 800;
@@ -468,12 +501,14 @@
       text-transform: uppercase;
       flex-shrink: 0;
     }
+
     @media (max-width: 768px) {
       .psc-row {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
       }
+
       .psc-amounts {
         gap: 10px;
       }
@@ -559,7 +594,8 @@
         </div>
         <div class="follow-field">
           <label for="follow-mobile">Mobile Number</label>
-          <input type="tel" id="follow-mobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" autocomplete="tel" />
+          <input type="tel" id="follow-mobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10"
+            autocomplete="tel" />
         </div>
         <p class="follow-error" id="follow-details-error"></p>
         <button type="button" class="follow-primary-btn" id="follow-send-otp">Verify</button>
@@ -801,7 +837,7 @@
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
         <a href="#feed" class="nav-link" data-section="feed">Reviews</a>
-        <a href="#healing" class="nav-link" data-section="healing">Request Healing</a>
+        <a href="#healing" class="nav-link" data-section="healing">Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
           <i class="fas fa-heart"></i>
@@ -811,7 +847,7 @@
     </header>
 
     <div class="main-container">
-    <div class="main-viewport-card">
+      <div class="main-viewport-card">
         <div class="content-scroll-area" id="scroll-container">
           <div class="content-inner">
             <section id="home" class="section-full active-section">
@@ -838,308 +874,343 @@
                   -->
                   <!-- Tagline "Divine Vision of the Universe" removed per request -->
                 </div>
-                  <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
-                    title="Listen to home introduction">
+                <button class="home-tts-btn" id="home-tts-btn" onclick="speakHomeSection()"
+                  title="Listen to home introduction">
+                  <i class="fas fa-volume-up"></i>
+                  <span>Listen</span>
+                </button>
+
+                <div class="hero-description custom-meaning">
+                  <h3 class="meaning-title">What Vibhuti Yoga Means</h3>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      <strong style="color: var(--golden-deep); font-size: 17px;">Vibhuti Yoga</strong> — also known as
+                      the <em>"Yoga of Divine Manifestations"</em> — is the name given to the <strong>tenth chapter of
+                        the Bhagavad Gita</strong>. In this sacred chapter, Lord Krishna reveals His divine glories and
+                      omnipresence to Arjuna, proclaiming that He is the source of all beings and all things. Every
+                      expression of brilliance, strength, and beauty in this universe is a spark of His infinite
+                      splendour.
+                    </p>
+                  </div>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <h4>✦ Vibhuti — Divine Glory &amp; Supreme Power</h4>
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      <strong style="color: var(--golden-deep);">Vibhuti</strong> means <em>wealth, opulence, and
+                        greatness</em>. It refers to the divinity, extraordinary powers, and universal form of the
+                      Supreme Consciousness. Vibhuti is also the holy ash — <em>Bhasma</em> — worn by seekers as a mark
+                      of purification and surrender. Just as fire transforms matter into its purest essence, Vibhuti
+                      represents the soul's journey from the material to the divine — a reminder that beneath every form
+                      lies something indestructible and luminous.
+                    </p>
+                  </div>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <h4>✦ Yoga — The Path of Union</h4>
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      <strong style="color: var(--golden-deep);">Yoga</strong> is far more than physical practice. It is
+                      the ancient science of <em>union</em> — connecting the individual self (<em>Jeevatma</em>) with
+                      the Universal Self (<em>Paramatma</em>). Through disciplined practice, meditation, and
+                      self-awareness, Yoga awakens the dormant faculties within every human being and transforms
+                      everyday life into a sacred experience.
+                    </p>
+                  </div>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <h4>✦ The Divine Manifestations</h4>
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      In the tenth chapter of the Bhagavad Gita, Lord Krishna reveals how His divine energy manifests in
+                      the universe's most powerful, beautiful, and sacred aspects. He is the origin and essence of
+                      everything — from the elements of nature to the most revered beings. Understanding Vibhuti Yoga
+                      helps devotees transcend material illusion by realising that the Divine is present in all things.
+                    </p>
+                  </div>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <h4>✦ Awakening the 6th &amp; 7th Sense</h4>
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      <strong style="color: var(--golden-deep);">Vibhuti Yoga</strong> is the path of awakening the
+                      <em>extraordinary powers</em> that already reside within us — the miraculous faculties of the 6th
+                      and 7th senses. It is a Rishi-inspired programme that draws upon ancient Vedic wisdom to unlock
+                      intuition, sharpen intellect, enhance memory, and awaken the legendary <strong>'Third
+                        Eye'</strong> — enabling perception far beyond the ordinary.
+                    </p>
+                  </div>
+
+                  <div class="meaning-block" style="margin-bottom: 28px;">
+                    <h4>✦ Spiritual Growth &amp; Inner Transformation</h4>
+                    <ul class="meaning-list">
+                      <li><span class="bullet">✦</span> <strong>Self-Realisation</strong> — Understand your true nature
+                        beyond body and mind</li>
+                      <li><span class="bullet">✦</span> <strong>Inner Peace</strong> — Cultivate a calm, mindful, and
+                        centred being</li>
+                      <li><span class="bullet">✦</span> <strong>Cosmic Awareness</strong> — Perceive the unity of all
+                        beings with the Divine</li>
+                      <li><span class="bullet">✦</span> <strong>Emotional Intelligence</strong> — Master thoughts,
+                        emotions, and actions with clarity</li>
+                      <li><span class="bullet">✦</span> <strong>Holistic Well-Being</strong> — Achieve harmony of body,
+                        mind, and spirit</li>
+                    </ul>
+                  </div>
+
+                  <div class="meaning-block">
+                    <h4>✦ Our Sacred Purpose</h4>
+                    <p
+                      style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
+                      At Vibhuti Yoga, we believe every child and every seeker carries within them a spark of the
+                      infinite. Our mission is to nurture that spark — through the science of intuition, the discipline
+                      of the mind, and the healing power of holistic well-being — into a flame of self-mastery,
+                      confidence, and divine awareness. This is not merely education; it is <em>transformation</em>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          </section>
+
+          <!-- About section removed -->
+
+          <section id="classes" class="section-full">
+            <h2 class="section-heading">
+              <span class="accent">✦</span>
+              <span id="heading-our-courses">Our Courses</span>
+              <span class="accent">✦</span>
+            </h2>
+
+
+            <!-- UNIFIED COURSES GRID -->
+            <div class="courses-unified-grid">
+
+              <!-- ═══════════════ COURSE: INTUITION POWER ═══════════════ -->
+              <div class="course-card-v2" data-course="Intuition Power" id="course-intuition">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('intuition')" title="Listen to course details">
                     <i class="fas fa-volume-up"></i>
-                    <span>Listen</span>
+                  </button>
+                  <div class="course-image-v2"><img src="assets/intuition_detail_1.png" alt="Intuition Power"></div>
+                  <h3 class="course-title-v2" id="title-intuition">Intuition Power</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('intuition')">
+                    <span id="explore-btn-intuition">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <button class="register-class-btn" data-register-text onclick="registerForCourse('Intuition Power')">
+                    <i class="fas fa-user-plus"></i> Register
+                  </button>
+                </div>
+              </div>
+
+              <!-- ═══════════════ COURSE: MIND POWER ═══════════════ -->
+              <div class="course-card-v2" data-course="Mind Power" id="course-mind">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('mind')" title="Listen to course details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2"><img src="assets/mind_power.png" alt="Mind Power"></div>
+                  <h3 class="course-title-v2" id="title-mind">Mind Power</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('mind')">
+                    <span id="explore-btn-mind">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <button class="register-class-btn" data-register-text onclick="registerForCourse('Mind Power')">
+                    <i class="fas fa-user-plus"></i> Register
+                  </button>
+                </div>
+              </div>
+
+              <!-- ═══════════════ COURSE: HOLISTIC HEALING ENERGY POWER ═══════════════ -->
+              <div class="course-card-v2" data-course="Holistic Healing Energy Power" id="course-holistic">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('holistic')" title="Listen to course details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2"><img src="assets/holistic_healing.png" alt="Holistic Healing"></div>
+                  <h3 class="course-title-v2" id="title-holistic">Holistic Healing Power (Pranic Healing)</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('holistic')">
+                    <span id="explore-btn-holistic">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <button class="register-class-btn" data-register-text onclick="registerForCourse('Holistic Healing')">
+                    <i class="fas fa-user-plus"></i> Register
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ═══════════════ FREE TECHNIQUES SECTION (Merged) ═══════════════ -->
+            <h2 class="section-heading courses-subheading">
+              <span class="accent">✦</span>
+              <span id="heading-free-tech">Akul Science</span>
+              <span class="accent">✦</span>
+            </h2>
+
+            <div class="courses-unified-grid techniques-grid">
+
+              <!-- Akul Science standalone block removed per request (its label is now shown on Nitya Agni Hotram & Dowsing) -->
+
+              <!-- ═══════════════ TECHNIQUE: NITYA AGNI HOTRAM ═══════════════ -->
+              <div class="course-card-v2 technique-card" data-course="Nitya Agni Hotram" id="course-agni">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('agni')" title="Listen to technique details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2">
+                    <img src="agni_technique.png" alt="Nitya Agni Hotram">
+                  </div>
+                  <h3 class="course-title-v2" id="title-agni">Nitya Agni Hotram (Akul Science)</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('agni')">
+                    <span id="explore-btn-agni">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <div class="free-tag-note" data-free-note>
+                    <i class="fas fa-gift"></i> Included free with any course registration
+                  </div>
+                </div>
+              </div>
+
+              <!-- Eklavya Vidye block removed per request -->
+
+              <!-- ═══════════════ TECHNIQUE: DOWSING — THE DIVINE ART ═══════════════ -->
+              <div class="course-card-v2 technique-card" data-course="Dowsing" id="course-dowsing">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('dowsing')" title="Listen to technique details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2">
+                    <img src="dowsing_technique.png" alt="Dowsing — The Divine Art">
+                  </div>
+                  <h3 class="course-title-v2" id="title-dowsing">Dowsing — The Divine Art (Akul Science)</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dowsing')">
+                    <span id="explore-btn-dowsing">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <div class="free-tag-note" data-free-note>
+                    <i class="fas fa-gift"></i> Included free with any course registration
+                  </div>
+                </div>
+              </div>
+
+              <!-- ═══════════════ TECHNIQUE: VAASTHU VIDYA ═══════════════ -->
+              <div class="course-card-v2 technique-card" data-course="Vaasthu Vidya" id="course-vaasthu">
+                <div class="course-card-inner">
+                  <button class="course-tts-btn" onclick="speakCourse('vaasthu')" title="Listen to technique details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2">
+                    <img src="vastu_vidya.png" alt="Vaasthu Vidya — Vastu Purusha Mandala">
+                  </div>
+                  <h3 class="course-title-v2" id="title-vaasthu">Vaasthu Vidya / Vedic Vastu</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('vaasthu')">
+                    <span id="explore-btn-vaasthu">✨ Tap to Explore Benefits</span>
+                  </button>
+                  <div class="free-tag-note" data-free-note>
+                    <i class="fas fa-gift"></i> Included free with any course registration
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ═══════════════ REFERENCE COURSES (PARTNER WINGS) ═══════════════ -->
+            <h2 class="section-heading courses-subheading">
+              <span class="accent">✦</span>
+              <span id="heading-vidyas">Reference Courses</span>
+              <span class="accent">✦</span>
+            </h2>
+            <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred
+              sciences.
+              <strong>We'll guide you to the right master.</strong>
+            </p>
+
+            <div class="courses-unified-grid reference-grid">
+
+              <!-- ═══════════════ REFERENCE: DHANUR VIDYA ═══════════════ -->
+              <div class="course-card-v2 reference-card" data-course="Dhanur Vidya" id="course-dhanur">
+                <div class="course-card-inner">
+                  <div class="reference-wing-badge" data-ref-badge>
+                    <i class="fas fa-feather-alt"></i> Referred Course
+                  </div>
+                  <button class="course-tts-btn" onclick="speakCourse('dhanur')" title="Listen to course details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2">
+                    <img src="dhanur_logo.png" alt="Dhanur Vidya">
+                  </div>
+                  <h3 class="course-title-v2" id="title-dhanur">Dhanur Vidya</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dhanur')">
+                    <span id="explore-btn-dhanur">✨ Tap to Explore Benefits</span>
                   </button>
 
-                  <div class="hero-description custom-meaning">
-                    <h3 class="meaning-title">What Vibhuti Yoga Means</h3>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        <strong style="color: var(--golden-deep); font-size: 17px;">Vibhuti Yoga</strong> — also known as the <em>"Yoga of Divine Manifestations"</em> — is the name given to the <strong>tenth chapter of the Bhagavad Gita</strong>. In this sacred chapter, Lord Krishna reveals His divine glories and omnipresence to Arjuna, proclaiming that He is the source of all beings and all things. Every expression of brilliance, strength, and beauty in this universe is a spark of His infinite splendour.
-                      </p>
-                    </div>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <h4>✦ Vibhuti — Divine Glory &amp; Supreme Power</h4>
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        <strong style="color: var(--golden-deep);">Vibhuti</strong> means <em>wealth, opulence, and greatness</em>. It refers to the divinity, extraordinary powers, and universal form of the Supreme Consciousness. Vibhuti is also the holy ash — <em>Bhasma</em> — worn by seekers as a mark of purification and surrender. Just as fire transforms matter into its purest essence, Vibhuti represents the soul's journey from the material to the divine — a reminder that beneath every form lies something indestructible and luminous.
-                      </p>
-                    </div>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <h4>✦ Yoga — The Path of Union</h4>
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        <strong style="color: var(--golden-deep);">Yoga</strong> is far more than physical practice. It is the ancient science of <em>union</em> — connecting the individual self (<em>Jeevatma</em>) with the Universal Self (<em>Paramatma</em>). Through disciplined practice, meditation, and self-awareness, Yoga awakens the dormant faculties within every human being and transforms everyday life into a sacred experience.
-                      </p>
-                    </div>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <h4>✦ The Divine Manifestations</h4>
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        In the tenth chapter of the Bhagavad Gita, Lord Krishna reveals how His divine energy manifests in the universe's most powerful, beautiful, and sacred aspects. He is the origin and essence of everything — from the elements of nature to the most revered beings. Understanding Vibhuti Yoga helps devotees transcend material illusion by realising that the Divine is present in all things.
-                      </p>
-                    </div>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <h4>✦ Awakening the 6th &amp; 7th Sense</h4>
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        <strong style="color: var(--golden-deep);">Vibhuti Yoga</strong> is the path of awakening the <em>extraordinary powers</em> that already reside within us — the miraculous faculties of the 6th and 7th senses. It is a Rishi-inspired programme that draws upon ancient Vedic wisdom to unlock intuition, sharpen intellect, enhance memory, and awaken the legendary <strong>'Third Eye'</strong> — enabling perception far beyond the ordinary.
-                      </p>
-                    </div>
-
-                    <div class="meaning-block" style="margin-bottom: 28px;">
-                      <h4>✦ Spiritual Growth &amp; Inner Transformation</h4>
-                      <ul class="meaning-list">
-                        <li><span class="bullet">✦</span> <strong>Self-Realisation</strong> — Understand your true nature beyond body and mind</li>
-                        <li><span class="bullet">✦</span> <strong>Inner Peace</strong> — Cultivate a calm, mindful, and centred being</li>
-                        <li><span class="bullet">✦</span> <strong>Cosmic Awareness</strong> — Perceive the unity of all beings with the Divine</li>
-                        <li><span class="bullet">✦</span> <strong>Emotional Intelligence</strong> — Master thoughts, emotions, and actions with clarity</li>
-                        <li><span class="bullet">✦</span> <strong>Holistic Well-Being</strong> — Achieve harmony of body, mind, and spirit</li>
-                      </ul>
-                    </div>
-
-                    <div class="meaning-block">
-                      <h4>✦ Our Sacred Purpose</h4>
-                      <p style="font-family: var(--font-body); font-size: 16px; color: var(--text-body); line-height: 1.95; text-align: left;">
-                        At Vibhuti Yoga, we believe every child and every seeker carries within them a spark of the infinite. Our mission is to nurture that spark — through the science of intuition, the discipline of the mind, and the healing power of holistic well-being — into a flame of self-mastery, confidence, and divine awareness. This is not merely education; it is <em>transformation</em>.
-                      </p>
-                    </div>
-                  </div>
+                  <button class="register-class-btn reference-btn" data-register-text data-reference
+                    onclick="registerForCourse('Dhanur Vidya')">
+                    <i class="fas fa-paper-plane"></i> Enquire & Get Referred
+                  </button>
                 </div>
               </div>
 
-            </section>
-
-            <!-- About section removed -->
-
-            <section id="classes" class="section-full">
-              <h2 class="section-heading">
-                <span class="accent">✦</span>
-                <span id="heading-our-courses">Our Courses</span>
-                <span class="accent">✦</span>
-              </h2>
-
-
-              <!-- UNIFIED COURSES GRID -->
-              <div class="courses-unified-grid">
-
-                <!-- ═══════════════ COURSE: INTUITION POWER ═══════════════ -->
-                <div class="course-card-v2" data-course="Intuition Power" id="course-intuition">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('intuition')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2"><img src="assets/intuition_detail_1.png" alt="Intuition Power"></div>
-                    <h3 class="course-title-v2" id="title-intuition">Intuition Power</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('intuition')">
-                      <span id="explore-btn-intuition">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <button class="register-class-btn" data-register-text
-                      onclick="registerForCourse('Intuition Power')">
-                      <i class="fas fa-user-plus"></i> Register
-                    </button>
+              <!-- ═══════════════ REFERENCE: SRI VIDYA ═══════════════ -->
+              <div class="course-card-v2 reference-card" data-course="Sri Vidya" id="course-sri">
+                <div class="course-card-inner">
+                  <div class="reference-wing-badge" data-ref-badge>
+                    <i class="fas fa-feather-alt"></i> Referred Course
                   </div>
-                </div>
-
-                <!-- ═══════════════ COURSE: MIND POWER ═══════════════ -->
-                <div class="course-card-v2" data-course="Mind Power" id="course-mind">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('mind')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2"><img src="assets/mind_power.png" alt="Mind Power"></div>
-                    <h3 class="course-title-v2" id="title-mind">Mind Power</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('mind')">
-                      <span id="explore-btn-mind">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <button class="register-class-btn" data-register-text onclick="registerForCourse('Mind Power')">
-                      <i class="fas fa-user-plus"></i> Register
-                    </button>
+                  <button class="course-tts-btn" onclick="speakCourse('sri')" title="Listen to course details">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                  <div class="course-image-v2">
+                    <img src="sri_chakra_logo.png" alt="Sri Vidya">
                   </div>
-                </div>
+                  <h3 class="course-title-v2" id="title-sri">Sri Vidya</h3>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('sri')">
+                    <span id="explore-btn-sri">✨ Tap to Explore Benefits</span>
+                  </button>
 
-                <!-- ═══════════════ COURSE: HOLISTIC HEALING ENERGY POWER ═══════════════ -->
-                <div class="course-card-v2" data-course="Holistic Healing Energy Power" id="course-holistic">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('holistic')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2"><img src="assets/holistic_healing.png" alt="Holistic Healing"></div>
-                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing Power (Pranic Healing)</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('holistic')">
-                      <span id="explore-btn-holistic">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <button class="register-class-btn" data-register-text
-                      onclick="registerForCourse('Holistic Healing')">
-                      <i class="fas fa-user-plus"></i> Register
-                    </button>
-                  </div>
+                  <button class="register-class-btn reference-btn" data-register-text data-reference
+                    onclick="registerForCourse('Sri Vidya')">
+                    <i class="fas fa-paper-plane"></i> Enquire & Get Referred
+                  </button>
                 </div>
-
               </div>
 
-              <!-- ═══════════════ FREE TECHNIQUES SECTION (Merged) ═══════════════ -->
-              <h2 class="section-heading courses-subheading">
-                <span class="accent">✦</span>
-                <span id="heading-free-tech">Akul Science</span>
-                <span class="accent">✦</span>
-              </h2>
+            </div>
 
-              <div class="courses-unified-grid techniques-grid">
 
-                <!-- Akul Science standalone block removed per request (its label is now shown on Nitya Agni Hotram & Dowsing) -->
 
-                <!-- ═══════════════ TECHNIQUE: NITYA AGNI HOTRAM ═══════════════ -->
-                <div class="course-card-v2 technique-card" data-course="Nitya Agni Hotram" id="course-agni">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('agni')" title="Listen to technique details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="agni_technique.png" alt="Nitya Agni Hotram">
-                    </div>
-                    <h3 class="course-title-v2" id="title-agni">Nitya Agni Hotram (Akul Science)</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('agni')">
-                      <span id="explore-btn-agni">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <div class="free-tag-note" data-free-note>
-                      <i class="fas fa-gift"></i> Included free with any course registration
-                    </div>
-                  </div>
+
+
+
+
+            <!-- ═══════════════════════════════════════════════════════ -->
+            <!-- ── Registration Form ── -->
+            <div id="registration-form-section" class="premium-form-section" style="display: none;">
+              <h2 class="premium-form-title" id="course-registration-heading">✦ Join Our Sacred Program ✦</h2>
+
+              <div class="premium-form-box">
+                <div class="premium-form-header">
+                  <img src="form_banner.png" alt="Class Registration">
                 </div>
 
-                <!-- Eklavya Vidye block removed per request -->
+                <form id="registration-form" onsubmit="submitRegistration(event)">
 
-                <!-- ═══════════════ TECHNIQUE: DOWSING — THE DIVINE ART ═══════════════ -->
-                <div class="course-card-v2 technique-card" data-course="Dowsing" id="course-dowsing">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('dowsing')" title="Listen to technique details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="dowsing_technique.png" alt="Dowsing — The Divine Art">
+                  <div class="verification-header">
+                    <div class="verification-group">
+                      <label>Aadhaar Number *</label>
+                      <input type="text" id="reg-aadhaar-number" class="form-control" required
+                        placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
                     </div>
-                    <h3 class="course-title-v2" id="title-dowsing">Dowsing — The Divine Art (Akul Science)</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dowsing')">
-                      <span id="explore-btn-dowsing">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <div class="free-tag-note" data-free-note>
-                      <i class="fas fa-gift"></i> Included free with any course registration
+                    <div class="verification-group">
+                      <label>Phone Number *</label>
+                      <input type="tel" id="reg-phone" class="form-control" required placeholder="Your phone number" />
                     </div>
-                  </div>
-                </div>
-
-                <!-- ═══════════════ TECHNIQUE: VAASTHU VIDYA ═══════════════ -->
-                <div class="course-card-v2 technique-card" data-course="Vaasthu Vidya" id="course-vaasthu">
-                  <div class="course-card-inner">
-                    <button class="course-tts-btn" onclick="speakCourse('vaasthu')" title="Listen to technique details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="vastu_vidya.png" alt="Vaasthu Vidya — Vastu Purusha Mandala">
-                    </div>
-                    <h3 class="course-title-v2" id="title-vaasthu">Vaasthu Vidya / Vedic Vastu</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('vaasthu')">
-                      <span id="explore-btn-vaasthu">✨ Tap to Explore Benefits</span>
-                    </button>
-                    <div class="free-tag-note" data-free-note>
-                      <i class="fas fa-gift"></i> Included free with any course registration
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- ═══════════════ REFERENCE COURSES (PARTNER WINGS) ═══════════════ -->
-              <h2 class="section-heading courses-subheading">
-                <span class="accent">✦</span>
-                <span id="heading-vidyas">Reference Courses</span>
-                <span class="accent">✦</span>
-              </h2>
-              <p class="techniques-subtitle" id="subtitle-vidyas">We partner with expert Gurus for these advanced sacred sciences.
-                <strong>We'll guide you to the right master.</strong>
-              </p>
-
-              <div class="courses-unified-grid reference-grid">
-
-                <!-- ═══════════════ REFERENCE: DHANUR VIDYA ═══════════════ -->
-                <div class="course-card-v2 reference-card" data-course="Dhanur Vidya" id="course-dhanur">
-                  <div class="course-card-inner">
-                    <div class="reference-wing-badge" data-ref-badge>
-                      <i class="fas fa-feather-alt"></i> Referred Course
-                    </div>
-                    <button class="course-tts-btn" onclick="speakCourse('dhanur')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="dhanur_logo.png" alt="Dhanur Vidya">
-                    </div>
-                    <h3 class="course-title-v2" id="title-dhanur">Dhanur Vidya</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('dhanur')">
-                      <span id="explore-btn-dhanur">✨ Tap to Explore Benefits</span>
-                    </button>
-
-                    <button class="register-class-btn reference-btn" data-register-text data-reference
-                      onclick="registerForCourse('Dhanur Vidya')">
-                      <i class="fas fa-paper-plane"></i> Enquire & Get Referred
+                    <button type="button" class="verify-btn" onclick="verifyFields('reg')">
+                      <i class="fas fa-check-circle"></i> Verify
                     </button>
                   </div>
-                </div>
 
-                <!-- ═══════════════ REFERENCE: SRI VIDYA ═══════════════ -->
-                <div class="course-card-v2 reference-card" data-course="Sri Vidya" id="course-sri">
-                  <div class="course-card-inner">
-                    <div class="reference-wing-badge" data-ref-badge>
-                      <i class="fas fa-feather-alt"></i> Referred Course
-                    </div>
-                    <button class="course-tts-btn" onclick="speakCourse('sri')" title="Listen to course details">
-                      <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="course-image-v2">
-                      <img src="sri_chakra_logo.png" alt="Sri Vidya">
-                    </div>
-                    <h3 class="course-title-v2" id="title-sri">Sri Vidya</h3>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('sri')">
-                      <span id="explore-btn-sri">✨ Tap to Explore Benefits</span>
-                    </button>
-
-                    <button class="register-class-btn reference-btn" data-register-text data-reference
-                      onclick="registerForCourse('Sri Vidya')">
-                      <i class="fas fa-paper-plane"></i> Enquire & Get Referred
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-
-
-
-
-
-
-              <!-- ═══════════════════════════════════════════════════════ -->
-              <!-- ── Registration Form ── -->
-              <div id="registration-form-section" class="premium-form-section" style="display: none;">
-                <h2 class="premium-form-title" id="course-registration-heading">✦ Join Our Sacred Program ✦</h2>
-
-                <div class="premium-form-box">
-                  <div class="premium-form-header">
-                    <img src="form_banner.png" alt="Class Registration">
-                  </div>
-
-                  <form id="registration-form" onsubmit="submitRegistration(event)">
-                    
-                    <div class="verification-header">
-                      <div class="verification-group">
-                        <label>Aadhaar Number *</label>
-                        <input type="text" id="reg-aadhaar-number" class="form-control" required placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
-                      </div>
-                      <div class="verification-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="reg-phone" class="form-control" required placeholder="Your phone number" />
-                      </div>
-                      <button type="button" class="verify-btn" onclick="verifyFields('reg')">
-                        <i class="fas fa-check-circle"></i> Verify
-                      </button>
-                    </div>
-
-                    <div id="reg-rest" style="display: none;">
-                      <div class="form-group">
+                  <div id="reg-rest" style="display: none;">
+                    <div class="form-group">
                       <label>Select Class *</label>
                       <select id="reg-class" class="form-control" required>
                         <option value="">Loading courses…</option>
@@ -1153,14 +1224,16 @@
                     <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Age or Date of Birth *</label>
-                        <input type="text" id="reg-age" class="form-control" required placeholder="e.g. 25 or 15/05/1998" />
+                        <input type="text" id="reg-age" class="form-control" required
+                          placeholder="e.g. 25 or 15/05/1998" />
                       </div>
                     </div>
 
                     <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Qualification *</label>
-                        <input type="text" id="reg-qualification" class="form-control" required placeholder="Your qualification" />
+                        <input type="text" id="reg-qualification" class="form-control" required
+                          placeholder="Your qualification" />
                       </div>
                       <div class="form-group">
                         <label>Email (Optional)</label>
@@ -1170,7 +1243,8 @@
 
                     <div class="form-group" data-found-skip>
                       <label>Location (Present Address) *</label>
-                      <input type="text" id="reg-location" class="form-control" required placeholder="Enter your present address" />
+                      <input type="text" id="reg-location" class="form-control" required
+                        placeholder="Enter your present address" />
                     </div>
 
                     <div class="form-row" data-found-skip>
@@ -1187,39 +1261,46 @@
                     <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Father's Name *</label>
-                        <input type="text" id="reg-father-name" class="form-control" required placeholder="Enter father's name" />
+                        <input type="text" id="reg-father-name" class="form-control" required
+                          placeholder="Enter father's name" />
                       </div>
                       <div class="form-group">
                         <label>Father's Phone *</label>
-                        <input type="tel" id="reg-father-phone" class="form-control" required placeholder="Enter father's phone number" />
+                        <input type="tel" id="reg-father-phone" class="form-control" required
+                          placeholder="Enter father's phone number" />
                       </div>
                     </div>
 
                     <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Mother's Name *</label>
-                        <input type="text" id="reg-mother-name" class="form-control" required placeholder="Enter mother's name" />
+                        <input type="text" id="reg-mother-name" class="form-control" required
+                          placeholder="Enter mother's name" />
                       </div>
                       <div class="form-group">
                         <label>Mother's Phone *</label>
-                        <input type="tel" id="reg-mother-phone" class="form-control" required placeholder="Enter mother's phone number" />
+                        <input type="tel" id="reg-mother-phone" class="form-control" required
+                          placeholder="Enter mother's phone number" />
                       </div>
                     </div>
 
                     <div class="form-group" data-found-skip>
                       <label>Siblings Name (Optional)</label>
-                      <input type="text" id="reg-siblings-name" class="form-control" placeholder="Enter siblings name(s)" />
+                      <input type="text" id="reg-siblings-name" class="form-control"
+                        placeholder="Enter siblings name(s)" />
                     </div>
 
                     <div class="form-group">
                       <label>Why do you want to attend the course? *</label>
-                      <textarea id="reg-reason" class="form-control" required rows="3" placeholder="Briefly explain your reason"></textarea>
+                      <textarea id="reg-reason" class="form-control" required rows="3"
+                        placeholder="Briefly explain your reason"></textarea>
                     </div>
 
                     <div class="form-row">
                       <div class="form-group">
                         <label>Amount Paid (₹) *</label>
-                        <input type="number" id="reg-amount" class="form-control" required placeholder="e.g. 5000" min="1" />
+                        <input type="number" id="reg-amount" class="form-control" required placeholder="e.g. 5000"
+                          min="1" />
                       </div>
                       <div class="form-group">
                         <label>Transaction/Reference ID</label>
@@ -1229,7 +1310,8 @@
 
                     <div class="form-group">
                       <label>Transaction Receipt *</label>
-                      <input type="file" id="reg-receipt" class="form-control" accept="image/*,application/pdf" required />
+                      <input type="file" id="reg-receipt" class="form-control" accept="image/*,application/pdf"
+                        required />
                     </div>
 
                     <div style="margin-bottom: 10px">
@@ -1380,565 +1462,608 @@
                     <button type="submit" id="registration-submit-btn" class="form-submit-btn">
                       <i class="fas fa-paper-plane"></i> Submit Registration
                     </button>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <section id="feed" class="section-full">
-              <style>
-                #feed {
-                  background: rgba(255, 252, 248, 0.94);
-                  border: 1px solid var(--border-gold);
-                  border-radius: 24px;
-                  padding: 40px;
-                  position: relative;
-                }
-                
-                .feed-header-wrapper {
-                  text-align: center;
-                  margin-bottom: 40px;
+          <section id="feed" class="section-full">
+            <style>
+              #feed {
+                background: rgba(255, 252, 248, 0.94);
+                border: 1px solid var(--border-gold);
+                border-radius: 24px;
+                padding: 40px;
+                position: relative;
+              }
+
+              .feed-header-wrapper {
+                text-align: center;
+                margin-bottom: 40px;
+              }
+
+              .feed-grid {
+                display: grid;
+                grid-template-columns: 350px 1fr;
+                gap: 40px;
+                margin-top: 30px;
+              }
+
+              .feed-sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+              }
+
+              /* Review Posting Form */
+              .review-post-card {
+                background: white;
+                border-radius: 20px;
+                padding: 24px;
+                border: 1px solid var(--border-gold-strong);
+                box-shadow: var(--shadow-card);
+                position: sticky;
+                top: 20px;
+              }
+
+              .review-post-card h3 {
+                font-family: var(--font-heading);
+                color: var(--golden-deep);
+                font-size: 20px;
+                margin-bottom: 18px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+              }
+
+              .review-form-group {
+                margin-bottom: 15px;
+              }
+
+              .review-form-group label {
+                display: block;
+                font-size: 13px;
+                font-weight: 700;
+                color: var(--text-muted);
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+
+              .review-input,
+              .review-textarea,
+              .review-select {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #e0d8cc;
+                border-radius: 10px;
+                font-family: var(--font-body);
+                font-size: 14px;
+                transition: all 0.3s ease;
+                background: #fdfaf5;
+              }
+
+              .review-input:focus,
+              .review-textarea:focus,
+              .review-select:focus {
+                border-color: var(--golden-primary);
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+                background: white;
+              }
+
+              .star-rating-input {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                gap: 5px;
+                margin-bottom: 5px;
+              }
+
+              .star-rating-input input {
+                display: none;
+              }
+
+              .star-rating-input label {
+                cursor: pointer;
+                font-size: 24px;
+                color: #ddd;
+                transition: color 0.2s ease;
+                margin: 0;
+              }
+
+              .star-rating-input label:before {
+                content: '\f005';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+              }
+
+              .star-rating-input input:checked~label,
+              .star-rating-input label:hover,
+              .star-rating-input label:hover~label {
+                color: #f39c12;
+              }
+
+              .submit-review-btn {
+                width: 100%;
+                padding: 14px;
+                background: var(--golden-deep);
+                color: white;
+                border: none;
+                border-radius: 12px;
+                font-weight: 700;
+                font-family: var(--font-body);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+              }
+
+              .submit-review-btn:hover {
+                background: var(--golden-primary);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(139, 96, 0, 0.3);
+              }
+
+              /* Reviews Display */
+              .reviews-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+              }
+
+              .review-item {
+                background: white;
+                border-radius: 18px;
+                padding: 25px;
+                border: 1px solid rgba(184, 134, 11, 0.15);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+                transition: all 0.3s ease;
+                animation: fadeInReview 0.5s ease forwards;
+              }
+
+              @keyframes fadeInReview {
+                from {
+                  opacity: 0;
+                  transform: translateY(10px);
                 }
 
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+
+              .review-item:hover {
+                border-color: var(--golden-primary);
+                box-shadow: 0 8px 24px rgba(184, 134, 11, 0.1);
+              }
+
+              .review-item-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 15px;
+              }
+
+              .reviewer-info {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+              }
+
+              .reviewer-avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--bg-parchment), var(--golden-accent));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: 700;
+                font-size: 18px;
+                border: 2px solid var(--golden-primary);
+              }
+
+              .reviewer-meta h4 {
+                margin: 0;
+                color: var(--text-dark);
+                font-size: 16px;
+              }
+
+              .review-course-tag {
+                display: inline-block;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--golden-deep);
+                background: rgba(184, 134, 11, 0.1);
+                padding: 2px 8px;
+                border-radius: 4px;
+                margin-top: 4px;
+                text-transform: uppercase;
+              }
+
+              .review-item-stars {
+                color: #f39c12;
+                font-size: 14px;
+              }
+
+              .review-content {
+                font-style: italic;
+                color: var(--text-body);
+                line-height: 1.7;
+                font-size: 15px;
+              }
+
+              /* Events & Gallery Polished */
+              .feed-section-title {
+                font-family: var(--font-heading);
+                color: var(--golden-deep);
+                font-size: 22px;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                border-bottom: 2px solid var(--golden-primary);
+                padding-bottom: 12px;
+              }
+
+              .events-mini-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+              }
+
+              .event-mini-card {
+                background: #fffcf7;
+                border: 1px solid rgba(184, 134, 11, 0.1);
+                border-radius: 12px;
+                padding: 15px;
+                display: flex;
+                gap: 15px;
+                transition: all 0.3s ease;
+              }
+
+              .event-mini-card:hover {
+                transform: scale(1.02);
+                border-color: var(--golden-primary);
+              }
+
+              .event-mini-date {
+                background: var(--golden-deep);
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+              }
+
+              .event-mini-date span {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1;
+              }
+
+              .event-mini-date small {
+                font-size: 10px;
+                text-transform: uppercase;
+              }
+
+              .event-mini-info h5 {
+                margin: 0 0 4px;
+                color: var(--text-dark);
+                font-size: 14px;
+              }
+
+              .event-mini-info p {
+                margin: 0;
+                font-size: 12px;
+                color: var(--text-muted);
+                line-height: 1.4;
+              }
+
+              .gallery-mini-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+              }
+
+              .gallery-mini-item {
+                aspect-ratio: 1;
+                border-radius: 8px;
+                overflow: hidden;
+                background: var(--bg-parchment-mid);
+                border: 1px solid rgba(0, 0, 0, 0.05);
+              }
+
+              .gallery-mini-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+              }
+
+              .gallery-mini-item:hover img {
+                transform: scale(1.15);
+              }
+
+              /* Mobile Optimizations */
+              @media (max-width: 1024px) {
                 .feed-grid {
-                  display: grid;
-                  grid-template-columns: 350px 1fr;
-                  gap: 40px;
-                  margin-top: 30px;
+                  grid-template-columns: 1fr;
+                }
+
+                .review-post-card {
+                  position: static;
+                  margin-bottom: 20px;
                 }
 
                 .feed-sidebar {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 30px;
-                }
-
-                /* Review Posting Form */
-                .review-post-card {
-                  background: white;
-                  border-radius: 20px;
-                  padding: 24px;
-                  border: 1px solid var(--border-gold-strong);
-                  box-shadow: var(--shadow-card);
-                  position: sticky;
-                  top: 20px;
-                }
-
-                .review-post-card h3 {
-                  font-family: var(--font-heading);
-                  color: var(--golden-deep);
-                  font-size: 20px;
-                  margin-bottom: 18px;
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                }
-
-                .review-form-group {
-                  margin-bottom: 15px;
-                }
-
-                .review-form-group label {
-                  display: block;
-                  font-size: 13px;
-                  font-weight: 700;
-                  color: var(--text-muted);
-                  margin-bottom: 6px;
-                  text-transform: uppercase;
-                  letter-spacing: 0.5px;
-                }
-
-                .review-input, .review-textarea, .review-select {
-                  width: 100%;
-                  padding: 12px;
-                  border: 1px solid #e0d8cc;
-                  border-radius: 10px;
-                  font-family: var(--font-body);
-                  font-size: 14px;
-                  transition: all 0.3s ease;
-                  background: #fdfaf5;
-                }
-
-                .review-input:focus, .review-textarea:focus, .review-select:focus {
-                  border-color: var(--golden-primary);
-                  outline: none;
-                  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-                  background: white;
-                }
-
-                .star-rating-input {
-                  display: flex;
-                  flex-direction: row-reverse;
-                  justify-content: flex-end;
-                  gap: 5px;
-                  margin-bottom: 5px;
-                }
-
-                .star-rating-input input {
-                  display: none;
-                }
-
-                .star-rating-input label {
-                  cursor: pointer;
-                  font-size: 24px;
-                  color: #ddd;
-                  transition: color 0.2s ease;
-                  margin: 0;
-                }
-
-                .star-rating-input label:before {
-                  content: '\f005';
-                  font-family: 'Font Awesome 6 Free';
-                  font-weight: 900;
-                }
-
-                .star-rating-input input:checked ~ label,
-                .star-rating-input label:hover,
-                .star-rating-input label:hover ~ label {
-                  color: #f39c12;
-                }
-
-                .submit-review-btn {
-                  width: 100%;
-                  padding: 14px;
-                  background: var(--golden-deep);
-                  color: white;
-                  border: none;
-                  border-radius: 12px;
-                  font-weight: 700;
-                  font-family: var(--font-body);
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  cursor: pointer;
-                  transition: all 0.3s ease;
-                  margin-top: 10px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 8px;
-                }
-
-                .submit-review-btn:hover {
-                  background: var(--golden-primary);
-                  transform: translateY(-2px);
-                  box-shadow: 0 5px 15px rgba(139, 96, 0, 0.3);
-                }
-
-                /* Reviews Display */
-                .reviews-container {
-                  display: flex;
-                  flex-direction: column;
+                  order: 2;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
                   gap: 20px;
                 }
+              }
 
-                .review-item {
-                  background: white;
-                  border-radius: 18px;
-                  padding: 25px;
-                  border: 1px solid rgba(184, 134, 11, 0.15);
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-                  transition: all 0.3s ease;
-                  animation: fadeInReview 0.5s ease forwards;
+              @media (max-width: 768px) {
+                #feed {
+                  padding: 25px 15px;
                 }
 
-                @keyframes fadeInReview {
-                  from { opacity: 0; transform: translateY(10px); }
-                  to { opacity: 1; transform: translateY(0); }
+                .feed-sidebar {
+                  grid-template-columns: 1fr;
                 }
-
-                .review-item:hover {
-                  border-color: var(--golden-primary);
-                  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.1);
-                }
-
-                .review-item-header {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: flex-start;
-                  margin-bottom: 15px;
-                }
-
-                .reviewer-info {
-                  display: flex;
-                  gap: 15px;
-                  align-items: center;
-                }
-
-                .reviewer-avatar {
-                  width: 50px;
-                  height: 50px;
-                  border-radius: 50%;
-                  background: linear-gradient(135deg, var(--bg-parchment), var(--golden-accent));
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-weight: 700;
-                  font-size: 18px;
-                  border: 2px solid var(--golden-primary);
-                }
-
-                .reviewer-meta h4 {
-                  margin: 0;
-                  color: var(--text-dark);
-                  font-size: 16px;
-                }
-
-                .review-course-tag {
-                  display: inline-block;
-                  font-size: 11px;
-                  font-weight: 700;
-                  color: var(--golden-deep);
-                  background: rgba(184, 134, 11, 0.1);
-                  padding: 2px 8px;
-                  border-radius: 4px;
-                  margin-top: 4px;
-                  text-transform: uppercase;
-                }
-
-                .review-item-stars {
-                  color: #f39c12;
-                  font-size: 14px;
-                }
-
-                .review-content {
-                  font-style: italic;
-                  color: var(--text-body);
-                  line-height: 1.7;
-                  font-size: 15px;
-                }
-
-                /* Events & Gallery Polished */
-                .feed-section-title {
-                  font-family: var(--font-heading);
-                  color: var(--golden-deep);
-                  font-size: 22px;
-                  margin-bottom: 20px;
-                  display: flex;
-                  align-items: center;
-                  gap: 12px;
-                  border-bottom: 2px solid var(--golden-primary);
-                  padding-bottom: 12px;
-                }
-
-                .events-mini-grid {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 15px;
-                }
-
-                .event-mini-card {
-                  background: #fffcf7;
-                  border: 1px solid rgba(184, 134, 11, 0.1);
-                  border-radius: 12px;
-                  padding: 15px;
-                  display: flex;
-                  gap: 15px;
-                  transition: all 0.3s ease;
-                }
-
-                .event-mini-card:hover {
-                  transform: scale(1.02);
-                  border-color: var(--golden-primary);
-                }
-
-                .event-mini-date {
-                  background: var(--golden-deep);
-                  color: white;
-                  width: 50px;
-                  height: 50px;
-                  border-radius: 10px;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: center;
-                  flex-shrink: 0;
-                }
-
-                .event-mini-date span { font-size: 18px; font-weight: 700; line-height: 1; }
-                .event-mini-date small { font-size: 10px; text-transform: uppercase; }
-
-                .event-mini-info h5 { margin: 0 0 4px; color: var(--text-dark); font-size: 14px; }
-                .event-mini-info p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
                 .gallery-mini-grid {
-                  display: grid;
                   grid-template-columns: repeat(3, 1fr);
-                  gap: 10px;
                 }
+              }
+            </style>
 
-                .gallery-mini-item {
-                  aspect-ratio: 1;
-                  border-radius: 8px;
-                  overflow: hidden;
-                  background: var(--bg-parchment-mid);
-                  border: 1px solid rgba(0,0,0,0.05);
-                }
-
-                .gallery-mini-item img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  transition: transform 0.5s ease;
-                }
-
-                .gallery-mini-item:hover img {
-                  transform: scale(1.15);
-                }
-
-                /* Mobile Optimizations */
-                @media (max-width: 1024px) {
-                  .feed-grid {
-                    grid-template-columns: 1fr;
-                  }
-                  .review-post-card {
-                    position: static;
-                    margin-bottom: 20px;
-                  }
-                  .feed-sidebar {
-                    order: 2;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 20px;
-                  }
-                }
-
-                @media (max-width: 768px) {
-                  #feed { padding: 25px 15px; }
-                  .feed-sidebar { grid-template-columns: 1fr; }
-                  .gallery-mini-grid { grid-template-columns: repeat(3, 1fr); }
-                }
-              </style>
-
-              <div class="feed-header-wrapper">
-                <h2 class="section-heading">
-                  <span class="accent">✦</span>
-                  Community Feed & Reviews
-                  <span class="accent">✦</span>
-                </h2>
-                <p style="color: var(--text-muted); max-width: 600px; margin: -10px auto 30px;">
-                  Stay updated with our divine events and read experiences from our global seeker community.
-                </p>
-              </div>
-              
-              <div class="feed-grid">
-                <!-- Sidebar: Post Review & Events -->
-                <div class="feed-sidebar">
-                  <!-- Review Form -->
-                  <div class="review-post-card">
-                    <h3><i class="fas fa-pen-fancy"></i> Share Experience</h3>
-                    <form id="review-form" onsubmit="handleReviewSubmit(event)">
-                      <div class="review-form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="rev-name" class="review-input" placeholder="e.g. Rahul Sharma" required>
-                      </div>
-                      <div class="review-form-group">
-                        <label>Select Course</label>
-                        <select id="rev-course" class="review-select" required>
-                          <option value="" disabled selected>Choose a course...</option>
-                          <option value="Intuition Power">Intuition Power</option>
-                          <option value="Mind Power">Mind Power</option>
-                          <option value="Holistic Healing">Holistic Healing</option>
-                          <option value="Akul Science">Akul Science</option>
-                          <option value="Dowsing">Dowsing</option>
-                          <option value="Vaasthu Vidya">Vaasthu Vidya</option>
-                          <option value="Dhanur Vidya">Dhanur Vidya</option>
-                          <option value="Sri Vidya">Sri Vidya</option>
-                        </select>
-                      </div>
-                      <div class="review-form-group">
-                        <label>Your Rating</label>
-                        <div class="star-rating-input">
-                          <input type="radio" id="star5" name="rating" value="5" required /><label for="star5"></label>
-                          <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-                          <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-                          <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-                          <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-                        </div>
-                      </div>
-                      <div class="review-form-group">
-                        <label>Your Review</label>
-                        <textarea id="rev-text" class="review-textarea" rows="4" placeholder="How was your transformation journey?" required></textarea>
-                      </div>
-                      <button type="submit" class="submit-review-btn">
-                        <i class="fas fa-paper-plane"></i> Post Review
-                      </button>
-                    </form>
-                  </div>
-
-                  <!-- Mini Events -->
-                  <div class="events-section">
-                    <h4 class="feed-section-title"><i class="fas fa-calendar-check"></i> Upcoming</h4>
-                    <div class="events-mini-grid">
-                      <div class="event-mini-card">
-                        <div class="event-mini-date"><span>15</span><small>Oct</small></div>
-                        <div class="event-mini-info">
-                          <h5>Full Moon Meditation</h5>
-                          <p>Group meditation for lunar energies.</p>
-                        </div>
-                      </div>
-                      <div class="event-mini-card">
-                        <div class="event-mini-date"><span>22</span><small>Nov</small></div>
-                        <div class="event-mini-info">
-                          <h5>Healing Workshop</h5>
-                          <p>Introductory aura cleansing session.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Mini Gallery -->
-                  <div class="gallery-section">
-                    <h4 class="feed-section-title"><i class="fas fa-images"></i> Gallery</h4>
-                    <div class="gallery-mini-grid">
-                      <div class="gallery-mini-item"><img src="assets/intuition_detail_1.png" alt="Gallery"></div>
-                      <div class="gallery-mini-item"><img src="akul_science.png" alt="Gallery"></div>
-                      <div class="gallery-mini-item"><img src="agni_technique.png" alt="Gallery"></div>
-                      <div class="gallery-mini-item"><img src="dowsing_technique.png" alt="Gallery"></div>
-                      <div class="gallery-mini-item"><img src="healing_service.png" alt="Gallery"></div>
-                      <div class="gallery-mini-item"><img src="vy_logo.jpg" alt="Gallery"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Main Feed Area: Reviews List -->
-                <div class="feed-main-content">
-                  <h4 class="feed-section-title"><i class="fas fa-comments"></i> Student Experiences</h4>
-                  <div id="reviews-list" class="reviews-container">
-                    <!-- Initial Dynamic Reviews -->
-                    <div class="review-item">
-                      <div class="review-item-header">
-                        <div class="reviewer-info">
-                          <div class="reviewer-avatar">RK</div>
-                          <div class="reviewer-meta">
-                            <h4>Rajesh Kumar</h4>
-                            <span class="review-course-tag">Mind Power</span>
-                          </div>
-                        </div>
-                        <div class="review-item-stars">★★★★★</div>
-                      </div>
-                      <div class="review-content">"The Mind Power course completely transformed my son's approach to studying. He is much more focused now and his memory has improved significantly."</div>
-                    </div>
-
-                    <div class="review-item">
-                      <div class="review-item-header">
-                        <div class="reviewer-info">
-                          <div class="reviewer-avatar">AS</div>
-                          <div class="reviewer-meta">
-                            <h4>Anita S.</h4>
-                            <span class="review-course-tag">Holistic Healing</span>
-                          </div>
-                        </div>
-                        <div class="review-item-stars">★★★★★</div>
-                      </div>
-                      <div class="review-content">"Aura cleansing sessions brought peace to our home. Highly recommend the divine healing services for anyone feeling stuck or negative."</div>
-                    </div>
-
-                    <div class="review-item">
-                      <div class="review-item-header">
-                        <div class="reviewer-info">
-                          <div class="reviewer-avatar">PM</div>
-                          <div class="reviewer-meta">
-                            <h4>Priya M.</h4>
-                            <span class="review-course-tag">Sri Vidya</span>
-                          </div>
-                        </div>
-                        <div class="review-item-stars">★★★★★</div>
-                      </div>
-                      <div class="review-content">"Learning Sri Vidya here was a profound spiritual experience. The teachings are authentic, deeply rooted, and handled with great care."</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-
-            <!-- ═══════════════════════════════════════════════════════ -->
-            <!-- HEALING SECTION (Separate Tab) -->
-            <!-- ═══════════════════════════════════════════════════════ -->
-            <section id="healing" class="section-full">
+            <div class="feed-header-wrapper">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
-                <span id="heading-healing">Healing Requisition Form</span>
+                Community Feed & Reviews
                 <span class="accent">✦</span>
               </h2>
+              <p style="color: var(--text-muted); max-width: 600px; margin: -10px auto 30px;">
+                Stay updated with our divine events and read experiences from our global seeker community.
+              </p>
+            </div>
 
-              <!-- ── Healing Info Block ── -->
-              <div class="healing-service-block" id="course-healing">
-                <div class="healing-service-content">
-                  <div class="healing-image-side">
-                    <img src="healing_service.png" alt="Aura & Energy Healing">
-                    <div class="healing-glow-ring"></div>
-                  </div>
-                  <div class="healing-info-side">
-                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                      <h3 class="healing-title" id="healing-title-text" style="margin: 0;">🙏 Aura Cleansing & Energy
-                        Healing</h3>
-                      <button class="course-tts-btn" onclick="speakCourse('healing')" title="Listen to healing details">
-                        <i class="fas fa-volume-up"></i>
-                      </button>
+            <div class="feed-grid">
+              <!-- Sidebar: Post Review & Events -->
+              <div class="feed-sidebar">
+                <!-- Review Form -->
+                <div class="review-post-card">
+                  <h3><i class="fas fa-pen-fancy"></i> Share Experience</h3>
+                  <form id="review-form" onsubmit="handleReviewSubmit(event)">
+                    <div class="review-form-group">
+                      <label>Your Name</label>
+                      <input type="text" id="rev-name" class="review-input" placeholder="e.g. Rahul Sharma" required>
                     </div>
-                    <p class="healing-desc" id="healing-desc-text">Experience divine healing through the power of
-                      ancient Sanatana practices.
-                      Our expert healers cleanse negative aura, remove malefic energy attachments, balance disturbed
-                      chakras, and restore your natural divine light.</p>
-                    <div class="healing-features">
-                      <div class="healing-feature-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span data-healing-feature>Negative Energy Removal</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-sun"></i>
-                        <span data-healing-feature>Aura Cleansing & Purification</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <span data-healing-feature>Chakras Balancing & Alignment</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-magic"></i>
-                        <span data-healing-feature>Spiritual Protection Shield</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-leaf"></i>
-                        <span data-healing-feature>Karmic Debt Cleansing</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-heart"></i>
-                        <span data-healing-feature>Emotional & Mental Healing</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-smile-beam"></i>
-                        <span data-healing-feature>Stress & Tension Relief</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-user-md"></i>
-                        <span data-healing-feature>Psychological Conditions Healing</span>
-                      </div>
-                      <div class="healing-feature-item">
-                        <i class="fas fa-cloud-sun"></i>
-                        <span data-healing-feature>Anxiety & Worry Dissolution</span>
+                    <div class="review-form-group">
+                      <label>Select Course</label>
+                      <select id="rev-course" class="review-select" required>
+                        <option value="" disabled selected>Choose a course...</option>
+                        <option value="Intuition Power">Intuition Power</option>
+                        <option value="Mind Power">Mind Power</option>
+                        <option value="Holistic Healing">Holistic Healing</option>
+                        <option value="Akul Science">Akul Science</option>
+                        <option value="Dowsing">Dowsing</option>
+                        <option value="Vaasthu Vidya">Vaasthu Vidya</option>
+                        <option value="Dhanur Vidya">Dhanur Vidya</option>
+                        <option value="Sri Vidya">Sri Vidya</option>
+                      </select>
+                    </div>
+                    <div class="review-form-group">
+                      <label>Your Rating</label>
+                      <div class="star-rating-input">
+                        <input type="radio" id="star5" name="rating" value="5" required /><label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
                       </div>
                     </div>
-                    <button class="course-explore-btn glow-pulse" onclick="showCourseStory('healing')"
-                      style="margin-top: 15px;">
-                      <span id="explore-btn-healing">✨ Tap to Explore Full Benefits</span>
+                    <div class="review-form-group">
+                      <label>Your Review</label>
+                      <textarea id="rev-text" class="review-textarea" rows="4"
+                        placeholder="How was your transformation journey?" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-review-btn">
+                      <i class="fas fa-paper-plane"></i> Post Review
                     </button>
+                  </form>
+                </div>
 
-                    <div class="healing-payment-info">
-                      <div class="healing-price-tag">
-                        <i class="fas fa-info-circle"></i>
-                        <span id="healing-price-note">Healing sessions are personalised. Fill the application below or
-                          contact us for consultation &
-                          pricing details.</span>
+                <!-- Mini Events -->
+                <div class="events-section">
+                  <h4 class="feed-section-title"><i class="fas fa-calendar-check"></i> Upcoming</h4>
+                  <div class="events-mini-grid">
+                    <div class="event-mini-card">
+                      <div class="event-mini-date"><span>15</span><small>Oct</small></div>
+                      <div class="event-mini-info">
+                        <h5>Full Moon Meditation</h5>
+                        <p>Group meditation for lunar energies.</p>
+                      </div>
+                    </div>
+                    <div class="event-mini-card">
+                      <div class="event-mini-date"><span>22</span><small>Nov</small></div>
+                      <div class="event-mini-info">
+                        <h5>Healing Workshop</h5>
+                        <p>Introductory aura cleansing session.</p>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- Mini Gallery -->
+                <div class="gallery-section">
+                  <h4 class="feed-section-title"><i class="fas fa-images"></i> Gallery</h4>
+                  <div class="gallery-mini-grid">
+                    <div class="gallery-mini-item"><img src="assets/intuition_detail_1.png" alt="Gallery"></div>
+                    <div class="gallery-mini-item"><img src="akul_science.png" alt="Gallery"></div>
+                    <div class="gallery-mini-item"><img src="agni_technique.png" alt="Gallery"></div>
+                    <div class="gallery-mini-item"><img src="dowsing_technique.png" alt="Gallery"></div>
+                    <div class="gallery-mini-item"><img src="healing_service.png" alt="Gallery"></div>
+                    <div class="gallery-mini-item"><img src="vy_logo.jpg" alt="Gallery"></div>
+                  </div>
+                </div>
               </div>
 
-              <div style="
+              <!-- Main Feed Area: Reviews List -->
+              <div class="feed-main-content">
+                <h4 class="feed-section-title"><i class="fas fa-comments"></i> Student Experiences</h4>
+                <div id="reviews-list" class="reviews-container">
+                  <!-- Initial Dynamic Reviews -->
+                  <div class="review-item">
+                    <div class="review-item-header">
+                      <div class="reviewer-info">
+                        <div class="reviewer-avatar">RK</div>
+                        <div class="reviewer-meta">
+                          <h4>Rajesh Kumar</h4>
+                          <span class="review-course-tag">Mind Power</span>
+                        </div>
+                      </div>
+                      <div class="review-item-stars">★★★★★</div>
+                    </div>
+                    <div class="review-content">"The Mind Power course completely transformed my son's approach to
+                      studying. He is much more focused now and his memory has improved significantly."</div>
+                  </div>
+
+                  <div class="review-item">
+                    <div class="review-item-header">
+                      <div class="reviewer-info">
+                        <div class="reviewer-avatar">AS</div>
+                        <div class="reviewer-meta">
+                          <h4>Anita S.</h4>
+                          <span class="review-course-tag">Holistic Healing</span>
+                        </div>
+                      </div>
+                      <div class="review-item-stars">★★★★★</div>
+                    </div>
+                    <div class="review-content">"Aura cleansing sessions brought peace to our home. Highly recommend the
+                      divine healing services for anyone feeling stuck or negative."</div>
+                  </div>
+
+                  <div class="review-item">
+                    <div class="review-item-header">
+                      <div class="reviewer-info">
+                        <div class="reviewer-avatar">PM</div>
+                        <div class="reviewer-meta">
+                          <h4>Priya M.</h4>
+                          <span class="review-course-tag">Sri Vidya</span>
+                        </div>
+                      </div>
+                      <div class="review-item-stars">★★★★★</div>
+                    </div>
+                    <div class="review-content">"Learning Sri Vidya here was a profound spiritual experience. The
+                      teachings are authentic, deeply rooted, and handled with great care."</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ═══════════════════════════════════════════════════════ -->
+          <!-- HEALING SECTION (Separate Tab) -->
+          <!-- ═══════════════════════════════════════════════════════ -->
+          <section id="healing" class="section-full">
+            <h2 class="section-heading">
+              <span class="accent">✦</span>
+              <span id="heading-healing">Healing Requisition Form</span>
+              <span class="accent">✦</span>
+            </h2>
+
+            <!-- ── Healing Info Block ── -->
+            <div class="healing-service-block" id="course-healing">
+              <div class="healing-service-content">
+                <div class="healing-image-side">
+                  <img src="healing_service.png" alt="Aura & Energy Healing">
+                  <div class="healing-glow-ring"></div>
+                </div>
+                <div class="healing-info-side">
+                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <h3 class="healing-title" id="healing-title-text" style="margin: 0;">🙏 Aura Cleansing & Energy
+                      Healing</h3>
+                    <button class="course-tts-btn" onclick="speakCourse('healing')" title="Listen to healing details">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                  </div>
+                  <p class="healing-desc" id="healing-desc-text">Experience divine healing through the power of
+                    ancient Sanatana practices.
+                    Our expert healers cleanse negative aura, remove malefic energy attachments, balance disturbed
+                    chakras, and restore your natural divine light.</p>
+                  <div class="healing-features">
+                    <div class="healing-feature-item">
+                      <i class="fas fa-shield-alt"></i>
+                      <span data-healing-feature>Negative Energy Removal</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-sun"></i>
+                      <span data-healing-feature>Aura Cleansing & Purification</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-balance-scale"></i>
+                      <span data-healing-feature>Chakras Balancing & Alignment</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-magic"></i>
+                      <span data-healing-feature>Spiritual Protection Shield</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-leaf"></i>
+                      <span data-healing-feature>Karmic Debt Cleansing</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-heart"></i>
+                      <span data-healing-feature>Emotional & Mental Healing</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-smile-beam"></i>
+                      <span data-healing-feature>Stress & Tension Relief</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-user-md"></i>
+                      <span data-healing-feature>Psychological Conditions Healing</span>
+                    </div>
+                    <div class="healing-feature-item">
+                      <i class="fas fa-cloud-sun"></i>
+                      <span data-healing-feature>Anxiety & Worry Dissolution</span>
+                    </div>
+                  </div>
+                  <button class="course-explore-btn glow-pulse" onclick="showCourseStory('healing')"
+                    style="margin-top: 15px;">
+                    <span id="explore-btn-healing">✨ Tap to Explore Full Benefits</span>
+                  </button>
+
+                  <div class="healing-payment-info">
+                    <div class="healing-price-tag">
+                      <i class="fas fa-info-circle"></i>
+                      <span id="healing-price-note">Healing sessions are personalised. Fill the application below or
+                        contact us for consultation &
+                        pricing details.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="
                   max-width: 900px;
                   margin: 34px auto 0;
                   background: rgba(255, 252, 248, 0.92);
@@ -1947,51 +2072,55 @@
                   padding: 30px 26px;
                   box-shadow: var(--shadow-card);
                 ">
-                <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:14px;">
-                  Healing requisition is a sacred request, not a generic appointment. Share your concern with clarity,
-                  so the guidance, prayer, and healing protocol can be aligned to your exact energetic and emotional state.
-                </p>
-                <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:20px;">
-                  This process helps us understand your challenge, recommend the right healing path, and respond with
-                  compassion, confidentiality, and spiritual precision.
-                </p>
-                <div style="text-align:center;">
-                  <button type="button" class="donate-btn-large" onclick="showHealingForm()" style="display:inline-flex;">
-                    <i class="fas fa-notes-medical"></i> Open Healing Requisition Form
-                  </button>
-                </div>
+              <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:14px;">
+                Healing requisition is a sacred request, not a generic appointment. Share your concern with clarity,
+                so the guidance, prayer, and healing protocol can be aligned to your exact energetic and emotional
+                state.
+              </p>
+              <p style="font-size:16px; line-height:1.9; color:var(--text-body); margin-bottom:20px;">
+                This process helps us understand your challenge, recommend the right healing path, and respond with
+                compassion, confidentiality, and spiritual precision.
+              </p>
+              <div style="text-align:center;">
+                <button type="button" class="donate-btn-large" onclick="showHealingForm()" style="display:inline-flex;">
+                  <i class="fas fa-notes-medical"></i> Open Healing Requisition Form
+                </button>
               </div>
+            </div>
 
-              <!-- ── Healing Application Form ── -->
-              <div id="healing-form-section" class="premium-form-section" style="display: none;">
-                <h2 class="premium-form-title">🙏 Healing Requisition Form</h2>
+            <!-- ── Healing Application Form ── -->
+            <div id="healing-form-section" class="premium-form-section" style="display: none;">
+              <h2 class="premium-form-title">🙏 Healing Requisition Form</h2>
 
-                <div class="premium-form-box">
-                  <div class="premium-form-header">
-                    <img src="form_banner.png" alt="Healing Application">
+              <div class="premium-form-box">
+                <div class="premium-form-header">
+                  <img src="form_banner.png" alt="Healing Application">
+                </div>
+
+                <form id="healing-form" onsubmit="submitHealingApplication(event)">
+
+                  <div class="verification-header">
+                    <div class="verification-group">
+                      <label>Aadhaar Number *</label>
+                      <input type="text" id="heal-aadhaar-number" class="form-control" required
+                        placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
+                    </div>
+                    <div class="verification-group">
+                      <label>Phone Number *</label>
+                      <input type="tel" id="heal-phone" class="form-control" required placeholder="Your phone number" />
+                    </div>
+                    <button type="button" class="verify-btn" onclick="verifyFields('heal')">
+                      <i class="fas fa-check-circle"></i> Verify
+                    </button>
                   </div>
 
-                  <form id="healing-form" onsubmit="submitHealingApplication(event)">
-                    
-                    <div class="verification-header">
-                      <div class="verification-group">
-                        <label>Aadhaar Number *</label>
-                        <input type="text" id="heal-aadhaar-number" class="form-control" required placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
-                      </div>
-                      <div class="verification-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="heal-phone" class="form-control" required placeholder="Your phone number" />
-                      </div>
-                      <button type="button" class="verify-btn" onclick="verifyFields('heal')">
-                        <i class="fas fa-check-circle"></i> Verify
-                      </button>
-                    </div>
-
-                    <div id="heal-rest" style="display: none;">
-                      <!-- Name -->
+                  <div id="heal-rest" style="display: none;">
+                    <!-- Name -->
                     <div style="margin-bottom: 8px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name *</label>
-                      <input type="text" id="heal-name" required placeholder="Enter your full name" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Your Name
+                        *</label>
+                      <input type="text" id="heal-name" required placeholder="Enter your full name"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <div class="form-row" data-found-skip>
@@ -2008,11 +2137,13 @@
                     <div class="form-row" data-found-skip>
                       <div class="form-group">
                         <label>Place of Birth *</label>
-                        <input type="text" id="heal-dob-place" required class="form-control" placeholder="City, State, Country" />
+                        <input type="text" id="heal-dob-place" required class="form-control"
+                          placeholder="City, State, Country" />
                       </div>
                       <div class="form-group">
                         <label>Star (Nakshatra) *</label>
-                        <input type="text" id="heal-star" required class="form-control" placeholder="e.g. Ashwini, Bharani" />
+                        <input type="text" id="heal-star" required class="form-control"
+                          placeholder="e.g. Ashwini, Bharani" />
                       </div>
                     </div>
 
@@ -2023,24 +2154,31 @@
                       </div>
                       <div class="form-group">
                         <label>Full Address *</label>
-                        <input type="text" id="heal-address" required class="form-control" placeholder="Enter your full address" />
+                        <input type="text" id="heal-address" required class="form-control"
+                          placeholder="Enter your full address" />
                       </div>
                     </div>
 
                     <!-- Aadhaar Front & Back -->
                     <div style="margin-bottom: 8px" data-found-skip>
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Front (Image/PDF) *</label>
-                      <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card
+                        Front (Image/PDF) *</label>
+                      <input type="file" id="heal-aadhaar-front" required accept="image/*,.pdf"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
                     <div style="margin-bottom: 12px" data-found-skip>
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card Back (Image/PDF) *</label>
-                      <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Aadhaar Card
+                        Back (Image/PDF) *</label>
+                      <input type="file" id="heal-aadhaar-back" required accept="image/*,.pdf"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
                     <!-- Issues Dropdown -->
                     <div style="margin-bottom: 8px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Issues *</label>
-                      <select id="heal-issue-type" required onchange="toggleHealOtherIssue()" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Issues
+                        *</label>
+                      <select id="heal-issue-type" required onchange="toggleHealOtherIssue()"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; background: white; cursor: pointer; box-sizing: border-box;">
                         <option value="">-- Select Issue --</option>
                         <option value="Physical">Physical</option>
                         <option value="Psychological">Psychological</option>
@@ -2054,34 +2192,53 @@
 
                     <!-- Other Issue Free Text -->
                     <div id="heal-issue-other-container" style="margin-bottom: 8px; display: none;">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Please Specify Other Issue *</label>
-                      <input type="text" id="heal-issue-other" placeholder="Specify your issue" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Please Specify
+                        Other Issue *</label>
+                      <input type="text" id="heal-issue-other" placeholder="Specify your issue"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; box-sizing: border-box;" />
                     </div>
 
                     <!-- Condition Description -->
                     <div style="margin-bottom: 8px">
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Describe condition of whatever the problem is *</label>
-                      <textarea id="heal-condition" required rows="4" placeholder="Detailed description of your condition..." style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Describe
+                        condition of whatever the problem is *</label>
+                      <textarea id="heal-condition" required rows="4"
+                        placeholder="Detailed description of your condition..."
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
                     </div>
 
                     <!-- Person Present Photo -->
                     <div style="margin-bottom: 12px" data-found-skip>
-                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture of Person Requiring Healing (Upload) *</label>
-                      <input type="file" id="heal-photo" required accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
+                      <label style="display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Recent Picture
+                        of Person Requiring Healing (Upload) *</label>
+                      <input type="file" id="heal-photo" required accept="image/*"
+                        style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 10px; font-size: 14px; background: #f8f9fa;" />
                     </div>
 
                     <!-- Declaration -->
                     <!-- Declaration -->
-                    <div class="form-group" style="background: rgba(184, 134, 11, 0.05); padding: 20px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 25px;">
+                    <div class="form-group"
+                      style="background: rgba(184, 134, 11, 0.05); padding: 20px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 25px;">
                       <p id="declaration-text" class="declaration-text">
-                        I have voluntarily approached the organization for curing my ailments through Pranic Healing. 
-                        I hereby unequivocally declare, convey and affirm my consent and acceptance to use of the principles and techniques of Pranic Healing for healing my ailments, out of my own free will without any duress or compulsion, and at my own risk.
-                        I further confirm that I am physically, emotionally and mentally fit for use of the principles and techniques of Pranic Healing for healing my ailments. I assume absolute and unequivocal responsibility for any injury, harm, damage, loss, etc., and the concerned healer, as also, the officers, agents, trustees, employees, etc. of the organization, shall not have any liability in any manner and form whatsoever. I duly and unequivocally waive all rights, claims, interests, etc., of any nature whatsoever, in this regard.
+                        I have voluntarily approached the organization for curing my ailments through Pranic Healing.
+                        I hereby unequivocally declare, convey and affirm my consent and acceptance to use of the
+                        principles and techniques of Pranic Healing for healing my ailments, out of my own free will
+                        without any duress or compulsion, and at my own risk.
+                        I further confirm that I am physically, emotionally and mentally fit for use of the principles
+                        and techniques of Pranic Healing for healing my ailments. I assume absolute and unequivocal
+                        responsibility for any injury, harm, damage, loss, etc., and the concerned healer, as also, the
+                        officers, agents, trustees, employees, etc. of the organization, shall not have any liability in
+                        any manner and form whatsoever. I duly and unequivocally waive all rights, claims, interests,
+                        etc., of any nature whatsoever, in this regard.
                       </p>
-                      <button type="button" id="toggle-decl-btn" onclick="toggleDeclaration()" style="background: none; border: none; color: var(--golden-deep); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; margin-bottom: 12px; display: block;">View More</button>
-                      
-                      <label style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-body); cursor: pointer; font-weight: 600;">
-                        <input type="checkbox" id="heal-declaration" style="width: 18px; height: 18px; margin-top: 2px;" />
+                      <button type="button" id="toggle-decl-btn" onclick="toggleDeclaration()"
+                        style="background: none; border: none; color: var(--golden-deep); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; margin-bottom: 12px; display: block;">View
+                        More</button>
+
+                      <label
+                        style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-body); cursor: pointer; font-weight: 600;">
+                        <input type="checkbox" id="heal-declaration"
+                          style="width: 18px; height: 18px; margin-top: 2px;" />
                         I accept the above declaration.
                       </label>
                     </div>
@@ -2090,7 +2247,8 @@
                     <div class="form-row">
                       <div class="form-group">
                         <label>Fee Amount Paid (₹) *</label>
-                        <input type="number" id="heal-amount" class="form-control" required placeholder="e.g. 1000" min="1" />
+                        <input type="number" id="heal-amount" class="form-control" required placeholder="e.g. 1000"
+                          min="1" />
                       </div>
                       <div class="form-group">
                         <label>Transaction ID</label>
@@ -2104,108 +2262,119 @@
                     </div>
 
                     <!-- PAYMENT SECTION -->
-                    <div class="payment-box" style="margin-top: 30px; padding-top: 25px; border-top: 2px dashed var(--border-gold);">
-                      <h4 style="color: var(--golden-deep); margin-bottom: 20px; font-size: 18px; text-align: center; font-family: var(--font-heading);">
+                    <div class="payment-box"
+                      style="margin-top: 30px; padding-top: 25px; border-top: 2px dashed var(--border-gold);">
+                      <h4
+                        style="color: var(--golden-deep); margin-bottom: 20px; font-size: 18px; text-align: center; font-family: var(--font-heading);">
                         Scan to Pay (if applicable)
                       </h4>
 
                       <div class="qr-container" style="text-align: center; margin-bottom: 20px">
-                        <div class="qr-frame" style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
-                          <img src="qr-code.png" alt="Scan to Pay" style="width: 160px; height: 160px; border-radius: 10px;" />
+                        <div class="qr-frame"
+                          style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
+                          <img src="qr-code.png" alt="Scan to Pay"
+                            style="width: 160px; height: 160px; border-radius: 10px;" />
                         </div>
                       </div>
 
-                      <div class="upi-section" style="background: rgba(184, 134, 11, 0.05); padding: 15px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 20px; text-align: center;">
-                        <span style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 700;">UPI ID</span>
+                      <div class="upi-section"
+                        style="background: rgba(184, 134, 11, 0.05); padding: 15px; border-radius: 16px; border: 1px solid var(--border-gold); margin-bottom: 20px; text-align: center;">
+                        <span
+                          style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 700;">UPI
+                          ID</span>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-                          <span style="color: var(--golden-deep); font-weight: 700; font-size: 18px;">srivsn@icici</span>
-                          <button type="button" class="copy-btn" onclick="copyUPI()" style="background: var(--golden-deep); border: none; padding: 8px 12px; border-radius: 8px; color: #fff; cursor: pointer;">
+                          <span
+                            style="color: var(--golden-deep); font-weight: 700; font-size: 18px;">srivsn@icici</span>
+                          <button type="button" class="copy-btn" onclick="copyUPI()"
+                            style="background: var(--golden-deep); border: none; padding: 8px 12px; border-radius: 8px; color: #fff; cursor: pointer;">
                             <i class="far fa-copy"></i>
                           </button>
                         </div>
                       </div>
 
-                      <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga%20Healing&cu=INR" class="form-submit-btn" style="background: #27ae60; margin-bottom: 20px;">
+                      <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga%20Healing&cu=INR" class="form-submit-btn"
+                        style="background: #27ae60; margin-bottom: 20px;">
                         <i class="fas fa-mobile-alt"></i> Pay via UPI App
                       </a>
                     </div>
 
-                    <button type="submit" id="healing-submit-btn" class="form-submit-btn" disabled style="opacity: 0.5; cursor: not-allowed;">
+                    <button type="submit" id="healing-submit-btn" class="form-submit-btn" disabled
+                      style="opacity: 0.5; cursor: not-allowed;">
                       <i class="fas fa-paper-plane"></i> Submit Requisition
                     </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-            </section>
-
-            <section id="contact" class="section-full">
-              <h2 class="section-heading">
-                <span class="accent">✦</span>
-                Join Us Today!
-                <span class="accent">✦</span>
-              </h2>
-              <p class="contact-intro">
-                Give your child the gift of an empowered mind and a brighter future. Contact us to learn more about our
-                program and how you can enroll your child.
-              </p>
-              <div class="contact-grid">
-                <div class="contact-card">
-                  <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
                   </div>
-                  <h3 class="contact-title">Visit</h3>
-                  <p class="contact-text">Hyderabad<br />Telangana, India</p>
-                </div>
-                <div class="contact-card">
-                  <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                  <h3 class="contact-title">Call</h3>
-                  <p class="contact-text">
-                    <a href="tel:+917842434643" class="contact-link">
-                      +91 78424 34643
-                    </a>
-                    <br />Mon-Sat: 6AM - 9PM
-                  </p>
-                </div>
-                <div class="contact-card">
-                  <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                  </div>
-                  <h3 class="contact-title">Email</h3>
-                  <p class="contact-text">
-                    <a href="mailto:vibhutiyogateam@gmail.com" class="contact-link">
-                      vibhutiyogateam@gmail.com
-                    </a>
-                    <br />24-hour response
-                  </p>
-                </div>
+                </form>
               </div>
+            </div>
 
-              <div class="contact-actions" aria-label="Quick contact actions">
-                <a class="contact-action-btn" href="tel:+917842434643">
-                  <i class="fas fa-phone-alt"></i> Call Now
-                </a>
-                <a class="contact-action-btn" href="https://wa.me/917842434643" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <a class="contact-action-btn" href="mailto:vibhutiyogateam@gmail.com">
-                  <i class="fas fa-envelope"></i> Email Us
-                </a>
+          </section>
+
+          <section id="contact" class="section-full">
+            <h2 class="section-heading">
+              <span class="accent">✦</span>
+              Join Us Today!
+              <span class="accent">✦</span>
+            </h2>
+            <p class="contact-intro">
+              Give your child the gift of an empowered mind and a brighter future. Contact us to learn more about our
+              program and how you can enroll your child.
+            </p>
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="contact-title">Visit</h3>
+                <p class="contact-text">Hyderabad<br />Telangana, India</p>
               </div>
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h3 class="contact-title">Call</h3>
+                <p class="contact-text">
+                  <a href="tel:+917842434643" class="contact-link">
+                    +91 78424 34643
+                  </a>
+                  <br />Mon-Sat: 6AM - 9PM
+                </p>
+              </div>
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-text">
+                  <a href="mailto:vibhutiyogateam@gmail.com" class="contact-link">
+                    vibhutiyogateam@gmail.com
+                  </a>
+                  <br />24-hour response
+                </p>
+              </div>
+            </div>
 
-              <!-- GOOGLE FORM INTEGRATION -->
-              <!-- Google Form Removed -->
-            </section>
+            <div class="contact-actions" aria-label="Quick contact actions">
+              <a class="contact-action-btn" href="tel:+917842434643">
+                <i class="fas fa-phone-alt"></i> Call Now
+              </a>
+              <a class="contact-action-btn" href="https://wa.me/917842434643" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a class="contact-action-btn" href="mailto:vibhutiyogateam@gmail.com">
+                <i class="fas fa-envelope"></i> Email Us
+              </a>
+            </div>
 
-            <section id="donate" class="section-full">
-              <h2 class="section-heading">
-                <span class="accent">✦</span>
-                Karmic Repay
-                <span class="accent">✦</span>
-              </h2>
+            <!-- GOOGLE FORM INTEGRATION -->
+            <!-- Google Form Removed -->
+          </section>
 
-              <div style="
+          <section id="donate" class="section-full">
+            <h2 class="section-heading">
+              <span class="accent">✦</span>
+              Karmic Repay
+              <span class="accent">✦</span>
+            </h2>
+
+            <div style="
                   max-width: none;
                   margin: 0 -48px;
                   width: calc(100% + 96px);
@@ -2216,79 +2385,89 @@
                   padding: 40px 48px;
                   box-shadow: 0 8px 32px rgba(62, 43, 0, 0.12);
                 ">
-                <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 12px; text-align:center;">
-                  In Sanatana Dharma, Daana is sacred worship in action. It is not merely giving money - it is an
-                  offering of gratitude at the feet of the Divine, made with humility and bhava.
+              <p
+                style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 12px; text-align:center;">
+                In Sanatana Dharma, Daana is sacred worship in action. It is not merely giving money - it is an
+                offering of gratitude at the feet of the Divine, made with humility and bhava.
+              </p>
+              <p
+                style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 16px; text-align:center; font-weight: 600; font-style: italic;">
+                Whatever you offer—whether good deeds or heartfelt donations—returns to you multiplied. Such is the
+                Divine Law.
+              </p>
+              <div
+                style="max-width:860px; margin:0 auto 20px; background: rgba(255,255,255,0.85); border:1px solid var(--border-gold); border-radius:14px; padding:14px 16px;">
+                <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin:0 0 8px;">
+                  <strong>Where your support goes:</strong>
                 </p>
-                <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 16px; text-align:center; font-weight: 600; font-style: italic;">
-                  Whatever you offer—whether good deeds or heartfelt donations—returns to you multiplied. Such is the Divine Law.
-                </p>
-                <div style="max-width:860px; margin:0 auto 20px; background: rgba(255,255,255,0.85); border:1px solid var(--border-gold); border-radius:14px; padding:14px 16px;">
-                  <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin:0 0 8px;">
-                    <strong>Where your support goes:</strong>
-                  </p>
-                  <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin:0;">
-                    Balavidya for children, satsang and dharmic outreach, healing assistance for distressed families,
-                    seva operations, and protection of authentic Vedic wisdom streams. Every offering, however small,
-                    becomes part of this spiritual yajna.
-                  </p>
-                </div>
-                <p style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 20px; text-align:center;">
-                  Choose your path below. Both are sacred, but each serves a different purpose.
-                </p>
-
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-                  <div style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
-                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Donation</h4>
-                    <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
-                      Offer through this path when you wish to sustain dharmic service in a direct and tangible way.
-                      Your daana supports children’s learning journeys, satsang activities, healing assistance for
-                      vulnerable families, and the daily continuity of this sacred mission.
-                    </p>
-                    <button type="button" class="donate-btn-large" onclick="showDonationForm()" style="display:inline-flex; font-size:14px; padding:10px 18px;">
-                      <i class="fas fa-heart"></i> Donation
-                    </button>
-                  </div>
-
-                  <div style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
-                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Karmic Debt Resolution</h4>
-                    <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
-                      Choose this path for Runa Mukti sankalpa when life patterns feel repeatedly blocked despite sincere
-                      effort. Through prayerful intention, this request seeks karmic clearing guidance for health,
-                      relationships, finances, emotional heaviness, and inner peace.
-                    </p>
-                    <button type="button" class="donate-btn-large" onclick="showKarmicDebtForm()"
-                      style="display:inline-flex; font-size:14px; padding:10px 18px;">
-                      <i class="fas fa-om"></i> Karmic Debt
-                    </button>
-                  </div>
-                </div>
-
-                <p style="font-size:13px; color:var(--text-muted); margin-top:14px; text-align:center;">
-                  With reverence and privacy, forms remain hidden until you choose your path below.
+                <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin:0;">
+                  Balavidya for children, satsang and dharmic outreach, healing assistance for distressed families,
+                  seva operations, and protection of authentic Vedic wisdom streams. Every offering, however small,
+                  becomes part of this spiritual yajna.
                 </p>
               </div>
+              <p
+                style="font-size: 16px; line-height: 1.85; color: var(--text-body); margin-bottom: 20px; text-align:center;">
+                Choose your path below. Both are sacred, but each serves a different purpose.
+              </p>
 
-              <div id="donation-form-section" class="premium-form-section" style="display: none;">
-                <h2 class="premium-form-title">🙏 Sacred Contribution</h2>
-                <div class="premium-form-box">
-                  <div class="premium-form-header">
-                    <img src="form_banner.png" alt="Contribute with Love">
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                <div
+                  style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
+                  <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Donation</h4>
+                  <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
+                    Offer through this path when you wish to sustain dharmic service in a direct and tangible way.
+                    Your daana supports children’s learning journeys, satsang activities, healing assistance for
+                    vulnerable families, and the daily continuity of this sacred mission.
+                  </p>
+                  <button type="button" class="donate-btn-large" onclick="showDonationForm()"
+                    style="display:inline-flex; font-size:14px; padding:10px 18px;">
+                    <i class="fas fa-heart"></i> Donation
+                  </button>
+                </div>
+
+                <div
+                  style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
+                  <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Karmic Debt Resolution</h4>
+                  <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
+                    Choose this path for Runa Mukti sankalpa when life patterns feel repeatedly blocked despite sincere
+                    effort. Through prayerful intention, this request seeks karmic clearing guidance for health,
+                    relationships, finances, emotional heaviness, and inner peace.
+                  </p>
+                  <button type="button" class="donate-btn-large" onclick="showKarmicDebtForm()"
+                    style="display:inline-flex; font-size:14px; padding:10px 18px;">
+                    <i class="fas fa-om"></i> Karmic Debt
+                  </button>
+                </div>
+              </div>
+
+              <p style="font-size:13px; color:var(--text-muted); margin-top:14px; text-align:center;">
+                With reverence and privacy, forms remain hidden until you choose your path below.
+              </p>
+            </div>
+
+            <div id="donation-form-section" class="premium-form-section" style="display: none;">
+              <h2 class="premium-form-title">🙏 Sacred Contribution</h2>
+              <div class="premium-form-box">
+                <div class="premium-form-header">
+                  <img src="form_banner.png" alt="Contribute with Love">
+                </div>
+
+                <!-- QR CODE - Centered and Prominent -->
+                <div class="qr-container" style="text-align: center; margin-bottom: 25px">
+                  <div class="qr-frame"
+                    style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
+                    <img src="qr-code.png" alt="Scan to Pay"
+                      style="width: 180px; height: 180px; border-radius: 10px;" />
                   </div>
+                  <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted); font-weight: 500;">
+                    <i class="fas fa-qrcode" style="color: var(--golden-primary)"></i>
+                    Scan with any UPI App
+                  </p>
+                </div>
 
-                    <!-- QR CODE - Centered and Prominent -->
-                    <div class="qr-container" style="text-align: center; margin-bottom: 25px">
-                      <div class="qr-frame" style="display: inline-block; padding: 15px; background: #fff; border-radius: 20px; border: 2px solid var(--golden-primary); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);">
-                        <img src="qr-code.png" alt="Scan to Pay" style="width: 180px; height: 180px; border-radius: 10px;" />
-                      </div>
-                      <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted); font-weight: 500;">
-                        <i class="fas fa-qrcode" style="color: var(--golden-primary)"></i>
-                        Scan with any UPI App
-                      </p>
-                    </div>
-
-                    <!-- UPI ID - Centered and Styled -->
-                    <div class="upi-section" style="
+                <!-- UPI ID - Centered and Styled -->
+                <div class="upi-section" style="
                           background: linear-gradient(
                             135deg,
                             #f8f9fa 0%,
@@ -2300,7 +2479,7 @@
                           margin-bottom: 20px;
                           text-align: center;
                         ">
-                      <span style="
+                  <span style="
                             display: block;
                             font-size: 12px;
                             color: #7f8c8d;
@@ -2308,22 +2487,22 @@
                             text-transform: uppercase;
                             letter-spacing: 1px;
                           ">
-                        UPI ID
-                      </span>
-                      <div style="
+                    UPI ID
+                  </span>
+                  <div style="
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             gap: 12px;
                           ">
-                        <span class="upi-label" style="
+                    <span class="upi-label" style="
                               color: #2d4563;
                               font-weight: 700;
                               font-family: &quot;Courier New&quot;, monospace;
                               font-size: 20px;
                               letter-spacing: 1px;
                             ">srivsn@icici</span>
-                        <button class="copy-btn" onclick="copyUPI()" style="
+                    <button class="copy-btn" onclick="copyUPI()" style="
                               background: linear-gradient(
                                 135deg,
                                 #d4a574,
@@ -2342,13 +2521,13 @@
                               transition: all 0.3s ease;
                               box-shadow: 0 3px 10px rgba(212, 165, 116, 0.3);
                             ">
-                          <i class="far fa-copy"></i> Copy
-                        </button>
-                      </div>
-                    </div>
+                      <i class="far fa-copy"></i> Copy
+                    </button>
+                  </div>
+                </div>
 
-                    <!-- Pay Button -->
-                    <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga&cu=INR" class="donate-btn-large" style="
+                <!-- Pay Button -->
+                <a href="upi://pay?pa=srivsn@icici&pn=Vibhuti%20Yoga&cu=INR" class="donate-btn-large" style="
                           width: 100%;
                           display: flex;
                           align-items: center;
@@ -2365,120 +2544,134 @@
                           box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
                           transition: all 0.3s ease;
                         ">
-                      <i class="fas fa-mobile-alt"></i> Pay via UPI App
-                    </a>
+                  <i class="fas fa-mobile-alt"></i> Pay via UPI App
+                </a>
 
-                    <div id="receipt-form-section" class="premium-form-section" style="margin-top: 30px;">
-                      <h2 class="premium-form-title">✨ Verify Your Donation</h2>
-                      <div class="premium-form-box">
+                <div id="receipt-form-section" class="premium-form-section" style="margin-top: 30px;">
+                  <h2 class="premium-form-title">✨ Verify Your Donation</h2>
+                  <div class="premium-form-box">
 
-                        <form id="receipt-form" onsubmit="submitReceipt(event)">
-                          <div class="verification-header">
-                            <div class="verification-group">
-                              <label>Aadhaar Number *</label>
-                              <input type="text" id="donor-aadhaar-number" class="form-control" required placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
-                            </div>
-                            <div class="verification-group">
-                              <label>Phone Number *</label>
-                              <input type="tel" id="donor-phone" class="form-control" required placeholder="Your phone number" />
-                            </div>
-                            <button type="button" class="verify-btn" onclick="verifyFields('donor')">
-                              <i class="fas fa-check-circle"></i> Verify
-                            </button>
-                          </div>
-
-                          <div id="donor-rest" style="display: none;">
-                            <div class="form-row">
-                            <div class="form-group">
-                              <label>Full Name *</label>
-                              <input type="text" id="donor-name" class="form-control" required placeholder="Enter your name" />
-                            </div>
-                            <div class="form-group">
-                              <label>Email (Optional)</label>
-                              <input type="email" id="donor-email" class="form-control" placeholder="Enter email" />
-                            </div>
-                          </div>
-                          
-                          <div class="form-group" data-found-skip>
-                            <label>Place *</label>
-                            <input type="text" id="donor-place" class="form-control" required placeholder="Enter your city/place" />
-                          </div>
-                          <div class="form-row" data-found-skip>
-                            <div class="form-group">
-                              <label>Aadhaar Card Front *</label>
-                              <input type="file" id="donor-aadhaar-front" class="form-control" required accept="image/*,.pdf" style="background:#f8f9fa; padding:10px;" />
-                            </div>
-                            <div class="form-group">
-                              <label>Aadhaar Card Back *</label>
-                              <input type="file" id="donor-aadhaar-back" class="form-control" required accept="image/*,.pdf" style="background:#f8f9fa; padding:10px;" />
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label>Donate To *</label>
-                            <select id="donor-category" class="form-control" required onchange="toggleDonorOther()">
-                              <option value="">Select Category</option>
-                              <option value="Kid Education">Kid Education</option>
-                              <option value="Ashramam">Ashramam</option>
-                              <option value="Health">Health</option>
-                              <option value="Annadhan">Annadhan</option>
-                              <option value="Any other">Any other</option>
-                            </select>
-                          </div>
-                          <div class="form-group" id="donor-other-container" style="display: none;">
-                            <label>Please Specify *</label>
-                            <input type="text" id="donor-other-specify" class="form-control" placeholder="Specify your cause" />
-                          </div>
-                          <div class="form-group">
-                            <label>Amount Paid (₹) *</label>
-                            <input type="number" id="donor-amount" class="form-control" required placeholder="e.g. 500" />
-                          </div>
-                          <div class="form-group">
-                            <label>Transaction/Reference ID (Optional)</label>
-                            <input type="text" id="donor-txn-id" class="form-control" placeholder="Enter transaction ID" />
-                          </div>
-                          <div class="form-group" data-found-skip>
-                            <label>Upload Recent Picture of Individual *</label>
-                            <input type="file" id="donor-picture" required accept="image/*" class="form-control" style="background:#f8f9fa; padding:10px;" />
-                          </div>
-                          <div class="form-group">
-                            <label>Transaction Receipt Picture *</label>
-                            <input type="file" id="donor-receipt" required accept="image/*,.pdf" class="form-control" style="background:#f8f9fa; padding:10px;" />
-                          </div>
-                          <button type="submit" id="donation-submit-btn" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #4caf50, #66bb6a); border: none; color: white; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);">
-                            <i class="fas fa-paper-plane"></i> Submit Donation
-                          </button>
-                          <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
-                            The donation you are making is offered in the name of Vibhuti Yoga.
-                          </p>
+                    <form id="receipt-form" onsubmit="submitReceipt(event)">
+                      <div class="verification-header">
+                        <div class="verification-group">
+                          <label>Aadhaar Number *</label>
+                          <input type="text" id="donor-aadhaar-number" class="form-control" required
+                            placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
                         </div>
-                        </form>
+                        <div class="verification-group">
+                          <label>Phone Number *</label>
+                          <input type="tel" id="donor-phone" class="form-control" required
+                            placeholder="Your phone number" />
+                        </div>
+                        <button type="button" class="verify-btn" onclick="verifyFields('donor')">
+                          <i class="fas fa-check-circle"></i> Verify
+                        </button>
+                      </div>
+
+                      <div id="donor-rest" style="display: none;">
+                        <div class="form-row">
+                          <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="donor-name" class="form-control" required
+                              placeholder="Enter your name" />
+                          </div>
+                          <div class="form-group">
+                            <label>Email (Optional)</label>
+                            <input type="email" id="donor-email" class="form-control" placeholder="Enter email" />
+                          </div>
+                        </div>
+
+                        <div class="form-group" data-found-skip>
+                          <label>Place *</label>
+                          <input type="text" id="donor-place" class="form-control" required
+                            placeholder="Enter your city/place" />
+                        </div>
+                        <div class="form-row" data-found-skip>
+                          <div class="form-group">
+                            <label>Aadhaar Card Front *</label>
+                            <input type="file" id="donor-aadhaar-front" class="form-control" required
+                              accept="image/*,.pdf" style="background:#f8f9fa; padding:10px;" />
+                          </div>
+                          <div class="form-group">
+                            <label>Aadhaar Card Back *</label>
+                            <input type="file" id="donor-aadhaar-back" class="form-control" required
+                              accept="image/*,.pdf" style="background:#f8f9fa; padding:10px;" />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Donate To *</label>
+                          <select id="donor-category" class="form-control" required onchange="toggleDonorOther()">
+                            <option value="">Select Category</option>
+                            <option value="Kid Education">Kid Education</option>
+                            <option value="Ashramam">Ashramam</option>
+                            <option value="Health">Health</option>
+                            <option value="Annadhan">Annadhan</option>
+                            <option value="Any other">Any other</option>
+                          </select>
+                        </div>
+                        <div class="form-group" id="donor-other-container" style="display: none;">
+                          <label>Please Specify *</label>
+                          <input type="text" id="donor-other-specify" class="form-control"
+                            placeholder="Specify your cause" />
+                        </div>
+                        <div class="form-group">
+                          <label>Amount Paid (₹) *</label>
+                          <input type="number" id="donor-amount" class="form-control" required placeholder="e.g. 500" />
+                        </div>
+                        <div class="form-group">
+                          <label>Transaction/Reference ID (Optional)</label>
+                          <input type="text" id="donor-txn-id" class="form-control"
+                            placeholder="Enter transaction ID" />
+                        </div>
+                        <div class="form-group" data-found-skip>
+                          <label>Upload Recent Picture of Individual *</label>
+                          <input type="file" id="donor-picture" required accept="image/*" class="form-control"
+                            style="background:#f8f9fa; padding:10px;" />
+                        </div>
+                        <div class="form-group">
+                          <label>Transaction Receipt Picture *</label>
+                          <input type="file" id="donor-receipt" required accept="image/*,.pdf" class="form-control"
+                            style="background:#f8f9fa; padding:10px;" />
+                        </div>
+                        <button type="submit" id="donation-submit-btn"
+                          style="width: 100%; padding: 14px; background: linear-gradient(135deg, #4caf50, #66bb6a); border: none; color: white; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);">
+                          <i class="fas fa-paper-plane"></i> Submit Donation
+                        </button>
+                        <p
+                          style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
+                          The donation you are making is offered in the name of Vibhuti Yoga.
+                        </p>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
 
-              <!-- Karmic Debt Section -->
-              <div id="karmic-debt-form-section" class="premium-form-section" style="display: none;">
-                <h2 class="premium-form-title">⚖️ Karmic Debt Resolution</h2>
-                <div class="premium-form-box">
-                  <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)">
-                    <div class="verification-header">
-                      <div class="verification-group">
-                        <label>Aadhaar Number *</label>
-                        <input type="text" id="karmic-aadhaar" class="form-control" required placeholder="12-digit number" maxlength="12" pattern="\d{12}" />
-                      </div>
-                      <div class="verification-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="karmic-phone" class="form-control" required placeholder="Your phone number" />
-                      </div>
-                      <button type="button" class="verify-btn" onclick="verifyFields('karmic')">
-                        <i class="fas fa-check-circle"></i> Verify
-                      </button>
+            <!-- Karmic Debt Section -->
+            <div id="karmic-debt-form-section" class="premium-form-section" style="display: none;">
+              <h2 class="premium-form-title">⚖️ Karmic Debt Resolution</h2>
+              <div class="premium-form-box">
+                <form id="karmic-debt-form" onsubmit="submitKarmicDebtForm(event)">
+                  <div class="verification-header">
+                    <div class="verification-group">
+                      <label>Aadhaar Number *</label>
+                      <input type="text" id="karmic-aadhaar" class="form-control" required placeholder="12-digit number"
+                        maxlength="12" pattern="\d{12}" />
                     </div>
+                    <div class="verification-group">
+                      <label>Phone Number *</label>
+                      <input type="tel" id="karmic-phone" class="form-control" required
+                        placeholder="Your phone number" />
+                    </div>
+                    <button type="button" class="verify-btn" onclick="verifyFields('karmic')">
+                      <i class="fas fa-check-circle"></i> Verify
+                    </button>
+                  </div>
 
-                    <div id="karmic-rest" style="display: none;">
-                      <div class="form-row" data-found-skip>
-                        <div class="form-group">
+                  <div id="karmic-rest" style="display: none;">
+                    <div class="form-row" data-found-skip>
+                      <div class="form-group">
                         <label>Your Full Name *</label>
                         <input type="text" id="karmic-name" class="form-control" required placeholder="Enter name" />
                       </div>
@@ -2487,29 +2680,31 @@
                         <input type="email" id="karmic-email" class="form-control" placeholder="Enter email" />
                       </div>
                     </div>
-                    
+
                     <div class="form-group" data-found-skip>
                       <label>Place *</label>
-                      <input type="text" id="karmic-place" class="form-control" required placeholder="Enter your city/place" />
+                      <input type="text" id="karmic-place" class="form-control" required
+                        placeholder="Enter your city/place" />
                     </div>
-                      <div class="form-group">
-                        <label>Karmic Debt Reason *</label>
-                        <select id="karmic-reason" class="form-control" required onchange="toggleKarmicOther()">
-                          <option value="">-- Select Reason --</option>
-                          <option value="Financial Blockage">Financial Blockage</option>
-                          <option value="Health Issues">Health Issues</option>
-                          <option value="Relationship Conflicts">Relationship Conflicts</option>
-                          <option value="Career Stagnation">Career Stagnation</option>
-                          <option value="Spiritual Growth">Spiritual Growth</option>
-                          <option value="Ancestral Karma">Ancestral Karma</option>
-                          <option value="Emotional Distress">Emotional Distress</option>
-                          <option value="Other">Others (Please specify below)</option>
-                        </select>
-                      </div>
+                    <div class="form-group">
+                      <label>Karmic Debt Reason *</label>
+                      <select id="karmic-reason" class="form-control" required onchange="toggleKarmicOther()">
+                        <option value="">-- Select Reason --</option>
+                        <option value="Financial Blockage">Financial Blockage</option>
+                        <option value="Health Issues">Health Issues</option>
+                        <option value="Relationship Conflicts">Relationship Conflicts</option>
+                        <option value="Career Stagnation">Career Stagnation</option>
+                        <option value="Spiritual Growth">Spiritual Growth</option>
+                        <option value="Ancestral Karma">Ancestral Karma</option>
+                        <option value="Emotional Distress">Emotional Distress</option>
+                        <option value="Other">Others (Please specify below)</option>
+                      </select>
+                    </div>
 
                     <div class="form-group" id="karmic-other-container" style="display: none;">
                       <label>Specify Other Reason *</label>
-                      <input type="text" id="karmic-other-specify" class="form-control" placeholder="Describe the reason" />
+                      <input type="text" id="karmic-other-specify" class="form-control"
+                        placeholder="Describe the reason" />
                     </div>
 
                     <div class="form-row">
@@ -2519,63 +2714,72 @@
                       </div>
                       <div class="form-group">
                         <label>Recent Photo of Individual *</label>
-                        <input type="file" id="karmic-photo" required accept="image/*" class="form-control" style="background:#f8f9fa; padding:10px;" />
+                        <input type="file" id="karmic-photo" required accept="image/*" class="form-control"
+                          style="background:#f8f9fa; padding:10px;" />
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Amount Paid Receipt (Upload) *</label>
-                      <input type="file" id="karmic-receipt" required accept="image/*,.pdf" class="form-control" style="background:#f8f9fa; padding:10px;" />
+                      <input type="file" id="karmic-receipt" required accept="image/*,.pdf" class="form-control"
+                        style="background:#f8f9fa; padding:10px;" />
                     </div>
 
-                    <div class="payment-box" style="margin-bottom: 25px; border: 1px solid var(--border-gold); padding: 20px; border-radius: 16px; background: rgba(184, 134, 11, 0.03);">
-                      <h4 style="text-align: center; color: var(--golden-deep); margin-bottom: 15px; font-family: var(--font-heading);">Scan to Pay</h4>
+                    <div class="payment-box"
+                      style="margin-bottom: 25px; border: 1px solid var(--border-gold); padding: 20px; border-radius: 16px; background: rgba(184, 134, 11, 0.03);">
+                      <h4
+                        style="text-align: center; color: var(--golden-deep); margin-bottom: 15px; font-family: var(--font-heading);">
+                        Scan to Pay</h4>
                       <div style="text-align: center;">
-                        <img src="qr-code.png" alt="Scan to Pay" style="width: 150px; border-radius: 10px; border: 2px solid var(--golden-primary); padding: 5px; background: #fff;" />
-                        <p style="margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--golden-deep);">UPI ID: srivsn@icici</p>
+                        <img src="qr-code.png" alt="Scan to Pay"
+                          style="width: 150px; border-radius: 10px; border: 2px solid var(--golden-primary); padding: 5px; background: #fff;" />
+                        <p style="margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--golden-deep);">UPI
+                          ID: srivsn@icici</p>
                       </div>
                     </div>
 
-                    <button type="submit" id="karmic-submit-btn" class="form-submit-btn" style="background: linear-gradient(135deg, #8e44ad, #9b59b6); border-color: #7d3c98;">
+                    <button type="submit" id="karmic-submit-btn" class="form-submit-btn"
+                      style="background: linear-gradient(135deg, #8e44ad, #9b59b6); border-color: #7d3c98;">
                       <i class="fas fa-hand-holding-heart"></i> Offer Karmic Resolution Daana
                     </button>
-                    <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
+                    <p
+                      style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted); font-weight: 500;">
                       The offering you are making is a sacred step towards Runa Mukti.
                     </p>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <footer class="footer">
-              <div class="social-links">
-                <a href="https://www.facebook.com/share/1ECzi4wmCC/" target="_blank" class="social-icon"><i
-                    class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/vibhuti7thsence?igsh=cXI4OWY4bDg5cHo1" target="_blank"
-                  class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@vibhuti7thsence?si=rogHVJEZBf3TXu0V" target="_blank" class="social-icon"><i
-                    class="fab fa-youtube"></i></a>
-                <a href="https://wa.me/917842434643" target="_blank" class="social-icon social-icon-whatsapp"><i
-                    class="fab fa-whatsapp"></i></a>
-              </div>
-              <div class="footer-contact-row">
-                <a href="tel:+917842434643" class="footer-contact-link">
-                  <i class="fas fa-phone"></i> +91 78424 34643
-                </a>
-                <span class="footer-separator">|</span>
-                <a href="mailto:vibhutiyogateam@gmail.com" class="footer-contact-link">
-                  <i class="fas fa-envelope"></i> vibhutiyogateam@gmail.com
-                </a>
-              </div>
-              <div class="footer-text">
-                © 2026 Vibhuti Yoga. All rights reserved.
-              </div>
-            </footer>
-          </div>
+          <footer class="footer">
+            <div class="social-links">
+              <a href="https://www.facebook.com/share/1ECzi4wmCC/" target="_blank" class="social-icon"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/vibhuti7thsence?igsh=cXI4OWY4bDg5cHo1" target="_blank"
+                class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="https://youtube.com/@vibhuti7thsence?si=rogHVJEZBf3TXu0V" target="_blank" class="social-icon"><i
+                  class="fab fa-youtube"></i></a>
+              <a href="https://wa.me/917842434643" target="_blank" class="social-icon social-icon-whatsapp"><i
+                  class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-contact-row">
+              <a href="tel:+917842434643" class="footer-contact-link">
+                <i class="fas fa-phone"></i> +91 78424 34643
+              </a>
+              <span class="footer-separator">|</span>
+              <a href="mailto:vibhutiyogateam@gmail.com" class="footer-contact-link">
+                <i class="fas fa-envelope"></i> vibhutiyogateam@gmail.com
+              </a>
+            </div>
+            <div class="footer-text">
+              © 2026 Vibhuti Yoga. All rights reserved.
+            </div>
+          </footer>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <script>
@@ -2691,36 +2895,36 @@
           aadhaar_number: aadhaarVal
         })
       })
-      .then(res => res.json())
-      .then(async result => {
-        const isFound = result.success && result.data && result.data.found === true;
-        const userName = isFound ? (result.data.your_full_name || result.data.name) : null;
+        .then(res => res.json())
+        .then(async result => {
+          const isFound = result.success && result.data && result.data.found === true;
+          const userName = isFound ? (result.data.your_full_name || result.data.name) : null;
 
-        btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
-        btn.style.background = '#27ae60';
-        btn.style.borderColor = '#27ae60';
+          btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+          btn.style.background = '#27ae60';
+          btn.style.borderColor = '#27ae60';
 
-        // Lock the verification fields
-        aadhaar.readOnly = true;
-        phone.readOnly = true;
-        aadhaar.style.background = '#f0f0f0';
-        phone.style.background = '#f0f0f0';
+          // Lock the verification fields
+          aadhaar.readOnly = true;
+          phone.readOnly = true;
+          aadhaar.style.background = '#f0f0f0';
+          phone.style.background = '#f0f0f0';
 
-        // Remove any previous found-badge or payment summary in this form
-        const formSection = rest.closest('.premium-form-section') || rest.closest('form')?.closest('.premium-form-box')?.parentElement;
-        if (formSection) {
-          formSection.querySelectorAll('.found-user-badge, .payment-summary-card').forEach(el => el.remove());
-        } else {
-          const existingBadge = rest.parentElement.querySelector('.found-user-badge');
-          if (existingBadge) existingBadge.remove();
-        }
+          // Remove any previous found-badge or payment summary in this form
+          const formSection = rest.closest('.premium-form-section') || rest.closest('form')?.closest('.premium-form-box')?.parentElement;
+          if (formSection) {
+            formSection.querySelectorAll('.found-user-badge, .payment-summary-card').forEach(el => el.remove());
+          } else {
+            const existingBadge = rest.parentElement.querySelector('.found-user-badge');
+            if (existingBadge) existingBadge.remove();
+          }
 
-        if (isFound && userName) {
-          // ── USER FOUND: Show name badge, hide already-known fields ──
-          const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-          const badge = document.createElement('div');
-          badge.className = 'found-user-badge';
-          badge.innerHTML = `
+          if (isFound && userName) {
+            // ── USER FOUND: Show name badge, hide already-known fields ──
+            const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            const badge = document.createElement('div');
+            badge.className = 'found-user-badge';
+            badge.innerHTML = `
             <div class="found-avatar">${initials}</div>
             <div class="found-details">
               <div class="found-label">Welcome Back</div>
@@ -2728,55 +2932,55 @@
             </div>
             <i class="fas fa-check-double found-icon"></i>
           `;
-          // Insert badge right before the rest container
-          rest.parentElement.insertBefore(badge, rest);
+            // Insert badge right before the rest container
+            rest.parentElement.insertBefore(badge, rest);
 
-          // Store found name in a hidden input for submission
-          let hiddenName = rest.querySelector('.found-name-value');
-          if (!hiddenName) {
-            hiddenName = document.createElement('input');
-            hiddenName.type = 'hidden';
-            hiddenName.className = 'found-name-value';
-            rest.prepend(hiddenName);
-          }
-          hiddenName.value = userName;
+            // Store found name in a hidden input for submission
+            let hiddenName = rest.querySelector('.found-name-value');
+            if (!hiddenName) {
+              hiddenName = document.createElement('input');
+              hiddenName.type = 'hidden';
+              hiddenName.className = 'found-name-value';
+              rest.prepend(hiddenName);
+            }
+            hiddenName.value = userName;
 
-          // Pre-fill and lock the name field for returning users
-          const nameField = rest.querySelector('[id$="-name"]');
-          if (nameField) {
-            nameField.value = userName;
-            nameField.readOnly = true;
-            nameField.style.background = '#f0f0f0';
-            nameField.style.cursor = 'not-allowed';
-            nameField.dataset.foundLocked = 'true';
-          }
+            // Pre-fill and lock the name field for returning users
+            const nameField = rest.querySelector('[id$="-name"]');
+            if (nameField) {
+              nameField.value = userName;
+              nameField.readOnly = true;
+              nameField.style.background = '#f0f0f0';
+              nameField.style.cursor = 'not-allowed';
+              nameField.dataset.foundLocked = 'true';
+            }
 
-          // Hide fields that are already known for returning users
-          rest.querySelectorAll('[data-found-skip]').forEach(el => {
-            el.classList.add('found-skip-hidden');
-          });
+            // Hide fields that are already known for returning users
+            rest.querySelectorAll('[data-found-skip]').forEach(el => {
+              el.classList.add('found-skip-hidden');
+            });
 
-          // Remove 'required' from hidden file inputs so form can submit
-          rest.querySelectorAll('.found-skip-hidden input[required], .found-skip-hidden select[required], .found-skip-hidden textarea[required]').forEach(el => {
-            el.dataset.wasRequired = 'true';
-            el.removeAttribute('required');
-          });
+            // Remove 'required' from hidden file inputs so form can submit
+            rest.querySelectorAll('.found-skip-hidden input[required], .found-skip-hidden select[required], .found-skip-hidden textarea[required]').forEach(el => {
+              el.dataset.wasRequired = 'true';
+              el.removeAttribute('required');
+            });
 
-          // ── FORM-SPECIFIC POST-VERIFICATION ──
+            // ── FORM-SPECIFIC POST-VERIFICATION ──
 
-          // REGISTRATION: Fetch payment summary for returning user
-          if (prefix === 'reg') {
-            try {
-              const summaryRes = await fetch(`${API_BASE}/api/classes/payment-summary?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
-              const summaryData = await summaryRes.json();
-              if (summaryData.success && Array.isArray(summaryData.data) && summaryData.data.length > 0) {
-                const summaryCard = document.createElement('div');
-                summaryCard.className = 'payment-summary-card';
-                let rows = '';
-                summaryData.data.forEach(item => {
-                  const statusColor = item.payment_status === 'completed' ? '#27ae60' : (item.payment_status === 'partial' ? '#f39c12' : '#e74c3c');
-                  const statusIcon = item.payment_status === 'completed' ? 'fa-check-circle' : (item.payment_status === 'partial' ? 'fa-clock' : 'fa-exclamation-circle');
-                  rows += `
+            // REGISTRATION: Fetch payment summary for returning user
+            if (prefix === 'reg') {
+              try {
+                const summaryRes = await fetch(`${API_BASE}/api/classes/payment-summary?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
+                const summaryData = await summaryRes.json();
+                if (summaryData.success && Array.isArray(summaryData.data) && summaryData.data.length > 0) {
+                  const summaryCard = document.createElement('div');
+                  summaryCard.className = 'payment-summary-card';
+                  let rows = '';
+                  summaryData.data.forEach(item => {
+                    const statusColor = item.payment_status === 'completed' ? '#27ae60' : (item.payment_status === 'partial' ? '#f39c12' : '#e74c3c');
+                    const statusIcon = item.payment_status === 'completed' ? 'fa-check-circle' : (item.payment_status === 'partial' ? 'fa-clock' : 'fa-exclamation-circle');
+                    rows += `
                     <div class="psc-row">
                       <div class="psc-course"><i class="fas fa-book"></i> ${item.class_name || 'Course #' + item.class_id}</div>
                       <div class="psc-amounts">
@@ -2786,80 +2990,80 @@
                       <div class="psc-status" style="background:${statusColor}">${(item.payment_status || 'pending').toUpperCase()}</div>
                     </div>
                   `;
-                });
-                summaryCard.innerHTML = `
+                  });
+                  summaryCard.innerHTML = `
                   <div class="psc-header"><i class="fas fa-receipt"></i> Your Payment History</div>
                   ${rows}
                 `;
-                rest.parentElement.insertBefore(summaryCard, rest);
+                  rest.parentElement.insertBefore(summaryCard, rest);
+                }
+              } catch (summaryErr) {
+                console.warn("Payment summary fetch failed:", summaryErr);
               }
-            } catch (summaryErr) {
-              console.warn("Payment summary fetch failed:", summaryErr);
             }
-          }
 
-          // DONATION: Check eligibility
-          if (prefix === 'donor') {
-            try {
-              const eligRes = await fetch(`${API_BASE}/api/donations/verify-eligibility?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
-              const eligData = await eligRes.json();
-              if (eligData.success && eligData.data && !eligData.data.can_donate) {
-                const eligBanner = document.createElement('div');
-                eligBanner.className = 'payment-summary-card';
-                eligBanner.style.borderColor = '#e74c3c';
-                eligBanner.style.background = 'linear-gradient(135deg, #ffeef0 0%, #fff5f5 100%)';
-                eligBanner.innerHTML = `
+            // DONATION: Check eligibility
+            if (prefix === 'donor') {
+              try {
+                const eligRes = await fetch(`${API_BASE}/api/donations/verify-eligibility?phone_number=${encodeURIComponent(phoneVal)}&aadhaar_number=${encodeURIComponent(aadhaarVal)}`);
+                const eligData = await eligRes.json();
+                if (eligData.success && eligData.data && !eligData.data.can_donate) {
+                  const eligBanner = document.createElement('div');
+                  eligBanner.className = 'payment-summary-card';
+                  eligBanner.style.borderColor = '#e74c3c';
+                  eligBanner.style.background = 'linear-gradient(135deg, #ffeef0 0%, #fff5f5 100%)';
+                  eligBanner.innerHTML = `
                   <div class="psc-header" style="color:#c0392b"><i class="fas fa-exclamation-triangle"></i> Donation Not Available</div>
                   <p style="margin:10px 0 0; font-size:14px; color:#7f8c8d; line-height:1.6">${eligData.data.message || 'You must have a class registration before making a donation. Please register for a course first.'}</p>
                 `;
-                rest.parentElement.insertBefore(eligBanner, rest);
-                // Still show form but disable submit
-                const submitBtn = rest.querySelector('#donation-submit-btn');
-                if (submitBtn) {
-                  submitBtn.disabled = true;
-                  submitBtn.style.opacity = '0.5';
-                  submitBtn.style.cursor = 'not-allowed';
+                  rest.parentElement.insertBefore(eligBanner, rest);
+                  // Still show form but disable submit
+                  const submitBtn = rest.querySelector('#donation-submit-btn');
+                  if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.5';
+                    submitBtn.style.cursor = 'not-allowed';
+                  }
                 }
+              } catch (eligErr) {
+                console.warn("Donation eligibility check failed:", eligErr);
               }
-            } catch (eligErr) {
-              console.warn("Donation eligibility check failed:", eligErr);
             }
+
+            showToast(`🙏 Welcome back, ${userName}! Please complete the remaining details.`);
+          } else {
+            // ── USER NOT FOUND: Show entire form ──
+            rest.querySelectorAll('[data-found-skip]').forEach(el => {
+              el.classList.remove('found-skip-hidden');
+            });
+            // Restore required attributes if previously removed
+            rest.querySelectorAll('[data-was-required]').forEach(el => {
+              el.setAttribute('required', '');
+              delete el.dataset.wasRequired;
+            });
+
+            showToast("✅ Identity verified. Please complete the full form.");
           }
 
-          showToast(`🙏 Welcome back, ${userName}! Please complete the remaining details.`);
-        } else {
-          // ── USER NOT FOUND: Show entire form ──
-          rest.querySelectorAll('[data-found-skip]').forEach(el => {
-            el.classList.remove('found-skip-hidden');
-          });
-          // Restore required attributes if previously removed
-          rest.querySelectorAll('[data-was-required]').forEach(el => {
-            el.setAttribute('required', '');
-            delete el.dataset.wasRequired;
-          });
+          // Show the rest of the form
+          rest.style.display = 'block';
+          rest.style.animation = 'fadeInUp 0.6s ease forwards';
+        })
+        .catch(err => {
+          console.error("Lookup API error:", err);
+          // On API failure, fall back to showing the full form
+          btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+          btn.style.background = '#27ae60';
+          btn.style.borderColor = '#27ae60';
+          aadhaar.readOnly = true;
+          phone.readOnly = true;
+          aadhaar.style.background = '#f0f0f0';
+          phone.style.background = '#f0f0f0';
 
-          showToast("✅ Identity verified. Please complete the full form.");
-        }
-
-        // Show the rest of the form
-        rest.style.display = 'block';
-        rest.style.animation = 'fadeInUp 0.6s ease forwards';
-      })
-      .catch(err => {
-        console.error("Lookup API error:", err);
-        // On API failure, fall back to showing the full form
-        btn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
-        btn.style.background = '#27ae60';
-        btn.style.borderColor = '#27ae60';
-        aadhaar.readOnly = true;
-        phone.readOnly = true;
-        aadhaar.style.background = '#f0f0f0';
-        phone.style.background = '#f0f0f0';
-
-        rest.style.display = 'block';
-        rest.style.animation = 'fadeInUp 0.6s ease forwards';
-        showToast("✅ Identity verified. Please complete the form.");
-      });
+          rest.style.display = 'block';
+          rest.style.animation = 'fadeInUp 0.6s ease forwards';
+          showToast("✅ Identity verified. Please complete the form.");
+        });
     }
 
     // ── Tab switching ──────────────────────────────────────────────────────────
@@ -3155,11 +3359,11 @@
       if (msg) fd.append("additional_message", msg);
 
       // File uploads — correct field names per API spec
-      const front   = document.getElementById("reg-aadhaar-front").files[0];
-      const back    = document.getElementById("reg-aadhaar-back").files[0];
+      const front = document.getElementById("reg-aadhaar-front").files[0];
+      const back = document.getElementById("reg-aadhaar-back").files[0];
       const receipt = document.getElementById("reg-receipt").files[0];
-      if (front)   fd.append("aadhaar_front", front);
-      if (back)    fd.append("aadhaar_back", back);
+      if (front) fd.append("aadhaar_front", front);
+      if (back) fd.append("aadhaar_back", back);
       if (receipt) fd.append("transaction_receipt", receipt);
 
       try {
@@ -3227,7 +3431,7 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
       btn.disabled = true;
 
-      const phoneVal   = document.getElementById("donor-phone").value.trim();
+      const phoneVal = document.getElementById("donor-phone").value.trim();
       const aadhaarVal = document.getElementById("donor-aadhaar-number").value.trim();
 
       // Pre-check: verify donation eligibility (must have a class registration)
@@ -3273,13 +3477,13 @@
 
       // File uploads — correct field names per API spec
       const aadhaarFront = document.getElementById("donor-aadhaar-front").files[0];
-      const aadhaarBack  = document.getElementById("donor-aadhaar-back").files[0];
-      const receipt      = document.getElementById("donor-receipt").files[0];
-      const picture      = document.getElementById("donor-picture").files[0];
+      const aadhaarBack = document.getElementById("donor-aadhaar-back").files[0];
+      const receipt = document.getElementById("donor-receipt").files[0];
+      const picture = document.getElementById("donor-picture").files[0];
       if (aadhaarFront) fd.append("aadhaar_front", aadhaarFront);
-      if (aadhaarBack)  fd.append("aadhaar_back",  aadhaarBack);
-      if (receipt)      fd.append("receipt_photo", receipt);
-      if (picture)      fd.append("individual_photo", picture);
+      if (aadhaarBack) fd.append("aadhaar_back", aadhaarBack);
+      if (receipt) fd.append("receipt_photo", receipt);
+      if (picture) fd.append("individual_photo", picture);
 
       try {
         const res = await fetch(`${API_BASE}/api/donations`, {
@@ -3321,7 +3525,7 @@
       const place = document.getElementById("karmic-place").value.trim();
       const aadhaar = document.getElementById("karmic-aadhaar").value.trim();
       const amount = document.getElementById("karmic-amount").value.trim();
-      
+
       let reason = document.getElementById("karmic-reason").value;
       if (reason === "Other") {
         const otherSpec = document.getElementById("karmic-other-specify").value.trim();
@@ -3337,11 +3541,11 @@
       fd.append("donation_category", "Karmic Debt: " + reason);
       fd.append("amount", amount);
       if (email) fd.append("email", email);
-      
+
       // File uploads
       const photo = document.getElementById("karmic-photo").files[0];
       const receipt = document.getElementById("karmic-receipt").files[0];
-      if (photo)   fd.append("individual_photo", photo);
+      if (photo) fd.append("individual_photo", photo);
       if (receipt) fd.append("receipt_photo", receipt);
 
       try {
@@ -3436,7 +3640,7 @@
     // ── Healing submission (POST /api/healing-form/submissions) ─────────────────
     async function submitHealingApplication(e) {
       e.preventDefault();
-      
+
       const decl = document.getElementById("heal-declaration");
       if (!decl.checked) {
         showToast("❌ Please accept the Sacred Declaration before submitting.");
@@ -3451,14 +3655,14 @@
       const healFoundName = document.querySelector('#heal-rest .found-name-value');
       const healNameField = document.getElementById("heal-name");
       const name = (healFoundName && healFoundName.value) ? healFoundName.value : healNameField.value.trim();
-      const dob      = document.getElementById("heal-dob").value;
-      const dobTime  = document.getElementById("heal-dob-time").value;
+      const dob = document.getElementById("heal-dob").value;
+      const dobTime = document.getElementById("heal-dob-time").value;
       const dobPlace = document.getElementById("heal-dob-place").value.trim();
-      const star     = document.getElementById("heal-star").value.trim();
-      const phone    = document.getElementById("heal-phone").value.trim();
-      const email    = document.getElementById("heal-email").value.trim();
-      const address  = document.getElementById("heal-address").value.trim();
-      const aadhaar  = document.getElementById("heal-aadhaar-number").value.trim();
+      const star = document.getElementById("heal-star").value.trim();
+      const phone = document.getElementById("heal-phone").value.trim();
+      const email = document.getElementById("heal-email").value.trim();
+      const address = document.getElementById("heal-address").value.trim();
+      const aadhaar = document.getElementById("heal-aadhaar-number").value.trim();
 
       let issueType = document.getElementById("heal-issue-type").value;
       if (issueType === "Other") {
@@ -3467,7 +3671,7 @@
       const condition = document.getElementById("heal-condition").value.trim();
 
       const amount = document.getElementById("heal-amount").value;
-      const txnId  = document.getElementById("heal-txn-id").value.trim();
+      const txnId = document.getElementById("heal-txn-id").value.trim();
 
       try {
         const fd = new FormData();
@@ -3476,9 +3680,9 @@
         fd.append("phone_number", phone);
         fd.append("aadhaar_number", aadhaar);
         fd.append("date_of_birth", dob);
-        if (dobTime)  fd.append("time_of_birth", dobTime);
+        if (dobTime) fd.append("time_of_birth", dobTime);
         if (dobPlace) fd.append("place_of_birth", dobPlace);
-        if (address)  fd.append("address", address);
+        if (address) fd.append("address", address);
         fd.append("issues", issueType);
         fd.append("problem_description", condition);
         fd.append("declaration_accepted", "true");
@@ -3488,16 +3692,16 @@
 
         if (email) fd.append("email", email);
         if (amount) fd.append("fee_amount_paid", amount);
-        if (txnId)  fd.append("transaction_id", txnId);
+        if (txnId) fd.append("transaction_id", txnId);
 
         // File uploads — correct field names per API spec
-        const af      = document.getElementById("heal-aadhaar-front").files[0];
-        const ab      = document.getElementById("heal-aadhaar-back").files[0];
-        const photo   = document.getElementById("heal-photo").files[0];
+        const af = document.getElementById("heal-aadhaar-front").files[0];
+        const ab = document.getElementById("heal-aadhaar-back").files[0];
+        const photo = document.getElementById("heal-photo").files[0];
         const receipt = document.getElementById("heal-receipt").files[0];
-        if (af)      fd.append("aadhaar_front", af);
-        if (ab)      fd.append("aadhaar_back", ab);
-        if (photo)   fd.append("recent_picture", photo);
+        if (af) fd.append("aadhaar_front", af);
+        if (ab) fd.append("aadhaar_back", ab);
+        if (photo) fd.append("recent_picture", photo);
         if (receipt) fd.append("fee_receipt", receipt);
 
         const res = await fetch(`${API_BASE}/api/healing-form/submissions`, {
