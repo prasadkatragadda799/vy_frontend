@@ -16,8 +16,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="vibhuti-styles.css?v=40" />
-  <link rel="stylesheet" href="mobile-responsive.css?v=40" />
+  <link rel="stylesheet" href="vibhuti-styles.css?v=41" />
+  <link rel="stylesheet" href="mobile-responsive.css?v=41" />
   <style>
     /* === VIDEO SPLASH SCREEN === */
     #splash-screen {
@@ -800,7 +800,7 @@
       <nav class="nav-menu">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#classes" class="nav-link" data-section="classes">Courses</a>
-        <a href="#feed" class="nav-link" data-section="feed">Feed</a>
+        <a href="#feed" class="nav-link" data-section="feed">Reviews</a>
         <a href="#healing" class="nav-link" data-section="healing">Request Healing</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <button class="donate-header-btn" onclick="scrollToSection('donate')">
@@ -959,7 +959,7 @@
                       <i class="fas fa-volume-up"></i>
                     </button>
                     <div class="course-image-v2"><img src="assets/holistic_healing.png" alt="Holistic Healing"></div>
-                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing Energy Power (Pranic Healing)</h3>
+                    <h3 class="course-title-v2" id="title-holistic">Holistic Healing Power (Pranic Healing)</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('holistic')">
                       <span id="explore-btn-holistic">✨ Tap to Explore Benefits</span>
                     </button>
@@ -975,7 +975,7 @@
               <!-- ═══════════════ FREE TECHNIQUES SECTION (Merged) ═══════════════ -->
               <h2 class="section-heading courses-subheading">
                 <span class="accent">✦</span>
-                <span id="heading-free-tech">Complimentary Divine Sciences</span>
+                <span id="heading-free-tech">Akul Science</span>
                 <span class="accent">✦</span>
               </h2>
 
@@ -1030,7 +1030,7 @@
                       <i class="fas fa-volume-up"></i>
                     </button>
                     <div class="course-image-v2">
-                      <img src="vastu_vidya.svg" alt="Vaasthu Vidya — Vastu Purusha Mandala">
+                      <img src="vastu_vidya.png" alt="Vaasthu Vidya — Vastu Purusha Mandala">
                     </div>
                     <h3 class="course-title-v2" id="title-vaasthu">Vaasthu Vidya / Vedic Vastu</h3>
                     <button class="course-explore-btn glow-pulse" onclick="showCourseStory('vaasthu')">
@@ -2201,7 +2201,7 @@
             <section id="donate" class="section-full">
               <h2 class="section-heading">
                 <span class="accent">✦</span>
-                Sacred Donation Seva
+                Karmic Repay
                 <span class="accent">✦</span>
               </h2>
 
@@ -2239,7 +2239,7 @@
 
                 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
                   <div style="background: rgba(255,255,255,0.9); border:1px solid var(--border-gold); border-radius:14px; padding:18px;">
-                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Donation Seva</h4>
+                    <h4 style="margin-bottom:8px; color:var(--golden-deep); font-size:18px;">Donation</h4>
                     <p style="font-size:14px; line-height:1.75; color:var(--text-body); margin-bottom:14px;">
                       Offer through this path when you wish to sustain dharmic service in a direct and tangible way.
                       Your daana supports children’s learning journeys, satsang activities, healing assistance for
@@ -2602,6 +2602,80 @@
         return;
       }
 
+      // ── OTP GATE (dummy) — a one-time code must be verified before the
+      //    real user-lookup / API call runs. Same flow for every form. ──
+      startOtpGate(prefix, aadhaar, phone, rest, btn);
+    }
+
+    // ── Dummy OTP gate shared by all register / enquiry forms ──
+    function startOtpGate(prefix, aadhaar, phone, rest, btn) {
+      const phoneVal = phone.value.trim();
+      const otpCode = String(Math.floor(1000 + Math.random() * 9000)); // dummy 4-digit OTP
+
+      const header = btn.closest('.verification-header') || btn.parentElement;
+      const container = header ? header.parentElement : rest.parentElement;
+
+      // Remove any prior OTP box in this form
+      container.querySelectorAll('.otp-gate').forEach(el => el.remove());
+
+      const box = document.createElement('div');
+      box.className = 'otp-gate';
+      box.dataset.otp = otpCode;
+      box.innerHTML = `
+        <div class="otp-gate-hint">
+          <i class="fas fa-shield-alt"></i>
+          Enter the 4-digit OTP sent to <strong>${phoneVal}</strong>
+          <span class="otp-demo">(demo OTP: ${otpCode})</span>
+        </div>
+        <div class="otp-gate-row">
+          <input type="text" class="otp-gate-input form-control" inputmode="numeric" maxlength="4" placeholder="• • • •" aria-label="Enter OTP" />
+          <button type="button" class="verify-btn otp-gate-verify"><i class="fas fa-check-circle"></i> Verify OTP</button>
+        </div>
+        <button type="button" class="otp-gate-resend">Resend OTP</button>
+      `;
+      if (header && header.parentElement) {
+        header.parentElement.insertBefore(box, header.nextSibling);
+      } else {
+        container.appendChild(box);
+      }
+
+      // Lock the Aadhaar / phone fields and show "OTP Sent" on the main button
+      aadhaar.readOnly = true;
+      phone.readOnly = true;
+      aadhaar.style.background = '#f5f5f5';
+      phone.style.background = '#f5f5f5';
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> OTP Sent';
+      btn.disabled = true;
+
+      const input = box.querySelector('.otp-gate-input');
+      const verifyOtpBtn = box.querySelector('.otp-gate-verify');
+      const resendBtn = box.querySelector('.otp-gate-resend');
+      input.addEventListener('input', () => { input.value = input.value.replace(/\D/g, '').slice(0, 4); });
+      setTimeout(() => input.focus(), 120);
+
+      const submitOtp = () => {
+        const entered = input.value.trim();
+        if (entered.length !== 4) { showToast('⚠️ Please enter the 4-digit OTP.'); return; }
+        if (entered !== box.dataset.otp) { showToast('❌ Incorrect OTP. Please try again.'); input.value = ''; input.focus(); return; }
+        box.remove();
+        // OTP verified → run the real user lookup + API flow
+        runUserLookup(prefix, aadhaar, phone, rest, btn);
+      };
+      verifyOtpBtn.addEventListener('click', submitOtp);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submitOtp(); } });
+      resendBtn.addEventListener('click', () => {
+        const newCode = String(Math.floor(1000 + Math.random() * 9000));
+        box.dataset.otp = newCode;
+        const demo = box.querySelector('.otp-demo');
+        if (demo) demo.textContent = `(demo OTP: ${newCode})`;
+        input.value = '';
+        input.focus();
+        showToast('📲 A new OTP has been sent.');
+      });
+    }
+
+    // Runs the real user lookup + API flow AFTER OTP verification succeeds
+    function runUserLookup(prefix, aadhaar, phone, rest, btn) {
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying…';
       btn.disabled = true;
 
@@ -2838,8 +2912,8 @@
     // ── Cleanup found-user state for a form section ───────────────────────────
     function cleanupFoundUserState(section) {
       if (!section) return;
-      // Remove found-user badges and payment summary cards
-      section.querySelectorAll('.found-user-badge, .payment-summary-card').forEach(b => b.remove());
+      // Remove found-user badges, payment summary cards, and any OTP gate
+      section.querySelectorAll('.found-user-badge, .payment-summary-card, .otp-gate').forEach(b => b.remove());
       // Remove hidden name inputs
       section.querySelectorAll('.found-name-value').forEach(h => h.remove());
       // Un-hide all found-skip fields
@@ -3451,7 +3525,7 @@
 
     document.addEventListener("DOMContentLoaded", loadClasses);
   </script>
-  <script src="vibhuti-script.js?v=12"></script>
+  <script src="vibhuti-script.js?v=13"></script>
 
   <!-- COURSE STORY PAGE (Full Screen) -->
   <div id="course-story-page" class="story-page-overlay">

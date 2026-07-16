@@ -223,7 +223,8 @@
 
     /* Golden filled buttons — same design as the donation button */
     .nav-link {
-        flex: 1 1 auto !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
         font-size: 8.5px !important; /* Extremely small to fit all items */
         padding: 7px 3px !important;
         background: var(--golden-deep) !important;

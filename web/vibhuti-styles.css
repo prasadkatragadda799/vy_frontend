@@ -147,7 +147,7 @@
 /* Invisible spacer equal to the logo so the title stays visually centered */
 .top-banner-spacer {
     flex: 0 0 auto;
-    width: calc(var(--top-banner-height) - 18px);
+    width: calc(var(--top-banner-height) - 8px);
     height: 1px;
 }
 
@@ -157,31 +157,34 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 150%;
-    height: 150%;
+    width: 165%;
+    height: 165%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 248, 224, 0.55) 0%, rgba(245, 215, 148, 0.32) 45%, rgba(212, 165, 116, 0) 72%);
+    background: radial-gradient(circle, rgba(255, 248, 224, 0.65) 0%, rgba(245, 215, 148, 0.40) 42%, rgba(212, 165, 116, 0) 72%);
     filter: blur(2px);
     animation: auraPulse 3.6s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
 }
 
+/* Larger, more prominent header logo with a crisp golden ring + halo */
 .top-banner-logo img {
     position: relative;
     z-index: 1;
-    width: calc(var(--top-banner-height) - 18px);
-    height: calc(var(--top-banner-height) - 18px);
+    width: calc(var(--top-banner-height) - 8px);
+    height: calc(var(--top-banner-height) - 8px);
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #fff8e0;
-    outline: 2px solid var(--golden-primary);
+    outline: 3px solid var(--golden-deep);
+    outline-offset: 0;
     box-shadow:
-        0 0 16px rgba(255, 248, 224, 0.65),
-        0 0 30px rgba(212, 165, 116, 0.45),
-        0 0 48px rgba(212, 165, 116, 0.28),
-        inset 0 0 14px rgba(245, 215, 148, 0.22);
+        0 0 0 5px rgba(255, 248, 224, 0.55),
+        0 0 20px rgba(255, 248, 224, 0.75),
+        0 0 38px rgba(212, 165, 116, 0.55),
+        0 0 58px rgba(212, 165, 116, 0.32),
+        inset 0 0 16px rgba(245, 215, 148, 0.25);
     animation: innerAuraPulse 2.8s ease-in-out infinite;
 }
 
@@ -342,12 +345,15 @@ body :is(h1, h2, h3, h4, h5, h6,
 
 /* All nav "filter" buttons share the same golden design as the donation button */
 .nav-link {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 700;
     color: #fff;
     text-decoration: none;
-    padding: 10px 22px;
+    padding: 10px 16px;
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
@@ -387,6 +393,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .donate-header-btn {
+    flex: 0 0 auto;
     padding: 10px 22px;
     background: var(--golden-deep);
     border: none;
@@ -398,6 +405,7 @@ body :is(h1, h2, h3, h4, h5, h6,
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     transition: all 0.3s ease;
     letter-spacing: 1px;
@@ -1740,8 +1748,10 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .courses-unified-grid.reference-grid {
-    grid-template-columns: repeat(2, 1fr);
-    /* Reference grid is only 2 items */
+    /* Match the individual card width of the technique/course cards instead of
+       stretching two oversized cards across the row */
+    grid-template-columns: repeat(2, minmax(300px, 360px));
+    justify-content: center;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -1836,7 +1846,7 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .badge-reference {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, var(--golden-primary), var(--golden-deep));
     color: #fff;
 }
 
@@ -2335,9 +2345,9 @@ body :is(h1, h2, h3, h4, h5, h6,
     border-radius: 20px;
     font-size: 11px;
     font-weight: 700;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
-    border: 1px solid rgba(102, 126, 234, 0.5);
-    color: #b8c1ec;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.28), rgba(184, 134, 11, 0.22));
+    border: 1px solid var(--border-gold-strong);
+    color: var(--golden-deep);
     letter-spacing: 0.5px;
     z-index: 2;
 }
@@ -2348,12 +2358,13 @@ body :is(h1, h2, h3, h4, h5, h6,
 }
 
 .reference-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    background: var(--golden-deep) !important;
     color: #fff !important;
 }
 
 .reference-btn:hover {
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5) !important;
+    background: var(--golden-primary) !important;
+    box-shadow: 0 6px 25px rgba(107, 74, 0, 0.4) !important;
 }
 
 /* Technique Card Special Styling */
@@ -2383,15 +2394,15 @@ body :is(h1, h2, h3, h4, h5, h6,
     color: #56ab2f;
 }
 
-/* Reference Card Special Styling */
+/* Reference Card Styling — matches the golden theme of the other course cards */
 .reference-card .course-card-inner {
-    border-color: rgba(102, 126, 234, 0.25);
-    background: rgba(252, 252, 255, 0.85);
+    border-color: var(--border-gold);
+    background: rgba(255, 252, 248, 0.82);
 }
 
 .reference-card:hover .course-card-inner {
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+    border-color: var(--golden-primary);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Connection Block V2 */
@@ -3701,4 +3712,86 @@ textarea:focus {
         height: 52px;
         font-size: 1.3rem;
     }
+}
+
+/* ============================================================
+   OTP GATE — dummy OTP step inside register / enquiry forms
+   ============================================================ */
+.otp-gate {
+    margin: 14px 0 6px;
+    padding: 16px 16px 14px;
+    background: rgba(255, 252, 245, 0.96);
+    border: 1.5px solid var(--border-gold-strong);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(107, 74, 0, 0.12);
+    animation: otpFadeIn 0.3s ease;
+}
+
+@keyframes otpFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.otp-gate-hint {
+    font-size: 13.5px;
+    color: var(--text-body);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.otp-gate-hint i {
+    color: var(--golden-deep);
+    margin-right: 6px;
+}
+
+.otp-gate-hint strong {
+    color: var(--golden-deep);
+}
+
+.otp-demo {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #b8860b;
+    background: rgba(184, 134, 11, 0.12);
+    padding: 1px 8px;
+    border-radius: 6px;
+}
+
+.otp-gate-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.otp-gate-input {
+    flex: 1 1 120px;
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--golden-deep);
+}
+
+.otp-gate-verify {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.otp-gate-resend {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: var(--golden-deep);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.otp-gate-resend:hover {
+    color: var(--golden-primary);
 }

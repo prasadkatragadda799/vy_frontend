@@ -376,14 +376,25 @@ function closeCourseStory() {
 
 function speakModalDetails() {
   if (!currentModalCourseId || !courseData[currentModalCourseId]) return;
+
+  // Toggle: a second click stops the audio (on/off)
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    if (currentSpeech === 'modal') { currentSpeech = null; return; }
+  }
+
   const course = courseData[currentModalCourseId][currentLang] || courseData[currentModalCourseId]['en'];
 
+  const keyBenefitsLabel = currentLang === 'te' ? 'ముఖ్య ప్రయోజనాలు' : 'Key benefits include';
   const benefitsText = course.benefitsList ? course.benefitsList.join('. ') : course.benefits;
-  const fullText = `${course.title}. ${course.desc}. Key Benefits include: ${benefitsText}.`;
+  const fullText = cleanForSpeech(`${course.title}. ${course.desc}. ${keyBenefitsLabel}: ${benefitsText}.`);
 
-  window.speechSynthesis.cancel();
+  ensureVoiceReady();
   const utterance = new SpeechSynthesisUtterance(fullText);
   applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
+  currentSpeech = 'modal';
+  utterance.onend = () => { if (currentSpeech === 'modal') currentSpeech = null; };
+  utterance.onerror = () => { if (currentSpeech === 'modal') currentSpeech = null; };
 
   window.speechSynthesis.speak(utterance);
 }
@@ -480,7 +491,7 @@ const courseData = {
   },
   holistic: {
     en: {
-      title: 'Holistic Healing Energy Power (Pranic Healing)',
+      title: 'Holistic Healing Power (Pranic Healing)',
       desc: 'Promotes emotional balance, physical well-being, and a positive mindset. Supports slow learners and hyperactive children with personalized guidance.',
       benefits: 'Emotional balance and well-being. Physical health and vitality. Positive mindset cultivation. Support for slow learners and hyperactive children. Addiction prevention and overall wellness. Personalized attention and holistic development. Better social skills and relationships. Enhanced emotional intelligence.',
       benefitsList: [
@@ -785,7 +796,7 @@ const courseData = {
 const uiTranslations = {
   en: {
     ourCourses: 'Our Courses',
-    freeTechniques: 'Complimentary Divine Sciences',
+    freeTechniques: 'Akul Science',
     freeTechSubtitle: '',
     advancedVidyas: 'Reference Courses',
     vidyaSubtitle: 'We partner with expert Gurus for these advanced sacred sciences. <strong>We\'ll guide you to the right master.</strong>',
@@ -820,7 +831,7 @@ const uiTranslations = {
   },
   te: {
     ourCourses: 'మా కోర్సులు',
-    freeTechniques: 'పురస్కృత దివ్య విజ్ఞానాలు',
+    freeTechniques: 'అకుల్ విజ్ఞానం',
     freeTechSubtitle: '',
     advancedVidyas: 'రెఫరెన్స్ కోర్సులు',
     vidyaSubtitle: 'ఈ ఆధునాతన పవిత్ర విజ్ఞానాల కోసం మేము నిపుణ గురువులతో భాగస్వామ్యం కలిగి ఉన్నాము. <strong>మేము మిమ్మల్ని సరైన గురువు వద్దకు మార్గదర్శకత్వం చేస్తాము.</strong>',
@@ -967,18 +978,59 @@ if (window.speechSynthesis) {
 let currentSpeech = null;
 let homeSpeechActive = false;
 
+// ============================================================================
+// SPEECH TEXT CLEANER
+// Strips emojis, pictographs and decorative symbols so the voice reads ONLY the
+// actual words (no "folded hands", "sparkles", "star" being spoken aloud).
+// ============================================================================
+function cleanForSpeech(text) {
+  return String(text || "")
+    // Emoji, pictographs, symbols, dingbats, arrows, variation selectors, ZWJ
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ")
+    .replace(/[\u{2600}-\u{27BF}]/gu, " ")
+    .replace(/[\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{2300}-\u{23FF}]/gu, " ")
+    .replace(/[\u{FE00}-\u{FE0F}\u{200D}]/gu, " ")
+    // Common decorative marks used in headings
+    .replace(/[✦✧✨🕉🙏🌟⚖🌺★☆♦◆•·—–]/g, " ")
+    // Collapse whitespace
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Ensure a female voice is resolved before speaking (keeps voice uniform even if
+// the voice list loaded late on the first interaction).
+function ensureVoiceReady() {
+  if ((!cachedFemaleVoiceEN || !voicesLoaded) && window.speechSynthesis) {
+    loadVoices();
+  }
+}
+
+// Toggle the visual on/off state of a speaker button (icon + optional label swap)
+function setSpeakerButtonState(btn, speaking) {
+  if (!btn) return;
+  btn.classList.toggle("speaking", speaking);
+  const icon = btn.querySelector("i");
+  if (icon) icon.className = speaking ? "fas fa-stop" : "fas fa-volume-up";
+  const label = btn.querySelector("span");
+  if (label && /listen|stop/i.test(label.textContent)) {
+    label.textContent = speaking ? "Stop" : "Listen";
+  }
+}
+
 function speakHomeSection() {
   const homeButton = document.getElementById("home-tts-btn");
   const homeSection = document.getElementById("home");
   if (!homeSection || !homeButton) return;
 
+  // Toggle: if already speaking the home section, a second click stops it
   if (window.speechSynthesis.speaking) {
     window.speechSynthesis.cancel();
     document.querySelectorAll(".course-tts-btn.speaking, .home-tts-btn.speaking").forEach((btn) => {
-      btn.classList.remove("speaking");
+      setSpeakerButtonState(btn, false);
     });
     if (homeSpeechActive) {
       homeSpeechActive = false;
+      currentSpeech = null;
       return;
     }
   }
@@ -986,23 +1038,24 @@ function speakHomeSection() {
   const meaningText = homeSection.querySelector(".custom-meaning")?.innerText || "";
   const titleText = homeSection.querySelector(".hero-title")?.innerText || "";
   const subtitleText = homeSection.querySelector(".hero-subtitle")?.innerText || "";
-  const fullText = `${titleText}. ${subtitleText}. ${meaningText}`.replace(/\s+/g, " ").trim();
+  const fullText = cleanForSpeech(`${titleText}. ${subtitleText}. ${meaningText}`);
   if (!fullText) return;
 
+  ensureVoiceReady();
   const utterance = new SpeechSynthesisUtterance(fullText);
   applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
 
-  homeButton.classList.add("speaking");
+  setSpeakerButtonState(homeButton, true);
   homeSpeechActive = true;
   currentSpeech = "home";
 
   utterance.onend = () => {
-    homeButton.classList.remove("speaking");
+    setSpeakerButtonState(homeButton, false);
     homeSpeechActive = false;
     currentSpeech = null;
   };
   utterance.onerror = () => {
-    homeButton.classList.remove("speaking");
+    setSpeakerButtonState(homeButton, false);
     homeSpeechActive = false;
     currentSpeech = null;
   };
@@ -1017,12 +1070,13 @@ function speakCourse(courseId) {
   const langData = data[currentLang];
   if (!langData) return;
 
-  // Stop any current speech
+  // Toggle: clicking the same speaker again stops the audio (on/off)
   if (window.speechSynthesis.speaking) {
     window.speechSynthesis.cancel();
-    document.querySelectorAll('.course-tts-btn.speaking').forEach(btn => {
-      btn.classList.remove('speaking');
+    document.querySelectorAll('.course-tts-btn.speaking, .home-tts-btn.speaking').forEach(btn => {
+      setSpeakerButtonState(btn, false);
     });
+    homeSpeechActive = false;
     if (currentSpeech === courseId) {
       currentSpeech = null;
       return;
@@ -1033,7 +1087,9 @@ function speakCourse(courseId) {
   const benefitsText = Array.isArray(langData.benefitsList)
     ? langData.benefitsList.join('. ')
     : (langData.benefits || '');
-  const text = `${langData.title}. ${langData.desc} ${keyBenefitsLabel}: ${benefitsText}`;
+  const text = cleanForSpeech(`${langData.title}. ${langData.desc} ${keyBenefitsLabel}: ${benefitsText}`);
+
+  ensureVoiceReady();
   const utterance = new SpeechSynthesisUtterance(text);
   applySoftIndianVoice(utterance, currentLang === "te" ? "te" : "en");
 
@@ -1041,15 +1097,15 @@ function speakCourse(courseId) {
   const card = document.getElementById(`course-${courseId}`);
   const btn = card ? card.querySelector('.course-tts-btn') : null;
 
-  if (btn) btn.classList.add('speaking');
+  setSpeakerButtonState(btn, true);
   currentSpeech = courseId;
 
   utterance.onend = () => {
-    if (btn) btn.classList.remove('speaking');
+    setSpeakerButtonState(btn, false);
     currentSpeech = null;
   };
   utterance.onerror = () => {
-    if (btn) btn.classList.remove('speaking');
+    setSpeakerButtonState(btn, false);
     currentSpeech = null;
   };
 
